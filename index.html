@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oskar Sauer</title>
+  <meta name="description" content="Projects by Oskar Sauer, including ibkr: a local Interactive Brokers MCP server, CLI, and Go TWS API for AI-assisted account and market analysis.">
+  <link rel="canonical" href="https://osauer.dev/">
+  <style>
+    :root {
+      --paper: #f7f5ef;
+      --ink: #101827;
+      --muted: #42526a;
+      --green: #087f6b;
+      --line: #d8d2c4;
+      --card: #fffdf7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    .topline {
+      height: 12px;
+      background: var(--green);
+    }
+
+    main {
+      width: min(960px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 86px 0;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 680px;
+      margin: 22px 0 46px;
+      color: var(--muted);
+      font-size: 22px;
+    }
+
+    .project {
+      display: block;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--card);
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .project strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 26px;
+    }
+
+    .project span {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .project em {
+      display: block;
+      margin-top: 18px;
+      color: var(--green);
+      font-style: normal;
+      font-weight: 750;
+    }
+  </style>
+</head>
+<body>
+  <div class="topline"></div>
+  <main>
+    <h1>Oskar Sauer</h1>
+    <p class="lead">Software projects for local tools, financial systems, and agent workflows.</p>
+    <a class="project" href="https://osauer.dev/ibkr/">
+      <strong>ibkr</strong>
+      <span>Local read-only Interactive Brokers MCP server, CLI, and Go TWS API for AI-assisted account and market analysis.</span>
+      <em>Open ibkr</em>
+    </a>
+  </main>
+</body>
+</html>
