@@ -1,8 +1,10 @@
 # osauer.dev
 
-Updated: 2026-05-24 19:51 CEST
+Updated: 2026-05-24 20:35 CEST
 
 This is the project site for Oliver Sauer.
+
+This is a personal side-project site, not an employer or company site. Public projects here are hobby/personal builds shared when they are useful enough to publish. Oliver's public background includes software engineering, technical program management, and IT transformation.
 
 ## Projects
 
