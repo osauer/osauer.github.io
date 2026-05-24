@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Oliver Sauer</title>
-  <meta name="description" content="Projects by Oliver Sauer, including ibkr: a local Interactive Brokers MCP server, CLI, and Go TWS API for AI-assisted account and market analysis.">
+  <meta name="description" content="Personal side projects by Oliver Sauer: local tools, trading experiments, and AI-assisted software workflows shared when they are useful enough to publish.">
   <link rel="canonical" href="https://osauer.dev/">
   <style>
     :root {
@@ -14,6 +14,7 @@
       --green: #087f6b;
       --line: #d8d2c4;
       --card: #fffdf7;
+      --blue: #245dbb;
     }
 
     * {
@@ -48,9 +49,22 @@
 
     .lead {
       max-width: 680px;
-      margin: 22px 0 46px;
+      margin: 22px 0 20px;
       color: var(--muted);
       font-size: 22px;
+    }
+
+    .note {
+      max-width: 720px;
+      margin: 0 0 46px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .note a {
+      color: var(--blue);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
     }
 
     .project {
@@ -87,7 +101,8 @@
   <div class="topline"></div>
   <main>
     <h1>Oliver Sauer</h1>
-    <p class="lead">Software projects for local tools, financial systems, and agent workflows.</p>
+    <p class="lead">Personal side projects for learning, trading, and useful little tools.</p>
+    <p class="note">I build software products in public here when they are useful enough to share. This site is personal, open source where possible, and not associated with my employer. Background: software engineering, technical program management, and IT transformation. <a href="https://github.com/osauer">GitHub</a> · <a href="https://www.linkedin.com/in/osauer">LinkedIn</a></p>
     <a class="project" href="https://osauer.dev/ibkr/">
       <strong>ibkr</strong>
       <span>Local read-only Interactive Brokers MCP server, CLI, and Go TWS API for AI-assisted account and market analysis.</span>
