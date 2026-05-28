@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Oliver Sauer</title>
-  <meta name="description" content="Personal side projects by Oliver Sauer: local tools, trading experiments, and AI-assisted software workflows shared when they are useful enough to publish.">
+  <meta name="description" content="Personal side projects by Oliver Sauer, including ibkr: a local Interactive Brokers MCP server for agentic portfolio analysis, trading research, and TWS workflows.">
   <link rel="canonical" href="https://osauer.dev/">
   <style>
     :root {
@@ -95,6 +95,21 @@
       font-style: normal;
       font-weight: 750;
     }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 18px;
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .project-links a {
+      color: var(--blue);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
   </style>
 </head>
 <body>
@@ -103,11 +118,15 @@
     <h1>Oliver Sauer</h1>
     <p class="lead">Personal side projects for learning, trading, and useful little tools.</p>
     <p class="note">I build software products in public here when they are useful enough to share. This site is personal, open source where possible, and not associated with my employer. Background: software engineering, technical program management, and IT transformation. <a href="https://github.com/osauer">GitHub</a> · <a href="https://www.linkedin.com/in/osauer">LinkedIn</a></p>
-    <a class="project" href="https://osauer.dev/ibkr/">
+    <section class="project">
       <strong>ibkr</strong>
-      <span>Local read-only Interactive Brokers MCP server, CLI, and Go TWS API for AI-assisted account and market analysis.</span>
-      <em>Open ibkr</em>
-    </a>
+      <span>Local Interactive Brokers MCP server, CLI, and Go TWS API for agentic portfolio analysis, trading research, risk checks, and TWS / IB Gateway workflows.</span>
+      <div class="project-links">
+        <a href="https://osauer.dev/ibkr/">Open ibkr</a>
+        <a href="https://osauer.dev/ibkr/ibkr-mcp/">IBKR MCP server</a>
+        <a href="https://osauer.dev/ibkr/portfolio-review-with-claude-ibkr/">Claude portfolio review</a>
+      </div>
+    </section>
   </main>
 </body>
 </html>
