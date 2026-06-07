@@ -3,130 +3,195 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Oliver Sauer</title>
-  <meta name="description" content="Personal side projects by Oliver Sauer, including ibkr: a local Interactive Brokers MCP server for agentic portfolio analysis, trading research, and TWS workflows.">
+  <title>osauer.dev</title>
+  <meta name="description" content="Projects by Oliver Sauer: ibkr for local Interactive Brokers MCP workflows and HyperServe for small Go HTTP services with optional MCP support.">
   <link rel="canonical" href="https://osauer.dev/">
   <style>
     :root {
-      --paper: #f7f5ef;
-      --ink: #101827;
-      --muted: #42526a;
-      --green: #087f6b;
+      --paper: #f6f4ee;
+      --paper-strong: #fffefa;
+      --ink: #111827;
+      --muted: #4b5563;
       --line: #d8d2c4;
-      --card: #fffdf7;
-      --blue: #245dbb;
+      --green: #087f6b;
+      --blue: #255fb8;
+      --terminal: #0f172a;
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       background: var(--paper);
       color: var(--ink);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.5;
+      line-height: 1.52;
     }
-
-    .topline {
-      height: 12px;
-      background: var(--green);
+    a { color: inherit; text-decoration-thickness: 0.08em; text-underline-offset: 0.18em; }
+    .topline { height: 10px; background: linear-gradient(90deg, var(--green), var(--blue)); }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 0 18px;
     }
-
-    main {
-      width: min(960px, calc(100% - 40px));
-      margin: 0 auto;
-      padding: 86px 0;
+    .brand {
+      font-size: 25px;
+      font-weight: 800;
+      text-decoration: none;
     }
-
+    nav { display: flex; flex-wrap: wrap; gap: 18px; color: var(--muted); font-size: 15px; font-weight: 650; }
+    nav a { text-decoration: none; }
+    .hero { padding: 46px 0 32px; }
     h1 {
+      max-width: 840px;
       margin: 0;
-      font-size: clamp(42px, 7vw, 76px);
+      font-size: clamp(42px, 6vw, 72px);
       line-height: 1;
       letter-spacing: 0;
     }
-
     .lead {
-      max-width: 680px;
-      margin: 22px 0 20px;
-      color: var(--muted);
-      font-size: 22px;
+      max-width: 760px;
+      margin: 22px 0 0;
+      color: #26364d;
+      font-size: clamp(18px, 2vw, 21px);
+      line-height: 1.38;
     }
-
-    .note {
-      max-width: 720px;
-      margin: 0 0 46px;
-      color: var(--muted);
-      font-size: 17px;
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      padding: 34px 0 84px;
     }
-
-    .note a {
-      color: var(--blue);
-      text-decoration-thickness: 0.08em;
-      text-underline-offset: 0.18em;
-    }
-
-    .project {
-      display: block;
-      padding: 26px;
+    .panel {
+      display: grid;
+      align-content: start;
+      min-height: 390px;
+      padding: 28px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: var(--card);
-      color: inherit;
+      background: var(--paper-strong);
+    }
+    .panel[data-accent="green"] { border-top: 5px solid var(--green); }
+    .panel[data-accent="blue"] { border-top: 5px solid var(--blue); }
+    .label {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    .panel p {
+      margin: 18px 0 0;
+      color: #26364d;
+      font-size: 17px;
+    }
+    .points {
+      display: grid;
+      gap: 10px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .points li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 16px;
+      border: 1px solid var(--ink);
+      border-radius: 8px;
+      color: var(--ink);
+      font-weight: 750;
       text-decoration: none;
     }
-
-    .project strong {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 26px;
-    }
-
-    .project span {
+    .button.primary { background: var(--terminal); color: #fff; border-color: var(--terminal); }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 40px;
       color: var(--muted);
-      font-size: 18px;
+      font-size: 14px;
     }
-
-    .project em {
-      display: block;
-      margin-top: 18px;
-      color: var(--green);
-      font-style: normal;
-      font-weight: 750;
-    }
-
-    .project-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 18px;
-      color: var(--blue);
-      font-weight: 700;
-    }
-
-    .project-links a {
-      color: var(--blue);
-      text-decoration-thickness: 0.08em;
-      text-underline-offset: 0.18em;
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 28px, 1120px); }
+      header { align-items: flex-start; flex-direction: column; }
+      .hero { padding-top: 28px; }
+      .projects { grid-template-columns: 1fr; padding-bottom: 58px; }
+      .panel { min-height: 0; padding: 22px; }
     }
   </style>
 </head>
 <body>
   <div class="topline"></div>
+  <header class="wrap">
+    <a class="brand" href="https://osauer.dev/">osauer.dev</a>
+    <nav aria-label="Projects">
+      <a href="ibkr/">ibkr</a>
+      <a href="hyperserve/">HyperServe</a>
+      <a href="https://github.com/osauer">GitHub</a>
+      <a href="https://www.linkedin.com/in/osauer/">LinkedIn</a>
+    </nav>
+  </header>
   <main>
-    <h1>Oliver Sauer</h1>
-    <p class="lead">Personal side projects for learning, trading, and useful little tools.</p>
-    <p class="note">I build software products in public here when they are useful enough to share. This site is personal, open source where possible, and not associated with my employer. Background: software engineering, technical program management, and IT transformation. <a href="https://github.com/osauer">GitHub</a> · <a href="https://www.linkedin.com/in/osauer">LinkedIn</a></p>
-    <section class="project">
-      <strong>ibkr</strong>
-      <span>Local Interactive Brokers MCP server, CLI, and Go TWS API for agentic portfolio analysis, trading research, risk checks, and TWS / IB Gateway workflows.</span>
-      <div class="project-links">
-        <a href="https://osauer.dev/ibkr/">Open ibkr</a>
-        <a href="https://osauer.dev/ibkr/ibkr-mcp/">IBKR MCP server</a>
-        <a href="https://osauer.dev/ibkr/portfolio-review-with-claude-ibkr/">Claude portfolio review</a>
-      </div>
+    <section class="wrap hero">
+      <h1>Small tools for local systems, agents, and Go services.</h1>
+      <p class="lead">This is a compact index for public projects I maintain. The pages are written for people trying to decide what a tool does, how to install it, and where its edges are.</p>
+    </section>
+    <section class="wrap projects" aria-label="Project panels">
+      <article class="panel" data-accent="green">
+        <p class="label">Broker data and MCP</p>
+        <h2>ibkr</h2>
+        <p>A local Interactive Brokers MCP server and CLI. It connects Claude Desktop, Claude Code, Cursor, Zed, and shell workflows to account and market context from IB Gateway or TWS.</p>
+        <ul class="points">
+          <li>Claude Desktop MCP Bundle is the fastest install path.</li>
+          <li>Read-side public MCP surface: analysis, sizing math, freshness checks, no order-entry tools.</li>
+          <li>Useful for portfolio review, options diagnostics, scanners, breadth, gamma, and regime context.</li>
+        </ul>
+        <div class="actions">
+          <a class="button primary" href="ibkr/">Open ibkr</a>
+          <a class="button" href="https://github.com/osauer/ibkr">GitHub</a>
+        </div>
+      </article>
+      <article class="panel" data-accent="blue">
+        <p class="label">Go HTTP library</p>
+        <h2>HyperServe</h2>
+        <p>A small <code>net/http</code>-shaped server for Go services. It keeps the dependency tree flat, adds method-aware routes, typed binding and validation, and can expose an MCP control plane from the same binary when that is useful.</p>
+        <ul class="points">
+          <li>Built on the standard library, with one runtime dependency.</li>
+          <li>Includes middleware, graceful shutdown, static-file sandboxing, WebSocket, SSE, and JSON-RPC pieces.</li>
+          <li>MCP support is opt-in, with HTTP, SSE, and stdio transports sharing one protocol surface.</li>
+        </ul>
+        <div class="actions">
+          <a class="button primary" href="hyperserve/">Open HyperServe</a>
+          <a class="button" href="https://github.com/osauer/hyperserve">GitHub</a>
+        </div>
+      </article>
     </section>
   </main>
+  <footer class="wrap">Oliver Sauer. Independent projects; no affiliation implied with referenced vendors.</footer>
 </body>
 </html>

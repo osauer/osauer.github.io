@@ -43,7 +43,7 @@
     "S&P 500 breadth",
     "SPY+SPX dealer gamma",
     "broad-market stress lifecycle",
-    "portfolio canary lifecycle",
+    "portfolio stress checks",
     "stock and ETF quote resources"
   ],
   "safety": {
