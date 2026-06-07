@@ -164,7 +164,7 @@
 <pre><code>MCP host -&gt; ibkr mcp -&gt; local ibkr daemon -&gt; TWS API socket -&gt; Interactive Brokers account data</code></pre>
 <p><code>ibkr</code> auto-discovers the standard local ports, including TWS paper and live ports. You can also pin host, port, client ID, account, and TLS settings in the local config file when auto-discovery is not what you want.</p>
 <h2 id="tws-versus-ib-gateway">TWS versus IB Gateway</h2>
-<p>Use TWS when you already want the desktop platform open. Use IB Gateway when you want a lighter background process for API access. The MCP surface is the same either way: read-only account, positions, quotes, calendars, option chains, scanners, sizing, breadth, gamma, broad-market regime lifecycle, and portfolio canary lifecycle tools.</p>
+<p>Use TWS when you already want the desktop platform open. Use IB Gateway when you want a lighter background process for API access. The MCP surface is the same either way: read-only account, positions, quotes, calendars, option chains, scanners, sizing, breadth, gamma, broad-market regime lifecycle, and portfolio stress-check tools.</p>
 <h2 id="install-for-an-mcp-host">Install for an MCP host</h2>
 <pre><code>curl -fsSL https://raw.githubusercontent.com/osauer/ibkr/main/install.sh | sh
 ibkr status

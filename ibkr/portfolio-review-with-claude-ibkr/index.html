@@ -195,7 +195,7 @@ risk-regime lifecycle. Rank the risks I should inspect today, explain the eviden
 behind each one, and separate observations from possible next actions. Do not
 place or imply orders.</code></pre>
 <p>For a deeper review, use the full example prompt and let Claude decide which MCP calls are needed before it writes the answer.</p>
-<p>For a scheduled canary check that preserves lifecycle stage, planner readiness, source health, fingerprints, confidence, rows, and warnings, use <a href="https://github.com/osauer/ibkr/blob/main/examples/ibkr_portfolio_canary_prompt.md">examples/ibkr_portfolio_canary_prompt.md</a>.</p>
+<p>For a scheduled stress check that preserves lifecycle stage, planner readiness, source health, fingerprints, confidence, rows, and warnings, use <a href="https://github.com/osauer/ibkr/blob/main/examples/ibkr_portfolio_canary_prompt.md">examples/ibkr_portfolio_canary_prompt.md</a>.</p>
 <h2 id="what-a-useful-answer-looks-like">What a useful answer looks like</h2>
 <p>A strong review is compact, evidence-led, and explicit about missing data. It should read like a desk note, not a stream of tool output.</p>
 <p>Sanitized sample:</p>
@@ -222,6 +222,9 @@ Next review steps
 <h2 id="how-to-install">How to install</h2>
 <p>Claude Desktop users can install the MCP Bundle:</p>
 <pre><code>https://github.com/osauer/ibkr/releases/latest/download/ibkr.mcpb</code></pre>
+<p>Claude Code users can install the plugin:</p>
+<pre><code>/plugin marketplace add osauer/ibkr
+/plugin install ibkr@ibkr</code></pre>
 <p>Shell, Cursor, Continue, Zed, and generic MCP users can install the binary:</p>
 <pre><code>curl -fsSL https://raw.githubusercontent.com/osauer/ibkr/main/install.sh | sh
 ibkr status</code></pre>

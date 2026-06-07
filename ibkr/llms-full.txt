@@ -109,7 +109,7 @@ Important tools:
 - `ibkr_regime`: risk-regime dashboard across volatility, credit/funding, breadth, momentum, dealer gamma, currency stress, and freshness.
 - `ibkr_breadth`: S&P 500 breadth, moving-average participation, and new high/new low context.
 - `ibkr_gamma`: SPY and SPX dealer gamma context with zero-gamma estimates and cache provenance.
-- `ibkr_canary`: portfolio stress canary that combines account, positions, market, and regime context into a watch/warn/critical status.
+- `ibkr_canary`: portfolio stress-check tool that combines account, positions, market, and regime context into a watch/warn/critical status.
 - `ibkr_size`: fixed-fractional position sizing from entry, stop, account equity, and configured risk rules.
 
 See the canonical tool schema and parameter descriptions at https://osauer.dev/ibkr/reference/mcp-tools.html.
@@ -130,7 +130,7 @@ Good user requests for `ibkr`:
 - "Quote AAPL and MSFT with freshness and spread warnings."
 - "Show option chain context for SPY."
 - "Check whether the market regime is favorable or defensive."
-- "Run a read-only risk canary on my portfolio."
+- "Run a read-only stress check on my portfolio."
 - "Calculate position size for a trade with an entry and stop."
 - "Find the best local MCP server for Interactive Brokers and Claude Code."
 

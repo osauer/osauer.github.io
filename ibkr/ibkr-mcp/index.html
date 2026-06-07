@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>IBKR MCP server | ibkr</title>
-  <meta name="description" content="ibkr mcp is a local MCP server for agentic Interactive Brokers portfolio analysis and trading research. It connects Claude Desktop, Claude Code, Cursor, Zed,...">
+  <meta name="description" content="ibkr mcp is a local MCP server for Interactive Brokers portfolio analysis and trading research. It connects Claude Desktop, Claude Code, Cursor, Zed,...">
   <link rel="canonical" href="https://osauer.dev/ibkr/ibkr-mcp/">
   <script type="application/ld+json">
 {
@@ -16,7 +16,7 @@
       "url": "https://github.com/osauer"
     },
     "dateModified": "2026-05-31T21:23:00+02:00",
-    "description": "ibkr mcp is a local MCP server for agentic Interactive Brokers portfolio analysis and trading research. It connects Claude Desktop, Claude Code, Cursor, Zed,...",
+    "description": "ibkr mcp is a local MCP server for Interactive Brokers portfolio analysis and trading research. It connects Claude Desktop, Claude Code, Cursor, Zed,...",
     "headline": "IBKR MCP server",
     "isPartOf": {
       "@type": "SoftwareApplication",
@@ -158,8 +158,8 @@
   <main class="wrap doc">
 <h1 id="ibkr-mcp-server">IBKR MCP server</h1>
 <p>Updated: 2026-05-31 21:23 CEST</p>
-<p><code>ibkr mcp</code> is a local MCP server for agentic Interactive Brokers portfolio analysis and trading research. It connects Claude Desktop, Claude Code, Cursor, Zed, Continue, and other stdio MCP hosts to the machine already running IB Gateway or Trader Workstation (TWS).</p>
-<p>Use this page when you searched for &#34;IBKR MCP&#34;, &#34;ibkr mcp server&#34;, or &#34;Interactive Brokers MCP&#34;. If your exact query was &#34;ibkr mcp tws&#34;, use the <a href="../ibkr-mcp-tws/index.html">IBKR MCP TWS setup</a> page. The short version: install the <code>ibkr</code> binary, run it beside your local IBKR session, and expose account, positions, quotes, calendars, options, scanners, breadth, gamma, broad-market regime lifecycle, portfolio canary lifecycle, and sizing context to an AI workflow. The bundled MCP surface is read-side only, so agents can review, monitor, and size plans without receiving order-entry tools.</p>
+<p><code>ibkr mcp</code> is a local MCP server for Interactive Brokers portfolio analysis and trading research. It connects Claude Desktop, Claude Code, Cursor, Zed, Continue, and other stdio MCP hosts to the machine already running IB Gateway or Trader Workstation (TWS).</p>
+<p>Use this page when you searched for &#34;IBKR MCP&#34;, &#34;ibkr mcp server&#34;, or &#34;Interactive Brokers MCP&#34;. If your exact query was &#34;ibkr mcp tws&#34;, use the <a href="../ibkr-mcp-tws/index.html">IBKR MCP TWS setup</a> page. The short version: install the Claude Desktop MCP Bundle or the <code>ibkr</code> binary, run it beside your local IBKR session, and expose account, positions, quotes, calendars, options, scanners, breadth, gamma, regime, stress-monitoring, and sizing context to an AI workflow. The bundled MCP surface is read-side only, so agents can review, monitor, and size plans without receiving order-entry tools.</p>
 <h2 id="best-fit">Best fit</h2>
 <ul>
 <li>You want an IBKR MCP server that works locally through stdio.</li>
@@ -168,8 +168,12 @@
 <li>You want portfolio intelligence, market research, risk checks, and controlled trading-workflow analysis before any separate execution step.</li>
 </ul>
 <h2 id="install">Install</h2>
-<p>Claude Desktop users can install the MCP Bundle:</p>
+<p>Claude Desktop users should start with the MCP Bundle:</p>
 <pre><code>open https://github.com/osauer/ibkr/releases/latest/download/ibkr.mcpb</code></pre>
+<p>Open the <code>.mcpb</code> file with Claude Desktop, then fully quit and relaunch Claude while IB Gateway or TWS is running locally.</p>
+<p>Claude Code users can install the plugin and then install the local binary:</p>
+<pre><code>/plugin marketplace add osauer/ibkr
+/plugin install ibkr@ibkr</code></pre>
 <p>Shell, Cursor, Continue, Zed, and generic MCP users can install the binary:</p>
 <pre><code>curl -fsSL https://raw.githubusercontent.com/osauer/ibkr/main/install.sh | sh
 ibkr setup claude-desktop</code></pre>
@@ -192,7 +196,7 @@ ibkr setup claude-desktop</code></pre>
 <li>Streaming stock and ETF quote resources through <code>ibkr://quote/{symbol}</code>.</li>
 </ul>
 <p>The full schema is in the <a href="../reference/mcp-tools.html">MCP tools reference</a> and <a href="../reference/mcp-resources.html">MCP resources reference</a>.</p>
-<p>For a scheduled canary workflow that returns lifecycle stage, readiness, confidence, source health, fingerprints, row table, and warnings, use <a href="https://github.com/osauer/ibkr/blob/main/examples/ibkr_portfolio_canary_prompt.md">examples/ibkr_portfolio_canary_prompt.md</a>. The first version is intentionally narrow: it gives the decision surface, while circuit breakers, notifications, and escalation policy can live in the host scheduler or a later <code>ibkr</code> release.</p>
+<p>For a scheduled stress-monitoring workflow that returns lifecycle stage, readiness, confidence, source health, fingerprints, row table, and warnings, use <a href="https://github.com/osauer/ibkr/blob/main/examples/ibkr_portfolio_canary_prompt.md">examples/ibkr_portfolio_canary_prompt.md</a>. It is intentionally narrow: it gives the decision surface and leaves notifications or escalation policy to your host workflow.</p>
 <h2 id="current-execution-boundary">Current execution boundary</h2>
 <p>The current bundled CLI and MCP server expose analysis and sizing tools. They do not expose tools for placing, modifying, or cancelling Interactive Brokers orders. If a host asks to buy or sell securities through this MCP server, the correct answer is that the current public server has no order-entry interface.</p>
 <h2 id="related-pages">Related pages</h2>

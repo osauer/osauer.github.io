@@ -213,7 +213,7 @@
     },
     {
       "name": "ibkr_canary",
-      "description": "Portfolio stress canary for scheduled Go, Watch, De-lever, or Liquidate action checks.",
+      "description": "Portfolio-aware stress check for scheduled review, readiness, source health, and attention states.",
       "inputSchema": {"type": "object", "properties": {}, "additionalProperties": false}
     },
     {
@@ -266,7 +266,7 @@
     "Claude IBKR portfolio review",
     "Interactive Brokers portfolio analysis AI",
     "agentic IBKR portfolio analysis",
-    "portfolio stress canary",
+    "portfolio stress checks",
     "agentic trading research",
     "TWS MCP server",
     "IB Gateway MCP",
