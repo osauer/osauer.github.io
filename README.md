@@ -1,9 +1,13 @@
 # osauer.github.io
 
-This repo is the live GitHub Pages publisher for `osauer.dev`.
+This repo is the live GitHub Pages publisher for the root `osauer.dev` site.
 
-For `osauer.dev/ibkr` updates, do not start here unless the request is only to
-deploy already-prepared static output. The source workspace is
-`/Users/osauer/dev/osauer.dev`; update its `content/ibkr/landing/` source and
-`public/ibkr/` output first, then mirror the deployable files into this repo and
-push `main`.
+Current path ownership:
+
+- `osauer.dev/` is served from this repo, `main:/`.
+- `osauer.dev/hyperserve/` is served from this repo's `hyperserve/` folder.
+- `osauer.dev/ibkr/` is served from `osauer/ibkr` GitHub Pages (`main:/docs`),
+  not from this repo's duplicate `ibkr/` folder.
+
+Before changing a product path, verify the relevant repo's Pages settings with
+`gh api repos/osauer/<repo>/pages` and confirm the live `Last-Modified` header.
