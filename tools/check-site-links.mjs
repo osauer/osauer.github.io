@@ -3,6 +3,7 @@ import path from "node:path";
 
 const root = process.cwd();
 const siteOrigin = "https://osauer.dev";
+const delegatedPrefixes = ["/ibkr/"];
 const problems = [];
 
 async function exists(file) {
@@ -33,6 +34,9 @@ function localTarget(raw) {
     return "";
   }
   if (url.origin !== siteOrigin) {
+    return "";
+  }
+  if (delegatedPrefixes.some((prefix) => url.pathname.startsWith(prefix))) {
     return "";
   }
   return decodeURIComponent(url.pathname);
