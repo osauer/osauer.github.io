@@ -6,8 +6,8 @@ Current path ownership:
 
 - `osauer.dev/` is served from this repo, `main:/`.
 - `osauer.dev/hyperserve/` is served from this repo's `hyperserve/` folder.
-- `osauer.dev/ibkr/` is served from `osauer/ibkr` GitHub Pages (`main:/docs`),
-  not from this repo. The local link checker treats `/ibkr/` as a delegated
+- `osauer.dev/canary/` is served from `osauer/canary` GitHub Pages (`main:/docs`),
+  not from this repo. The local link checker treats `/canary/` as a delegated
   route.
 
 Before changing a product path, verify the relevant repo's Pages settings with

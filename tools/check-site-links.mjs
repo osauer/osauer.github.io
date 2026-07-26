@@ -3,7 +3,7 @@ import path from "node:path";
 
 const root = process.cwd();
 const siteOrigin = "https://osauer.dev";
-const delegatedPrefixes = ["/ibkr/"];
+const delegatedPrefixes = ["/canary/"];
 const problems = [];
 
 async function exists(file) {
@@ -42,6 +42,35 @@ function localTarget(raw) {
   return decodeURIComponent(url.pathname);
 }
 
+function sourceURL(source) {
+  const relative = path.relative(root, source).split(path.sep).join("/");
+  return new URL(relative, `${siteOrigin}/`);
+}
+
+function retiredProductTarget(source, raw) {
+  if (!raw || raw.startsWith("#")) {
+    return false;
+  }
+  if (/^(mailto|tel|javascript):/i.test(raw)) {
+    return false;
+  }
+
+  let url;
+  try {
+    url = new URL(raw, sourceURL(source));
+  } catch {
+    return false;
+  }
+
+  if (url.origin === siteOrigin && /^\/ibkr(?:\/|$)/.test(url.pathname)) {
+    return true;
+  }
+  return (
+    url.origin === "https://github.com" &&
+    /^\/osauer\/ibkr(?:\/|$)/.test(url.pathname)
+  );
+}
+
 function targetFile(pathname) {
   if (!pathname || pathname === "/") {
     return "index.html";
@@ -54,6 +83,10 @@ function targetFile(pathname) {
 }
 
 async function checkPath(source, raw) {
+  if (retiredProductTarget(source, raw)) {
+    problems.push(`${source}: retired product target ${raw}`);
+    return;
+  }
   const target = localTarget(raw);
   if (!target) {
     return;
@@ -61,6 +94,13 @@ async function checkPath(source, raw) {
   const file = targetFile(target);
   if (!(await exists(path.join(root, file)))) {
     problems.push(`${source}: ${raw} -> missing ${file}`);
+  }
+}
+
+async function checkTextURLs(file) {
+  const data = await readFile(file, "utf8");
+  for (const match of data.matchAll(/https?:\/\/[^\s<>"')\]]+/gi)) {
+    await checkPath(file, match[0]);
   }
 }
 
@@ -109,6 +149,8 @@ for await (const file of walk(root)) {
     await checkSitemap(file);
   } else if (file.endsWith("robots.txt")) {
     await checkRobots(file);
+  } else if (file.endsWith(".md") || file.endsWith(".txt")) {
+    await checkTextURLs(file);
   }
 }
 
