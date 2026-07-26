@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://osauer.dev/sitemap.xml
-Sitemap: https://osauer.dev/ibkr/sitemap.xml
+Sitemap: https://osauer.dev/canary/sitemap.xml
