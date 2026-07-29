@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>osauer.dev</title>
-  <meta name="description" content="Projects by Oliver Sauer: Canary for local Interactive Brokers workflows and HyperServe for small Go HTTP services with optional MCP support.">
+  <meta name="description" content="Projects by Oliver Sauer: Canary for local Interactive Brokers workflows and hyperserve for small Go HTTP services with optional MCP support.">
   <link rel="canonical" href="https://osauer.dev/">
   <style>
     :root {
@@ -151,7 +151,7 @@
     <a class="brand" href="https://osauer.dev/">osauer.dev</a>
     <nav aria-label="Projects">
       <a href="canary/">Canary</a>
-      <a href="hyperserve/">HyperServe</a>
+      <a href="hyperserve/">hyperserve</a>
       <a href="https://github.com/osauer">GitHub</a>
       <a href="https://www.linkedin.com/in/osauer/">LinkedIn</a>
     </nav>
@@ -168,7 +168,7 @@
         <p>A local Interactive Brokers MCP server, CLI, and risk desk. It connects Claude Desktop, Claude Code, Cursor, Zed, and shell workflows to account and market context from IB Gateway or TWS.</p>
         <ul class="points">
           <li>Claude Desktop MCP Bundle is the fastest install path.</li>
-          <li>Read-side public MCP surface: analysis, sizing math, freshness checks, no order-entry tools.</li>
+          <li>Standard builds and MCP are read/preview-only; gated broker writes require a separate opt-in trading build.</li>
           <li>Useful for portfolio review, options diagnostics, scanners, breadth, gamma, and regime context.</li>
         </ul>
         <div class="actions">
@@ -178,7 +178,7 @@
       </article>
       <article class="panel" data-accent="blue">
         <p class="label">Go HTTP library</p>
-        <h2>HyperServe</h2>
+        <h2>hyperserve</h2>
         <p>A small <code>net/http</code>-shaped server for Go services. It keeps the dependency tree flat, adds method-aware routes, typed binding and validation, and can expose an MCP control plane from the same binary when that is useful.</p>
         <ul class="points">
           <li>Built on the standard library, with one runtime dependency.</li>
@@ -186,7 +186,7 @@
           <li>MCP support is opt-in, with HTTP, SSE, and stdio transports sharing one protocol surface.</li>
         </ul>
         <div class="actions">
-          <a class="button primary" href="hyperserve/">Open HyperServe</a>
+          <a class="button primary" href="hyperserve/">Open hyperserve</a>
           <a class="button" href="https://github.com/osauer/hyperserve">GitHub</a>
         </div>
       </article>
