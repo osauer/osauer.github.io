@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Not found — osauer.dev</title>
+<script>
+  // The project formerly published at /ibkr/ is Canary, at /canary/.
+  // Rewrite old deep links so bookmarks and stale external links land on
+  // the current page; unmatched paths fall through to this 404.
+  var p = location.pathname;
+  if (p === "/ibkr" || p.indexOf("/ibkr/") === 0) {
+    location.replace("/canary" + p.slice(5) + location.search + location.hash);
+  }
+</script>
+<p>Not found. Start at <a href="/">osauer.dev</a> or
+<a href="/canary/">Canary</a>.</p>
+</html>
