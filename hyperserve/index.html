@@ -3,9 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>hyperserve | osauer.dev</title>
-  <meta name="description" content="hyperserve is a low-dependency Go API server built on net/http, with lifecycle, typed boundaries, security, observability, WebSocket, and optional MCP.">
+  <title>HyperServe — Go HTTP server library with optional MCP</title>
+  <meta name="description" content="HyperServe is a net/http-shaped Go server library with typed binding, graceful shutdown, WebSockets, JSON-RPC, and optional MCP Streamable HTTP.">
   <link rel="canonical" href="https://osauer.dev/hyperserve/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="osauer.dev">
+  <meta property="og:title" content="HyperServe — Go HTTP server library with optional MCP">
+  <meta property="og:description" content="A net/http-shaped Go server library with typed binding, graceful shutdown, WebSockets, JSON-RPC, and optional MCP Streamable HTTP.">
+  <meta property="og:url" content="https://osauer.dev/hyperserve/">
   <style>
     :root {
       --paper: #f6f4ee;
@@ -151,9 +156,9 @@
   <main>
     <section class="wrap hero">
       <div>
-        <p class="eyebrow">Go API server</p>
-        <h1>The Go API server I wanted to own.</h1>
-        <p class="lead">hyperserve keeps ordinary <code>net/http</code> handlers and collects lifecycle, typed boundaries, security, observability, WebSocket, and optional MCP in one module. Its in-tree protocols mean fewer packages to assemble and more protocol code maintained here.</p>
+        <p class="eyebrow">Go HTTP server library</p>
+        <h1>A net/http-shaped Go server library with optional MCP.</h1>
+        <p class="lead">HyperServe began as the Go API server I wanted to own. It keeps ordinary <code>net/http</code> handlers and collects lifecycle, typed boundaries, security, observability, WebSocket, and optional MCP in one module. Its in-tree protocols mean fewer packages to assemble and more protocol code maintained here.</p>
         <div class="actions">
           <a class="button primary" href="https://github.com/osauer/hyperserve">View on GitHub</a>
           <a class="button" href="https://pkg.go.dev/github.com/osauer/hyperserve/pkg/server">API reference</a>
@@ -203,7 +208,7 @@ func main() {
       <h2>MCP when it belongs in the server</h2>
       <ul class="notes">
         <li>MCP support is opt-in. Built-in tools and resources are demos unless you enable them.</li>
-        <li>HTTP, SSE, and stdio transports share one handler and discovery surface.</li>
+        <li>Streamable HTTP and stdio share one handler. Deprecated routed SSE remains opt-in for compatibility.</li>
         <li>The MCP package is separate from the HTTP server package, so protocol code stays reusable.</li>
         <li>This is useful when an assistant should inspect or operate the service without a separate bridge process.</li>
       </ul>
