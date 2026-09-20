@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Torok | osauer.dev</title>
-  <meta name="description" content="Torok is a private Go library for agents that use tools and for workflows that survive interruptions: typed answers, committed progress, shared limits, human decisions and a resident service.">
+  <meta name="description" content="Torok is a private Go agent harness: it runs the tool loop, checks typed answers and commits progress so work survives a restart, with shared limits, human decisions and a resident service.">
   <link rel="canonical" href="https://osauer.dev/torok/">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="stylesheet" href="../assets/site.css">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://osauer.dev/torok/">
-  <meta property="og:title" content="Torok | agents in plain Go that survive a restart">
-  <meta property="og:description" content="A Go library for tool-using agents and workflows written as ordinary Go functions. It runs the tool loop, checks typed answers and commits progress.">
+  <meta property="og:title" content="Torok | an agent harness in plain Go">
+  <meta property="og:description" content="A Go agent harness for tool-using agents and workflows written as ordinary Go functions. It runs the tool loop, checks typed answers and commits progress.">
   <style>
     .states { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; padding: 0; list-style: none; }
     .states li { padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper-strong); font: 13px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--muted); }
@@ -33,12 +33,12 @@
   <main>
     <section class="wrap hero split">
       <div>
-        <p class="eyebrow">Private · Go library</p>
-        <h1>Agents in plain Go that survive a restart.</h1>
-        <p class="lead">Torok runs the tool loop, checks typed answers and commits progress, so a run resumes after a person answers or the process comes back. You bring a model and ordinary Go functions. Desk runs on it.</p>
+        <p class="eyebrow">Private · Go agent harness</p>
+        <h1>An agent harness in plain Go that survives a restart.</h1>
+        <p class="lead">Torok is the harness: it runs the tool loop, checks typed answers and commits progress, so a run resumes after a person answers or the process comes back. You bring a model and ordinary Go functions. Desk runs on it.</p>
         <div class="actions">
           <a class="button primary" href="#architecture">Runtime architecture</a>
-          <a class="button" href="https://www.linkedin.com/in/osauer/">Message me on LinkedIn</a>
+          <a class="button" href="https://www.linkedin.com/in/osauer/">Message on LinkedIn</a>
         </div>
       </div>
       <pre><code>add := tool.Func("add", "Add two numbers",
@@ -95,7 +95,7 @@ fmt.Println(*result.Value)</code></pre>
     <section class="block" id="architecture">
       <div class="wrap">
         <h2>Runtime architecture</h2>
-        <p>The engine sits between your functions and the store. Model and tool adapters are the only code that leaves the process, and both report to the same limits. The resident service and the HTTP adapter sit on the same runtime. There is no second engine.</p>
+        <p>The harness sits between your functions and the store. Model and tool adapters are the only code that leaves the process, and both report to the same limits. The resident service and the HTTP adapter sit on the same runtime. There is no second engine.</p>
         <figure class="diagram">
           <img src="../assets/torok-architecture.svg" width="1440" height="960" alt="Architecture diagram of Torok: the application's agents, workflows and tools on the left, the execution engine with its limits, checks and recovery in the middle, memory or SQLite storage below it, model and tool adapters reaching providers and external systems on the right, with the resident service and the HTTP adapter as optional layers" loading="lazy">
           <figcaption>One engine, one store, two kinds of adapter, and the optional resident service around them. Amber marks a paid model call.</figcaption>
@@ -119,10 +119,10 @@ fmt.Println(*result.Value)</code></pre>
       <div class="wrap contact">
         <div>
           <h2>Status</h2>
-          <p>Private, experimental API, Go 1.27, three direct dependencies: SQLite, JSON Schema, a PDF reader. If you want to argue about what "accepted" should mean, write to me.</p>
+          <p>Private, experimental API, Go 1.27, three direct dependencies: SQLite, JSON Schema, a PDF reader. If you want to argue about what "accepted" should mean, get in touch.</p>
         </div>
         <div class="actions">
-          <a class="button primary" href="https://www.linkedin.com/in/osauer/">Message me on LinkedIn</a>
+          <a class="button primary" href="https://www.linkedin.com/in/osauer/">Message on LinkedIn</a>
           <a class="button" href="https://github.com/osauer">GitHub</a>
         </div>
       </div>
