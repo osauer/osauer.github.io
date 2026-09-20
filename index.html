@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>osauer.dev</title>
-  <meta name="description" content="Projects by Oliver Sauer: Canary for local Interactive Brokers workflows, Desk, a private investment agent, Torok, a Go library for durable agents, and HyperServe, a Go HTTP server library.">
+  <meta name="description" content="Projects by Oliver Sauer: Canary, an Interactive Brokers MCP server and CLI; Desk, a private investment agent; Torok, a Go library for durable agents; HyperServe, a Go HTTP server library.">
   <link rel="canonical" href="https://osauer.dev/">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="assets/site.css">
@@ -29,18 +29,17 @@
   <main>
     <section class="wrap hero">
       <h1>Small tools for local systems, agents and Go services.</h1>
-      <p class="lead">This is the index for the projects I maintain. Two are open source and installable. Two are private, so their pages describe what they do, with screenshots or a diagram, instead of linking to code.</p>
-      <p class="stack">They fit together: <a href="desk/"><i class="dot" data-dot="ink"></i>Desk</a> runs on <a href="torok/"><i class="dot" data-dot="amber"></i>Torok</a>, reads the market through <a href="canary/"><i class="dot" data-dot="green"></i>Canary</a> and is served by <a href="hyperserve/"><i class="dot" data-dot="blue"></i>HyperServe</a>.</p>
+      <p class="lead stack"><a href="desk/"><i class="dot" data-dot="ink"></i>Desk</a> runs on <a href="torok/"><i class="dot" data-dot="amber"></i>Torok</a>, reads the market through <a href="canary/"><i class="dot" data-dot="green"></i>Canary</a> and is served by <a href="hyperserve/"><i class="dot" data-dot="blue"></i>HyperServe</a>. Two of the four are open source.</p>
     </section>
     <section class="wrap panels" aria-label="Project panels">
       <article class="panel" data-accent="green">
-        <p class="label">Broker data and MCP · open source</p>
+        <p class="label">Interactive Brokers · MCP · open source</p>
         <h2><img src="assets/canary-icon.png" width="192" height="192" alt="">Canary</h2>
-        <p>A local Interactive Brokers MCP server, CLI and risk desk. It connects Claude Desktop, Claude Code, Cursor, Zed and shell workflows to account and market context from IB Gateway or TWS.</p>
+        <p>Your IBKR session, readable by Claude and the shell.</p>
         <ul class="points">
-          <li>The Claude Desktop MCP bundle is the fastest install path.</li>
-          <li>Standard builds and MCP are read-only; gated broker writes need a separate opt-in trading build.</li>
-          <li>Useful for portfolio review, options diagnostics, scanners, breadth, gamma and regime context.</li>
+          <li>Read-only MCP server and CLI</li>
+          <li>Risk, options and regime context</li>
+          <li>Paired app with a daily brief</li>
         </ul>
         <div class="actions">
           <a class="button primary" href="canary/">Open Canary</a>
@@ -49,12 +48,12 @@
       </article>
       <article class="panel" data-accent="ink">
         <p class="label">Private · investment agent</p>
-        <h2>Desk</h2>
-        <p>A continuously running desk for one Interactive Brokers book. It reviews the book on the market's clock, keeps evidence and decisions in durable storage, answers questions through a reviewed workflow and leaves every trade to a passkey-confirmed human step.</p>
+        <h2><img class="wordmark" src="assets/desk-wordmark.svg" width="245" height="96" alt="desk"></h2>
+        <p>One book, watched all day, every decision written down.</p>
         <ul class="points">
-          <li>Built on Torok for durable work, Canary for broker facts and HyperServe for the console.</li>
-          <li>Every decision carries its sources, a reason, what would prove it wrong and an expiry.</li>
-          <li>A monthly model allowance with a hard ceiling. Idle time costs nothing.</li>
+          <li>Runs on Torok, reads through Canary</li>
+          <li>Answers reviewed against dated evidence</li>
+          <li>Orders need a passkey, never a prompt</li>
         </ul>
         <div class="actions">
           <a class="button primary" href="desk/">Read about Desk</a>
@@ -63,11 +62,11 @@
       <article class="panel" data-accent="amber">
         <p class="label">Private · Go library</p>
         <h2>Torok</h2>
-        <p>A Go library for agents that use tools, and for workflows written as plain Go functions. It runs the tool loop, checks typed answers and commits progress, so work resumes after a person answers or the process restarts.</p>
+        <p>Agents in plain Go that survive a restart.</p>
         <ul class="points">
-          <li>Agents are configuration, workflows are functions, tools are ordinary Go signatures.</li>
-          <li>One set of limits shared by every child call, with a spend ledger that reserves before the request goes out.</li>
-          <li>A resident service adds an inbox, timers, memory and observers for agents that stay on.</li>
+          <li>Typed answers, committed progress</li>
+          <li>One budget for every child call</li>
+          <li>Waits for a human without a worker</li>
         </ul>
         <div class="actions">
           <a class="button primary" href="torok/">Read about Torok</a>
@@ -76,11 +75,11 @@
       <article class="panel" data-accent="blue">
         <p class="label">Go HTTP server library · open source</p>
         <h2>HyperServe</h2>
-        <p>A <code>net/http</code>-shaped Go server library. It keeps ordinary handlers, collects lifecycle, typed boundaries, security, observability and WebSocket in one module, and can expose an MCP server from the same binary when that is useful.</p>
+        <p><code>net/http</code>, plus the parts you keep rewriting.</p>
         <ul class="points">
-          <li>Built on the standard library, with one runtime dependency.</li>
-          <li>Includes middleware, graceful shutdown, static-file sandboxing, WebSocket, SSE and JSON-RPC pieces.</li>
-          <li>MCP support is opt-in, with Streamable HTTP and stdio sharing one handler.</li>
+          <li>Typed binding, graceful shutdown</li>
+          <li>WebSocket, SSE, JSON-RPC</li>
+          <li>MCP server, opt-in</li>
         </ul>
         <div class="actions">
           <a class="button primary" href="hyperserve/">Open HyperServe</a>

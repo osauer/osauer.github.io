@@ -37,7 +37,7 @@ const flowNote = (cx, y, label, color = C.muted) =>
 
 function render() {
   // Columns (x): owner 36..186 · box 214..894 · canary 970..1182 · providers 1214..1404
-  const owner = { x: 36, w: 150, rows: [212, 312, 412, 512, 612] };
+  const owner = { x: 36, w: 150, rows: [212, 342, 472, 602] };
   const host = { x: 234, w: 130, top: 200, h: 524 };
   const torok = { x: 390, w: 270, top: 200, h: 524 };
   const busX = 670;
@@ -75,16 +75,14 @@ function render() {
   <text x="${prov.x}" y="184" class="layer">6 · PROVIDERS / DATA</text>
 
   ${component({ x: owner.x, y: owner.rows[0], iconName: "user", color: C.slate, title: "Owner", subtitle: ["browser console"], mono: "127.0.0.1:8791", width: owner.w })}
-  ${component({ x: owner.x, y: owner.rows[1], iconName: "deviceMobile", color: C.slate, title: "Phone", subtitle: ["same console", "over loopback"], width: owner.w })}
-  ${component({ x: owner.x, y: owner.rows[2], iconName: "fingerprint", color: C.green, title: "Passkey", subtitle: ["WebAuthn device", "confirms orders"], width: owner.w })}
-  ${component({ x: owner.x, y: owner.rows[3], iconName: "bell", color: C.slate, title: "Notifications", subtitle: ["macOS helper"], mono: "terminal-notifier", width: owner.w })}
-  ${component({ x: owner.x, y: owner.rows[4], iconName: "deviceLaptop", color: C.slate, title: "macOS", subtitle: ["launchd at login"], mono: "com.osauer.desk", width: owner.w })}
+  ${component({ x: owner.x, y: owner.rows[1], iconName: "fingerprint", color: C.green, title: "Passkey", subtitle: ["WebAuthn device", "confirms orders"], width: owner.w })}
+  ${component({ x: owner.x, y: owner.rows[2], iconName: "bell", color: C.slate, title: "Notifications", subtitle: ["macOS helper"], mono: "terminal-notifier", width: owner.w })}
+  ${component({ x: owner.x, y: owner.rows[3], iconName: "deviceLaptop", color: C.slate, title: "macOS", subtitle: ["launchd at login"], mono: "com.osauer.desk", width: owner.w })}
 
   ${line(`M192 ${ay(owner.rows[0])}H228`, "slate", { both: true })}
-  ${line(`M192 ${ay(owner.rows[1])}H228`, "slate", { both: true })}
-  ${line(`M192 ${ay(owner.rows[2])}H228`, "green")}
-  ${line(`M228 ${ay(owner.rows[3])}H204`, "slate")}
-  ${line(`M192 ${ay(owner.rows[4])}H215`, "slate")}
+  ${line(`M192 ${ay(owner.rows[1])}H228`, "green")}
+  ${line(`M228 ${ay(owner.rows[2])}H204`, "slate")}
+  ${line(`M192 ${ay(owner.rows[3])}H215`, "slate")}
 
   <rect x="${host.x}" y="${host.top}" width="${host.w}" height="${host.h}" rx="14" fill="${C.greenSoft}" stroke="${C.greenLine}"/>
   ${icon("server", hostCx - 15, 222, 30, C.greenDark, 1.8)}
