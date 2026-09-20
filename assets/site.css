@@ -52,6 +52,12 @@ pre {
   font: 14px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 pre code { padding: 0; background: none; font: inherit; }
+pre .k { color: #f0b26b; }
+pre .s { color: #a3d9a5; }
+pre .c { color: #8fa3c2; }
+pre .t { color: #9ccaff; }
+pre .n { color: #f5c542; }
+pre.hero-code { margin-top: 30px; font-size: 13.5px; }
 
 .topline { height: 10px; background: var(--accent); }
 body[data-accent="home"] .topline { background: linear-gradient(90deg, var(--green), var(--blue)); }

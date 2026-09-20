@@ -31,8 +31,7 @@
     </nav>
   </header>
   <main>
-    <section class="wrap hero split">
-      <div>
+    <section class="wrap hero">
         <p class="eyebrow">Private · Go agent harness</p>
         <img class="mark" src="../assets/torok-mark.svg" width="96" height="96" alt="">
         <h1>An agent harness in plain Go that survives a restart.</h1>
@@ -42,20 +41,30 @@
           <a class="button primary" href="#architecture">Runtime architecture</a>
           <a class="button" href="https://www.linkedin.com/in/osauer/">Message on LinkedIn</a>
         </div>
-      </div>
-      <pre><code>add := tool.Func("add", "Add two numbers",
-    func(_ context.Context, in numbers) (float64, error) {
-        return in.A + in.B, nil
-    }, tool.ReadOnly())
+      <pre class="hero-code"><code><span class="c">// A workflow is a Go function. It replays from its checkpoints</span>
+<span class="c">// after a restart, so nothing in it runs twice.</span>
+review, err := <span class="t">torok</span>.<span class="t">NewWorkflow</span>(
+    <span class="t">torok</span>.<span class="t">WorkflowConfig</span>{<span class="t">Name</span>: <span class="s">"review"</span>, <span class="t">Version</span>: <span class="s">"1"</span>},
+    <span class="k">func</span>(ctx <span class="t">context</span>.<span class="t">Context</span>, flow *<span class="t">torok</span>.<span class="t">Flow</span>, req <span class="t">Request</span>) (<span class="t">Assessment</span>, error) {
+        <span class="c">// The analyst's answer is typed and checked before it returns.</span>
+        draft, err := <span class="t">flow</span>.<span class="t">RunAs</span>[<span class="t">Assessment</span>](ctx, <span class="s">"analyst"</span>, analyst, req)
+        <span class="k">if</span> err != <span class="k">nil</span> {
+            <span class="k">return</span> <span class="t">Assessment</span>{}, err
+        }
+        <span class="c">// A question parks the run and frees the worker.</span>
+        <span class="c">// The answer resumes it, even from another process.</span>
+        ok, err := <span class="t">flow</span>.<span class="t">Ask</span>[bool](ctx, <span class="s">"approve"</span>, <span class="s">"Accept this assessment?"</span>, draft)
+        <span class="k">if</span> err != <span class="k">nil</span> {
+            <span class="k">return</span> <span class="t">Assessment</span>{}, err
+        }
+        <span class="k">if</span> !ok {
+            <span class="k">return</span> <span class="t">Assessment</span>{}, <span class="t">torok</span>.<span class="t">ErrGoalUnmet</span>
+        }
+        <span class="k">return</span> draft, <span class="k">nil</span>
+    })
 
-agent, err := torok.New(torok.Config{
-    Instructions: "Use add for addition.",
-    Model:        llm,
-    Tools:        []tool.Tool{add},
-})
-
-result, err := agent.Run(ctx, "What is 19.50 plus 4.25?")
-fmt.Println(*result.Value)</code></pre>
+<span class="c">// A durable run: Start it now, Open it again after the restart.</span>
+run, err := <span class="t">review</span>.<span class="t">Start</span>(ctx, runtime, req, <span class="t">torok</span>.<span class="t">WithID</span>(<span class="s">"review-2026-09-20"</span>))</code></pre>
     </section>
 
     <section class="block" id="what">
