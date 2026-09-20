@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Desk | osauer.dev</title>
+  <meta name="description" content="Desk is a private, continuously running investment agent for one Interactive Brokers book, built on Torok, Canary and HyperServe. What it does, how it is put together, and what it looks like.">
+  <link rel="canonical" href="https://osauer.dev/desk/">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://osauer.dev/desk/">
+  <meta property="og:title" content="Desk | a private investment agent that shows its work">
+  <meta property="og:description" content="A continuously running desk for one Interactive Brokers book: scheduled reviews, evidence-bound decisions, a reviewed chat, and trading that stays a human act.">
+  <meta property="og:image" content="https://osauer.dev/assets/desk-overview-social.jpg">
+  <meta property="og:image:width" content="2880">
+  <meta property="og:image:height" content="1800">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body data-accent="ink">
+  <div class="topline"></div>
+  <header class="wrap site-header">
+    <a class="brand" href="../">osauer.dev</a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="../canary/">Canary</a>
+      <a href="./" aria-current="page">Desk</a>
+      <a href="../torok/">Torok</a>
+      <a href="../hyperserve/">HyperServe</a>
+      <a href="https://www.linkedin.com/in/osauer/">LinkedIn</a>
+    </nav>
+  </header>
+  <main>
+    <section class="wrap hero">
+      <p class="eyebrow">Private · investment agent</p>
+      <h1>Desk watches one investment book all day and shows its work.</h1>
+      <p class="lead">Desk is a small, private investment desk that runs as a service on a Mac. It reads a real Interactive Brokers book through Canary, keeps its schedule, memory and every decision in durable storage through Torok, and talks to its owner in plain language. It proposes. It never places an order on its own.</p>
+      <div class="actions">
+        <a class="button primary" href="#architecture">How it is put together</a>
+        <a class="button" href="https://www.linkedin.com/in/osauer/">Message me on LinkedIn</a>
+      </div>
+      <figure class="shot">
+        <img src="../assets/desk-overview.webp" width="1440" height="900" alt="The Desk console showing the Portfolio view: an account panel with net liquidation and day P&L, a holdings table, a market ribbon, and the Ask Desk conversation panel on the right" fetchpriority="high">
+        <figcaption>Portfolio, in Desk's built-in simulation mode: a synthetic paper book, a live-style quote ribbon and the standing Ask Desk panel. Every screenshot on this page comes from that mode, so nothing here is a real account.</figcaption>
+      </figure>
+    </section>
+
+    <section class="block" id="what">
+      <div class="wrap">
+        <h2>What Desk does</h2>
+        <p>Most of the day it does nothing, on purpose. Work happens when the calendar says so, when the book changes in a way the rules care about, or when the owner asks.</p>
+        <div class="cards">
+          <article class="card">
+            <h3>Reviews on the market's clock</h3>
+            <p>A weekday review at 07:00 Berlin. Then preparation an hour before each enabled venue opens, an opening check, a pre-close review with a decision cutoff, and a handover after the close. Canary supplies the session times, early closes included.</p>
+          </article>
+          <article class="card">
+            <h3>Evidence before opinion</h3>
+            <p>Account, positions, risk, regime, calendar, proposals and reconciliation are retained on their own clocks, independent of any model. A decision names its sources, a reason, what would prove it wrong and when it expires.</p>
+          </article>
+          <article class="card">
+            <h3>Ask Desk</h3>
+            <p>A durable conversation with the book. Each question runs interpret, evidence, analyst, review as one recoverable workflow. A separate reviewer model checks the answer against the exact evidence it was given. When something is missing, Desk says so and withholds the recommendation.</p>
+          </article>
+          <article class="card">
+            <h3>Trading stays a human act</h3>
+            <p>Optional, and off by default. A single-leg DAY limit order is drafted by Canary, previewed by the broker, then confirmed by the owner with a passkey. The model cannot reach that handler and a chat message cannot authorise it.</p>
+          </article>
+          <article class="card">
+            <h3>Spending with a ceiling</h3>
+            <p>Every provider call reserves against a monthly allowance before it is sent. Scheduled reviews get a little grace under an absolute cap. Interrupted calls are estimated and reported.</p>
+          </article>
+          <article class="card">
+            <h3>Boring to operate</h3>
+            <p>One binary as a per-user LaunchAgent, health endpoints, upgrades that wait for running work to finish, and macOS notifications for the handful of things that need a person. Idle time costs no model calls.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="architecture">
+      <div class="wrap">
+        <h2>How it is put together</h2>
+        <p>Desk is mostly configuration. Canary owns everything about the broker: the TWS session, prices, risk, calendars, protection proposals and reconciliation. Torok owns the work: the inbox, schedules, bounded episodes, memory and recovery. HyperServe hosts the console and its live feed on loopback. Desk supplies the instructions, chooses nineteen read-only Canary tools, wires the observers and decides what a decision must contain. Models come from OpenAI's Responses API, one for analysis and another for review and research.</p>
+        <figure class="diagram">
+          <img src="../assets/desk-system.svg" width="1440" height="952" alt="System diagram of Desk: the owner's browser and macOS notifications on the left, the Desk process with HyperServe, the Torok resident service and Desk's configuration in the middle, Canary's daemon and its three access paths beside it, and TWS, IBKR statements, public market sources and the OpenAI API on the right" loading="lazy">
+          <figcaption>Every component Desk runs with and the paths between them. Green is the broker path, blue is observed data, amber is a paid model call.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="block" id="screens">
+      <div class="wrap">
+        <h2>Around the desk</h2>
+        <p>Five views share one masthead, one quote ribbon and the Ask Desk panel. Each figure on screen carries its source and its age, because a number without a clock is a guess.</p>
+        <div class="gallery">
+          <figure class="shot wide">
+            <img src="../assets/desk-decisions.webp" width="1440" height="900" alt="The Decisions view: Desk decisions, Canary protection proposals and exit watches, and the day's scheduled reviews" loading="lazy">
+            <figcaption>Decisions: AI assessments next to Canary's rule-based proposals and exit watches, with the day's scheduled reviews underneath.</figcaption>
+          </figure>
+          <figure class="shot phone">
+            <img src="../assets/phone-overview.webp" width="390" height="844" alt="The Portfolio view on a phone-sized screen" loading="lazy">
+            <figcaption>The same console on a phone, over the same loopback service.</figcaption>
+          </figure>
+          <figure class="shot wide">
+            <img src="../assets/desk-risk.webp" width="1440" height="900" alt="The Risk view: book exposure figures, the risk assessment and financing and margin values" loading="lazy">
+            <figcaption>Risk: book exposure, the current assessment and financing figures, each tagged with where it came from.</figcaption>
+          </figure>
+          <figure class="shot full">
+            <img src="../assets/desk-operations.webp" width="1440" height="900" alt="The Operations view: pause and budget controls, reduction advice, and a day timeline with calendar, Desk agenda and agent work" loading="lazy">
+            <figcaption>Operations: the day on a timeline. Market hours and events, Desk's own agenda, the agent's work, and the pause and budget controls.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="limits">
+      <div class="wrap">
+        <h2>What it is not</h2>
+        <ul class="notes">
+          <li><strong>Not a product.</strong> There is no download and no repository link. It runs one book, mine.</li>
+          <li><strong>No claim of edge.</strong> Operational correctness and investment results are measured separately, and building the thing establishes neither.</li>
+          <li><strong>One machine.</strong> A user LaunchAgent runs while the Mac is awake and logged in. That is a known limit.</li>
+          <li><strong>Simulation in the pictures.</strong> The screenshots use Desk's simulation mode with a synthetic book. The real screens look the same with real numbers, which is exactly why they are not here.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" id="contact">
+      <div class="wrap contact">
+        <div>
+          <h2>Talk to me</h2>
+          <p>Desk is not published, but the ideas in it are worth arguing about: evidence contracts, a reviewer model that is not the analyst checking its own work, spending that is reserved before the request goes out. If you are building something in this space, I would like to hear about it.</p>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="https://www.linkedin.com/in/osauer/">Message me on LinkedIn</a>
+          <a class="button" href="https://github.com/osauer">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap site-footer">Oliver Sauer. Independent project; no affiliation implied with Interactive Brokers or OpenAI. Nothing on this page is investment advice.</footer>
+</body>
+</html>

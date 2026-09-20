@@ -21,3 +21,6 @@ jobs:
 
       - name: Check local osauer.dev links
         run: node tools/check-site-links.mjs
+
+      - name: Check committed diagrams match their sources
+        run: node tools/render-diagrams.mjs --check

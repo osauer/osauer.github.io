@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Torok | osauer.dev</title>
+  <meta name="description" content="Torok is a private Go library for agents that use tools and for workflows that survive interruptions: typed answers, committed progress, shared limits, human decisions and a resident service.">
+  <link rel="canonical" href="https://osauer.dev/torok/">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://osauer.dev/torok/">
+  <meta property="og:title" content="Torok | agents that survive being interrupted">
+  <meta property="og:description" content="A Go library for tool-using agents and workflows written as ordinary Go functions. It runs the tool loop, checks typed answers and commits progress.">
+  <style>
+    .states { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; padding: 0; list-style: none; }
+    .states li { padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper-strong); font: 13px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--muted); }
+    .states li[data-terminal] { border-color: var(--amber); color: var(--amber-dark); }
+  </style>
+</head>
+<body data-accent="amber">
+  <div class="topline"></div>
+  <header class="wrap site-header">
+    <a class="brand" href="../">osauer.dev</a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="../canary/">Canary</a>
+      <a href="../desk/">Desk</a>
+      <a href="./" aria-current="page">Torok</a>
+      <a href="../hyperserve/">HyperServe</a>
+      <a href="https://www.linkedin.com/in/osauer/">LinkedIn</a>
+    </nav>
+  </header>
+  <main>
+    <section class="wrap hero split">
+      <div>
+        <p class="eyebrow">Private · Go library</p>
+        <h1>Torok runs agents that survive being interrupted.</h1>
+        <p class="lead">Torok is a Go library for agents that use tools, and for workflows written as ordinary Go functions. You bring a model and your functions. Torok runs the tool loop, checks typed answers and commits progress, so a run resumes after a person answers a question or the process restarts. Desk runs on it.</p>
+        <div class="actions">
+          <a class="button primary" href="#architecture">Runtime architecture</a>
+          <a class="button" href="https://www.linkedin.com/in/osauer/">Message me on LinkedIn</a>
+        </div>
+      </div>
+      <pre><code>add := tool.Func("add", "Add two numbers",
+    func(_ context.Context, in numbers) (float64, error) {
+        return in.A + in.B, nil
+    }, tool.ReadOnly())
+
+agent, err := torok.New(torok.Config{
+    Instructions: "Use add for addition.",
+    Model:        llm,
+    Tools:        []tool.Tool{add},
+})
+
+result, err := agent.Run(ctx, "What is 19.50 plus 4.25?")
+fmt.Println(*result.Value)</code></pre>
+    </section>
+
+    <section class="block" id="what">
+      <div class="wrap">
+        <h2>What it gives you</h2>
+        <p>The shape is deliberately small: generic methods where a type belongs on a value, ordinary functions for behaviour, named configuration fields. There is no graph DSL, no builder chain and no hidden session handoff.</p>
+        <div class="cards">
+          <article class="card">
+            <h3>Plain Go</h3>
+            <p>An agent is configuration: model, instructions, tools, checks. A workflow is a function of a context, a <code>Flow</code> and your input. A tool is <code>func(ctx, In) (Out, error)</code> with JSON tags. <code>RunAs[T]</code> names the answer type once, at the model boundary.</p>
+          </article>
+          <article class="card">
+            <h3>Progress that survives</h3>
+            <p>A batch of model calls commits before any tool runs. Workflows replay from their checkpoints after a restart. A human question or an approval parks the run and frees the worker; the answer resumes it, once, even if it arrives twice.</p>
+          </article>
+          <article class="card">
+            <h3>One set of limits</h3>
+            <p>Model calls, tool calls, steps, depth, concurrency, active time and tokens are set on the root and shared by every child. A spend ledger reserves money before the HTTP request and settles on the receipt, the rejection or an estimate.</p>
+          </article>
+          <article class="card">
+            <h3>Effects with receipts</h3>
+            <p>Intent is committed before an effect starts. If the result is lost, the run waits for reconciliation rather than retrying blind. Tools are effectful unless the application promises otherwise, and an approval freezes the exact call it approves.</p>
+          </article>
+          <article class="card">
+            <h3>A resident service</h3>
+            <p>For agents that stay on: a durable inbox with idempotent IDs, timers, bounded working memory, independent observers with their own freshness, daily admission budgets and pause. Idle waiting costs no inference.</p>
+          </article>
+          <article class="card">
+            <h3>Adapters, not a framework</h3>
+            <p>Responses and Chat Completions. Stdio MCP with a frozen catalogue. Bounded HTTPS retrieval and processes. An HTTP and SSE control surface you mount inside your own server. Each one passes through the same accounting.</p>
+          </article>
+        </div>
+        <ul class="states" aria-label="Run states">
+          <li>queued</li><li>running</li><li>waiting</li><li data-terminal>completed</li><li data-terminal>accepted</li><li data-terminal>failed</li><li data-terminal>cancelled</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" id="architecture">
+      <div class="wrap">
+        <h2>Runtime architecture</h2>
+        <p>The engine sits between the application's functions and the store. Model and tool adapters are the only code that leaves the process, and both report to the same limits. The resident service and the HTTP adapter are optional layers on the same runtime. Neither adds a second execution engine.</p>
+        <figure class="diagram">
+          <img src="../assets/torok-architecture.svg" width="1440" height="960" alt="Architecture diagram of Torok: the application's agents, workflows and tools on the left, the execution engine with its limits, checks and recovery in the middle, memory or SQLite storage below it, model and tool adapters reaching providers and external systems on the right, with the resident service and the HTTP adapter as optional layers" loading="lazy">
+          <figcaption>One engine, one store, two kinds of adapter, and the optional resident service around them. Amber marks a paid model call.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="block" id="checked">
+      <div class="wrap">
+        <h2>Checked rather than promised</h2>
+        <ul class="notes">
+          <li><strong>Race tests</strong> cover storage, sessions, typed repair, shared child limits, nested concurrency, approvals, ambiguous commits and event replay.</li>
+          <li><strong>Child-process tests</strong> kill the process after a real effect and before its receipt is saved, then require reconciliation without repeating the effect.</li>
+          <li><strong>A Lean 4 model</strong> of the acceptance boundary proves that a result is accepted only with an explained, passing check for every declared criterion, bound to that exact candidate and its original input. CI runs it and also checks that removing the guard makes the proof fail.</li>
+          <li><strong>Model quality is a separate question.</strong> Scripted fixtures establish execution behaviour. What a live model does with the same tools has to be evaluated on real tasks with a budget and a human grader.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" id="contact">
+      <div class="wrap contact">
+        <div>
+          <h2>Status and contact</h2>
+          <p>Torok is private and its API is experimental. It needs Go 1.27 and has three direct dependencies: an SQLite driver, a JSON Schema validator and a PDF text reader. If you want to compare notes on durable agents, or on what "accepted" should mean, send me a message.</p>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="https://www.linkedin.com/in/osauer/">Message me on LinkedIn</a>
+          <a class="button" href="https://github.com/osauer">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap site-footer">Oliver Sauer. Independent project; no affiliation implied with referenced vendors.</footer>
+</body>
+</html>
