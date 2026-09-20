@@ -126,20 +126,14 @@ h1 {
 .button.primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
 .button svg { width: 18px; height: 18px; }
 
-.stack {
-  max-width: 760px;
-  margin: 24px 0 0;
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.7;
-}
+.stack { line-height: 1.55; }
 .stack a { color: var(--ink); font-weight: 650; text-decoration: none; white-space: nowrap; }
 .stack a:hover { text-decoration: underline; }
 .stack .dot {
   display: inline-block;
-  width: 9px;
-  height: 9px;
-  margin: 0 6px 1px 0;
+  width: 10px;
+  height: 10px;
+  margin: 0 7px 2px 0;
   border-radius: 50%;
   background: var(--muted);
   vertical-align: middle;
@@ -159,7 +153,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-height: 390px;
+  min-height: 0;
   padding: 28px;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -187,6 +181,8 @@ h1 {
   letter-spacing: 0;
 }
 .panel h2 img { width: 44px; height: 44px; border-radius: 10px; box-shadow: 0 8px 18px rgba(16, 24, 39, 0.14); }
+.panel h2 img.wordmark { width: auto; height: 46px; border-radius: 0; box-shadow: none; }
+.hero img.wordmark { display: block; width: auto; height: 60px; margin: 0 0 18px; }
 .panel p { margin: 18px 0 0; color: var(--ink-soft); font-size: 17px; }
 .panel h2, .panel p, .panel .points { align-self: stretch; }
 .points {
@@ -196,7 +192,7 @@ h1 {
   padding: 0;
   list-style: none;
 }
-.points li { position: relative; padding-left: 18px; color: var(--muted); font-size: 15px; }
+.points li { position: relative; padding-left: 18px; color: var(--muted); font-size: 15.5px; }
 .points li::before {
   content: "";
   position: absolute;

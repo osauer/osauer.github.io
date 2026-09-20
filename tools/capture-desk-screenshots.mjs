@@ -70,6 +70,9 @@ try {
   await run({ tag: "desk", width: 1440, height: 900, scale: 2, mobile: false, dark: false });
   await run({ tag: "phone", width: 390, height: 844, scale: 3, mobile: true, dark: false });
 } finally {
-  ws.close(); chrome.kill();
-  fs.rmSync(profile, { recursive: true, force: true });
+  ws.close();
+  const exited = new Promise((r) => chrome.once("exit", r));
+  chrome.kill();
+  await exited;
+  fs.rmSync(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 200 });
 }

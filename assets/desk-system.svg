@@ -63,40 +63,32 @@
     <text x="92" y="263" class="mono-small">127.0.0.1:8791</text>
     <rect x="36" y="280" width="150" height="1" fill="#d8d2c4"/>
   </g>
-  <g role="group" aria-label="Phone. same console. over loopback">
-    <rect x="36" y="312" width="44" height="44" rx="11" fill="#42526a"/><svg x="46" y="322" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-deviceMobile"/></svg>
-    <text x="92" y="329" class="node-title">Phone</text>
-    <text x="92" y="348" class="node-sub"><tspan x="92" dy="0">same console</tspan><tspan x="92" dy="15">over loopback</tspan></text>
-    
-    <rect x="36" y="380" width="150" height="1" fill="#d8d2c4"/>
-  </g>
   <g role="group" aria-label="Passkey. WebAuthn device. confirms orders">
-    <rect x="36" y="412" width="44" height="44" rx="11" fill="#0a8a72"/><svg x="46" y="422" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-fingerprint"/></svg>
-    <text x="92" y="429" class="node-title">Passkey</text>
-    <text x="92" y="448" class="node-sub"><tspan x="92" dy="0">WebAuthn device</tspan><tspan x="92" dy="15">confirms orders</tspan></text>
+    <rect x="36" y="342" width="44" height="44" rx="11" fill="#0a8a72"/><svg x="46" y="352" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-fingerprint"/></svg>
+    <text x="92" y="359" class="node-title">Passkey</text>
+    <text x="92" y="378" class="node-sub"><tspan x="92" dy="0">WebAuthn device</tspan><tspan x="92" dy="15">confirms orders</tspan></text>
     
-    <rect x="36" y="480" width="150" height="1" fill="#d8d2c4"/>
+    <rect x="36" y="410" width="150" height="1" fill="#d8d2c4"/>
   </g>
   <g role="group" aria-label="Notifications. macOS helper. terminal-notifier">
-    <rect x="36" y="512" width="44" height="44" rx="11" fill="#42526a"/><svg x="46" y="522" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-bell"/></svg>
-    <text x="92" y="529" class="node-title">Notifications</text>
-    <text x="92" y="548" class="node-sub"><tspan x="92" dy="0">macOS helper</tspan></text>
-    <text x="92" y="563" class="mono-small">terminal-notifier</text>
-    <rect x="36" y="580" width="150" height="1" fill="#d8d2c4"/>
+    <rect x="36" y="472" width="44" height="44" rx="11" fill="#42526a"/><svg x="46" y="482" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-bell"/></svg>
+    <text x="92" y="489" class="node-title">Notifications</text>
+    <text x="92" y="508" class="node-sub"><tspan x="92" dy="0">macOS helper</tspan></text>
+    <text x="92" y="523" class="mono-small">terminal-notifier</text>
+    <rect x="36" y="540" width="150" height="1" fill="#d8d2c4"/>
   </g>
   <g role="group" aria-label="macOS. launchd at login. com.osauer.desk">
-    <rect x="36" y="612" width="44" height="44" rx="11" fill="#42526a"/><svg x="46" y="622" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-deviceLaptop"/></svg>
-    <text x="92" y="629" class="node-title">macOS</text>
-    <text x="92" y="648" class="node-sub"><tspan x="92" dy="0">launchd at login</tspan></text>
-    <text x="92" y="663" class="mono-small">com.osauer.desk</text>
-    <rect x="36" y="680" width="150" height="1" fill="#d8d2c4"/>
+    <rect x="36" y="602" width="44" height="44" rx="11" fill="#42526a"/><svg x="46" y="612" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-deviceLaptop"/></svg>
+    <text x="92" y="619" class="node-title">macOS</text>
+    <text x="92" y="638" class="node-sub"><tspan x="92" dy="0">launchd at login</tspan></text>
+    <text x="92" y="653" class="mono-small">com.osauer.desk</text>
+    <rect x="36" y="670" width="150" height="1" fill="#d8d2c4"/>
   </g>
 
   <path d="M192 234H228" fill="none" stroke="#42526a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-slate)" marker-start="url(#arrow-slate)"/>
-  <path d="M192 334H228" fill="none" stroke="#42526a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-slate)" marker-start="url(#arrow-slate)"/>
-  <path d="M192 434H228" fill="none" stroke="#0a8a72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
-  <path d="M228 534H204" fill="none" stroke="#42526a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-slate)"/>
-  <path d="M192 634H215" fill="none" stroke="#42526a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-slate)"/>
+  <path d="M192 364H228" fill="none" stroke="#0a8a72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <path d="M228 494H204" fill="none" stroke="#42526a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-slate)"/>
+  <path d="M192 624H215" fill="none" stroke="#42526a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-slate)"/>
 
   <rect x="234" y="200" width="130" height="524" rx="14" fill="#e3f0ec" stroke="#a8cdc2"/>
   <svg x="284" y="222" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#055f52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-server"/></svg>
