@@ -39,38 +39,22 @@
         <p class="lead">Torok is the harness: it runs the tool loop, checks typed answers and commits progress, so a run resumes after a person answers or the process comes back. You bring a model and ordinary Go functions. Desk runs on it.</p>
         <div class="actions">
           <a class="button primary" href="#architecture">Runtime architecture</a>
-          <a class="button" href="https://www.linkedin.com/in/osauer/">Message on LinkedIn</a>
+          <a class="quiet" href="https://www.linkedin.com/in/osauer/">Message on LinkedIn ↗</a>
         </div>
-      <pre class="hero-code"><code><span class="c">// A workflow is a Go function. It replays from its checkpoints</span>
-<span class="c">// after a restart, so nothing in it runs twice.</span>
-review, err := <span class="t">torok</span>.<span class="t">NewWorkflow</span>(
-    <span class="t">torok</span>.<span class="t">WorkflowConfig</span>{<span class="t">Name</span>: <span class="s">"review"</span>, <span class="t">Version</span>: <span class="s">"1"</span>},
-    <span class="k">func</span>(ctx <span class="t">context</span>.<span class="t">Context</span>, flow *<span class="t">torok</span>.<span class="t">Flow</span>, req <span class="t">Request</span>) (<span class="t">Assessment</span>, error) {
-        <span class="c">// The analyst's answer is typed and checked before it returns.</span>
-        draft, err := <span class="t">flow</span>.<span class="t">RunAs</span>[<span class="t">Assessment</span>](ctx, <span class="s">"analyst"</span>, analyst, req)
-        <span class="k">if</span> err != <span class="k">nil</span> {
-            <span class="k">return</span> <span class="t">Assessment</span>{}, err
-        }
-        <span class="c">// A question parks the run and frees the worker.</span>
-        <span class="c">// The answer resumes it, even from another process.</span>
-        ok, err := <span class="t">flow</span>.<span class="t">Ask</span>[bool](ctx, <span class="s">"approve"</span>, <span class="s">"Accept this assessment?"</span>, draft)
-        <span class="k">if</span> err != <span class="k">nil</span> {
-            <span class="k">return</span> <span class="t">Assessment</span>{}, err
-        }
-        <span class="k">if</span> !ok {
-            <span class="k">return</span> <span class="t">Assessment</span>{}, <span class="t">torok</span>.<span class="t">ErrGoalUnmet</span>
-        }
-        <span class="k">return</span> draft, <span class="k">nil</span>
-    })
-
-<span class="c">// A durable run: Start it now, Open it again after the restart.</span>
-run, err := <span class="t">review</span>.<span class="t">Start</span>(ctx, runtime, req, <span class="t">torok</span>.<span class="t">WithID</span>(<span class="s">"review-2026-09-20"</span>))</code></pre>
     </section>
 
     <section class="block" id="what">
       <div class="wrap">
         <h2>What it gives you</h2>
-        <p>The surface is small on purpose: generic methods where a type belongs on a value, plain functions for behaviour, named config fields. No graph DSL, no builder chain.</p>
+        <p>The surface is small on purpose: generic methods where a type belongs on a value, plain functions for behaviour, named config fields. No graph DSL, no builder chain. The whole shape fits in three statements.</p>
+        <pre class="sample"><code><span class="c">// An ordinary Go function becomes a tool.</span>
+quote := <span class="t">tool</span>.<span class="t">Func</span>(<span class="s">"quote"</span>, <span class="s">"Last close for a symbol"</span>, lastClose, <span class="t">tool</span>.<span class="t">ReadOnly</span>())
+
+<span class="c">// A model and its tools become an agent.</span>
+analyst, err := <span class="t">torok</span>.<span class="t">New</span>(<span class="t">torok</span>.<span class="t">Config</span>{<span class="t">Model</span>: llm, <span class="t">Tools</span>: []<span class="t">tool</span>.<span class="t">Tool</span>{quote}})
+
+<span class="c">// A question returns a typed, checked answer. Interrupted? It resumes.</span>
+answer, err := <span class="t">analyst</span>.<span class="t">RunAs</span>[<span class="t">Close</span>](ctx, <span class="s">"What did NVDA close at?"</span>)</code></pre>
         <div class="cards">
           <article class="card">
             <h3>Plain Go</h3>
@@ -132,10 +116,7 @@ run, err := <span class="t">review</span>.<span class="t">Start</span>(ctx, runt
           <h2>Status</h2>
           <p>Private, experimental API, Go 1.27, three direct dependencies: SQLite, JSON Schema, a PDF reader. If you want to argue about what "accepted" should mean, get in touch.</p>
         </div>
-        <div class="actions">
-          <a class="button primary" href="https://www.linkedin.com/in/osauer/">Message on LinkedIn</a>
-          <a class="button" href="https://github.com/osauer">GitHub</a>
-        </div>
+        <p class="links"><a class="quiet" href="https://www.linkedin.com/in/osauer/">Message on LinkedIn ↗</a><a class="quiet" href="https://github.com/osauer">GitHub ↗</a></p>
       </div>
     </section>
   </main>
