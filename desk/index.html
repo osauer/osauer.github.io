@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Desk | osauer.dev</title>
-  <meta name="description" content="Desk is a private agent for one Interactive Brokers book: scheduled reviews, decisions with dated evidence, a reviewed chat, and trading that needs a passkey. Built on Torok, Canary and HyperServe.">
+  <meta name="description" content="Desk is a private trading and risk management system for one Interactive Brokers book: automatic stop losses, daily briefs, AI-augmented investing and portfolio management. Built on Torok, Canary and HyperServe.">
   <link rel="canonical" href="https://osauer.dev/desk/">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="stylesheet" href="../assets/site.css">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://osauer.dev/desk/">
-  <meta property="og:title" content="Desk | one book, watched all day">
-  <meta property="og:description" content="A private investment agent for one Interactive Brokers book: scheduled reviews, decisions with dated evidence, a reviewed chat, and orders that need a passkey.">
+  <meta property="og:title" content="Desk | a trading and risk desk with an AI analyst on staff">
+  <meta property="og:description" content="A private trading and risk management system for one Interactive Brokers book: automatic stop losses, daily briefs, AI-augmented investing and portfolio management.">
   <meta property="og:image" content="https://osauer.dev/assets/desk-overview-social.jpg">
   <meta property="og:image:width" content="2880">
   <meta property="og:image:height" content="1800">
@@ -31,10 +31,10 @@
   </header>
   <main>
     <section class="wrap hero">
-      <p class="eyebrow">Private · investment agent</p>
+      <p class="eyebrow">Private · trading and risk management</p>
       <img class="wordmark" src="../assets/desk-wordmark.svg" width="245" height="96" alt="desk">
-      <h1>One book, watched all day, every decision written down.</h1>
-      <p class="lead">Desk is a private agent for one Interactive Brokers book. It reads the broker through Canary, keeps its work in Torok and writes down what it thinks and why. It proposes. You decide. No order leaves without your passkey.</p>
+      <h1>A trading and risk desk for one book, with an AI analyst on staff.</h1>
+      <p class="lead">Desk manages an Interactive Brokers book through the trading day: stop losses and hedges set by rule, a written brief before the open and after the close, AI-augmented research and decisions with dated evidence, and the portfolio numbers that matter, from exposure to time-weighted performance.</p>
       <div class="actions">
         <a class="button primary" href="#architecture">How it is built</a>
         <a class="button" href="https://www.linkedin.com/in/osauer/">Message on LinkedIn</a>
@@ -48,31 +48,31 @@
     <section class="block" id="what">
       <div class="wrap">
         <h2>What it does</h2>
-        <p>Most of the day, nothing. Work starts when the calendar says so, when a rule sees something, or when you ask.</p>
+        <p>Rules first, then briefs, then AI where judgment is needed.</p>
         <div class="cards">
           <article class="card">
-            <h3>Runs on the market's clock</h3>
-            <p>07:00 Berlin, an hour before each open, at the open, before the close, after it. Session times come from Canary, early closes included.</p>
+            <h3>Automatic stop losses</h3>
+            <p>Canary's protection rules place broker-side trailing stops, keep exit watches and hold hedges per position, with no AI in the loop. Desk shows each one on the holding line and under Risk.</p>
           </article>
           <article class="card">
-            <h3>Evidence first</h3>
-            <p>Account, positions, risk, regime, calendar, proposals and reconciliation are kept on their own clocks. A decision names its sources, a reason, what would prove it wrong and when it expires.</p>
+            <h3>Daily briefs</h3>
+            <p>A written brief at 08:30 Berlin, half an hour before the US open and at 18:00: positions, risk, the calendar, what changed, what needs you.</p>
+          </article>
+          <article class="card">
+            <h3>AI-augmented investing</h3>
+            <p>Scheduled reviews at the open, before the close and after it. An analyst model proposes adds, holds, trims and exits with a reason, sources, what would prove it wrong and an expiry. A second model reviews before anything reaches you.</p>
           </article>
           <article class="card">
             <h3>Ask Desk</h3>
-            <p>A durable conversation with the book: interpret, gather evidence, analyse, review. A second model checks the answer against the same evidence. Missing evidence means no recommendation.</p>
+            <p>A durable conversation with the book: which positions need attention, exposure and regime, the next session. Evidence is gathered first. Missing evidence means no recommendation.</p>
           </article>
           <article class="card">
-            <h3>Trading stays yours</h3>
-            <p>Off by default. One single-leg DAY limit order at a time, drafted by Canary, previewed by the broker, confirmed with your passkey. No model can reach that handler.</p>
+            <h3>Portfolio management</h3>
+            <p>Exposure, margin and Greeks, sector and asset mix, reconciliation against statements, and time-weighted performance against SPY, net of transfers.</p>
           </article>
           <article class="card">
-            <h3>A ceiling on spend</h3>
-            <p>Every model call reserves against a monthly allowance before it goes out. Scheduled reviews get 48 hours of grace under a hard cap.</p>
-          </article>
-          <article class="card">
-            <h3>Dull to operate</h3>
-            <p>One binary as a LaunchAgent. Health endpoints. Upgrades wait for running work. A notification only when you are needed.</p>
+            <h3>On the market's clock</h3>
+            <p>07:00 Berlin, an hour before each open, at the open, before the close, after it. Session times come from Canary, early closes included, so a holiday never runs a review.</p>
           </article>
         </div>
       </div>
@@ -81,7 +81,7 @@
     <section class="block" id="architecture">
       <div class="wrap">
         <h2>How it is built</h2>
-        <p>Desk is mostly configuration. Canary owns the broker: session, prices, risk, calendars, proposals, reconciliation. Torok, the agent harness, owns the work: inbox, schedules, bounded episodes, memory, recovery. HyperServe serves the console on loopback. Desk adds the instructions, nineteen read-only Canary tools, the observers and the shape of a decision. Models come from OpenAI. One analyses, another reviews and researches.</p>
+        <p>Desk is mostly configuration. Canary owns the broker: session, prices, risk, calendars, stops and hedges, reconciliation. Torok, the agent harness, owns the work: inbox, schedules, bounded episodes, memory, recovery. HyperServe serves the console on loopback. Desk adds the instructions, nineteen read-only Canary tools, the observers and the shape of a decision. Models come from OpenAI. One analyses, another reviews and researches.</p>
         <figure class="diagram">
           <img src="../assets/desk-system.svg" width="1440" height="952" alt="System diagram of Desk: the owner, passkey, notifications and macOS on the left; the Desk process with HyperServe, the Torok resident service and Desk's capabilities in the middle; the Canary daemon and its three access paths beside it; TWS, IBKR statements, market sources, official sources and the OpenAI API on the right" loading="lazy">
           <figcaption>Every component Desk runs with. Green is the broker path, blue is observed data, amber is a paid model call.</figcaption>
@@ -130,7 +130,7 @@
       <div class="wrap contact">
         <div>
           <h2>Contact</h2>
-          <p>Desk stays private, but the ideas travel: evidence contracts, a reviewer that is not the analyst, spend reserved before the request. If you are building something like it, get in touch.</p>
+          <p>Desk stays private, but the ideas travel: rules before models, evidence contracts, a reviewer that is not the analyst. If you are building something like it, get in touch.</p>
         </div>
         <div class="actions">
           <a class="button primary" href="https://www.linkedin.com/in/osauer/">Message on LinkedIn</a>

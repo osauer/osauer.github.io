@@ -9,7 +9,7 @@ This is a personal side-project site, not an employer or company site. Public pr
 ## Projects
 
 - [Canary](https://osauer.dev/canary/): Local Interactive Brokers (IBKR) MCP server, CLI, paired app, and risk desk for agentic portfolio analysis, trading research, risk checks, and TWS / IB Gateway workflows. Open source.
-- [Desk](https://osauer.dev/desk/): Private, continuously running investment agent for one Interactive Brokers book, built on Torok, Canary and HyperServe. The page describes purpose, functions and architecture with simulation-mode screenshots; there is no download and no repository link.
+- [Desk](https://osauer.dev/desk/): Private trading and risk management system for one Interactive Brokers book: automatic stop losses and hedges by rule, daily briefs, AI-augmented investing and portfolio management. Built on Torok, Canary and HyperServe. The page describes purpose, functions and architecture with simulation-mode screenshots; there is no download and no repository link.
 - [Torok](https://osauer.dev/torok/): Private Go agent harness for tool-using agents and workflows written as ordinary Go functions: typed answers, committed progress, shared limits, human decisions, a resident service and an HTTP adapter. The page describes the runtime architecture; the code is not public.
 - [HyperServe](https://osauer.dev/hyperserve/): A net/http-shaped Go server library with typed binding, graceful shutdown, WebSockets, JSON-RPC, and optional MCP Streamable HTTP. Open source.
 
