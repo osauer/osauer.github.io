@@ -183,6 +183,10 @@ h1 {
 .panel h2 img { width: 44px; height: 44px; border-radius: 10px; box-shadow: 0 8px 18px rgba(16, 24, 39, 0.14); }
 .panel h2 img.wordmark { width: auto; height: 46px; border-radius: 0; box-shadow: none; }
 .hero img.wordmark { display: block; width: auto; height: 60px; margin: 0 0 18px; }
+.hero img.mark { display: block; width: 64px; height: 64px; margin: 0 0 18px; }
+.pronounce { max-width: 720px; margin: 16px 0 0; color: var(--muted); font-size: 16px; line-height: 1.5; }
+.pronounce [lang="hu"] { color: var(--ink); font-weight: 650; }
+.pronounce .ipa { font: 15px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--ink); }
 .panel p { margin: 18px 0 0; color: var(--ink-soft); font-size: 17px; }
 .panel h2, .panel p, .panel .points { align-self: stretch; }
 .points {
