@@ -4,194 +4,91 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>osauer.dev</title>
-  <meta name="description" content="Projects by Oliver Sauer: Canary for local Interactive Brokers workflows and hyperserve for small Go HTTP services with optional MCP support.">
+  <meta name="description" content="Projects by Oliver Sauer: Canary for local Interactive Brokers workflows, Desk, a private investment agent, Torok, a Go library for durable agents, and HyperServe, a Go HTTP server library.">
   <link rel="canonical" href="https://osauer.dev/">
-  <style>
-    :root {
-      --paper: #f6f4ee;
-      --paper-strong: #fffefa;
-      --ink: #111827;
-      --muted: #4b5563;
-      --line: #d8d2c4;
-      --green: #087f6b;
-      --blue: #255fb8;
-      --terminal: #0f172a;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.52;
-    }
-    a { color: inherit; text-decoration-thickness: 0.08em; text-underline-offset: 0.18em; }
-    .topline { height: 10px; background: linear-gradient(90deg, var(--green), var(--blue)); }
-    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      padding: 24px 0 18px;
-    }
-    .brand {
-      font-size: 25px;
-      font-weight: 800;
-      text-decoration: none;
-    }
-    nav { display: flex; flex-wrap: wrap; gap: 18px; color: var(--muted); font-size: 15px; font-weight: 650; }
-    nav a { text-decoration: none; }
-    .hero { padding: 46px 0 32px; }
-    h1 {
-      max-width: 840px;
-      margin: 0;
-      font-size: clamp(42px, 6vw, 72px);
-      line-height: 1;
-      letter-spacing: 0;
-    }
-    .lead {
-      max-width: 760px;
-      margin: 22px 0 0;
-      color: #26364d;
-      font-size: clamp(18px, 2vw, 21px);
-      line-height: 1.38;
-    }
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-      padding: 34px 0 84px;
-    }
-    .panel {
-      display: grid;
-      align-content: start;
-      min-height: 390px;
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--paper-strong);
-    }
-    .panel[data-accent="green"] { border-top: 5px solid var(--green); }
-    .panel[data-accent="blue"] { border-top: 5px solid var(--blue); }
-    .label {
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-    h2 {
-      margin: 0;
-      font-size: clamp(30px, 4vw, 44px);
-      line-height: 1.05;
-      letter-spacing: 0;
-    }
-    .panel p {
-      margin: 18px 0 0;
-      color: #26364d;
-      font-size: 17px;
-    }
-    .points {
-      display: grid;
-      gap: 10px;
-      margin: 22px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-    .points li {
-      position: relative;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-    .points li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.7em;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: currentColor;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 0 16px;
-      border: 1px solid var(--ink);
-      border-radius: 8px;
-      color: var(--ink);
-      font-weight: 750;
-      text-decoration: none;
-    }
-    .button.primary { background: var(--terminal); color: #fff; border-color: var(--terminal); }
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 28px 0 40px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    @media (max-width: 760px) {
-      .wrap { width: min(100% - 28px, 1120px); }
-      header { align-items: flex-start; flex-direction: column; }
-      .hero { padding-top: 28px; }
-      .projects { grid-template-columns: 1fr; padding-bottom: 58px; }
-      .panel { min-height: 0; padding: 22px; }
-    }
-  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/site.css">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://osauer.dev/">
+  <meta property="og:title" content="osauer.dev">
+  <meta property="og:description" content="Small tools for local systems, agents and Go services: Canary, Desk, Torok and HyperServe.">
 </head>
-<body>
+<body data-accent="home">
   <div class="topline"></div>
-  <header class="wrap">
+  <header class="wrap site-header">
     <a class="brand" href="https://osauer.dev/">osauer.dev</a>
-    <nav aria-label="Projects">
+    <nav class="site-nav" aria-label="Projects">
       <a href="canary/">Canary</a>
-      <a href="hyperserve/">hyperserve</a>
+      <a href="desk/">Desk</a>
+      <a href="torok/">Torok</a>
+      <a href="hyperserve/">HyperServe</a>
       <a href="https://github.com/osauer">GitHub</a>
       <a href="https://www.linkedin.com/in/osauer/">LinkedIn</a>
     </nav>
   </header>
   <main>
     <section class="wrap hero">
-      <h1>Small tools for local systems, agents, and Go services.</h1>
-      <p class="lead">This is a compact index for public projects I maintain. The pages are written for people trying to decide what a tool does, how to install it, and where its edges are.</p>
+      <h1>Small tools for local systems, agents and Go services.</h1>
+      <p class="lead">This is the index for the projects I maintain. Two are open source and installable. Two are private, so their pages describe what they do, with screenshots or a diagram, instead of linking to code.</p>
+      <p class="stack">They fit together: <a href="desk/"><i class="dot" data-dot="ink"></i>Desk</a> runs on <a href="torok/"><i class="dot" data-dot="amber"></i>Torok</a>, reads the market through <a href="canary/"><i class="dot" data-dot="green"></i>Canary</a> and is served by <a href="hyperserve/"><i class="dot" data-dot="blue"></i>HyperServe</a>.</p>
     </section>
-    <section class="wrap projects" aria-label="Project panels">
+    <section class="wrap panels" aria-label="Project panels">
       <article class="panel" data-accent="green">
-        <p class="label">Broker data and MCP</p>
-        <h2>Canary</h2>
-        <p>A local Interactive Brokers MCP server, CLI, and risk desk. It connects Claude Desktop, Claude Code, Cursor, Zed, and shell workflows to account and market context from IB Gateway or TWS.</p>
+        <p class="label">Broker data and MCP · open source</p>
+        <h2><img src="assets/canary-icon.png" width="192" height="192" alt="">Canary</h2>
+        <p>A local Interactive Brokers MCP server, CLI and risk desk. It connects Claude Desktop, Claude Code, Cursor, Zed and shell workflows to account and market context from IB Gateway or TWS.</p>
         <ul class="points">
-          <li>Claude Desktop MCP Bundle is the fastest install path.</li>
-          <li>Standard builds and MCP are read/preview-only; gated broker writes require a separate opt-in trading build.</li>
-          <li>Useful for portfolio review, options diagnostics, scanners, breadth, gamma, and regime context.</li>
+          <li>The Claude Desktop MCP bundle is the fastest install path.</li>
+          <li>Standard builds and MCP are read-only; gated broker writes need a separate opt-in trading build.</li>
+          <li>Useful for portfolio review, options diagnostics, scanners, breadth, gamma and regime context.</li>
         </ul>
         <div class="actions">
           <a class="button primary" href="canary/">Open Canary</a>
           <a class="button" href="https://github.com/osauer/canary">GitHub</a>
         </div>
       </article>
-      <article class="panel" data-accent="blue">
-        <p class="label">Go HTTP library</p>
-        <h2>hyperserve</h2>
-        <p>A small <code>net/http</code>-shaped server for Go services. It keeps the dependency tree flat, adds method-aware routes, typed binding and validation, and can expose an MCP control plane from the same binary when that is useful.</p>
+      <article class="panel" data-accent="ink">
+        <p class="label">Private · investment agent</p>
+        <h2>Desk</h2>
+        <p>A continuously running desk for one Interactive Brokers book. It reviews the book on the market's clock, keeps evidence and decisions in durable storage, answers questions through a reviewed workflow and leaves every trade to a passkey-confirmed human step.</p>
         <ul class="points">
-          <li>Built on the standard library, with one runtime dependency.</li>
-          <li>Includes middleware, graceful shutdown, static-file sandboxing, WebSocket, SSE, and JSON-RPC pieces.</li>
-          <li>MCP support is opt-in, with HTTP, SSE, and stdio transports sharing one protocol surface.</li>
+          <li>Built on Torok for durable work, Canary for broker facts and HyperServe for the console.</li>
+          <li>Every decision carries its sources, a reason, what would prove it wrong and an expiry.</li>
+          <li>A monthly model allowance with a hard ceiling. Idle time costs nothing.</li>
         </ul>
         <div class="actions">
-          <a class="button primary" href="hyperserve/">Open hyperserve</a>
+          <a class="button primary" href="desk/">Read about Desk</a>
+        </div>
+      </article>
+      <article class="panel" data-accent="amber">
+        <p class="label">Private · Go library</p>
+        <h2>Torok</h2>
+        <p>A Go library for agents that use tools, and for workflows written as plain Go functions. It runs the tool loop, checks typed answers and commits progress, so work resumes after a person answers or the process restarts.</p>
+        <ul class="points">
+          <li>Agents are configuration, workflows are functions, tools are ordinary Go signatures.</li>
+          <li>One set of limits shared by every child call, with a spend ledger that reserves before the request goes out.</li>
+          <li>A resident service adds an inbox, timers, memory and observers for agents that stay on.</li>
+        </ul>
+        <div class="actions">
+          <a class="button primary" href="torok/">Read about Torok</a>
+        </div>
+      </article>
+      <article class="panel" data-accent="blue">
+        <p class="label">Go HTTP server library · open source</p>
+        <h2>HyperServe</h2>
+        <p>A <code>net/http</code>-shaped Go server library. It keeps ordinary handlers, collects lifecycle, typed boundaries, security, observability and WebSocket in one module, and can expose an MCP server from the same binary when that is useful.</p>
+        <ul class="points">
+          <li>Built on the standard library, with one runtime dependency.</li>
+          <li>Includes middleware, graceful shutdown, static-file sandboxing, WebSocket, SSE and JSON-RPC pieces.</li>
+          <li>MCP support is opt-in, with Streamable HTTP and stdio sharing one handler.</li>
+        </ul>
+        <div class="actions">
+          <a class="button primary" href="hyperserve/">Open HyperServe</a>
           <a class="button" href="https://github.com/osauer/hyperserve">GitHub</a>
         </div>
       </article>
     </section>
   </main>
-  <footer class="wrap">Oliver Sauer. Independent projects; no affiliation implied with referenced vendors.</footer>
+  <footer class="wrap site-footer">Oliver Sauer. Independent projects; no affiliation implied with referenced vendors.</footer>
 </body>
 </html>

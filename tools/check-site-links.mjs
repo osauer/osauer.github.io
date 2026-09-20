@@ -18,11 +18,11 @@ async function exists(file) {
   }
 }
 
-function localTarget(raw) {
+function localTarget(raw, source) {
   if (!raw || raw.startsWith("#")) {
     return "";
   }
-  if (/^(mailto|tel|javascript):/i.test(raw)) {
+  if (/^(mailto|tel|javascript|data):/i.test(raw)) {
     return "";
   }
   let url;
@@ -30,6 +30,10 @@ function localTarget(raw) {
     url = new URL(raw);
   } else if (raw.startsWith("/")) {
     url = new URL(raw, siteOrigin);
+  } else if (source && !/^[a-z][a-z0-9+.-]*:/i.test(raw) && !raw.startsWith("//")) {
+    // A relative link resolves against the page that carries it, so a page
+    // under desk/ that points at ../assets/site.css is checked like any other.
+    url = new URL(raw, sourceURL(source));
   } else {
     return "";
   }
@@ -87,7 +91,7 @@ async function checkPath(source, raw) {
     problems.push(`${source}: retired product target ${raw}`);
     return;
   }
-  const target = localTarget(raw);
+  const target = localTarget(raw, source);
   if (!target) {
     return;
   }
