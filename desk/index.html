@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Desk | osauer.dev</title>
-  <meta name="description" content="Desk is the private agent that runs one Interactive Brokers book: scheduled reviews, decisions with dated evidence, a reviewed chat, and trading that needs a passkey. Built on Torok, Canary and HyperServe.">
+  <meta name="description" content="Desk is a private agent for one Interactive Brokers book: scheduled reviews, decisions with dated evidence, a reviewed chat, and trading that needs a passkey. Built on Torok, Canary and HyperServe.">
   <link rel="canonical" href="https://osauer.dev/desk/">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="stylesheet" href="../assets/site.css">
@@ -34,10 +34,10 @@
       <p class="eyebrow">Private · investment agent</p>
       <img class="wordmark" src="../assets/desk-wordmark.svg" width="245" height="96" alt="desk">
       <h1>One book, watched all day, every decision written down.</h1>
-      <p class="lead">Desk is the private agent that runs my Interactive Brokers book. It reads the broker through Canary, keeps its work in Torok and writes down what it thinks and why. It proposes. I decide. No order leaves without my passkey.</p>
+      <p class="lead">Desk is a private agent for one Interactive Brokers book. It reads the broker through Canary, keeps its work in Torok and writes down what it thinks and why. It proposes. You decide. No order leaves without your passkey.</p>
       <div class="actions">
         <a class="button primary" href="#architecture">How it is built</a>
-        <a class="button" href="https://www.linkedin.com/in/osauer/">Message me on LinkedIn</a>
+        <a class="button" href="https://www.linkedin.com/in/osauer/">Message on LinkedIn</a>
       </div>
       <figure class="shot">
         <img src="../assets/desk-overview.webp" width="1440" height="900" alt="The Desk console showing the Portfolio view: an account panel, a portfolio performance chart with drawdowns and transfers, a holdings table with intraday charts, a market ribbon, and the Ask Desk panel on the right" fetchpriority="high">
@@ -48,7 +48,7 @@
     <section class="block" id="what">
       <div class="wrap">
         <h2>What it does</h2>
-        <p>Most of the day, nothing. Work starts when the calendar says so, when a rule sees something, or when I ask.</p>
+        <p>Most of the day, nothing. Work starts when the calendar says so, when a rule sees something, or when you ask.</p>
         <div class="cards">
           <article class="card">
             <h3>Runs on the market's clock</h3>
@@ -63,8 +63,8 @@
             <p>A durable conversation with the book: interpret, gather evidence, analyse, review. A second model checks the answer against the same evidence. Missing evidence means no recommendation.</p>
           </article>
           <article class="card">
-            <h3>Trading is mine</h3>
-            <p>Off by default. One single-leg DAY limit order at a time, drafted by Canary, previewed by the broker, confirmed with a passkey. No model can reach that handler.</p>
+            <h3>Trading stays yours</h3>
+            <p>Off by default. One single-leg DAY limit order at a time, drafted by Canary, previewed by the broker, confirmed with your passkey. No model can reach that handler.</p>
           </article>
           <article class="card">
             <h3>A ceiling on spend</h3>
@@ -72,7 +72,7 @@
           </article>
           <article class="card">
             <h3>Dull to operate</h3>
-            <p>One binary as a LaunchAgent. Health endpoints. Upgrades wait for running work. A notification only when a person is needed.</p>
+            <p>One binary as a LaunchAgent. Health endpoints. Upgrades wait for running work. A notification only when you are needed.</p>
           </article>
         </div>
       </div>
@@ -81,7 +81,7 @@
     <section class="block" id="architecture">
       <div class="wrap">
         <h2>How it is built</h2>
-        <p>Desk is mostly configuration. Canary owns the broker: session, prices, risk, calendars, proposals, reconciliation. Torok owns the work: inbox, schedules, bounded episodes, memory, recovery. HyperServe serves the console on loopback. Desk adds the instructions, nineteen read-only Canary tools, the observers and the shape of a decision. Models come from OpenAI. One analyses, another reviews and researches.</p>
+        <p>Desk is mostly configuration. Canary owns the broker: session, prices, risk, calendars, proposals, reconciliation. Torok, the agent harness, owns the work: inbox, schedules, bounded episodes, memory, recovery. HyperServe serves the console on loopback. Desk adds the instructions, nineteen read-only Canary tools, the observers and the shape of a decision. Models come from OpenAI. One analyses, another reviews and researches.</p>
         <figure class="diagram">
           <img src="../assets/desk-system.svg" width="1440" height="952" alt="System diagram of Desk: the owner, passkey, notifications and macOS on the left; the Desk process with HyperServe, the Torok resident service and Desk's capabilities in the middle; the Canary daemon and its three access paths beside it; TWS, IBKR statements, market sources, official sources and the OpenAI API on the right" loading="lazy">
           <figcaption>Every component Desk runs with. Green is the broker path, blue is observed data, amber is a paid model call.</figcaption>
@@ -118,7 +118,7 @@
       <div class="wrap">
         <h2>What it is not</h2>
         <ul class="notes">
-          <li><strong>Not a product.</strong> No download, no repository. It runs one book, mine.</li>
+          <li><strong>Not a product.</strong> No download, no repository. One installation, one book.</li>
           <li><strong>No claim of edge.</strong> Correct operation and investment results are measured separately. Building it proves neither.</li>
           <li><strong>One machine.</strong> A user LaunchAgent, running while the Mac is awake and logged in.</li>
           <li><strong>Simulation in the pictures.</strong> Real screens look the same with real numbers, which is why they are not here.</li>
@@ -130,10 +130,10 @@
       <div class="wrap contact">
         <div>
           <h2>Contact</h2>
-          <p>Desk stays private, but the ideas travel: evidence contracts, a reviewer that is not the analyst, spend reserved before the request. If you are building something like it, write to me.</p>
+          <p>Desk stays private, but the ideas travel: evidence contracts, a reviewer that is not the analyst, spend reserved before the request. If you are building something like it, get in touch.</p>
         </div>
         <div class="actions">
-          <a class="button primary" href="https://www.linkedin.com/in/osauer/">Message me on LinkedIn</a>
+          <a class="button primary" href="https://www.linkedin.com/in/osauer/">Message on LinkedIn</a>
           <a class="button" href="https://github.com/osauer">GitHub</a>
         </div>
       </div>
