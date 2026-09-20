@@ -11,7 +11,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 // The Torok mark, embedded so the diagram carries its own header like Canary's.
-const torokMark = "data:image/svg+xml;base64," + fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), "../../assets/torok-mark.svg")).toString("base64");
+const torokMark = "data:image/svg+xml;base64," + fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), "../../assets/torok-tile.svg")).toString("base64");
 
 const extraStyles = `      .flow-label-blue { font: 10.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: ${C.blue}; }
       .flow-label-slate { font: 10.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: ${C.slate}; }

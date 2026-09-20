@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Torok">
+  <title>Torok</title>
+  <desc>The Torok head as a cameo: the profile cut in paper from an ink square, jaw hinge and eye pivot in ink, the neck running to the frame.</desc>
+  <path fill="#101827" d="M22 4L74 4A18 18 0 0 1 92 22L92 74A18 18 0 0 1 74 92L22 92A18 18 0 0 1 4 74L4 22A18 18 0 0 1 22 4ZM24 42L24 72A6 6 0 0 0 30 78L40 78L40 92L56 92L56 78L61.96 78A6 6 0 0 0 67.9 72.84L68.86 66L41.2 66A6 6 0 1 1 41.2 60L69.71 60L71.77 45.34A24 24 0 0 0 24 42ZM33 63A3 3 0 1 1 39 63A3 3 0 1 1 33 63Z"/>
+  <circle cx="60" cy="42" r="8" fill="#b45309"/>
+  <circle cx="60" cy="42" r="3" fill="#101827"/>
+</svg>
