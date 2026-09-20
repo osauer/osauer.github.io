@@ -6,6 +6,12 @@
 // Facts come from the Torok README, DESIGN.md and package docs.
 
 import { C, esc, icon, iconTile, component, line, chipAt, legendItem, header, junction, svgFrame } from "./lib.mjs";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+// The Torok mark, embedded so the diagram carries its own header like Canary's.
+const torokMark = "data:image/svg+xml;base64," + fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), "../../assets/torok-mark.svg")).toString("base64");
 
 const extraStyles = `      .flow-label-blue { font: 10.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: ${C.blue}; }
       .flow-label-slate { font: 10.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: ${C.slate}; }
@@ -92,8 +98,7 @@ export function render() {
   const under = (cx, width) => Math.round(cx - width / 2);
 
   const body = `
-  ${header("Runtime Architecture", "One engine runs the tool loop, checks typed answers and commits progress; work resumes after human input or a process restart.", { kicker: "Torok", logoFill: C.terminal })}
-  ${icon("engine", 45, 35, 28, "#ffffff", 1.6)}
+  ${header("Runtime Architecture", "One engine runs the tool loop, checks typed answers and commits progress; work resumes after human input or a process restart.", { kicker: "Torok", logo: torokMark })}
 
   ${legendItem(1104, 40, "slate", "Local typed calls")}
   ${legendItem(1276, 40, "amber", "Paid inference", { dotted: true })}
