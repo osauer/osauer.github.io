@@ -27,6 +27,12 @@ The first verifies that every local link and asset resolves to a file. The
 second verifies that the committed SVG diagrams in `assets/` match their sources
 in `tools/diagrams/`; run it without `--check` to regenerate them.
 
+## Code samples
+
+Code blocks carry static syntax colouring; there is no JavaScript on the pages.
+Regenerate a block's markup with `node tools/highlight-go.mjs < sample.go` and
+paste the result inside `<pre><code>`.
+
 ## Screenshots
 
 The Desk screenshots in `assets/` were captured from Desk's built-in simulation

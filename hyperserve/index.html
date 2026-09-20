@@ -38,26 +38,26 @@
           <a class="button" href="https://pkg.go.dev/github.com/osauer/hyperserve/pkg/server">API reference</a>
         </div>
       </div>
-      <pre><code>import (
-    "fmt"
-    "log"
-    "net/http"
+      <pre><code><span class="k">import</span> (
+    <span class="s">"fmt"</span>
+    <span class="s">"log"</span>
+    <span class="s">"net/http"</span>
 
-    server "github.com/osauer/hyperserve/pkg/server"
+    server <span class="s">"github.com/osauer/hyperserve/pkg/server"</span>
 )
 
-func main() {
-    srv, err := server.NewServer()
-    if err != nil {
-        log.Fatal(err)
+<span class="k">func</span> main() {
+    srv, err := <span class="t">server</span>.<span class="t">NewServer</span>()
+    <span class="k">if</span> err != <span class="k">nil</span> {
+        <span class="t">log</span>.<span class="t">Fatal</span>(err)
     }
 
-    srv.GET("/", func(w http.ResponseWriter, r *http.Request) {
-        fmt.Fprintln(w, "Hello, World!")
+    <span class="t">srv</span>.<span class="t">GET</span>(<span class="s">"/"</span>, <span class="k">func</span>(w <span class="t">http</span>.<span class="t">ResponseWriter</span>, r *<span class="t">http</span>.<span class="t">Request</span>) {
+        <span class="t">fmt</span>.<span class="t">Fprintln</span>(w, <span class="s">"Hello, World!"</span>)
     })
 
-    if err := srv.Run(); err != nil {
-        log.Fatal(err)
+    <span class="k">if</span> err := <span class="t">srv</span>.<span class="t">Run</span>(); err != <span class="k">nil</span> {
+        <span class="t">log</span>.<span class="t">Fatal</span>(err)
     }
 }</code></pre>
     </section>
