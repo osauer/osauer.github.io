@@ -53,9 +53,13 @@
 <span class="out">{"files":2,"lines":336,"text":"Read 2 files containing 336 lines."}</span>
 <span class="ok">✔ The process has exited. The job is waiting in review.db; no worker holds it.</span>
 
-<span class="head">━━ 2. Read what was committed before the process exited</span>
-<span class="prompt">$</span> <span class="cmd">automation -db review.db -events</span>
-<span class="out">status: waiting</span>
+<span class="head">━━ 2. Inspect the store: the run waits, and its events are committed</span>
+<span class="prompt">$</span> <span class="cmd">torok -db review.db describe example-summary</span>
+<span class="out">Program   file-summary</span>
+<span class="out">Status    waiting</span>
+<span class="out">Usage     model calls 1, tool calls 2, steps 4, known tokens 0, unknown calls 0, active 6ms</span>
+<span class="out">Pending   f1f849d0… (input): Accept this report?</span>
+<span class="prompt">$</span> <span class="cmd">torok -db review.db events example-summary</span>
 <span class="out">   1  run.started</span>
 <span class="out">   2  tool.started     root/file-0/read</span>
 <span class="out">   3  tool.started     root/file-1/read</span>
@@ -72,8 +76,10 @@
 <span class="out">Model calls: 1; file reads: 2; status: accepted</span>
 
 <span class="head">━━ 4. The event log continues where it stopped</span>
-<span class="prompt">$</span> <span class="cmd">automation -db review.db -events</span>
-<span class="out">status: accepted</span>
+<span class="prompt">$</span> <span class="cmd">torok -db review.db runs</span>
+<span class="out">ID               PROGRAM       STATUS    PENDING  UPDATED</span>
+<span class="out">example-summary  file-summary  accepted  0        0s</span>
+<span class="prompt">$</span> <span class="cmd">torok -db review.db events example-summary</span>
 <span class="out">   …</span>
 <span class="out">  14  run.waiting</span>
 <span class="out">  15  input.received   root/review</span>
