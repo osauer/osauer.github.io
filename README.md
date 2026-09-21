@@ -33,6 +33,16 @@ Code blocks carry static syntax colouring; there is no JavaScript on the pages.
 Regenerate a block's markup with `node tools/highlight-go.mjs < sample.go` and
 paste the result inside `<pre><code>`.
 
+## Icons and transcripts
+
+Links to GitHub carry GitHub's Invertocat mark inline as SVG, which GitHub
+permits for links to a GitHub profile or repository. Copy the snippet from
+`index.html`; it inherits the link colour through `currentColor`.
+
+The demo transcript on the Torok page is a static `<pre>` copied from
+`NO_COLOR=1 ./demo.sh` in the private Torok checkout, with repeated event
+lines elided. Recapture it when the demo changes.
+
 ## Screenshots
 
 The Desk screenshots in `assets/` were captured from Desk's built-in simulation

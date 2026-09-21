@@ -92,7 +92,8 @@ body[data-accent="home"] .topline { background: linear-gradient(90deg, var(--gre
   text-decoration: none;
 }
 .site-nav { display: flex; flex-wrap: wrap; gap: 18px; font-size: 15px; font-weight: 650; }
-.site-nav a { color: var(--muted); text-decoration: none; }
+.site-nav a { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); text-decoration: none; }
+.site-nav a svg { width: 16px; height: 16px; }
 .site-nav a:hover { color: var(--ink); }
 .site-nav a[aria-current="page"] { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
 
@@ -104,6 +105,21 @@ body[data-accent="home"] .topline { background: linear-gradient(90deg, var(--gre
   align-items: start;
 }
 .hero.split pre { margin-top: 6px; font-size: 13px; }
+.hero.split h1 { font-size: clamp(36px, 4.4vw, 52px); }
+
+/* A terminal window: a bar with three dots, then a transcript that wraps
+   instead of scrolling sideways. Static markup copied from a real run. */
+.window { margin-top: 6px; border: 1px solid var(--terminal-line); border-radius: 10px; background: var(--terminal); overflow: hidden; }
+.window-bar { display: flex; align-items: center; gap: 7px; padding: 10px 14px; border-bottom: 1px solid var(--terminal-line); }
+.window-bar span { width: 10px; height: 10px; border-radius: 50%; background: #3a4a66; }
+.window-bar em { margin-left: 8px; color: #8fa3c2; font: 12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.window pre { margin: 0; border: 0; border-radius: 0; }
+pre.term { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12.5px; line-height: 1.5; }
+pre.term .prompt { color: #8fa3c2; }
+pre.term .cmd { color: #f4f7fb; font-weight: 650; }
+pre.term .out { color: #c3cddd; }
+pre.term .ok { color: #a3d9a5; }
+pre.term .head { color: #9ccaff; font-weight: 700; }
 .eyebrow {
   margin: 0 0 16px;
   color: var(--accent-dark);
@@ -251,6 +267,15 @@ section.block > .wrap > p, .prose { max-width: 780px; color: var(--ink-soft); fo
 }
 .card h3 { margin: 0 0 10px; font-size: 20px; line-height: 1.2; }
 .card p { margin: 0; color: var(--muted); font-size: 16px; }
+.card .kind {
+  display: block;
+  margin: 0 0 8px;
+  color: var(--accent-dark);
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
 
 .notes { max-width: 820px; margin: 0; padding-left: 24px; color: var(--ink-soft); font-size: 17px; }
 .notes li { margin: 8px 0; }
