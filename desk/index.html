@@ -3,27 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Desk | osauer.dev</title>
-  <meta name="description" content="Desk is a private trading and risk management system for an Interactive Brokers account: automatic stop losses, daily briefs, AI-augmented investing and portfolio management. Built on Torok, Canary and HyperServe.">
+  <title>Canary Desk | your daily investment workspace</title>
+  <meta name="description" content="Canary Desk brings market and macro briefings, portfolio context, scheduled reviews and evidence-backed decisions into one private workspace for Interactive Brokers.">
   <link rel="canonical" href="https://osauer.dev/desk/">
-  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="icon" type="image/png" href="../assets/canary-icon.png">
   <link rel="stylesheet" href="../assets/site.css">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://osauer.dev/desk/">
-  <meta property="og:title" content="Desk | a trading and risk desk with an AI analyst on staff">
-  <meta property="og:description" content="A private trading and risk management system for an Interactive Brokers account: automatic stop losses, daily briefs, AI-augmented investing and portfolio management.">
+  <meta property="og:title" content="Canary Desk | your daily investment workspace">
+  <meta property="og:description" content="Your portfolio, understood before the day begins. Market context, portfolio review and an AI analyst in one private workspace for Interactive Brokers.">
   <meta property="og:image" content="https://osauer.dev/assets/desk-overview-social.jpg">
   <meta property="og:image:width" content="2880">
   <meta property="og:image:height" content="1800">
+  <meta property="og:image:alt" content="Canary Desk Portfolio view with synthetic demonstration data">
   <meta name="twitter:card" content="summary_large_image">
 </head>
-<body data-accent="ink">
+<body data-accent="green">
   <div class="topline"></div>
   <header class="wrap site-header">
     <a class="brand" href="../">osauer.dev</a>
     <nav class="site-nav" aria-label="Site">
-      <a href="../canary/">Canary</a>
-      <a href="./" aria-current="page">Desk</a>
+      <a href="../canary/">Canary CLI</a>
+      <a href="./" aria-current="page">Canary Desk</a>
       <a href="../torok/">Torok</a>
       <a href="../hyperserve/">HyperServe</a>
       <a href="https://www.linkedin.com/in/osauer/">LinkedIn</a>
@@ -31,48 +32,71 @@
   </header>
   <main>
     <section class="wrap hero">
-      <p class="eyebrow">Private · trading and risk management</p>
-      <img class="wordmark" src="../assets/desk-wordmark.svg" width="245" height="96" alt="desk">
-      <h1>A trading and risk desk with an AI analyst on staff.</h1>
-      <p class="lead">Desk manages an Interactive Brokers book through the trading day: stop losses and hedges set by rule, a written brief before the open and after the close, AI-augmented research and decisions with dated evidence, and the portfolio numbers that matter, from exposure to time-weighted performance.</p>
+      <p class="eyebrow">Private product · daily investment workspace</p>
+      <p class="product-lockup"><img src="../assets/canary-icon.png" width="192" height="192" alt=""><span>Canary Desk</span></p>
+      <h1>Your portfolio, understood before the day begins.</h1>
+      <p class="lead">Canary Desk brings market context, portfolio review and an AI analyst into one daily workspace for Interactive Brokers. Start with the overnight story, see how the book performed, understand the risks and carry reviewed decisions into the trading day.</p>
       <div class="actions">
-        <a class="button primary" href="#architecture">How it is built</a>
-        <a class="quiet" href="https://www.linkedin.com/in/osauer/">Message on LinkedIn ↗</a>
+        <a class="button primary" href="#what">Explore the workspace</a>
+        <a class="button" href="#contact">Discuss Canary Desk</a>
+        <a class="quiet" href="../canary/">Start with Canary CLI ↗</a>
       </div>
+      <p class="pronounce">Canary Desk is developed privately. The source repository remains private and there is no public download.</p>
       <figure class="shot">
-        <img src="../assets/desk-overview.webp" width="1440" height="900" alt="The Desk console showing the Portfolio view: an account panel, a portfolio performance chart with drawdowns and transfers, a holdings table with intraday charts, a market ribbon, and the Ask Desk panel on the right" fetchpriority="high">
-        <figcaption>Portfolio, in simulation mode: a synthetic paper book, live-style quotes, performance from synthetic statements, Ask Desk on the right. Every screenshot on this page comes from that mode.</figcaption>
+        <img src="../assets/desk-overview.webp" width="1440" height="900" alt="Canary Desk Portfolio view with the daily brief, account summary and holdings" fetchpriority="high">
+        <figcaption>Canary Desk with synthetic demonstration data. All screenshots on this page use a simulated book and contain no account data.</figcaption>
       </figure>
     </section>
 
     <section class="block" id="what">
       <div class="wrap">
-        <h2>What it does</h2>
-        <p>Rules first, then briefs, then AI where judgment is needed.</p>
+        <h2>A daily rhythm for your portfolio.</h2>
+        <p>Move from what happened to what matters, with the evidence close at hand.</p>
         <div class="cards">
           <article class="card">
-            <h3>Automatic stop losses</h3>
-            <p>Canary's protection rules place broker-side trailing stops, keep exit watches and hold hedges per position, with no AI in the loop. Desk shows each one on the holding line and under Risk.</p>
+            <h3>Begin with the full picture</h3>
+            <p>A morning and pre-open briefing connects market and macro developments, news relevant to held positions, portfolio performance and risk. Source gaps stay visible.</p>
           </article>
           <article class="card">
-            <h3>Daily briefs</h3>
-            <p>A written brief at 08:30 Berlin, half an hour before the US open and at 18:00: positions, risk, the calendar, what changed, what needs you.</p>
+            <h3>Know where you stand</h3>
+            <p>Holdings, exposure, margin, financing and performance share one workspace. Canary supplies the broker evidence and source clocks, so a delayed input keeps its context.</p>
           </article>
           <article class="card">
-            <h3>AI-augmented investing</h3>
-            <p>Scheduled reviews at the open, before the close and after it. An analyst model proposes adds, holds, trims and exits with a reason, sources, what would prove it wrong and an expiry. A second model reviews before anything reaches you.</p>
+            <h3>Review decisions with context</h3>
+            <p>Proposed decisions carry a reason, sources, what would change the view and an expiry. An independent review checks the assessment before it is presented as reviewed.</p>
           </article>
           <article class="card">
-            <h3>Ask Desk</h3>
-            <p>A durable conversation with the book: which positions need attention, exposure and regime, the next session. Evidence is gathered first. Missing evidence means no recommendation.</p>
+            <h3>Ask Canary Desk</h3>
+            <p>Ask about the book, a position or the next session. The analyst gathers evidence and retains the conversation. Missing prerequisites are named and limit the recommendation.</p>
           </article>
           <article class="card">
-            <h3>Portfolio management</h3>
-            <p>Exposure, margin and Greeks, sector and asset mix, reconciliation against statements, and time-weighted performance against SPY, net of transfers.</p>
+            <h3>Stay with the market day</h3>
+            <p>Scheduled reviews follow confirmed market sessions, including holidays and early closes. Operations shows completed work, upcoming reviews and anything that needs the owner.</p>
           </article>
           <article class="card">
-            <h3>On the market's clock</h3>
-            <p>07:00 Berlin, an hour before each open, at the open, before the close, after it. Session times come from Canary, early closes included, so a holiday never runs a review.</p>
+            <h3>Keep the decision yours</h3>
+            <p>Research and briefing do not authorize a trade. The optional order workflow requires a review of the exact terms and passkey confirmation, with Canary enforcing the order path.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="canary-family">
+      <div class="wrap">
+        <h2>One Canary family. Two ways to work.</h2>
+        <p>Use the local foundation directly, or bring its evidence into a continuing investment workflow.</p>
+        <div class="cards family-grid">
+          <article class="card">
+            <span class="kind">Open source</span>
+            <h3>Canary CLI</h3>
+            <p>The broker and market foundation: terminal commands, read-only MCP tools and a paired app. Inspect positions, risk, the daily brief and reconciliation through your local Interactive Brokers session.</p>
+            <div class="actions"><a class="button" href="../canary/">Explore Canary CLI</a></div>
+          </article>
+          <article class="card">
+            <span class="kind">Private product</span>
+            <h3>Canary Desk</h3>
+            <p>The daily workspace: richer narrative briefings, scheduled portfolio reviews, a continuing analyst conversation and decisions retained with their evidence. It builds on the same Canary foundation.</p>
+            <div class="actions"><a class="button primary" href="#contact">Discuss Canary Desk</a></div>
           </article>
         </div>
       </div>
@@ -80,48 +104,49 @@
 
     <section class="block" id="architecture">
       <div class="wrap">
-        <h2>How it is built</h2>
-        <p>Desk is mostly configuration. Canary owns the broker: session, prices, risk, calendars, stops and hedges, reconciliation. Torok, the agent harness, owns the work: inbox, schedules, bounded episodes, memory, recovery. HyperServe serves the console on loopback. Desk adds the instructions, nineteen read-only Canary tools, the observers and the shape of a decision. Models come from OpenAI. One analyses, another reviews and researches.</p>
+        <h2>Built around one source of broker truth.</h2>
+        <p>Canary owns market and broker observations, risk evidence, calendars, execution enforcement and reconciliation. Torok retains work, schedules and recovery. HyperServe serves the local console. Canary Desk brings the investment instructions, review workflow and workspace together.</p>
+        <p>The briefing writer and reviewer can run through Codex App Server using the owner's ChatGPT session, with no paid API fallback. Tool-using analysis uses the configured model API. Their execution and accounting remain separate.</p>
         <figure class="diagram">
-          <img src="../assets/desk-system.svg" width="1440" height="952" alt="System diagram of Desk: the owner, passkey, notifications and macOS on the left; the Desk process with HyperServe, the Torok resident service and Desk's capabilities in the middle; the Canary daemon and its three access paths beside it; TWS, IBKR statements, market sources, official sources and the OpenAI API on the right" loading="lazy">
-          <figcaption>Every component Desk runs with. Green is the broker path, blue is observed data, amber is a paid model call.</figcaption>
+          <img src="../assets/desk-system.svg" width="1440" height="952" alt="Canary Desk architecture: local console and Torok work service, Canary broker authority, external evidence sources, and separate API analysis and Codex App Server briefing connections" loading="lazy">
+          <figcaption>The local workspace, its evidence sources and its model connections. Broker actions follow the separate confirmed order path.</figcaption>
         </figure>
       </div>
     </section>
 
     <section class="block" id="screens">
       <div class="wrap">
-        <h2>Screens</h2>
-        <p>Five views, one masthead, one quote ribbon, Ask Desk on the right. Every figure carries its source and its age.</p>
+        <h2>From the book to the next decision.</h2>
+        <p>Portfolio, Decisions, Risk, Market and Operations share the same evidence and source clocks. The analyst conversation follows the selected context.</p>
         <div class="gallery">
           <figure class="shot wide">
-            <img src="../assets/desk-decisions.webp" width="1440" height="900" alt="The Decisions view: Desk decisions, Canary protection proposals and exit watches, and the day's scheduled reviews" loading="lazy">
-            <figcaption>Decisions: AI assessments beside Canary's rule-based proposals and exit watches, then the day's scheduled reviews.</figcaption>
+            <img src="../assets/desk-decisions.webp" width="1280" height="720" alt="Canary Desk Decisions view with assessment status and a synthetic protection proposal" loading="lazy">
+            <figcaption>Decisions: assessments beside Canary's protection proposals and exit watches.</figcaption>
           </figure>
           <figure class="shot phone">
-            <img src="../assets/phone-overview.webp" width="390" height="844" alt="The Portfolio view at phone width" loading="lazy">
-            <figcaption>The console at phone width.</figcaption>
+            <img src="../assets/phone-overview.webp" width="390" height="844" alt="Canary Desk Portfolio view at phone width, using synthetic data" loading="lazy">
+            <figcaption>The workspace at phone width.</figcaption>
           </figure>
           <figure class="shot wide">
-            <img src="../assets/desk-risk.webp" width="1440" height="900" alt="The Risk view: book exposure, the risk assessment and financing and margin values" loading="lazy">
-            <figcaption>Risk: exposure, the current assessment and financing, each tagged with where it came from.</figcaption>
+            <img src="../assets/desk-risk.webp" width="1440" height="900" alt="Canary Desk Risk view with the current assessment, limits, exposure and financing" loading="lazy">
+            <figcaption>Risk: assessment, limits and exposure, with the source behind each figure.</figcaption>
           </figure>
           <figure class="shot full">
-            <img src="../assets/desk-operations.webp" width="1440" height="900" alt="The Operations view: pause and budget controls, reduction advice, and a day timeline with calendar, Desk agenda and agent work" loading="lazy">
-            <figcaption>Operations: the day on a timeline. Market hours, Desk's agenda, the agent's work, pause and budget.</figcaption>
+            <img src="../assets/desk-operations.webp" width="1280" height="720" alt="Canary Desk Operations view showing owner attention, the latest assessment, the next review and the day's timeline" loading="lazy">
+            <figcaption>Operations: what needs you, the latest assessment and what comes next.</figcaption>
           </figure>
         </div>
       </div>
     </section>
 
-    <section class="block" id="limits">
+    <section class="block" id="availability">
       <div class="wrap">
-        <h2>What it is not</h2>
+        <h2>Availability and operating boundaries.</h2>
         <ul class="notes">
-          <li><strong>Not a product.</strong> No download, no repository.</li>
-          <li><strong>No claim of edge.</strong> Correct operation and investment results are measured separately. Building it proves neither.</li>
-          <li><strong>One machine.</strong> A user LaunchAgent, running while the Mac is awake and logged in.</li>
-          <li><strong>Simulation in the pictures.</strong> Real screens look the same with real numbers, which is why they are not here.</li>
+          <li><strong>Private development.</strong> The Canary Desk repository remains private. There is no public download, published price or launch date.</li>
+          <li><strong>Local operation.</strong> The workspace runs on the owner's Mac and depends on its broker and configured model connections.</li>
+          <li><strong>Evidence has limits.</strong> Missing, stale or unavailable sources remain visible. A completed review does not establish investment performance.</li>
+          <li><strong>Your authority.</strong> AI research and scheduled reviews prepare decisions; they do not grant permission to submit orders.</li>
         </ul>
       </div>
     </section>
@@ -129,10 +154,10 @@
     <section class="block" id="contact">
       <div class="wrap contact">
         <div>
-          <h2>Contact</h2>
-          <p>Desk stays private, but the ideas travel: rules before models, evidence contracts, a reviewer that is not the analyst. If you are building something like it, get in touch.</p>
+          <h2>Explore Canary Desk.</h2>
+          <p>If you use Canary and want briefings, portfolio reviews and an analyst conversation in one workspace, get in touch to discuss the product and your workflow.</p>
         </div>
-        <p class="links"><a class="quiet" href="https://www.linkedin.com/in/osauer/">Message on LinkedIn ↗</a><a class="quiet" href="https://github.com/osauer">GitHub ↗</a></p>
+        <p class="links"><a class="quiet" href="https://www.linkedin.com/in/osauer/">Message on LinkedIn ↗</a><a class="quiet" href="../canary/">Explore Canary CLI ↗</a></p>
       </div>
     </section>
   </main>
