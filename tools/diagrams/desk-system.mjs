@@ -1,4 +1,4 @@
-// "How Desk is put together": every component Desk is built from and how they
+// "How Canary Desk is put together": every component Canary Desk is built from and how they
 // connect. Same visual vocabulary as Canary's diagrams (lib.mjs); absolute
 // coordinates, helper calls, nothing external but the Canary mark.
 
@@ -9,16 +9,6 @@ import { C, esc, icon, iconTile, component, line, chipAt, legendItem, header, ju
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const canaryMark = fs.readFileSync(path.join(root, "assets/canary-icon.png")).toString("base64");
-
-// Amber-outlined pill used in the paid-model strip (same idiom as Canary's remote strip).
-function stripNode(x, y, width, label, iconName = "") {
-  const textX = iconName ? x + width / 2 + 11 : x + width / 2;
-  return `<g>
-    <rect x="${x}" y="${y}" width="${width}" height="28" rx="14" fill="${C.panel}" stroke="${C.amber}" stroke-width="1.2"/>
-    ${iconName ? icon(iconName, x + 12, y + 6, 16, C.amber, 2) : ""}
-    <text x="${textX}" y="${y + 18.5}" text-anchor="middle" class="strip-node">${esc(label)}</text>
-  </g>`;
-}
 
 // Inner module row of a dark authority block.
 function moduleRow({ x, y, width, height = 64, iconName, iconColor, title, lines }) {
@@ -47,30 +37,28 @@ function render() {
   const ay = (top) => top + 22;
   const hostCx = host.x + host.w / 2;
   const torokCx = torok.x + torok.w / 2;
-  const gapCx = 926; // centre of the arrows between the Desk box and Canary
+  const gapCx = 926; // centre of the arrows between the Canary Desk box and Canary
   const provCx = prov.x + 95;
   const strip = { x: 36, y: 790, w: 1368, h: 112 };
-  const openai = { x: torokCx - 80, y: 818, w: 160, h: 64 };
   const toCanary = 886; // arrows leave the capability tiles here
 
   const body = `
-  ${header("How Desk is put together", "One Go process on the owner's Mac: Torok runs the work, hyperserve serves the console, Canary owns the broker session.", { kicker: "Desk", logoFill: C.terminal })}
-  ${icon("layoutDashboard", 47, 37, 24, "#ffffff", 1.8)}
+  ${header("How Canary Desk is put together", "One Go process on the owner's Mac: Torok runs the work, hyperserve serves the console, Canary owns the broker session.", { kicker: "Canary Desk", logo: `data:image/png;base64,${canaryMark}` })}
 
   ${legendItem(1157, 40, "slate", "Local typed flow")}
   ${legendItem(1304, 40, "green", "Broker path")}
   ${legendItem(1138, 64, "blue", "Observed data", { dashed: true })}
-  ${legendItem(1268, 64, "amber", "Paid model calls", { dotted: true })}
+  ${legendItem(1268, 64, "amber", "Model connections", { dotted: true })}
 
   <rect x="214" y="120" width="680" height="628" rx="16" fill="${C.panel}" stroke="${C.muted}" stroke-width="1.2"/>
   <path d="M214 156h680v-20a16 16 0 0 0 -16 -16h-648a16 16 0 0 0 -16 16z" fill="${C.panelAlt}"/>
-  <text x="234" y="143" class="boundary">DESK PROCESS</text>
-  <text x="874" y="143" text-anchor="end" class="mono-small">one Go binary · macOS LaunchAgent com.osauer.desk · loopback listeners</text>
+  <text x="234" y="143" class="boundary">CANARY DESK PROCESS</text>
+  <text x="874" y="143" text-anchor="end" class="mono-small">local Go process · loopback console · durable work</text>
 
   <text x="36" y="184" class="layer">1 · OWNER</text>
   <text x="${host.x}" y="184" class="layer">2 · HOST</text>
   <text x="${torok.x}" y="184" class="layer">3 · WORK AUTHORITY</text>
-  <text x="${conf.x}" y="184" class="layer">4 · DESK CAPABILITIES</text>
+  <text x="${conf.x}" y="184" class="layer">4 · INVESTMENT WORK</text>
   <text x="${canary.x}" y="184" class="layer">5 · BROKER AUTHORITY</text>
   <text x="${prov.x}" y="184" class="layer">6 · PROVIDERS / DATA</text>
 
@@ -161,28 +149,20 @@ function render() {
   ${line(`M${canary.x + canary.w + 6} ${ay(prov.rows[1])}H${prov.x - 6}`, "blue", { dashed: true })}
   ${line(`M${canary.x + canary.w + 6} ${ay(prov.rows[2])}H${prov.x - 6}`, "blue", { dashed: true })}
 
-  ${line(`M${torokCx} ${torok.top + torok.h}V${openai.y - 6}`, "amber", { dotted: true, width: 1.6 })}
-  <text x="${torokCx + 10}" y="776" class="flow-label">Responses API · HTTPS</text>
+  ${line(`M${torokCx} ${torok.top + torok.h}V${strip.y - 6}`, "amber", { dotted: true, width: 1.6 })}
+  <text x="${torokCx + 10}" y="776" class="flow-label">Configured model connections</text>
 
   <rect x="${strip.x}" y="${strip.y}" width="${strip.w}" height="${strip.h}" rx="14" fill="${C.amberSoft}" stroke="${C.amber}" stroke-width="1.2" stroke-dasharray="8 6"/>
-  <text x="56" y="816" class="layer" style="fill:${C.amber}">PAID MODEL CALLS</text>
-  <text x="1384" y="816" text-anchor="end" class="legend">every call reserves the monthly allowance before it is sent</text>
-  <text x="56" y="846" class="legend">key from the environment or a private local file</text>
-  <text x="56" y="864" class="legend">loaded at request time · never in instructions</text>
-  <text x="56" y="882" class="legend">sent only to the permitted HTTPS host</text>
-
-  <rect x="${openai.x}" y="${openai.y}" width="${openai.w}" height="${openai.h}" rx="14" fill="${C.panel}" stroke="${C.amber}" stroke-width="1.2"/>
-  ${icon("cloud", openai.x + 14, openai.y + 20, 24, C.amber, 2)}
-  <text x="${openai.x + 48}" y="${openai.y + 28}" class="strip-node">OpenAI</text>
-  <text x="${openai.x + 48}" y="${openai.y + 46}" class="legend">model provider</text>
-  ${line(`M${openai.x + openai.w + 8} 832H800`, "amber", { dotted: true, width: 1.6 })}
-  <text x="${(openai.x + openai.w + 8 + 800) / 2}" y="826" text-anchor="middle" class="flow-label">analyst · medium reasoning</text>
-  ${stripNode(808, 818, 118, "gpt-6-astra")}
-  ${line(`M${openai.x + openai.w + 8} 868H800`, "amber", { dotted: true, width: 1.6 })}
-  <text x="${(openai.x + openai.w + 8 + 800) / 2}" y="862" text-anchor="middle" class="flow-label">reviewer · research specialist</text>
-  ${stripNode(808, 854, 128, "gpt-5.6-terra")}
-  <text x="1384" y="864" text-anchor="end" class="legend">the reviewer is a different model from the analyst</text>
-  <text x="1384" y="882" text-anchor="end" class="legend">delegation and review share the episode's limits</text>
+  <text x="56" y="816" class="layer" style="fill:${C.amber}">MODEL CONNECTIONS</text>
+  <text x="1384" y="816" text-anchor="end" class="legend">separate execution contracts and usage records</text>
+  <rect x="56" y="830" width="590" height="56" rx="10" fill="${C.panel}" stroke="${C.amber}"/>
+  ${icon("cloud", 72, 846, 24, C.amber, 2)}
+  <text x="112" y="851" class="strip-node">API analysis · reviewer · research</text>
+  <text x="112" y="873" class="legend">Responses API · shared episode limits and spending ledger</text>
+  <rect x="670" y="830" width="714" height="56" rx="10" fill="${C.panel}" stroke="${C.amber}"/>
+  ${icon("fileText", 686, 846, 24, C.amber, 2)}
+  <text x="726" y="851" class="strip-node">Codex App Server · briefing writer and reviewer</text>
+  <text x="726" y="873" class="legend">ChatGPT session · turn receipts and deadline · no paid API fallback</text>
 
   <text x="1404" y="930" text-anchor="end" class="footnote">deterministic SVG · tools/render-diagrams.mjs · icons: Tabler 3.45 (MIT)</text>
   `;
@@ -190,8 +170,8 @@ function render() {
   return svgFrame({
     width: 1440,
     height: 952,
-    title: "How Desk is put together",
-    description: "Six layers show the owner's devices, the hyperserve HTTP host, the Torok resident service that owns durable work and limits, Desk's own capabilities, the Canary daemon that owns the broker session, and the external providers. A separate strip shows the paid OpenAI model calls.",
+    title: "How Canary Desk is put together",
+    description: "Six layers show the owner's devices, the hyperserve HTTP host, the Torok resident service that owns durable work and limits, Canary Desk's investment workflow, the Canary daemon that owns the broker session, and the external providers. A separate strip shows API analysis and Codex App Server briefing connections.",
     body,
   });
 }

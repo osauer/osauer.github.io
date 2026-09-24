@@ -35,7 +35,7 @@ paste the result inside `<pre><code>`.
 
 ## Screenshots
 
-The Desk screenshots in `assets/` were captured from Desk's built-in simulation
+The Canary Desk screenshots in `assets/` were captured from Canary Desk's built-in simulation
 mode (`desk -simulate`), which renders the real console with a synthetic paper
 book and scripted replies. They contain no account data. Recapture them from the
 private Desk checkout when the console changes.
