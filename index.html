@@ -4,90 +4,95 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>osauer.dev</title>
-  <meta name="description" content="Projects by Oliver Sauer: Canary, an Interactive Brokers MCP server and CLI; Desk, a private trading and risk management system; Torok, a Go agent harness; HyperServe, a Go HTTP server library.">
+  <meta name="description" content="Personal projects by Oliver Sauer: Desk, a private trading and risk desk with an AI analyst on staff, and the parts it stands on: Torok, a Go agent harness; Canary, a local broker desk that runs with Interactive Brokers today; HyperServe, a Go HTTP server library; Tower, an experimental control panel for the sessions that build them.">
   <link rel="canonical" href="https://osauer.dev/">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/canary.css">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://osauer.dev/">
   <meta property="og:title" content="osauer.dev">
-  <meta property="og:description" content="Small tools for local systems, agents and Go services: Canary, Desk, Torok and HyperServe.">
+  <meta property="og:description" content="Desk, a private trading and risk desk, and the parts it stands on: Torok, Canary, HyperServe and Tower. Personal work, not connected to an employer.">
+  <meta property="og:image" content="https://osauer.dev/assets/desk-overview-social.jpg">
+  <meta property="og:image:width" content="3200">
+  <meta property="og:image:height" content="2000">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 <body data-accent="home">
   <div class="topline"></div>
   <header class="wrap site-header">
     <a class="brand" href="https://osauer.dev/">osauer.dev</a>
     <nav class="site-nav" aria-label="Projects">
-      <a href="canary/">Canary</a>
       <a href="desk/">Desk</a>
       <a href="torok/">Torok</a>
+      <a href="canary/">Canary</a>
       <a href="hyperserve/">HyperServe</a>
+      <a href="tower/">Tower</a>
       <a href="https://github.com/osauer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub</a>
       <a href="https://www.linkedin.com/in/osauer/">LinkedIn</a>
     </nav>
   </header>
   <main>
     <section class="wrap hero">
-      <h1>Small tools for local systems, agents and Go services.</h1>
-      <p class="lead stack"><a href="desk/"><i class="dot" data-dot="ink"></i>Desk</a> runs on <a href="torok/"><i class="dot" data-dot="amber"></i>Torok</a>, reads the market through <a href="canary/"><i class="dot" data-dot="green"></i>Canary</a> and is served by <a href="hyperserve/"><i class="dot" data-dot="blue"></i>HyperServe</a>. Two of the four are open source.</p>
+      <h1>Desk is the product. The rest is what it stands on.</h1>
+      <p class="lead stack"><a href="desk/"><i class="dot" data-dot="ink"></i>Desk</a> runs on <a href="torok/"><i class="dot" data-dot="amber"></i>Torok</a>, reads the market through <a href="canary/"><i class="dot" data-dot="green"></i>Canary</a> and is served by <a href="hyperserve/"><i class="dot" data-dot="blue"></i>HyperServe</a>. <a href="tower/"><i class="dot" data-dot="violet"></i>Tower</a> watches the sessions that build them. Two of the five are open source.</p>
+      <p class="personal"><strong>Personal projects, built on personal time.</strong> None of this is connected to an employer, and none of it is investment advice.</p>
     </section>
-    <section class="wrap panels" aria-label="Project panels">
-      <article class="panel" data-accent="green">
-        <p class="label">Interactive Brokers · MCP · open source</p>
-        <h2><img src="assets/canary-icon.png" width="192" height="192" alt="">Canary</h2>
-        <p>Your IBKR session, readable by Claude and the shell.</p>
-        <ul class="points">
-          <li>Read-only MCP server and CLI</li>
-          <li>Risk, options and regime context</li>
-          <li>Paired app with a daily brief</li>
-        </ul>
-        <div class="actions">
-          <a class="button primary" href="canary/">Open Canary</a>
-          <a class="button" href="https://github.com/osauer/canary"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub</a>
-        </div>
-      </article>
-      <article class="panel" data-accent="ink">
+    <section class="wrap panels" aria-label="Projects">
+      <article class="panel lead-panel" data-accent="ink">
         <p class="label">Private · trading and risk management</p>
         <h2><img class="wordmark" src="assets/desk-wordmark.svg" width="245" height="96" alt="desk"></h2>
-        <p>Trading and risk management with an AI analyst on staff.</p>
+        <p class="punch">A trading and risk desk with an AI analyst on staff.</p>
         <ul class="points">
-          <li>Automatic stop losses and hedges by rule</li>
-          <li>Daily briefs and scheduled reviews</li>
-          <li>AI-augmented decisions with dated evidence</li>
+          <li>Stops and hedges by rule; how much runs on its own is set by policy</li>
+          <li>Daily briefs and scheduled reviews on the market's clock</li>
+          <li>Runs with Interactive Brokers today, built to outgrow one broker</li>
         </ul>
+        <p class="built">Built on <a href="torok/"><i class="dot" data-dot="amber"></i>Torok</a> <a href="canary/"><i class="dot" data-dot="green"></i>Canary</a> <a href="hyperserve/"><i class="dot" data-dot="blue"></i>HyperServe</a></p>
         <div class="actions">
           <a class="button primary" href="desk/">Read about Desk</a>
         </div>
+        <div class="preview"><img src="assets/desk-overview.webp" width="1600" height="1000" alt="The Desk console in simulation mode: a market ribbon with intraday charts, the Portfolio view with account figures and holdings, and the Ask Canary Desk panel" loading="lazy"></div>
       </article>
-      <article class="panel" data-accent="amber">
-        <p class="label">Private · Go agent harness</p>
-        <h2><img src="assets/torok-tile.svg" width="96" height="96" alt="">Torok</h2>
-        <p>An agent harness in plain Go that survives a restart.</p>
-        <ul class="points">
-          <li>Typed answers, committed progress</li>
-          <li>One budget for every child call</li>
-          <li>Waits for a human without a worker</li>
-        </ul>
-        <div class="actions">
-          <a class="button primary" href="torok/">Read about Torok</a>
-        </div>
-      </article>
-      <article class="panel" data-accent="blue">
-        <p class="label">Go HTTP server library · open source</p>
-        <h2>HyperServe</h2>
-        <p><code>net/http</code>, plus the parts you keep rewriting.</p>
-        <ul class="points">
-          <li>Typed binding, graceful shutdown</li>
-          <li>WebSocket, SSE, JSON-RPC</li>
-          <li>MCP server, opt-in</li>
-        </ul>
-        <div class="actions">
-          <a class="button primary" href="hyperserve/">Open HyperServe</a>
-          <a class="button" href="https://github.com/osauer/hyperserve"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub</a>
-        </div>
-      </article>
+      <div class="raster">
+        <article class="tile" data-accent="amber">
+          <p class="label">Private · Go agent harness</p>
+          <h2><img src="assets/torok-tile.svg" width="96" height="96" alt="">Torok</h2>
+          <p>An agent harness in plain Go that survives a restart. Typed answers, committed progress, one budget for every child call. Desk is one of its residents.</p>
+          <div class="actions">
+            <a class="quiet more" href="torok/">Read about Torok →</a>
+          </div>
+        </article>
+        <article class="tile" data-accent="green">
+          <p class="label">Open source · local broker desk</p>
+          <h2><img src="assets/canary-icon.png" width="192" height="192" alt="">Canary</h2>
+          <p>Your broker session, readable by Claude and the shell. Runs with Interactive Brokers today.</p>
+          <div class="actions">
+            <a class="quiet more" href="canary/">Open Canary →</a>
+            <a class="quiet" href="https://github.com/osauer/canary" aria-label="Canary on GitHub" title="Canary on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+          </div>
+        </article>
+        <article class="tile" data-accent="blue">
+          <p class="label">Open source · Go HTTP server library</p>
+          <h2>HyperServe</h2>
+          <p><code>net/http</code>, plus the parts you keep rewriting. Typed edges, graceful shutdown, MCP opt-in.</p>
+          <div class="actions">
+            <a class="quiet more" href="hyperserve/">Open HyperServe →</a>
+            <a class="quiet" href="https://github.com/osauer/hyperserve" aria-label="HyperServe on GitHub" title="HyperServe on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
+          </div>
+        </article>
+        <article class="tile" data-accent="violet">
+          <p class="label">Private · experimental</p>
+          <h2><img src="assets/tower-tile.svg" width="96" height="96" alt="">Tower <span class="badge">Experimental</span></h2>
+          <p>A control panel over the Claude Code sessions that build the rest. One page of asks and decisions; a pick reaches the session that owns the work.</p>
+          <div class="actions">
+            <a class="quiet more" href="tower/">Read about Tower →</a>
+          </div>
+        </article>
+      </div>
     </section>
   </main>
-  <footer class="wrap site-footer">Oliver Sauer. Independent projects; no affiliation implied with referenced vendors.</footer>
+  <footer class="wrap site-footer">Oliver Sauer. Personal projects, built and run on personal time; not connected to an employer. No affiliation implied with referenced vendors. Nothing on this site is investment advice.</footer>
+  <script type="module" src="assets/canary.js"></script>
 </body>
 </html>

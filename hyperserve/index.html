@@ -19,12 +19,13 @@
   <header class="wrap site-header">
     <a class="brand" href="../">osauer.dev</a>
     <nav class="site-nav" aria-label="Site">
-      <a href="../canary/">Canary</a>
       <a href="../desk/">Desk</a>
       <a href="../torok/">Torok</a>
+      <a href="../canary/">Canary</a>
       <a href="./" aria-current="page">HyperServe</a>
+      <a href="../tower/">Tower</a>
       <a href="https://github.com/osauer/hyperserve"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub</a>
-      <a href="https://pkg.go.dev/github.com/osauer/hyperserve">Go reference</a>
+      <a href="https://pkg.go.dev/github.com/osauer/hyperserve/v2">Go reference</a>
     </nav>
   </header>
   <main>
@@ -32,31 +33,39 @@
       <div>
         <p class="eyebrow">Go HTTP server library</p>
         <h1>A net/http-shaped Go server library with optional MCP.</h1>
-        <p class="lead">HyperServe began as the Go API server I wanted to own. It keeps ordinary <code>net/http</code> handlers and collects lifecycle, typed boundaries, security, observability, WebSocket, and optional MCP in one module. Its in-tree protocols mean fewer packages to assemble and more protocol code maintained here.</p>
+        <p class="lead">HyperServe is the Go API server to own outright. It keeps ordinary <code>net/http</code> handlers and collects lifecycle, typed boundaries, security, observability, WebSocket and optional MCP in one module. In-tree protocols mean fewer packages to assemble and one place to maintain them.</p>
+        <p class="personal"><strong>Personal work, on personal time.</strong> HyperServe is not connected to an employer. MIT licensed.</p>
         <div class="actions">
           <a class="button primary" href="https://github.com/osauer/hyperserve"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>View on GitHub</a>
-          <a class="button" href="https://pkg.go.dev/github.com/osauer/hyperserve/pkg/server">API reference</a>
+          <a class="button" href="https://pkg.go.dev/github.com/osauer/hyperserve/v2">API reference</a>
         </div>
       </div>
       <pre><code><span class="k">import</span> (
+    <span class="s">"context"</span>
     <span class="s">"fmt"</span>
     <span class="s">"log"</span>
     <span class="s">"net/http"</span>
+    <span class="s">"os"</span>
+    <span class="s">"os/signal"</span>
+    <span class="s">"syscall"</span>
 
-    server <span class="s">"github.com/osauer/hyperserve/pkg/server"</span>
+    <span class="s">"github.com/osauer/hyperserve/v2"</span>
 )
 
 <span class="k">func</span> main() {
-    srv, err := <span class="t">server</span>.<span class="t">NewServer</span>()
+    ctx, stop := <span class="t">signal</span>.<span class="t">NotifyContext</span>(<span class="t">context</span>.<span class="t">Background</span>(), <span class="t">os</span>.<span class="t">Interrupt</span>, <span class="t">syscall</span>.<span class="t">SIGTERM</span>)
+    <span class="k">defer</span> stop()
+
+    app, err := <span class="t">hyperserve</span>.<span class="t">New</span>()
     <span class="k">if</span> err != <span class="k">nil</span> {
         <span class="t">log</span>.<span class="t">Fatal</span>(err)
     }
 
-    <span class="t">srv</span>.<span class="t">GET</span>(<span class="s">"/"</span>, <span class="k">func</span>(w <span class="t">http</span>.<span class="t">ResponseWriter</span>, r *<span class="t">http</span>.<span class="t">Request</span>) {
-        <span class="t">fmt</span>.<span class="t">Fprintln</span>(w, <span class="s">"Hello, World!"</span>)
+    <span class="t">app</span>.<span class="t">HandleFunc</span>(<span class="s">"GET /hello/{name}"</span>, <span class="k">func</span>(w <span class="t">http</span>.<span class="t">ResponseWriter</span>, r *<span class="t">http</span>.<span class="t">Request</span>) {
+        <span class="t">fmt</span>.<span class="t">Fprintf</span>(w, <span class="s">"Hello, %s!\n"</span>, r.<span class="t">PathValue</span>(<span class="s">"name"</span>))
     })
 
-    <span class="k">if</span> err := <span class="t">srv</span>.<span class="t">Run</span>(); err != <span class="k">nil</span> {
+    <span class="k">if</span> err := <span class="t">app</span>.<span class="t">Run</span>(ctx); err != <span class="k">nil</span> {
         <span class="t">log</span>.<span class="t">Fatal</span>(err)
     }
 }</code></pre>
@@ -94,10 +103,10 @@
     <section class="block">
       <div class="wrap">
         <h2>Install</h2>
-        <pre><code>go get github.com/osauer/hyperserve@latest</code></pre>
+        <pre><code>go get github.com/osauer/hyperserve/v2@latest</code></pre>
       </div>
     </section>
   </main>
-  <footer class="wrap site-footer">MIT licensed. See the repository for architecture notes, examples, and production guidance.</footer>
+  <footer class="wrap site-footer">Oliver Sauer. Personal project, built on personal time; not connected to an employer. MIT licensed. See the repository for architecture notes, examples and production guidance.</footer>
 </body>
 </html>

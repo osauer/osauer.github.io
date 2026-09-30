@@ -11,7 +11,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const outDir = path.join(root, "assets");
-const modules = ["desk-system", "torok-architecture"];
+const modules = ["desk-system", "torok-architecture", "tower-flow"];
 const check = process.argv.includes("--check");
 let failed = false;
 

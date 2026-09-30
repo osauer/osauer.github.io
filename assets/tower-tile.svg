@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Tower">
+  <title>Tower</title>
+  <desc>The Tower mark: a control tower cut in paper from an ink square, its cab lit in violet, three beams fanning out from the top.</desc>
+  <path fill="#101827" d="M22 4L74 4A18 18 0 0 1 92 22L92 74A18 18 0 0 1 74 92L22 92A18 18 0 0 1 4 74L4 22A18 18 0 0 1 22 4ZM40 50L38 78L58 78L56 50L40 50ZM30 36L30 46L66 46L66 36L60 32L36 32L30 36ZM46 22L50 22L50 30L46 30L46 22Z"/>
+  <path fill="#6d4fc2" d="M34 37L62 37L62 43L34 43Z"/>
+  <path fill="none" stroke="#6d4fc2" stroke-width="2.4" stroke-linecap="round" d="M48 16L48 10M40 18L36 13M56 18L60 13"/>
+  <path fill="#f7f5ef" d="M44 80L52 80L52 92L44 92Z"/>
+</svg>

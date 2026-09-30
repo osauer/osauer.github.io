@@ -23,10 +23,11 @@
   <header class="wrap site-header">
     <a class="brand" href="../">osauer.dev</a>
     <nav class="site-nav" aria-label="Site">
-      <a href="../canary/">Canary</a>
       <a href="../desk/">Desk</a>
       <a href="./" aria-current="page">Torok</a>
+      <a href="../canary/">Canary</a>
       <a href="../hyperserve/">HyperServe</a>
+      <a href="../tower/">Tower</a>
       <a href="https://www.linkedin.com/in/osauer/">LinkedIn</a>
     </nav>
   </header>
@@ -38,6 +39,7 @@
         <h1>An agent harness in plain Go that survives a restart.</h1>
         <p class="pronounce"><span lang="hu">török</span> <span class="ipa">/ˈtørøk/</span> · Hungarian for Turk. Named after Kempelen's chess automaton, the machine that played well because a person sat inside. Torok keeps the person in the loop on purpose.</p>
         <p class="lead">Torok runs the tool loop, checks the typed answer and commits progress, so a run resumes after a person answers or the process comes back. You bring a model and ordinary Go functions. Desk runs on it.</p>
+        <p class="personal"><strong>Personal work, on personal time.</strong> Torok is not connected to an employer.</p>
         <div class="actions">
           <a class="button primary" href="#architecture">Runtime architecture</a>
           <a class="button" href="#checked">How it is checked</a>
@@ -162,12 +164,12 @@ answer, err := <span class="t">analyst</span>.<span class="t">RunAs</span>[<span
       <div class="wrap contact">
         <div>
           <h2>About</h2>
-          <p>Torok is the harness under Desk, which reviews an Interactive Brokers book on the market's clock and asks its owner only the questions that need a person. Private, experimental API, Go 1.27, three direct dependencies: SQLite, JSON Schema, a PDF reader. If you want to argue about what "accepted" should mean, get in touch.</p>
+          <p>Torok is the harness under Desk, which reviews a brokerage book on the market's clock and asks its owner only the questions that need a person. Private, experimental API, Go 1.27, three direct dependencies: SQLite, JSON Schema, a PDF reader. If you want to argue about what "accepted" should mean, get in touch.</p>
         </div>
         <p class="links"><a class="quiet" href="https://www.linkedin.com/in/osauer/">Message on LinkedIn ↗</a><a class="quiet" href="https://github.com/osauer">GitHub ↗</a></p>
       </div>
     </section>
   </main>
-  <footer class="wrap site-footer">Oliver Sauer. Independent project; no affiliation implied with referenced vendors.</footer>
+  <footer class="wrap site-footer">Oliver Sauer. Personal project, built on personal time; not connected to an employer. No affiliation implied with referenced vendors.</footer>
 </body>
 </html>

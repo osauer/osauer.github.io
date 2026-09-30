@@ -23,7 +23,7 @@ fs.mkdirSync(out, { recursive: true });
 const profile = fs.mkdtempSync(path.join(os.tmpdir(), "desk-capture-"));
 const chrome = spawn("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", [
   "--headless=new", "--remote-debugging-port=9333", `--user-data-dir=${profile}`,
-  "--no-first-run", "--no-default-browser-check", "--hide-scrollbars", "--window-size=1440,900", "about:blank",
+  "--no-first-run", "--no-default-browser-check", "--hide-scrollbars", "--window-size=1600,1000", "about:blank",
 ], { stdio: "ignore" });
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 let version;
@@ -67,7 +67,7 @@ async function run({ tag, width, height, scale, mobile, dark }) {
   }
 }
 try {
-  await run({ tag: "desk", width: 1440, height: 900, scale: 2, mobile: false, dark: false });
+  await run({ tag: "desk", width: 1600, height: 1000, scale: 2, mobile: false, dark: false });
   await run({ tag: "phone", width: 390, height: 844, scale: 3, mobile: true, dark: false });
 } finally {
   ws.close();
