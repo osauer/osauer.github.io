@@ -4,7 +4,7 @@ Updated: 2026-09-30
 
 This is the project site for Oliver Sauer.
 
-This is the independent project site of Oliver Sauer, a software engineer. Everything on it is his own work, built in his own time and unaffiliated with any employer or with the vendors named on the pages. The audience is traders, family offices and small desks who might use Canary Desk, and engineers and hiring managers who want to see how it is built. Public projects are open source; the private ones are described in full. Nothing on the site is investment advice.
+This is the private project site of Oliver Sauer. Everything on it is his own work, unaffiliated with any employer or with the vendors named on the pages. The audience is traders, family offices and small desks who might use Canary Desk, and engineers and hiring managers who want to see how it is built. Public projects are open source; the private ones are described in full. Nothing on the site is investment advice.
 
 ## Projects
 
