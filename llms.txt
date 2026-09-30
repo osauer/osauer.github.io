@@ -5,14 +5,18 @@ Updated: 2026-09-30
 This is Oliver Sauer’s personal work in generative AI,
 trading and Go systems. Nothing here is investment advice.
 
-- [Desk](https://osauer.dev/desk/): A personal investment workspace for portfolio
-  review, market briefings and an AI analyst. A small private preview is arranged
-  directly with Oliver on LinkedIn. It is not a commercial service. Screens use
-  synthetic simulation data; no investment performance is claimed.
-- [Canary CLI](https://osauer.dev/canary/): Desk's open-source broker and risk
-  foundation, with a native Go implementation of the Interactive Brokers TWS
-  protocol, a command line, read-only MCP tools and a paired app. Standard
-  downloads have no order-entry path. Agents cannot authorize broker writes.
+- [Canary Desk](https://osauer.dev/desk/): A private trading workspace. It briefs
+  the owner before the open, offers an AI analyst through the day, protects the
+  portfolio by rule and sweeps idle cash into short-dated government bills in the
+  same currency. Orders go out when the owner confirms them, or on their own for
+  rule buckets the owner has pre-authorised: reduce-only protection or bill
+  purchases, under a size cap, after a veto window. A small private preview is
+  arranged directly with Oliver on LinkedIn. It is not a commercial service.
+  Screens use synthetic simulation data; no investment performance is claimed.
+- [Canary CLI](https://osauer.dev/canary/): Canary Desk's open-source engine: the
+  broker connection, the risk rules and the orders they propose. A native Go
+  implementation of the Interactive Brokers TWS protocol, a command line, MCP
+  tools for AI assistants and a paired app. The broker layer is its own package.
 - [Torok](https://osauer.dev/torok/): The private Go runtime behind Desk's agent
   workflows, with saved progress, schedules, budgets and recovery.
 - [HyperServe](https://osauer.dev/hyperserve/): An open-source Go HTTP server
