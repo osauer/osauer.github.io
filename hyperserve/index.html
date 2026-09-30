@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>HyperServe | Oliver Sauer</title>
-  <meta name="description" content="A Go server library built around familiar net/http handlers. Typed input, middleware, graceful shutdown, WebSocket and optional MCP, in an MIT-licensed module.">
+  <meta name="description" content="An open-source Go server library built on net/http. It keeps standard handlers and adds middleware, typed input, readiness and graceful shutdown.">
   <link rel="canonical" href="https://osauer.dev/hyperserve/">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="preload" href="../assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -14,7 +14,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://osauer.dev/hyperserve/">
   <meta property="og:title" content="HyperServe | Oliver Sauer">
-  <meta property="og:description" content="A Go server library built around familiar net/http handlers. Typed input, middleware, graceful shutdown, WebSocket and optional MCP, in an MIT-licensed module.">
+  <meta property="og:description" content="An open-source Go server library built on net/http. It keeps standard handlers and adds middleware, typed input, readiness and graceful shutdown.">
   <meta property="og:image" content="https://osauer.dev/assets/desk-overview-social.jpg">
   <meta property="og:image:alt" content="Desk portfolio workspace, using synthetic demonstration data">
   <meta name="twitter:card" content="summary_large_image">
@@ -32,7 +32,7 @@
   <main id="main" tabindex="-1" class="wrap note-page">
     <section class="hero" aria-labelledby="title">
       <p class="kicker">Open source · Go</p><h1 id="title">HyperServe</h1>
-      <div class="note-body"><p>A Go server library built around familiar net/http handlers. Typed input, middleware, graceful shutdown, WebSocket and optional MCP, in an MIT-licensed module.</p><p>I use it to serve Canary Desk’s local workspace. The code, examples and API reference are public.</p><div class="actions"><a class="text-link gh-link" href="https://github.com/osauer/hyperserve"><svg class="gh" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>View on GitHub<span class="arrow" aria-hidden="true">↗</span></a><a class="text-link" href="https://pkg.go.dev/github.com/osauer/hyperserve/v2">API reference<span class="arrow" aria-hidden="true">↗</span></a></div></div>
+      <div class="note-body"><p>A Go server library built on net/http. You keep your standard handlers and routes. HyperServe adds middleware, typed input, readiness and graceful shutdown, with Server-Sent Events, WebSocket and MCP when you need them.</p><p>Canary Desk and Canary CLI both run their HTTP servers on it. It is MIT-licensed, with one dependency outside the standard library. If your service only needs routes and JSON, plain net/http is usually the better choice.</p><div class="actions"><a class="text-link gh-link" href="https://github.com/osauer/hyperserve"><svg class="gh" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>View on GitHub<span class="arrow" aria-hidden="true">↗</span></a><a class="text-link" href="https://pkg.go.dev/github.com/osauer/hyperserve/v2">API reference<span class="arrow" aria-hidden="true">↗</span></a></div></div>
 
     </section>
   </main>
@@ -47,7 +47,7 @@
         <a class="li-link external" href="https://www.linkedin.com/in/osauer/"><svg class="li" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
       </nav>
     </div>
-    <div class="footer-bottom"><p>A personal project, unaffiliated with any employer. No investment advice.</p><span>osauer.dev</span></div>
+    <div class="footer-bottom"><p>Personal projects, unaffiliated with any employer. No investment advice.</p><span>osauer.dev</span></div>
   </footer>
 </body>
 </html>
