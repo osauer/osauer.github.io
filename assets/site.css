@@ -25,6 +25,8 @@ h1,h2,h3{margin:0;font-weight:400}
 .site-nav a:hover,.site-nav a[aria-current=page]{text-decoration:underline}
 body.home .nav-work{display:none}
 .external::after{content:'↗';margin-left:7px}
+.gh{flex:none;margin-right:7px;vertical-align:-3px}
+.text-link .gh{margin-right:-8px}
 .kicker{font-size:12px;line-height:1.4;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--muted)}
 .hero{padding-block:64px 65px}
 .home-intro,.project-intro{display:grid;grid-template-columns:1.3fr 1fr;gap:70px;align-items:end}
