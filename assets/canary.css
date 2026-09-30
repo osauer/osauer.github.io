@@ -26,7 +26,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 .canary-perch svg { display: block; width: 100%; height: 100%; overflow: visible; }
-.canary-perch:focus-visible { outline: 2px solid var(--blue, #255fb8); outline-offset: 4px; border-radius: 12px; }
+.canary-perch:focus-visible { outline: 2px solid var(--blue, #0F5499); outline-offset: 4px; border-radius: 12px; }
 .canary-badge {
   position: absolute;
   top: 2px;
@@ -35,7 +35,7 @@
   height: 22px;
   padding: 0 6px;
   border-radius: 11px;
-  background: var(--blue, #255fb8);
+  background: var(--blue, #0F5499);
   color: #fff;
   font: 750 12px/22px Inter, ui-sans-serif, system-ui, sans-serif;
   text-align: center;
@@ -45,7 +45,7 @@
   transition: transform 0.25s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.2s;
 }
 .canary-badge[data-on="1"] { transform: scale(1); opacity: 1; }
-.canary-badge[data-orange="1"] { background: #e07a10; }
+.canary-badge[data-orange="1"] { background: #FF8833; }
 
 /* The capsule: two lines on the left, the tools on the right. */
 .canary-speech {
@@ -57,11 +57,11 @@
   padding: 9px 12px 9px 18px;
   border: 1px solid rgba(16, 24, 39, 0.1);
   border-radius: 24px;
-  background: rgba(255, 253, 247, 0.82);
+  background: rgba(255, 241, 229, 0.86);
   backdrop-filter: blur(16px) saturate(1.4);
   -webkit-backdrop-filter: blur(16px) saturate(1.4);
   box-shadow: 0 10px 30px rgba(16, 24, 39, 0.14), inset 0 0 0 1px rgba(255, 255, 255, 0.65);
-  color: var(--ink, #101827);
+  color: var(--ink, #33302E);
   opacity: 0;
   transform: translateX(8px) scale(0.98);
   transform-origin: 100% 50%;
@@ -82,7 +82,7 @@
   align-items: center;
   gap: 7px;
   margin: 0;
-  color: var(--ink-soft, #26364d);
+  color: var(--ink-soft, #4D4640);
   font-size: 13.5px;
   line-height: 22px;
   white-space: nowrap;
@@ -90,15 +90,15 @@
   text-overflow: ellipsis;
 }
 .canary-speech .ticker .page span { overflow: hidden; text-overflow: ellipsis; }
-.canary-speech .kind, .canary-brief .kind { flex: none; width: 17px; height: 17px; color: var(--muted, #42526a); }
-.canary-speech .kind[data-kind="order"], .canary-brief .kind[data-kind="order"] { color: #e07a10; }
-.canary-speech .kind[data-kind="brief"], .canary-brief .kind[data-kind="brief"] { color: var(--blue, #255fb8); }
-.canary-speech .kind[data-kind="issue"], .canary-brief .kind[data-kind="issue"] { color: #b42318; }
-.canary-speech .kind[data-kind="question"], .canary-brief .kind[data-kind="question"] { color: #6d4fc2; }
+.canary-speech .kind, .canary-brief .kind { flex: none; width: 17px; height: 17px; color: var(--muted, #6B635C); }
+.canary-speech .kind[data-kind="order"], .canary-brief .kind[data-kind="order"] { color: #FF8833; }
+.canary-speech .kind[data-kind="brief"], .canary-brief .kind[data-kind="brief"] { color: var(--blue, #0F5499); }
+.canary-speech .kind[data-kind="issue"], .canary-brief .kind[data-kind="issue"] { color: #CC0000; }
+.canary-speech .kind[data-kind="question"], .canary-brief .kind[data-kind="question"] { color: #593380; }
 .canary-speech .kind svg, .canary-brief .kind svg { display: block; width: 100%; height: 100%; }
 .canary-speech .dots { display: flex; flex: none; gap: 5px; margin: 0; padding: 0; list-style: none; }
 .canary-speech .dots li { width: 5px; height: 5px; border-radius: 50%; background: rgba(16, 24, 39, 0.22); }
-.canary-speech .dots li[aria-current="true"] { background: var(--ink, #101827); }
+.canary-speech .dots li[aria-current="true"] { background: var(--ink, #33302E); }
 .canary-speech .tools { display: flex; flex: none; align-items: center; gap: 4px; }
 .canary-speech .tool {
   position: relative;
@@ -110,15 +110,15 @@
   border: 0;
   border-radius: 50%;
   background: none;
-  color: var(--ink-soft, #26364d);
+  color: var(--ink-soft, #4D4640);
   font: 700 18px/1 Inter, ui-sans-serif, system-ui, sans-serif;
   text-decoration: none;
   cursor: pointer;
 }
 .canary-speech .tool svg { width: 20px; height: 20px; }
-.canary-speech .tool:hover { background: rgba(16, 24, 39, 0.08); color: var(--ink, #101827); }
-.canary-speech .tool.brief { color: var(--blue, #255fb8); }
-.canary-speech .tool.brief .unread { position: absolute; top: 5px; right: 5px; width: 7px; height: 7px; border-radius: 50%; background: var(--blue, #255fb8); opacity: 0; transition: opacity 0.2s; }
+.canary-speech .tool:hover { background: rgba(16, 24, 39, 0.08); color: var(--ink, #33302E); }
+.canary-speech .tool.brief { color: var(--blue, #0F5499); }
+.canary-speech .tool.brief .unread { position: absolute; top: 5px; right: 5px; width: 7px; height: 7px; border-radius: 50%; background: var(--blue, #0F5499); opacity: 0; transition: opacity 0.2s; }
 .canary-speech .tool.brief[data-unread="1"] .unread { opacity: 1; }
 .canary-speech .tool.review .count {
   position: absolute;
@@ -128,7 +128,7 @@
   height: 18px;
   padding: 0 5px;
   border-radius: 9px;
-  background: var(--blue, #255fb8);
+  background: var(--blue, #0F5499);
   color: #fff;
   font: 750 11px/18px Inter, ui-sans-serif, system-ui, sans-serif;
   text-align: center;
@@ -137,9 +137,9 @@
   transition: transform 0.2s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.15s;
 }
 .canary-speech .tool.review .count[data-on="1"] { opacity: 1; transform: none; }
-.canary-speech .tool.review .count[data-orange="1"] { background: #e07a10; }
-.canary-speech .tool.close { color: var(--muted, #42526a); }
-.canary-note { margin: 5px 6px 0 0; color: var(--muted, #42526a); font-size: 10.5px; letter-spacing: 0.02em; opacity: 0; transition: opacity 0.2s; }
+.canary-speech .tool.review .count[data-orange="1"] { background: #FF8833; }
+.canary-speech .tool.close { color: var(--muted, #6B635C); }
+.canary-note { margin: 5px 6px 0 0; color: var(--muted, #6B635C); font-size: 10.5px; letter-spacing: 0.02em; opacity: 0; transition: opacity 0.2s; }
 .canary-speech[data-open="1"] + .canary-note { opacity: 1; }
 
 /* The cards: the brief, and what waits for you. */
@@ -152,19 +152,19 @@
   max-height: min(72vh, 600px);
   overflow: auto;
   padding: 18px 20px 16px;
-  border: 1px solid var(--line, #d8d2c4);
+  border: 1px solid var(--line, #E4D5C6);
   border-radius: 16px;
-  background: var(--paper-strong, #fffdf7);
+  background: var(--paper-strong, #FFF1E5);
   box-shadow: 0 22px 60px rgba(16, 24, 39, 0.22);
-  color: var(--ink, #101827);
+  color: var(--ink, #33302E);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 14.5px;
   line-height: 1.5;
 }
 .canary-brief[hidden] { display: none; }
-.canary-brief .eyebrow-line { margin: 0 0 4px; color: var(--muted, #42526a); font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+.canary-brief .eyebrow-line { margin: 0 0 4px; color: var(--muted, #6B635C); font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
 .canary-brief h3 { margin: 0 0 2px; font-size: 19px; line-height: 1.2; }
-.canary-brief .when { margin: 0 0 8px; color: var(--muted, #42526a); font-size: 13px; }
+.canary-brief .when { margin: 0 0 8px; color: var(--muted, #6B635C); font-size: 13px; }
 .canary-brief h4 {
   display: flex;
   align-items: center;
@@ -174,25 +174,25 @@
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--ink-soft, #26364d);
+  color: var(--ink-soft, #4D4640);
 }
-.canary-brief h4::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--muted, #42526a); }
-.canary-brief h4[data-tone="blue"]::before { background: var(--blue, #255fb8); }
+.canary-brief h4::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--muted, #6B635C); }
+.canary-brief h4[data-tone="blue"]::before { background: var(--blue, #0F5499); }
 .canary-brief h4[data-tone="ink"]::before { background: var(--terminal, #0e1626); }
 .canary-brief h4[data-tone="amber"]::before { background: var(--amber, #b45309); }
 .canary-brief h4[data-tone="slate"]::before { background: #6b7a90; }
-.canary-brief h4[data-tone="orange"]::before { background: #e07a10; }
-.canary-brief p { margin: 0; color: var(--ink-soft, #26364d); }
-.canary-brief .pos { color: var(--green-dark, #055f52); font-weight: 650; font-variant-numeric: tabular-nums; }
-.canary-brief .neg { color: #b42318; font-weight: 650; font-variant-numeric: tabular-nums; }
-.canary-brief .pill { display: inline-block; padding: 0 8px; border-radius: 999px; font-size: 12px; font-weight: 750; line-height: 20px; vertical-align: 1px; background: #f4ecd8; color: var(--amber-dark, #8f4207); }
-.canary-brief .pill[data-state="new"] { background: #dff2ea; color: var(--green-dark, #055f52); }
+.canary-brief h4[data-tone="orange"]::before { background: #FF8833; }
+.canary-brief p { margin: 0; color: var(--ink-soft, #4D4640); }
+.canary-brief .pos { color: var(--green-dark, #00994D); font-weight: 650; font-variant-numeric: tabular-nums; }
+.canary-brief .neg { color: #CC0000; font-weight: 650; font-variant-numeric: tabular-nums; }
+.canary-brief .pill { display: inline-block; padding: 0 8px; border-radius: 999px; font-size: 12px; font-weight: 750; line-height: 20px; vertical-align: 1px; background: #F2DFCE; color: var(--amber-dark, #990F3D); }
+.canary-brief .pill[data-state="new"] { background: #DDEFE3; color: var(--green-dark, #00994D); }
 .canary-brief .items { margin: 10px 0 0; padding: 0; list-style: none; }
-.canary-brief .items li { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid var(--line, #d8d2c4); }
+.canary-brief .items li { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid var(--line, #E4D5C6); }
 .canary-brief .items li:first-child { border-top: 0; }
-.canary-brief .close { position: absolute; top: 10px; right: 12px; width: 26px; height: 26px; border: 0; border-radius: 50%; background: none; color: var(--muted, #42526a); font: 700 16px/26px Inter, sans-serif; cursor: pointer; }
-.canary-brief .close:hover { background: rgba(16, 24, 39, 0.08); color: var(--ink, #101827); }
-.canary-brief .demo { margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--line, #d8d2c4); color: var(--muted, #42526a); font-size: 12px; }
+.canary-brief .close { position: absolute; top: 10px; right: 12px; width: 26px; height: 26px; border: 0; border-radius: 50%; background: none; color: var(--muted, #6B635C); font: 700 16px/26px Inter, sans-serif; cursor: pointer; }
+.canary-brief .close:hover { background: rgba(16, 24, 39, 0.08); color: var(--ink, #33302E); }
+.canary-brief .demo { margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--line, #E4D5C6); color: var(--muted, #6B635C); font-size: 12px; }
 
 @media (max-width: 760px) {
   .canary-companion, .canary-brief { display: none; }

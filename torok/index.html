@@ -31,7 +31,14 @@
   <main id="main" tabindex="-1" class="wrap note-page">
     <section class="hero" aria-labelledby="title">
       <p class="kicker">Private · Agent runtime</p><h1 id="title">Torok</h1>
-      <div class="note-body"><p>The Go runtime behind Desk’s agent workflows. It runs tools, checks typed answers and saves progress so work can continue after a restart or a human review.</p><p>Schedules, memory, budgets and recovery live here. Torok is my exploration of how to give generative AI useful continuity while keeping its work inspectable.</p><div class="actions"><a class="text-link" href="../desk/">See Desk<span class="arrow" aria-hidden="true">↗</span></a><a class="text-link" href="https://www.linkedin.com/in/osauer/">Discuss Torok<span class="arrow" aria-hidden="true">↗</span></a></div></div>
+      <div class="note-body"><p>The Go runtime behind Desk’s agent workflows. It runs tools, checks typed answers and saves progress so work can continue after a restart or a human review.</p><p>Schedules, memory, budgets and recovery live here. Torok is my exploration of how to give generative AI useful continuity while keeping its work inspectable.</p><div class="actions"><a class="text-link" href="../desk/">See Desk<span class="arrow" aria-hidden="true">→</span></a><a class="text-link" href="https://www.linkedin.com/in/osauer/">Discuss Torok<span class="arrow" aria-hidden="true">↗</span></a></div></div>
+      <ul class="checks" aria-label="How Torok is checked">
+        <li class="checks-title">Checked rather than promised</li>
+        <li><b>Race tests</b> cover storage, sessions, typed repair, shared child limits, nested concurrency, approvals, ambiguous commits and event replay.</li>
+        <li><b>Child-process tests</b> kill the process after a real effect and before its receipt is saved, then require reconciliation without repeating the effect.</li>
+        <li><b>A Lean 4 model</b> of the acceptance boundary proves that a result is accepted only with an explained, passing check for every declared criterion. CI runs it, and checks that removing the guard makes the proof fail.</li>
+        <li><b>Model quality is a separate question.</b> Scripted fixtures prove execution; what a live model does with the same tools needs real tasks, a budget and a human grader.</li>
+      </ul>
       <div class="runtime-flow" role="img" aria-label="Torok workflow: incoming work, agent and tools, saved progress, then human review"><span>Incoming work</span><span aria-hidden="true">→</span><b>Agent + tools</b><span aria-hidden="true">→</span><span>Saved progress</span><span aria-hidden="true">→</span><span>Human review</span></div>
     </section>
   </main>

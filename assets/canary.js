@@ -433,7 +433,7 @@ export class Canary {
     this.stare([[0, 0], [0.18, 0], [0.28, 1.15], [0.36, 1], [1.15, 1], [1.3, 0]]);
     this.look([[0, 0, 0], [1.3, 0, 0]]);
     this.beak([[0, 0, 0], [0.14, 0, 0], [0.24, 0.62, 0.2], [0.28, 0.42, 0.13], [0.31, 0.64, 0.2], [0.37, 0.4, 0.13], [0.42, 0.64, 0.2], [0.46, 0.44, 0.14], [0.49, 0.66, 0.21], [0.57, 0.5, 0.16], [0.7, 0.08, 0.02], [0.78, 0, 0]]);
-    this.mark("!", "#e07a10", this.spot(300, 70), 0.16, 1.0);
+    this.mark("!", "#FF8833", this.spot(300, 70), 0.16, 1.0);
     this.sing(this.spot(440, 150), 0.26); this.sing(this.spot(440, 150), 0.44, true);
     if (Math.random() < 0.35) this.moult(this.spot(200, 250), 0.26);
     return { speech: 1.5 };
@@ -455,7 +455,7 @@ export class Canary {
     this.act(this.L.lean, "rot", [[0, 0], [0.35, -0.2], [1.6, -0.2], [1.8, -0.26], [2.3, -0.26], [2.6, 0]]);
     this.look([[0, 0, 0], [0.3, 0.3, -1.1], [2.3, 0.3, -1.1], [2.6, 0, 0]]);
     this.act(this.L.lid, "sy", [[0, o], [1.0, o], [1.07, 0.1], [1.17, o], [1.3, o], [1.37, 0.1], [1.47, o]]);
-    this.mark("?", "#255fb8", this.spot(270, 66), 1.2, 2.3);
+    this.mark("?", "#0D7680", this.spot(270, 66), 1.2, 2.3);
   }
   // Glances over its shoulder, turns back, then whips round again, eyes wide.
   doubleTake() {
@@ -490,7 +490,7 @@ export class Canary {
     this.fluff([[0, 0], [jolt, 0], [jolt + 0.05, 1.1], [jolt + 0.3, 0], [end, 0]]);
     this.stare([[0, 0], [jolt, 0], [jolt + 0.06, 1.1], [4.9, 1], [end, 0]]);
     this.look([[0, 0, 0], [jolt + 0.2, 0, 0], [jolt + 0.4, 0.7, 0], [jolt + 0.7, -0.6, -0.1], [jolt + 1.0, 0, 0], [end, 0, 0]]);
-    this.float("z", "#42526a", this.spot(340, 110), 2.5, jolt);
+    this.float("z", "#6B635C", this.spot(340, 110), 2.5, jolt);
   }
   // Turns its head to look at the reader: the eye slides to the near side of the
   // face, the far eye appears and the beak points down between them.

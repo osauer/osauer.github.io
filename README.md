@@ -15,12 +15,12 @@ Before public website edits, verify each publisher with
 
 ```sh
 node tools/check-site-links.mjs
-node tools/render-diagrams.mjs --check
 ```
 
 Review the pages in a browser at desktop and phone widths. Browser artefacts in
 `output/` and `.playwright-cli/` are local and ignored. The public pages are static
-HTML/CSS, with no client JavaScript or third-party font requests. Instrument Sans
+HTML/CSS with no third-party requests; the only script is the companion bird on
+the Desk page (`assets/canary.js`, no dependencies, hidden under 761px). Instrument Sans
 and Instrument Serif are self-hosted; their SIL OFL licences are in `assets/fonts/`.
 
 ## Screens
@@ -34,7 +34,14 @@ scripted replies. Never capture a live account for this site. To recapture:
 node tools/capture-desk-screenshots.mjs assets http://127.0.0.1:8891/
 ```
 
-Desktop captures are 1600×1000 at 2×. The helper also captures other views and
-phone width for local review; their assets are not displayed in the marketing
-pages. The older diagrams and companion assets remain available but are not
-part of the current presentation.
+Desktop captures are 1600×1000 at 2×; the phone capture (390×844 at 3×) is
+served below 760px through a `<picture>` element. The Tower note shows
+`assets/tower-panel.webp`, rendered from the private Tower checkout's test
+harness with synthetic sessions only.
+
+## The companion bird
+
+`assets/canary.js` and `assets/canary.css` draw the Desk companion's canary,
+ported from the native app, and play a scripted day with demo messages and a
+demo brief on the Desk page. Palette follows the Financial Times visual code
+used by `site.css`.
