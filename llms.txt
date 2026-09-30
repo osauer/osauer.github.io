@@ -2,7 +2,7 @@
 
 Updated: 2026-09-30
 
-Oliver Sauer is builder of personal software projects. This is his personal work in generative AI,
+This is Oliver Sauer’s personal work in generative AI,
 trading and Go systems. Nothing here is investment advice.
 
 - [Desk](https://osauer.dev/desk/): A personal investment workspace for portfolio
