@@ -629,8 +629,8 @@ const DAY = [
   { at: 132, mood: "calm", waiting: [["status", "Good morning · watching the book"]] },
 ];
 const TITLES = {
-  calm: "Desk is watching the book", busy: "Desk is working", approval: "1 order awaits your authorisation",
-  waiting: "A question for you", alert: "Risk: watch", resting: "Desk is paused", away: "Desk cannot be seen",
+  calm: "Canary Desk is watching the book", busy: "Canary Desk is working", approval: "1 order awaits your authorisation",
+  waiting: "A question for you", alert: "Risk: watch", resting: "Canary Desk is paused", away: "Canary Desk cannot be seen",
 };
 
 class Companion {

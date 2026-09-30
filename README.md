@@ -21,7 +21,7 @@ Review the pages in a browser at desktop and phone widths. Browser artefacts in
 `output/` and `.playwright-cli/` are local and ignored. The public pages are static
 HTML/CSS with no third-party requests; the only script is the companion bird on
 the Desk page (`assets/canary.js`, no dependencies, hidden under 761px). Instrument Sans
-and Instrument Serif are self-hosted; their SIL OFL licences are in `assets/fonts/`.
+and Instrument Serif are self-hosted as WOFF2 subsets from Google Fonts; their SIL OFL licences are in `assets/fonts/`.
 
 ## Screens
 
