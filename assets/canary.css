@@ -1,9 +1,11 @@
 /* The Canary companion on osauer.dev: the Desk companion's bird, drawn in
    SVG and animated by assets/canary.js, with its speech capsule beside it,
    laid out like the native one. It plays a scripted day on a synthetic book;
-   nothing here is live. */
+   nothing here is live. It sits in the page's top band and scrolls away with
+   the header: the gutter beside the content column is too narrow for a fixed
+   bird and capsule, which covered the text below. */
 .canary-companion {
-  position: fixed;
+  position: absolute;
   top: 64px;
   right: 22px;
   z-index: 40;
@@ -144,7 +146,7 @@
 
 /* The cards: the brief, and what waits for you. */
 .canary-brief {
-  position: fixed;
+  position: absolute;
   right: 26px;
   top: 176px;
   z-index: 41;
@@ -194,6 +196,10 @@
 .canary-brief .close:hover { background: rgba(16, 24, 39, 0.08); color: var(--ink, #33302E); }
 .canary-brief .demo { margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--line, #E4D5C6); color: var(--muted, #6B635C); font-size: 12px; }
 
+/* Room under the capsule's demo note, so it never crowds the lead. */
+@media (min-width: 761px) {
+  body.has-companion .project-intro { padding-top: 88px; }
+}
 @media (max-width: 760px) {
   .canary-companion, .canary-brief { display: none; }
 }
