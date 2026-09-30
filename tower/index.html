@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tower | osauer.dev</title>
-  <meta name="description" content="Tower is an experimental control panel over the Claude Code sessions that build Desk, Torok and Canary: one page of asks, decisions and moves, a coordinator session that keeps it current, and picks that reach the session owning the work. Private.">
+  <meta name="description" content="Tower is an experimental control panel for steering a dozen coding agents across several projects: one page of what needs a decision, what is in flight and what has gone quiet, with picks routed to the agent that owns the work. Private.">
   <link rel="canonical" href="https://osauer.dev/tower/">
   <link rel="icon" type="image/svg+xml" href="../assets/tower-tile.svg">
   <link rel="stylesheet" href="../assets/site.css">
@@ -32,8 +32,8 @@
         <p class="eyebrow">Private · experimental</p>
         <img class="mark" src="../assets/tower-tile.svg" width="96" height="96" alt="">
         <h1>One page over every session that builds the rest.</h1>
-        <p class="lead">Desk, Torok and Canary are built by many Claude Code sessions at once. Tower puts them on one page: what asks you, what is in flight, what stalled. A pick on the page reaches the session that owns the work. A coordinator session keeps the page current and relays the pick.</p>
-        <p class="personal"><strong>Experimental.</strong> The first version ran for one day in September 2026; what the day showed is being folded into the next one. Personal work, on personal time.</p>
+        <p class="lead">Coding agents, a dozen at a time, write much of Canary Desk, Torok and Canary CLI; nothing ships without the owner's decision. Tower is where those decisions are made: one page of what needs a decision, what is in flight and what has gone quiet. A pick is routed to the agent that owns the work; making that hands-free is the open problem.</p>
+        <p class="personal"><strong>An experiment, not a product.</strong> It exists because the projects on this site are built this way, and the way you steer a fleet of agents turns out to be a product question of its own.</p>
         <div class="actions">
           <a class="button primary" href="#wired">How it is wired</a>
           <a class="button" href="#status">Where it stands</a>
@@ -41,29 +41,29 @@
       </div>
       <figure class="shot">
         <img src="../assets/tower-panel.webp" width="1920" height="1800" alt="The Tower panel: program tabs, a one-line verdict, a Your move list with an ask, two decisions with recommended options and a move with its command, an In flight list of sessions, and a Tower task" fetchpriority="high">
-        <figcaption>The panel, rendered from synthetic sessions and decisions. Program tabs, then your move, then what is in flight.</figcaption>
+        <figcaption>The panel with example sessions and decisions: a tab per program, your move first, then what is in flight.</figcaption>
       </figure>
     </section>
 
     <section class="block" id="what">
       <div class="wrap">
         <h2>What it does</h2>
-        <p>Three things, in the order the day needs them.</p>
+        <p>Three things, in the order a busy day needs them.</p>
         <div class="cards">
           <article class="card">
             <span class="kind">Your move</span>
             <h3>Asks, decisions, moves</h3>
-            <p>A session that needs a go, a decision with two options and a recommendation, a command to run before a deadline. One list, most urgent first. A keystroke picks.</p>
+            <p>An agent waiting for a go, a decision with two options and a recommendation, a command to run before a deadline. One list, most urgent first, answered with a keystroke.</p>
           </article>
           <article class="card">
             <span class="kind">In flight</span>
             <h3>Every session, grouped by program</h3>
-            <p>Running, quiet or stalled, with its repo, branch and worktree. Rules in the database group sessions into program tabs; a fix on the page applies at once.</p>
+            <p>Running, quiet or stalled, with its repository, branch and worktree. Simple rules sort sessions into program tabs; a correction on the page takes effect at once.</p>
           </article>
           <article class="card">
             <span class="kind">Relay</span>
-            <h3>Picks reach the owner of the work</h3>
-            <p>The coordinator relays a pick to the session that raised it, checks the revision it answers, and keeps a daily audit of delivered, read and acknowledged.</p>
+            <h3>Picks routed to the owner of the work</h3>
+            <p>The coordinator carries each pick to the agent that raised it, checks that it still answers the current question, and keeps a daily record of delivered, read and acknowledged.</p>
           </article>
         </div>
       </div>
@@ -72,10 +72,10 @@
     <section class="block" id="wired">
       <div class="wrap">
         <h2>How it is wired</h2>
-        <p>Three parts and one contract between them. The panel is a private page. Tower is a Claude Code session with a charter. Work sessions report in one line each. Facts pass through a scrubber before they are written; the database is the owner's alone.</p>
+        <p>Three parts and one written contract between them. The panel is a private page. Tower itself is a coding agent with a charter. Work sessions report in one line each. Everything is scrubbed of amounts and identifiers before it is written, and the database belongs to the owner alone.</p>
         <figure class="diagram">
           <img src="../assets/tower-flow.svg" width="1140" height="630" alt="Diagram of Tower: the owner and the panel page on the left, the Tower coordinator session with its refresh, scrub and relay steps in the middle, and three work sessions on the right; facts flow from the sessions through Tower into the panel, picks flow from the panel through Tower to the owning session" loading="lazy">
-          <figcaption>Facts flow left, picks flow right. Tower never pushes, deploys, merges, writes to the broker or answers a session's question for the owner.</figcaption>
+          <figcaption>Facts flow left, picks flow right. Tower never ships code, never touches the broker and never answers a question on the owner's behalf.</figcaption>
         </figure>
       </div>
     </section>
@@ -84,10 +84,10 @@
       <div class="wrap">
         <h2>Where it stands</h2>
         <ul class="notes">
-          <li><strong>Built in an evening.</strong> Contract, panel, scripts and charter landed on 2026-09-28. The gate is a page test against a fake runtime, script tests and a privacy scan.</li>
-          <li><strong>Ran for a day.</strong> Program tabs, facts and the verdict line worked. The relay needed the owner's approval on the receiving side and messages expired unread; that is what the next version changes.</li>
-          <li><strong>Off for now.</strong> Asks and decisions go back to each session's own chat until the delivery path is proven. The page and the scripts stay.</li>
-          <li><strong>Synthetic on this page.</strong> Session titles, decisions and commands in the picture are fixtures. Real sessions carry names, paths and figures that stay private.</li>
+          <li><strong>A working prototype.</strong> The panel, the coordinator and the reporting contract exist and have run against real work: program tabs, live facts and the one-line verdict held up.</li>
+          <li><strong>The open problem.</strong> Delivering a pick into a running agent still needs a human confirmation on the receiving side. The next version changes how picks travel; until then, decisions go through each agent's own chat.</li>
+          <li><strong>Tested like the rest.</strong> Every change passes page, script and privacy checks before it lands.</li>
+          <li><strong>Examples in the picture.</strong> The sessions, decisions and commands shown are fixtures. Real ones carry names and figures that stay private.</li>
         </ul>
       </div>
     </section>
@@ -97,8 +97,8 @@
         <h2>What it is not</h2>
         <ul class="notes">
           <li><strong>Not a product.</strong> No download, no repository.</li>
-          <li><strong>Not an agent that acts.</strong> Tower reads, writes a page and relays. Pushing, deploying and every decision stay with the owner.</li>
-          <li><strong>Not part of Desk.</strong> The name was chosen so nobody confuses the two. Desk never sees Tower.</li>
+          <li><strong>Not an agent that acts.</strong> Tower reads, writes a page and carries messages. Shipping code and every decision stay with the owner.</li>
+          <li><strong>Not part of Canary Desk.</strong> The desk never sees Tower, and Tower never touches the broker.</li>
         </ul>
       </div>
     </section>
@@ -107,12 +107,12 @@
       <div class="wrap contact">
         <div>
           <h2>Contact</h2>
-          <p>If you run several coding agents at once and want one page that tells you where you are needed, the contract is the interesting part. Get in touch.</p>
+          <p>If you run several coding agents on one codebase and want a single page that tells you where you are needed, the contract between panel, coordinator and agents is the interesting part. Get in touch.</p>
         </div>
         <p class="links"><a class="quiet" href="https://www.linkedin.com/in/osauer/">Message on LinkedIn ↗</a><a class="quiet" href="https://github.com/osauer">GitHub ↗</a></p>
       </div>
     </section>
   </main>
-  <footer class="wrap site-footer">Oliver Sauer. Personal project, built on personal time; not connected to an employer. No affiliation implied with referenced vendors.</footer>
+  <footer class="wrap site-footer">Oliver Sauer · independent work, built in his own time and unaffiliated with any employer, broker or model provider. Nothing here is investment advice.</footer>
 </body>
 </html>

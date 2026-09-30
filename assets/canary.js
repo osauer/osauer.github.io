@@ -75,12 +75,13 @@ function html(tag, className, text) {
 // layer and property wins while it runs, like an animation added on top.
 const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
 class Engine {
-  constructor() { this.tracks = []; this.layers = new Map(); this.frame = null; this.now = 0; }
+  constructor() { this.tracks = []; this.layers = new Map(); this.frame = null; this.now = performance.now(); }
   layer(node, ox, oy, base = {}) {
     const rec = { node, ox, oy, base: { tx: 0, ty: 0, rot: 0, sx: 1, sy: 1, op: 1, ...base }, state: null, custom: null };
     node.style.transformBox = "view-box";
     node.style.transformOrigin = `${ox}px ${oy}px`;
-    this.layers.set(node, rec);
+    // Tracks target the record, so the table is keyed by it too.
+    this.layers.set(rec, rec);
     return rec;
   }
   // A virtual layer whose scalar props are turned into real ones by `apply`.
@@ -91,7 +92,7 @@ class Engine {
   }
   add(target, prop, keys, { loop = false, delay = 0, tag = "" } = {}) {
     const period = keys[keys.length - 1][0];
-    const track = { target, prop, keys, loop, tag, start: this.now + delay * 1000, period: period * 1000, done: false };
+    const track = { target, prop, keys, loop, tag, start: performance.now() + delay * 1000, period: period * 1000, done: false };
     this.tracks.push(track);
     this.run();
     return track;
@@ -126,7 +127,8 @@ class Engine {
         // Later tracks on the same target and prop win (they sit later in the list).
         values.set(track.target, Object.assign(values.get(track.target) || {}, { [track.prop]: v }));
       }
-      for (const [target, rec] of this.layers) {
+      const ordered = [...this.layers].sort(([a], [b]) => (typeof a === "string" ? 0 : 1) - (typeof b === "string" ? 0 : 1));
+      for (const [target, rec] of ordered) {
         const next = Object.assign({}, rec.base, values.get(target) || {});
         const changed = !rec.state || Object.keys(next).some((k) => next[k] !== rec.state[k]);
         if (!changed) continue;
@@ -161,7 +163,7 @@ export class Canary {
 
   build() {
     const [bx, by, bw, bh] = ART.box;
-    const svg = el("svg", { viewBox: `${bx - 30} ${by - 40} ${bw + 60} ${bh + 46}`, "aria-hidden": "true", focusable: "false" }, this.host);
+    const svg = el("svg", { viewBox: `${bx - 40} ${by - 46} ${bw + 80} ${bh + 40}`, "aria-hidden": "true", focusable: "false" }, this.host);
     this.svg = svg;
     const defs = el("defs", {}, svg);
     const grad = (id, colors, stops, y1, y2) => {
@@ -184,7 +186,8 @@ export class Canary {
     const E = this.engine, L = {};
     this.L = L;
     // The bird's shadow on the ground, and the stage everything hangs from.
-    L.ground = E.layer(el("ellipse", { cx: 236, cy: 404, rx: 118, ry: 22, fill: `url(#${this.ids.ground})` }, svg), 236, 404);
+    L.ground = E.layer(el("ellipse", { cx: 236, cy: 406, rx: 96, ry: 14, fill: `url(#${this.ids.ground})` }, svg), 236, 406);
+    el("path", { d: "M118 411 H352", stroke: "#101827", "stroke-width": 5, "stroke-linecap": "round", opacity: 0.72 }, svg);
     const stage = el("g", {}, svg);
     L.stage = E.layer(stage, ART.belly[0], ART.belly[1]);
     // perch flips the bird to face left; hop moves it up; squash flattens it on landing;
@@ -218,9 +221,8 @@ export class Canary {
     const upper = el("g", {}, beakTurn); L.upper = E.layer(upper, ART.hinge[0], ART.hinge[1]);
     this.upperBeak = el("path", { d: UPPER, fill: PALETTE.upperBeak }, upper);
     E.virtual("beak", { drop: 0, lift: 0 }, ({ drop, lift }) => {
-      jaw.style.transform = `rotate(${drop}rad)`; upper.style.transform = `rotate(${-lift}rad)`;
+      L.jaw.base.rot = drop; L.upper.base.rot = -lift; L.jaw.state = null; L.upper.state = null;
       this.gape.setAttribute("d", gapePath(Math.max(0, drop), Math.max(0, lift)));
-      L.jaw.state = null; L.upper.state = null;
     });
 
     // The eye: a lid that shuts, a white that shows only when the eyes go wide,
@@ -246,13 +248,12 @@ export class Canary {
     el("circle", { cx: fx + 0.85 * ART.glint.dx, cy: fy + 0.85 * ART.glint.dy, r: 0.85 * ART.glint.r, fill: "#fff", "fill-opacity": 0.92 }, farEye);
     E.virtual("stare", { v: 0 }, ({ v }) => {
       const w = Math.min(1, v);
-      this.sclera.style.opacity = Math.min(1, 3 * v); this.sclera.style.transform = `scale(${0.4 + 0.6 * v})`;
-      gaze.style.transform = `${L.gaze.state ? `translate(${L.gaze.state.tx}px, ${L.gaze.state.ty}px) ` : ""}scale(${1 - 0.28 * w})`;
-      L.sclera.state = null;
+      L.sclera.base.op = Math.min(1, 3 * v); L.sclera.base.sx = L.sclera.base.sy = 0.4 + 0.6 * v; L.sclera.state = null;
+      L.gaze.base.sx = L.gaze.base.sy = 1 - 0.28 * w; L.gaze.state = null;
     });
     E.virtual("fluff", { v: 0 }, ({ v }) => {
-      ruffleG.style.opacity = Math.min(1, 4 * v); ruffleS.style.transform = `scale(${0.9 + 0.1 * v})`;
-      L.ruffle.state = null; L.ruffleScale.state = null;
+      L.ruffle.base.op = Math.min(1, 4 * v); L.ruffle.state = null;
+      L.ruffleScale.base.sx = L.ruffleScale.base.sy = 0.9 + 0.1 * v; L.ruffleScale.state = null;
     });
     // Two chirp marks in front of the beak.
     this.chirp = el("path", { d: chirpPath(), fill: "none", stroke: PALETTE.eye, "stroke-width": 5, "stroke-linecap": "round" }, breath);
@@ -317,15 +318,13 @@ export class Canary {
     const still = reduceMotion.matches, loop = (target, prop, keys) => E.add(target, prop, keys, { loop: true, tag: "loop" });
     const base = mood === "alert" ? 1.03 : 1;
     const breathe = mood === "away" || mood === "resting" ? 3.4 : 2.4;
-    loop(L.breath, "sy", [[0, base], [breathe, base * 1.016], [2 * breathe, base]]);
+    loop(L.breath, "sy", [[0, base], [breathe, base * 1.03], [2 * breathe, base]]);
+    // A slow sway, so the bird is never a still image even between blinks.
+    loop(L.lean, "rot", [[0, 0], [3.1, 0.018], [6.2, -0.014], [9.3, 0]]);
     if (mood === "away") { loop(L.lid, "sy", [[0, 0.06], [1, 0.06]]); return; }
     const open = this.open, blinkAt = mood === "busy" ? [1.9, 5.6] : [2.4, 8.6, 8.95], period = mood === "busy" ? 7.9 : 11.3;
     const blinks = blinkAt.flatMap((t) => [[t, open], [t + 0.07, 0.1], [t + 0.17, open]]);
     loop(L.lid, "sy", [[0, open], ...blinks, [period, open]]);
-    if (still) {
-      if (mood === "approval" || mood === "waiting") { const every = mood === "approval" ? 31 : 37; loop(L.chirp, "op", [[0, 0], [24, 0], [24.1, 1], [24.9, 0], [every, 0]]); }
-      return;
-    }
     const look = (dx, dy) => [dx * 6, dy * 6]; // points of the native bird to master pixels
     if (mood === "busy") {
       // Reading: the eye steps forward along a line, then returns.
@@ -336,17 +335,17 @@ export class Canary {
     const glance = [[0, 0, 0], [5.0, 0, 0], [5.35, 0.9, 0.3], [6.8, 0.9, 0.3], [7.15, 0, 0], [12.0, 0, 0], [12.35, -0.6, -0.6], [13.5, -0.6, -0.6], [13.85, 0, 0], [17.7, 0, 0]];
     loop(L.gaze, "tx", glance.map(([t, x, y]) => [t, look(x, y)[0]])); loop(L.gaze, "ty", glance.map(([t, x, y]) => [t, look(x, y)[1]]));
     if (mood === "resting") return;
-    const tiltEvery = mood === "alert" ? 19.1 : 29.3;
-    loop(L.lean, "rot", [[0, 0], [tiltEvery - 5, 0], [tiltEvery - 4.5, -0.08], [tiltEvery - 2.9, -0.08], [tiltEvery - 2.4, 0], [tiltEvery, 0]]);
-    if (mood === "calm") loop(L.wing, "rot", [[0, 0], [30, 0], [30.12, 0.1], [30.24, 0], [30.36, 0.07], [30.5, 0], [47.9, 0]]);
+    const tiltEvery = mood === "alert" ? 19.1 : 23.3;
+    loop(L.squash, "rot", [[0, 0], [tiltEvery - 5, 0], [tiltEvery - 4.5, -0.09], [tiltEvery - 2.9, -0.09], [tiltEvery - 2.4, 0], [tiltEvery, 0]]);
+    if (mood === "calm") loop(L.wing, "rot", [[0, 0], [14, 0], [14.12, 0.1], [14.24, 0], [14.36, 0.07], [14.5, 0], [27.9, 0]]);
     if (mood === "approval" || mood === "waiting") {
       // A chirp now and then, never more often than every half minute.
-      const every = mood === "approval" ? 31 : 37;
-      loop("beak", "drop", [[0, 0], [24, 0], [24.08, 0.32], [24.2, 0], [24.3, 0.26], [24.42, 0], [every, 0]]);
-      loop(L.chirp, "op", [[0, 0], [24, 0], [24.1, 1], [24.9, 0], [every, 0]]);
+      const every = mood === "approval" ? 21 : 27;
+      loop("beak", "drop", [[0, 0], [18, 0], [18.08, 0.32], [18.2, 0], [18.3, 0.26], [18.42, 0], [every, 0]]);
+      loop(L.chirp, "op", [[0, 0], [18, 0], [18.1, 1], [18.9, 0], [every, 0]]);
       if (mood === "approval") {
-        loop(L.hop, "ty", [[0, 0], [23.7, 0], [23.85, -21], [24.0, 0], [every, 0]]);
-        loop(L.ground, "sx", [[0, 1], [23.7, 1], [23.85, 0.8], [24.0, 1], [every, 1]]);
+        if (!still) loop(L.hop, "ty", [[0, 0], [23.7, 0], [23.85, -21], [24.0, 0], [every, 0]]);
+        if (!still) loop(L.ground, "sx", [[0, 1], [23.7, 1], [23.85, 0.8], [24.0, 1], [every, 1]]);
       }
     }
   }
@@ -389,7 +388,7 @@ export class Canary {
   shake() { if (!this.still) this.act(this.L.lean, "rot", [[0, 0], [0.08, -0.06], [0.16, 0.06], [0.24, -0.04], [0.34, 0]]); }
   blink(delay) { this.act(this.L.lid, "sy", [[0, this.open], [0.07, 0.1], [0.17, this.open]], delay); }
   arrive() {
-    if (this.still) return;
+    if (this.still) { this.act(this.L.stage, "op", [[0, 0], [0.5, 1]]); return; }
     this.scale(this.L.stage, [[0, 0.55], [0.28, 1.07], [0.42, 1]]);
     this.act(this.L.stage, "op", [[0, 0], [0.18, 1], [0.42, 1]]);
     this.act(this.L.ground, "op", [[0, 0], [0.18, 1], [0.42, 1]]);
@@ -404,7 +403,7 @@ export class Canary {
       this.stopBusiness();
       const quiet = now - this.quietSince;
       this.quietSince = now;
-      if ((cue === "need" || cue === "alarm" || cue === "panic") && !this.still && quiet > 40000 && now - this.lastSquawk > 60000) {
+      if ((cue === "need" || cue === "alarm" || cue === "panic") && !this.still && quiet > 20000 && now - this.lastSquawk > 45000) {
         this.lastSquawk = now;
         return this.squawk();
       }
@@ -601,17 +600,18 @@ const BRIEF = {
 
 // One day on the desk, as sights the companion reacts to.
 const DAY = [
+  // Seconds into the visit; a visitor sees the first reaction within ten.
   { at: 0, mood: "calm", waiting: [["status", "Watching the book · next review 14:30 CEST"]] },
-  { at: 9, mood: "calm", brief: "europe-morning", title: "Europe morning brief is in", waiting: [["brief", "Positions, risk, calendar: what changed overnight"], ["status", "Book +0.39% since the close · risk: watch"]] },
-  { at: 24, mood: "busy", step: "calendar", waiting: [["step", "Pre-open review: reading the calendar"]] },
-  { at: 30, mood: "busy", step: "exposure", waiting: [["step", "Pre-open review: checking exposure and margin"]] },
-  { at: 36, mood: "busy", step: "draft", waiting: [["step", "Pre-open review: drafting, second reviewer next"]] },
-  { at: 46, mood: "approval", approvals: 1, waiting: [["order", "Sell 2 CCC 16 Oct 26 145 puts · theta hygiene"], ["status", "Confirm on the paired companion, or let it expire"]] },
-  { at: 66, mood: "waiting", approvals: 1, decisions: 1, waiting: [["question", "Keep the NVDA 145 put through expiry?"], ["order", "Sell 2 CCC 16 Oct 26 145 puts · theta hygiene"]] },
-  { at: 84, mood: "alert", waiting: [["issue", "DDD at 27.1% of NLV exceeds the 25% cap"], ["status", "Reduce-only advice drafted by rule, waiting for you"]] },
-  { at: 100, mood: "calm", waiting: [["status", "Calm · pre-close review at 21:15 CEST"]] },
-  { at: 128, mood: "resting", waiting: [["status", "Paused for the night · Europe brief at 07:00"]] },
-  { at: 150, mood: "calm", waiting: [["status", "Good morning · watching the book"]] },
+  { at: 6, mood: "calm", brief: "europe-morning", title: "Europe morning brief is in", waiting: [["brief", "Positions, risk, calendar: what changed overnight"], ["status", "Book +0.39% since the close · risk: watch"]] },
+  { at: 18, mood: "busy", step: "calendar", waiting: [["step", "Pre-open review: reading the calendar"]] },
+  { at: 23, mood: "busy", step: "exposure", waiting: [["step", "Pre-open review: checking exposure and margin"]] },
+  { at: 28, mood: "busy", step: "draft", waiting: [["step", "Pre-open review: drafting, second reviewer next"]] },
+  { at: 36, mood: "approval", approvals: 1, waiting: [["order", "Sell 2 CCC 16 Oct 26 145 puts · theta hygiene"], ["status", "Confirm on the paired companion, or let it expire"]] },
+  { at: 54, mood: "waiting", approvals: 1, decisions: 1, waiting: [["question", "Keep the NVDA 145 put through expiry?"], ["order", "Sell 2 CCC 16 Oct 26 145 puts · theta hygiene"]] },
+  { at: 70, mood: "alert", waiting: [["issue", "DDD at 27.1% of NLV exceeds the 25% cap"], ["status", "Reduce-only advice drafted by rule, waiting for you"]] },
+  { at: 84, mood: "calm", waiting: [["status", "Calm · pre-close review at 21:15 CEST"]] },
+  { at: 112, mood: "resting", waiting: [["status", "Paused for the night · Europe brief at 07:00"]] },
+  { at: 132, mood: "calm", waiting: [["status", "Good morning · watching the book"]] },
 ];
 const TITLES = {
   calm: "Desk is watching the book", busy: "Desk is working", approval: "1 order awaits your authorisation",
@@ -631,7 +631,7 @@ class Companion {
     this.sizer.setAttribute("aria-hidden", "true");
     this.dots = html("ul", "dots");
     this.foot = html("p", "foot");
-    this.demoNote = html("span", "note", "Demo · a scripted day on a synthetic book");
+    this.demoNote = html("span", "note", "A day at the desk · demo");
     this.readButton = html("button", "read", "Read the brief");
     this.readButton.type = "button";
     this.readButton.addEventListener("click", () => this.openBrief());
@@ -644,9 +644,10 @@ class Companion {
     this.perch.setAttribute("role", "button"); this.perch.tabIndex = 0;
     this.perch.setAttribute("aria-label", "The canary. Click for a move.");
     this.badge = html("span", "canary-badge", "");
-    this.root.append(this.speech, this.perch);
+    this.root.append(this.perch, this.speech);
     this.perch.append(this.badge);
     document.body.append(this.root);
+    document.body.classList.add("has-companion");
     this.canary = new Canary(this.perch);
     this.pages = []; this.page = 0; this.speechUntil = 0; this.sight = null; this.brief = null; this.hovering = false;
     this.perch.addEventListener("click", () => this.clicked());
@@ -658,7 +659,7 @@ class Companion {
     this.pager = setInterval(() => this.turnPage(), 5000);
     this.start();
   }
-  hide() { clearInterval(this.pager); clearTimeout(this.timer); this.root.remove(); this.briefCard?.remove(); try { sessionStorage.setItem("canary-hidden", "1"); } catch {} }
+  hide() { clearInterval(this.pager); clearTimeout(this.timer); clearTimeout(this.anticTimer); this.root.remove(); this.briefCard?.remove(); document.body.classList.remove("has-companion"); try { sessionStorage.setItem("canary-hidden", "1"); } catch {} }
 
   start() {
     this.canary.arrive();
@@ -675,7 +676,7 @@ class Companion {
     clearTimeout(this.anticTimer);
     if (["calm", "resting"].includes(scene.mood) && gap > 14) {
       const pick = scene.mood === "resting" ? "nodOff" : Canary.antics.filter((a) => a !== "nodOff")[Math.floor(Math.random() * 6)];
-      this.anticTimer = setTimeout(() => { if (!this.canary.busy && !this.hovering) this.canary.play(pick); }, (6 + Math.random() * 5) * 1000);
+      this.anticTimer = setTimeout(() => { if (!this.canary.busy && !this.hovering) this.canary.play(pick); }, (4 + Math.random() * 4) * 1000);
     }
   }
   // The reaction a change deserves, as the native companion decides it.

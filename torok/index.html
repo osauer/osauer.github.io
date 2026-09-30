@@ -37,9 +37,7 @@
         <p class="eyebrow">Private · Go agent harness</p>
         <img class="mark" src="../assets/torok-mark.svg" width="96" height="96" alt="">
         <h1>An agent harness in plain Go that survives a restart.</h1>
-        <p class="pronounce"><span lang="hu">török</span> <span class="ipa">/ˈtørøk/</span> · Hungarian for Turk. Named after Kempelen's chess automaton, the machine that played well because a person sat inside. Torok keeps the person in the loop on purpose.</p>
-        <p class="lead">Torok runs the tool loop, checks the typed answer and commits progress, so a run resumes after a person answers or the process comes back. You bring a model and ordinary Go functions. Desk runs on it.</p>
-        <p class="personal"><strong>Personal work, on personal time.</strong> Torok is not connected to an employer.</p>
+        <p class="lead">Torok runs the tool loop, checks the typed answer and commits progress, so a run resumes after a person answers or the process comes back. You bring a model and ordinary Go functions. Canary Desk runs on it every trading day.</p>
         <div class="actions">
           <a class="button primary" href="#architecture">Runtime architecture</a>
           <a class="button" href="#checked">How it is checked</a>
@@ -119,7 +117,7 @@
           <article class="card">
             <span class="kind">Resident</span>
             <h3>An agent that stays on</h3>
-            <p>A durable inbox, timers, bounded memory, observers with their own freshness, daily admission budgets, pause. Idle costs nothing. Desk is one.</p>
+            <p>A durable inbox, timers, bounded memory, observers with their own freshness, daily admission budgets, pause. Idle costs nothing. Canary Desk is one.</p>
           </article>
         </div>
         <p>The whole shape fits in three statements. No graph DSL, no builder chain: generic methods where a type belongs on a value, plain functions for behaviour, named config fields.</p>
@@ -164,12 +162,13 @@ answer, err := <span class="t">analyst</span>.<span class="t">RunAs</span>[<span
       <div class="wrap contact">
         <div>
           <h2>About</h2>
-          <p>Torok is the harness under Canary Desk, which reviews a brokerage book on the market's clock and asks its owner only the questions that need a person. Private, experimental API, Go 1.27, three direct dependencies: SQLite, JSON Schema, a PDF reader. If you want to argue about what "accepted" should mean, get in touch.</p>
+          <p>Torok is the engine under Canary Desk, which reviews a brokerage book on the market's clock and asks its owner only the questions that need a person. Private, experimental API on current Go, three direct dependencies: SQLite, JSON Schema, a PDF reader. If you build agents that have to survive the real world, or want to argue about what "accepted" should mean, get in touch.</p>
+          <p class="pronounce"><span lang="hu">török</span> <span class="ipa">/ˈtørøk/</span> · Hungarian for Turk. Named after Kempelen's chess automaton, the machine that played well because a person sat inside. Torok keeps the person in the loop on purpose.</p>
         </div>
         <p class="links"><a class="quiet" href="https://www.linkedin.com/in/osauer/">Message on LinkedIn ↗</a><a class="quiet" href="https://github.com/osauer">GitHub ↗</a></p>
       </div>
     </section>
   </main>
-  <footer class="wrap site-footer">Oliver Sauer. Personal project, built on personal time; not connected to an employer. No affiliation implied with referenced vendors.</footer>
+  <footer class="wrap site-footer">Oliver Sauer · independent work, built in his own time and unaffiliated with any employer, broker or model provider. Nothing here is investment advice.</footer>
 </body>
 </html>
