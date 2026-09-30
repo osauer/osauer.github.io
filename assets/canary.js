@@ -187,7 +187,6 @@ export class Canary {
     this.L = L;
     // The bird's shadow on the ground, and the stage everything hangs from.
     L.ground = E.layer(el("ellipse", { cx: 236, cy: 406, rx: 96, ry: 14, fill: `url(#${this.ids.ground})` }, svg), 236, 406);
-    el("path", { d: "M118 411 H352", stroke: "#101827", "stroke-width": 5, "stroke-linecap": "round", opacity: 0.72 }, svg);
     const stage = el("g", {}, svg);
     L.stage = E.layer(stage, ART.belly[0], ART.belly[1]);
     // perch flips the bird to face left; hop moves it up; squash flattens it on landing;
@@ -578,7 +577,10 @@ export class Canary {
 // The capsule beside the bird pages through what waits, the way the native
 // one does, and a scripted day supplies the sights. Nothing is live.
 const ICONS = {
-  order: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3l8 -8"/><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"/></svg>',
+  order: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c3.333 -3.333 5 -6 5 -8c0 -3 -1 -3 -2 -3s-2.032 1.085 -2 3c.034 2.048 1.658 4.877 2.5 6c1.5 2 2.5 2.5 3.5 1l2 -3c.333 2.667 1.333 4 3 4c.5 0 2 -.5 2 -1"/><path d="M14 16c1 1 2 1 3 0"/></svg>',
+  tool_brief: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11"/><path d="M8 8l4 0M8 12l4 0M8 16l4 0"/></svg>',
+  tool_review: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3l8 -8"/><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"/></svg>',
+  tool_open: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l10 -10"/><path d="M8 7l9 0l0 9"/></svg>',
   question: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8a3.5 3 0 0 1 3.5 -3h1a3.5 3 0 0 1 3.5 3a3 3 0 0 1 -2 3a3 4 0 0 0 -2 4"/><path d="M12 19l0 .01"/></svg>',
   brief: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11"/><path d="M8 8l4 0M8 12l4 0M8 16l4 0"/></svg>',
   issue: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0z"/><path d="M12 16h.01"/></svg>',
@@ -590,13 +592,26 @@ const BRIEF = {
   title: "Europe morning brief",
   when: "Wednesday 30 September · 07:00 CEST",
   sections: [
-    ["Markets", "S&P 500 5,542.60, +0.42% on the session. Nasdaq 100 +0.58%, Russell 2000 −0.45%. VIX 18.42, −1.34%. Regime as recorded by Canary: watch, volatility easing."],
-    ["Book", "Net liquidation 250,000 USD; day P&L +991 USD, +0.39% of NLV. Five stock positions, three option legs. Margin headroom 68% of NLV."],
-    ["Risk", "DDD at 27.1% of NLV exceeds the 25% cap. CCC and NVDA 16 Oct puts are 21 sessions from expiry; the runway floor is 30. Risk policy: new risk allowed."],
-    ["Calendar", "US equities 15:30–22:00 CEST. Pre-open review due 14:30, pre-close 21:15. No approved impactful events today."],
-    ["Needs you", "One reduction proposal awaits authorisation: sell 2 CCC 16 Oct 26 145 puts, theta hygiene. Nothing else is queued."],
+    ["Markets", "blue", "S&P 500 5,542.60, +0.42% on the session. Nasdaq 100 +0.58%, Russell 2000 −0.45%. VIX 18.42, −1.34%. Regime as recorded by Canary: {watch}, volatility easing."],
+    ["Book", "ink", "Net liquidation 250,000 USD; day P&L +991 USD, +0.39% of NLV. Five stock positions, three option legs. Margin headroom 68% of NLV."],
+    ["Risk", "amber", "DDD at 27.1% of NLV exceeds the 25% cap. CCC and NVDA 16 Oct puts are 21 sessions from expiry; the runway floor is 30. Risk policy: {new risk allowed}."],
+    ["Calendar", "slate", "US equities 15:30–22:00 CEST. Pre-open review due 14:30, pre-close 21:15. No approved impactful events today."],
+    ["Needs you", "orange", "One reduction proposal awaits authorisation: sell 2 CCC 16 Oct 26 145 puts, theta hygiene. Nothing else is queued."],
   ],
 };
+// Figures and states in the brief get their colour: gains green, losses red, states as pills.
+function briefLine(text) {
+  const p = html("p", "");
+  const parts = text.split(/([+−-]\d[\d,.]*%?|\{[^}]+\})/g);
+  for (const part of parts) {
+    if (!part) continue;
+    if (/^\{/.test(part)) { const pill = html("span", "pill", part.slice(1, -1)); pill.dataset.state = part.slice(1, -1).split(" ")[0]; p.append(pill); }
+    else if (/^[+]/.test(part)) p.append(html("span", "pos", part));
+    else if (/^[−-]\d/.test(part)) p.append(html("span", "neg", part));
+    else p.append(part);
+  }
+  return p;
+}
 
 // One day on the desk, as sights the companion reacts to.
 const DAY = [
@@ -606,7 +621,7 @@ const DAY = [
   { at: 18, mood: "busy", step: "calendar", waiting: [["step", "Pre-open review: reading the calendar"]] },
   { at: 23, mood: "busy", step: "exposure", waiting: [["step", "Pre-open review: checking exposure and margin"]] },
   { at: 28, mood: "busy", step: "draft", waiting: [["step", "Pre-open review: drafting, second reviewer next"]] },
-  { at: 36, mood: "approval", approvals: 1, waiting: [["order", "Sell 2 CCC 16 Oct 26 145 puts · theta hygiene"], ["status", "Confirm on the paired companion, or let it expire"]] },
+  { at: 36, mood: "approval", approvals: 1, waiting: [["order", "Sell 2 CCC 16 Oct 26 145 puts · theta hygiene"], ["status", "Confirm on the companion, or let it expire"]] },
   { at: 54, mood: "waiting", approvals: 1, decisions: 1, waiting: [["question", "Keep the NVDA 145 put through expiry?"], ["order", "Sell 2 CCC 16 Oct 26 145 puts · theta hygiene"]] },
   { at: 70, mood: "alert", waiting: [["issue", "DDD at 27.1% of NLV exceeds the 25% cap"], ["status", "Reduce-only advice drafted by rule, waiting for you"]] },
   { at: 84, mood: "calm", waiting: [["status", "Calm · pre-close review at 21:15 CEST"]] },
@@ -625,26 +640,36 @@ class Companion {
     this.root.setAttribute("aria-label", "Desk's canary companion, a demo");
     this.speech = html("div", "canary-speech");
     this.speech.setAttribute("role", "status");
+    const lines = html("div", "lines");
     this.title = html("p", "title", "");
+    const line2 = html("div", "line2");
     this.ticker = html("div", "ticker");
     this.sizer = html("span", "sizer");
     this.sizer.setAttribute("aria-hidden", "true");
     this.dots = html("ul", "dots");
-    this.foot = html("p", "foot");
-    this.demoNote = html("span", "note", "A day at the desk · demo");
-    this.readButton = html("button", "read", "Read the brief");
-    this.readButton.type = "button";
-    this.readButton.addEventListener("click", () => this.openBrief());
-    this.foot.append(this.demoNote, this.readButton);
-    const close = html("button", "close", "×");
-    close.type = "button"; close.setAttribute("aria-label", "Hide the companion");
+    line2.append(this.ticker, this.dots);
+    lines.append(this.title, line2);
+    const tools = html("div", "tools");
+    const tool = (name, label, onClick) => {
+      const b = html("button", "tool " + name); b.type = "button"; b.setAttribute("aria-label", label); b.title = label;
+      b.innerHTML = ICONS["tool_" + name]; b.addEventListener("click", onClick); return b;
+    };
+    this.briefButton = tool("brief", "Read the brief", () => this.openBrief());
+    this.briefButton.append(html("i", "unread"));
+    this.reviewButton = tool("review", "What waits for you", () => this.openForYou());
+    this.count = html("b", "count", ""); this.reviewButton.append(this.count);
+    const open = html("a", "tool open"); open.href = document.body.dataset.deskHref || "desk/"; open.setAttribute("aria-label", "Open Canary Desk"); open.title = "Open Canary Desk"; open.innerHTML = ICONS.tool_open;
+    const close = html("button", "tool close"); close.type = "button"; close.setAttribute("aria-label", "Hide the companion"); close.title = "Hide"; close.textContent = "×";
     close.addEventListener("click", () => this.hide());
-    this.speech.append(close, this.title, this.ticker, this.dots, this.foot);
+    tools.append(this.briefButton, this.reviewButton, open, close);
+    this.speech.append(lines, tools);
+    this.demoNote = html("p", "canary-note", "A day at the desk · demo, synthetic book");
     this.perch = html("div", "canary-perch");
     this.perch.setAttribute("role", "button"); this.perch.tabIndex = 0;
     this.perch.setAttribute("aria-label", "The canary. Click for a move.");
     this.badge = html("span", "canary-badge", "");
-    this.root.append(this.perch, this.speech);
+    const column = html("div", "column"); column.append(this.speech, this.demoNote);
+    this.root.append(column, this.perch);
     this.perch.append(this.badge);
     document.body.append(this.root);
     document.body.classList.add("has-companion");
@@ -659,7 +684,7 @@ class Companion {
     this.pager = setInterval(() => this.turnPage(), 5000);
     this.start();
   }
-  hide() { clearInterval(this.pager); clearTimeout(this.timer); clearTimeout(this.anticTimer); this.root.remove(); this.briefCard?.remove(); document.body.classList.remove("has-companion"); try { sessionStorage.setItem("canary-hidden", "1"); } catch {} }
+  hide() { clearInterval(this.pager); clearTimeout(this.timer); clearTimeout(this.anticTimer); this.root.remove(); this.briefCard?.remove(); this.forYouCard?.remove(); document.body.classList.remove("has-companion"); try { sessionStorage.setItem("canary-hidden", "1"); } catch {} }
 
   start() {
     this.canary.arrive();
@@ -705,8 +730,7 @@ class Companion {
       this.render(false);
     }
     this.title.textContent = scene.title || TITLES[scene.mood] || "Desk";
-    this.speech.dataset.brief = scene.waiting.some((w) => w[0] === "brief") ? "1" : "0";
-    this.readButton.hidden = !this.brief;
+    this.briefButton.dataset.unread = this.brief ? "1" : "0";
     const cue = this.cue(old, scene);
     const seconds = { need: 9, news: 9, alarm: 7, panic: 7, doze: 6, wake: 4 }[cue];
     let beat = { speech: 0 };
@@ -721,19 +745,24 @@ class Companion {
     this.badge.textContent = count > 9 ? "9+" : String(count);
     this.badge.dataset.orange = orange ? "1" : "0";
     this.badge.dataset.on = count > 0 && this.speech.dataset.open !== "1" ? "1" : "0";
+    this.count.textContent = count > 9 ? "9+" : String(count);
+    this.count.dataset.on = count > 0 ? "1" : "0";
+    this.count.dataset.orange = orange ? "1" : "0";
   }
   render(animated) {
     const [kind, text] = this.pages[this.page] || ["status", ""];
     const page = html("p", "page");
     const icon = html("span", "kind"); icon.dataset.kind = kind; icon.innerHTML = ICONS[kind] || ICONS.status;
     page.append(icon, html("span", "", text));
-    const old = this.ticker.firstElementChild;
-    if (animated && old) {
-      page.classList.add("in"); this.ticker.append(page);
-      if (!this.sizer.isConnected) this.ticker.prepend(this.sizer);
-      requestAnimationFrame(() => { old.classList.add("out"); page.classList.remove("in"); });
-      setTimeout(() => old.remove(), 400);
-    } else { this.ticker.replaceChildren(this.sizer, page); }
+    const old = this.ticker.querySelector(".page");
+    if (!this.sizer.isConnected) this.ticker.prepend(this.sizer);
+    this.ticker.append(page);
+    if (animated && old && !reduceMotion.matches) {
+      // The new line rises into place while the old one leaves upward.
+      const ease = "cubic-bezier(0.2, 0.9, 0.3, 1)";
+      old.animate([{ transform: "translateY(0)", opacity: 1 }, { transform: "translateY(-110%)", opacity: 0 }], { duration: 240, easing: ease, fill: "forwards" }).finished.then(() => old.remove(), () => old.remove());
+      page.animate([{ transform: "translateY(110%)", opacity: 0 }, { transform: "translateY(0)", opacity: 1 }], { duration: 340, easing: ease, fill: "both" });
+    } else if (old) old.remove();
     this.dots.replaceChildren(...this.pages.map((_, i) => { const li = html("li"); if (i === this.page) li.setAttribute("aria-current", "true"); return li; }));
     this.dots.hidden = this.pages.length < 2;
   }
@@ -759,28 +788,50 @@ class Companion {
   }
   clicked() {
     if (this.brief && this.pages[this.page]?.[0] === "brief") return this.openBrief();
+    if (this.sight && ((this.sight.approvals || 0) + (this.sight.decisions || 0)) > 0) return this.openForYou();
     const moves = Canary.antics;
     this.canary.play(moves[Math.floor(Math.random() * moves.length)]);
     this.announce(5, 0);
   }
+  card(name, label) {
+    const card = html("aside", "canary-brief " + name);
+    card.setAttribute("aria-label", label);
+    const close = html("button", "close", "×"); close.type = "button"; close.setAttribute("aria-label", "Close");
+    close.addEventListener("click", () => { card.hidden = true; });
+    card.append(close);
+    document.body.append(card);
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") card.hidden = true; });
+    return card;
+  }
   openBrief() {
     if (!this.briefCard) {
-      const card = html("aside", "canary-brief");
-      card.setAttribute("aria-label", "Demo brief");
-      const close = html("button", "close", "×"); close.type = "button"; close.setAttribute("aria-label", "Close the brief");
-      close.addEventListener("click", () => { card.hidden = true; });
-      card.append(close, html("p", "eyebrow-line", "Daily brief · demo"), html("h3", "", BRIEF.title), html("p", "", BRIEF.when));
-      for (const [head, body] of BRIEF.sections) card.append(html("h4", "", head), html("p", "", body));
+      const card = this.card("brief", "Demo brief");
+      card.append(html("p", "eyebrow-line", "Daily brief · demo"), html("h3", "", BRIEF.title), html("p", "when", BRIEF.when));
+      for (const [head, tone, body] of BRIEF.sections) {
+        const h = html("h4", "", head); h.dataset.tone = tone;
+        card.append(h, briefLine(body));
+      }
       card.append(html("p", "demo", "A synthetic edition for this page. Real briefs are written by Desk from the day's evidence, checked by a second model, and never shown here."));
-      document.body.append(card);
       this.briefCard = card;
-      document.addEventListener("keydown", (e) => { if (e.key === "Escape") card.hidden = true; });
     }
+    if (this.forYouCard) this.forYouCard.hidden = true;
     this.briefCard.hidden = false;
     this.brief = null;
-    this.readButton.hidden = true;
+    this.briefButton.dataset.unread = "0";
+  }
+  openForYou() {
+    if (!this.forYouCard) this.forYouCard = this.card("foryou", "What waits for you");
+    const card = this.forYouCard;
+    card.replaceChildren(card.firstElementChild, html("p", "eyebrow-line", "For you · demo"), html("h3", "", this.title.textContent));
+    const list = html("ul", "items");
+    for (const [kind, text] of this.pages) {
+      const li = html("li"); const icon = html("span", "kind"); icon.dataset.kind = kind; icon.innerHTML = ICONS[kind] || ICONS.status;
+      li.append(icon, html("span", "", text)); list.append(li);
+    }
+    card.append(list, html("p", "demo", "On the desk, an order here is confirmed on the paired companion with Touch ID, or left to expire. Nothing on this page can place one."));
+    if (this.briefCard) this.briefCard.hidden = true;
+    card.hidden = false;
   }
 }
 
-// The page keeps a handle for its own checks; nothing else reads it.
 if (matchMedia("(min-width: 761px)").matches) window.deskCanary = new Companion();
