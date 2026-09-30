@@ -17,10 +17,10 @@ trading and Go systems. Nothing here is investment advice.
   broker connection, the risk rules and the orders they propose. A native Go
   implementation of the Interactive Brokers TWS protocol, a command line, MCP
   tools for AI assistants and a paired app. The broker layer is its own package.
-- [Torok](https://osauer.dev/torok/): The private Go runtime behind Desk's agent
-  workflows, with saved progress, schedules, budgets and recovery.
 - [HyperServe](https://osauer.dev/hyperserve/): An open-source Go HTTP server
   library, built around net/http, with optional MCP.
+- [Torok](https://osauer.dev/torok/): The private Go runtime behind Desk's agent
+  workflows, with saved progress, schedules, budgets and recovery.
 - [Tower](https://osauer.dev/tower/): A private experiment in coordinating coding
   agents. No public download.
 
