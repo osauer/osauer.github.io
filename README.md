@@ -45,3 +45,11 @@ harness with synthetic sessions only.
 ported from the native app, and play a scripted day with demo messages and a
 demo brief on the Desk page. Palette follows the Financial Times visual code
 used by `site.css`.
+
+## Product sheet
+
+`assets/sheet/` holds the Canary Desk product sheet (web edition, no e-mail
+address) and its page previews, rendered in the Desk checkout's git-ignored
+`output/product-sheet/web/`. File names carry the month, so a shared link
+always means that version. To reissue, add the new dated PDF and previews,
+move the Desk page's links, and keep the old files.
