@@ -5,7 +5,9 @@ Updated: 2026-10-01
 Oliver Sauer heads country delivery at a global IT-services firm. He has worked
 in technology for more than 25 years, much of it leading IT transformation in
 financial services: inside wealth and asset management in Zurich and Singapore,
-then for the financial-services clients of a leading hyperscaler. This site shows his personal work in generative AI, trading and Go
+then for the financial-services clients of a leading hyperscaler. He believes
+leaders in generative AI need to earn their credibility by building with frontier
+technology themselves; Canary Desk is where he does. This site shows his personal work in generative AI, trading and Go
 systems. Nothing
 here is investment advice.
 
