@@ -2,9 +2,9 @@
 
 Updated: 2026-10-01
 
-Oliver Sauer leads a delivery organisation in Germany and Austria. He has worked
-in technology for more than 25 years, much of it in banking IT in Zurich and
-Singapore. This site shows his personal work in generative AI, trading and Go
+Oliver Sauer heads delivery for Germany and Austria. He has worked in technology
+for more than 25 years, much of it leading IT transformation in financial
+services, inside banks in Zurich and Singapore and from the provider side. This site shows his personal work in generative AI, trading and Go
 systems. Nothing
 here is investment advice.
 
