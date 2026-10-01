@@ -62,7 +62,7 @@ body.home .nav-work{display:none}
 .foundation .mark{width:40px;height:40px;border-radius:9px;margin:12px 0 0}
 .about>div:first-child h2{grid-column:1/-1}
 .about .about-copy p+p{margin-top:14px}
-.about .about-copy a{color:var(--ink)}
+.about .about-copy a{color:var(--ink);white-space:nowrap}
 .about .text-link{align-items:baseline}.about .text-link .li{align-self:center}
 .foundation p:not(.kicker){max-width:44ch;color:var(--muted)}
 .link-stack{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
