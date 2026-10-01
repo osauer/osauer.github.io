@@ -21,8 +21,10 @@ here is investment advice.
   Screens use synthetic simulation data; no investment performance is claimed.
 - [Canary CLI](https://osauer.dev/canary/): Canary Desk's open-source engine: the
   broker connection, the risk rules and the orders they propose. A native Go
-  implementation of the Interactive Brokers TWS protocol, a command line, MCP
-  tools for AI assistants and a paired app. The broker layer is its own package.
+  implementation of the Interactive Brokers TWS protocol, a command line,
+  read-only MCP tools for AI assistants (none can place an order) and a paired
+  app. Every reading carries its source, age and state; missing data stays
+  missing. The broker layer is its own package.
 - [HyperServe](https://osauer.dev/hyperserve/): An open-source Go HTTP server
   library, built around net/http, with optional MCP.
 - [Torok](https://osauer.dev/torok/): The private Go runtime behind Desk's agent

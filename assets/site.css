@@ -146,6 +146,8 @@ pre{margin:0;font:14px/1.9 var(--mono);white-space:pre;overflow-x:auto}
 .guide-links a:hover{text-decoration:underline}
 .canary-intro{grid-template-columns:1.1fr 1fr;align-items:center}
 .canary-intro .lead{margin-top:25px;max-width:45ch}
+.canary-intro .sub{margin-top:16px;color:var(--muted);max-width:45ch}
+.canary-intro .proof{margin-top:18px;font-size:13px;color:var(--ink)}
 .canary-intro h1{font-size:clamp(64px,8vw,116px)}
 .canary-intro .actions{display:flex;gap:28px;flex-wrap:wrap}
 .canary-intro .note{color:var(--muted);max-width:49ch}
@@ -155,6 +157,48 @@ pre{margin:0;font:14px/1.9 var(--mono);white-space:pre;overflow-x:auto}
 .cli-screens .screen{grid-column:2}
 .screen figcaption code{font:11px/1.5 var(--mono)}
 pre code{font:inherit}
+/* The second feature block: wheat instead of slate, screen on the left. */
+.feature.alt{background:var(--wheat);color:var(--ink);margin-top:24px}
+.feature.alt .kicker,.feature.alt .screen figcaption{color:var(--muted)}
+.feature.alt .feature-copy p:not(.kicker){color:var(--ink)}
+.feature.alt a:hover{color:var(--moss)}
+.feature.alt a:focus-visible{outline-color:var(--moss)}
+.feature.alt .screen img{border-color:#D9C6B3}
+.feature.alt .feature-layout{grid-template-columns:minmax(0,2.15fr) minmax(0,1fr)}
+.feature.alt .feature-copy{order:2}
+.feature .lockup{display:flex;align-items:center;gap:16px;margin:18px 0 20px}
+.feature .lockup h2{margin:0}
+.feature .lockup .mark{width:52px;height:52px;margin:0}
+.feature .link-stack{margin-top:25px;gap:6px}
+.feature .link-stack .text-link{margin-top:0}
+/* Text beside a list: AI boundary, evidence states, Go library. */
+.split{display:grid;grid-template-columns:1fr 1.5fr;gap:60px;align-items:start}
+.split h2{margin:14px 0 20px}
+.split>div>p:not(.kicker){color:var(--muted);max-width:40ch}
+.split>div>p+p{margin-top:14px}
+.split .text-link{margin-top:20px}
+.points{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:28px 36px}
+.points li{border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:16px}
+.points b{display:block;color:var(--ink);font-weight:500;margin-bottom:6px}
+.states{margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:22px 30px}
+.states div{border-top:1px solid var(--line);padding-top:12px}
+.states dt{font:13px/1.5 var(--mono);color:var(--claret);margin-bottom:4px}
+.states dd{margin:0;font-size:15px;line-height:1.45;color:var(--muted)}
+/* One daemon, four ways in: a diagram in boxes that reflows on a phone. */
+.arch{display:grid;font-size:14px}
+.arch-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.arch-row.two{grid-template-columns:1fr 1fr}
+.arch-node,.arch-core{border:1px solid var(--line);border-radius:3px;padding:14px 16px;background:var(--paper)}
+.arch-node b,.arch-core b{display:block;font-weight:500;color:var(--ink)}
+.arch-node span,.arch-core span{display:block;margin-top:4px;color:var(--muted);font-size:13px;line-height:1.45}
+.arch-core{background:var(--forest);border-color:var(--forest);padding:20px 22px}
+.arch-core b{color:var(--paper);font:500 15px/1.4 var(--mono)}
+.arch-core span{color:#C9BEB3;font-size:14px}
+.arch-link{position:relative;height:46px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--muted)}
+.arch-link::before{content:'';position:absolute;left:50%;top:0;bottom:0;border-left:1px solid var(--muted)}
+.arch-link span{position:relative;background:var(--paper);padding:2px 10px}
+@media(max-width:1100px){.split{gap:35px}.states{grid-template-columns:repeat(2,1fr)}.feature.alt .feature-layout{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}}
+@media(max-width:760px){.split{grid-template-columns:1fr;gap:28px}.points,.states{grid-template-columns:1fr;gap:20px}.arch-row,.arch-row.two{grid-template-columns:1fr 1fr;gap:10px}.feature.alt .feature-layout{grid-template-columns:1fr}.feature .lockup{margin:14px 0 0}.feature .lockup .mark{width:44px;height:44px}.feature-copy .lockup{order:1}.feature-copy .link-stack{order:4;flex-direction:row;gap:25px;margin-top:14px}}
 @media(min-width:1500px){.hero{padding-block:75px}}
 @media(max-width:1100px){.wrap{width:calc(100% - 64px)}.home-intro,.project-intro{gap:35px;grid-template-columns:1.2fr 1fr}.home-intro h1{font-size:10.4vw}.feature{padding:35px 32px 24px}.feature-layout,.detail-screen{gap:30px}.feature h2{font-size:65px}.foundation{gap:28px;grid-template-columns:1fr 1.5fr}.foundation .link-stack{grid-column:2;flex-direction:row;gap:25px}.rhythm{gap:25px;grid-template-columns:repeat(2,1fr)}.features-grid,.features-grid.four{grid-template-columns:repeat(2,1fr)}.canary-intro{grid-template-columns:1fr 1fr}.terminal{padding:28px}}
 @media(max-width:760px){.wrap{width:calc(100% - 40px)}.cli-screens{grid-template-columns:1fr;gap:25px}.cli-screens .detail-copy{grid-row:auto}.cli-screens .screen{grid-column:auto}.site-header{min-height:88px;gap:12px}.brand{font-size:18px}.site-nav{gap:16px;font-size:13px}.site-nav .nav-work,.site-nav .nav-social{display:none}.hero{padding-block:43px}.home-intro,.project-intro,.canary-intro{grid-template-columns:1fr;gap:30px}.home-intro h1{font-size:clamp(68px,15.5vw,112px);margin-top:16px}.role{margin-bottom:12px}.intro-copy{max-width:46ch}.lead{font-size:18px}.feature{padding:30px 20px 20px}.feature-layout{grid-template-columns:1fr;gap:30px}.feature h2{font-size:64px;margin:14px 0}.feature-copy p:not(.kicker){max-width:42ch;font-size:17px}.feature .text-link{margin-top:14px}.screen figcaption{flex-wrap:wrap;gap:4px 15px;font-size:12px}.foundation{grid-template-columns:1fr;gap:25px}.foundation .link-stack{grid-column:auto;flex-direction:row;gap:25px}.section{padding-block:40px}.section h2{font-size:40px}.site-footer{padding-block:25px}.footer-top{align-items:flex-start;gap:14px;margin-bottom:15px}.footer-links{gap:17px}.footer-bottom{gap:12px}.project-intro h1{font-size:85px;margin-top:18px}.full-screen{width:100%;padding:18px 20px}.rhythm{grid-template-columns:1fr;gap:30px}.features-grid,.features-grid.four{grid-template-columns:1fr;gap:28px}.rhythm article{display:grid;grid-template-columns:28px 1fr;gap:0 15px}.rhythm h2{font-size:23px}.rhythm .number{grid-row:span 2;margin:6px 0 0}.rhythm p{max-width:43ch}.detail-screen{grid-template-columns:1fr;gap:25px}.detail-copy h2{margin:14px 0}.detail-copy p:not(.kicker){max-width:40ch}.invitation,.install-row,.handbook{grid-template-columns:1fr;gap:28px;padding-block:40px}.invitation h2{font-size:40px}.sheet{grid-template-columns:1fr;gap:26px;padding:24px 20px}.sheet-thumb{width:150px}.note-page .hero{padding-block:43px 70px}.note-body{margin-top:28px}.note-body p{font-size:18px}.canary-intro h1{font-size:72px}.terminal{padding:25px}.guide-links{grid-template-columns:1fr;gap:0}.canary-intro .note{font-size:12px}.install-links{gap:10px 20px}}
@@ -167,4 +211,4 @@ pre code{font:inherit}
 /* Dark scheme: the same code inverted, warm black paper, pink type, the dark blocks a step lighter. */
 /* Two-column project rows: the title column spans both rows, so the links sit under their paragraph. */
 @media(max-width:1100px) and (min-width:761px){.foundation{grid-template-rows:auto 1fr}.foundation>div:first-child{grid-row:span 2}.foundation .link-stack{align-self:start}}
-@media(prefers-color-scheme:dark){:root{--paper:#1F1D1B;--ink:#F2E8DF;--muted:#B3A79C;--line:#3B3632;--moss:#4FC3C9;--claret:#F27C9B;--forest:#2E333B;--light:#E4D5C6;--wheat:#2A2724;--wheat-line:#C9B8A6}.feature .kicker,.feature .screen figcaption,.terminal-label{color:#B3A79C}.screen img,.full-screen .screen img,.note-page .screen img,.feature .screen img{border-color:var(--wheat-line,#C9B8A6)}.feature,.terminal{color:var(--ink)}.feature a:hover{color:var(--moss)}.feature a:focus-visible{outline-color:var(--ink)}.sheet-thumb img{border-color:var(--wheat-line,#C9B8A6)}}
+@media(prefers-color-scheme:dark){:root{--paper:#1F1D1B;--ink:#F2E8DF;--muted:#B3A79C;--line:#3B3632;--moss:#4FC3C9;--claret:#F27C9B;--forest:#2E333B;--light:#E4D5C6;--wheat:#2A2724;--wheat-line:#C9B8A6}.feature .kicker,.feature .screen figcaption,.terminal-label{color:#B3A79C}.screen img,.full-screen .screen img,.note-page .screen img,.feature .screen img{border-color:var(--wheat-line,#C9B8A6)}.feature,.terminal{color:var(--ink)}.feature a:hover{color:var(--moss)}.feature a:focus-visible{outline-color:var(--ink)}.sheet-thumb img{border-color:var(--wheat-line,#C9B8A6)}.feature.alt .screen img{border-color:var(--wheat-line,#C9B8A6)}.arch-core b{color:var(--ink)}.arch-core span{color:#B3A79C}}
