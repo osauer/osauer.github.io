@@ -53,7 +53,7 @@ body.home .nav-work{display:none}
 .screen figcaption{display:flex;justify-content:space-between;gap:20px;margin-top:13px;color:var(--muted);font-size:12px;line-height:1.5}
 .feature .screen figcaption{color:#C9BEB3}
 .section{padding-block:64px;border-bottom:1px solid var(--line)}
-.foundation{display:grid;grid-template-columns:1fr 1.3fr .65fr;gap:45px;align-items:start}
+.foundation{display:grid;grid-template-columns:1fr 1.3fr .65fr;gap:45px;align-items:baseline}
 .section h2{font:48px/1.05 var(--serif);letter-spacing:-.02em}
 .foundation h2{margin-top:12px}
 .foundation p:not(.kicker){max-width:44ch;color:var(--muted)}
@@ -94,7 +94,7 @@ body.home .nav-work{display:none}
 .feature-group ul{list-style:none;margin:0;padding:0}
 .feature-group li{font-size:15px;line-height:1.5;color:var(--muted);margin-bottom:12px;max-width:40ch}
 .feature-group b{display:block;color:var(--ink);font-weight:500}
-.invitation{display:grid;grid-template-columns:1fr 1.5fr;gap:60px;padding-block:62px}
+.invitation{display:grid;grid-template-columns:1fr 1.5fr;gap:60px;padding-block:62px;align-items:baseline}
 .invitation h2{font:48px/1.05 var(--serif);letter-spacing:-.02em;margin-top:15px}
 .invitation p:not(.kicker){max-width:53ch;color:var(--muted)}
 .invitation .text-link{margin-top:20px}
@@ -157,4 +157,6 @@ pre code{font:inherit}
 /* On a phone, put the working screen beside the title in the reading order. */
 @media(max-width:760px){.feature-layout{gap:0}.feature-copy{display:contents}.feature-copy .kicker{order:0}.feature-copy h2{order:1;margin-bottom:0}.feature-layout .screen{order:2;margin-block:24px}.feature-copy p:not(.kicker){order:3}.feature-copy .text-link{order:4;justify-self:start}}
 /* Dark scheme: the same code inverted, warm black paper, pink type, the dark blocks a step lighter. */
+/* Two-column project rows: the title column spans both rows, so the links sit under their paragraph. */
+@media(max-width:1100px) and (min-width:761px){.foundation{grid-template-rows:auto 1fr}.foundation>div:first-child{grid-row:span 2}.foundation .link-stack{align-self:start}}
 @media(prefers-color-scheme:dark){:root{--paper:#1F1D1B;--ink:#F2E8DF;--muted:#B3A79C;--line:#3B3632;--moss:#4FC3C9;--claret:#F27C9B;--forest:#2E333B;--light:#E4D5C6;--wheat:#2A2724;--wheat-line:#C9B8A6}.feature .kicker,.feature .screen figcaption,.terminal-label{color:#B3A79C}.screen img,.full-screen .screen img,.note-page .screen img,.feature .screen img{border-color:var(--wheat-line,#C9B8A6)}.feature,.terminal{color:var(--ink)}.feature a:hover{color:var(--moss)}.feature a:focus-visible{outline-color:var(--ink)}.sheet-thumb img{border-color:var(--wheat-line,#C9B8A6)}}
