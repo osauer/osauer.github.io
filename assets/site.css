@@ -56,6 +56,10 @@ body.home .nav-work{display:none}
 .foundation{display:grid;grid-template-columns:1fr 1.3fr .65fr;gap:45px;align-items:baseline}
 .section h2{font:48px/1.05 var(--serif);letter-spacing:-.02em}
 .foundation h2{margin-top:12px}
+/* The mark and the name form one lockup on the title line, so the mark never pushes the name below the text beside it. */
+.foundation>div:first-child{display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:14px}
+.foundation>div:first-child .kicker{grid-column:1/-1}
+.foundation .mark{width:40px;height:40px;border-radius:9px;margin:12px 0 0}
 .foundation p:not(.kicker){max-width:44ch;color:var(--muted)}
 .link-stack{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
 .link-stack .text-link{font-size:14px}
@@ -68,7 +72,7 @@ body.home .nav-work{display:none}
 .footer-bottom p{max-width:75ch}
 .project-intro h1{font:clamp(64px,8vw,116px)/.9 var(--serif);letter-spacing:-.035em;margin-top:24px}
 .mark{display:block;width:52px;height:52px;border-radius:12px;margin-top:22px}
-.feature .mark,.foundation .mark{margin-top:18px}
+.feature .mark{margin-top:18px}
 .home-intro h1{white-space:normal}
 .project-intro .text-link{margin-top:24px}
 .project-intro .intro-copy{padding-bottom:0}
