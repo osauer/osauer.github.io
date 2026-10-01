@@ -22,10 +22,9 @@ Review the pages in a browser at desktop and phone widths. Browser artefacts in
 HTML/CSS with no third-party requests; the only script is the companion bird on
 the Desk page (`assets/canary.js`, no dependencies, hidden under 761px). Instrument Sans
 and Instrument Serif are self-hosted as WOFF2 subsets from Google Fonts; their SIL OFL licences are in `assets/fonts/`.
-The product names keep their products' type: Canary Desk in IBM Plex Sans 600 (its console's face),
-Canary CLI in IBM Plex Mono 500, which also sets code at 400. Plex comes from Google Fonts as Latin
-WOFF2 subsets under the SIL OFL (`assets/fonts/ibm-plex-OFL.txt`). Only these two names change face;
-every other heading stays in Instrument Serif.
+Two families only: Instrument Serif for names and headlines, Instrument Sans for everything else.
+Product names stay in the serif too (product faces were tried on 2026-10-01 and read as choppy).
+Code uses the system monospace, so no third family is loaded.
 
 ## Screens
 
