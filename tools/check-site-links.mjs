@@ -1,7 +1,7 @@
 import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 
-const root = process.cwd();
+const root = path.resolve(process.argv[2] ?? process.cwd());
 const siteOrigin = "https://osauer.dev";
 const delegatedPrefixes = ["/canary/"];
 const problems = [];
@@ -134,7 +134,7 @@ async function checkRobots(file) {
 
 async function* walk(dir) {
   for (const entry of await readdir(dir, { withFileTypes: true })) {
-    if (entry.name === ".git") {
+    if ([".git", "output", ".playwright-cli"].includes(entry.name)) {
       continue;
     }
     const file = path.join(dir, entry.name);
