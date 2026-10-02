@@ -12,9 +12,6 @@
   display: flex;
   align-items: flex-start;
   gap: 2px;
-  /* Scale the bird and capsule together, preserving their alignment. */
-  transform: scale(0.75);
-  transform-origin: top right;
   pointer-events: none;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -23,8 +20,9 @@
 .canary-companion .column > * { pointer-events: auto; }
 .canary-perch {
   position: relative;
-  width: 118px;
-  height: 100px;
+  /* The native bird's visible artwork is about 52px square. */
+  width: 66px;
+  height: 58px;
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
@@ -36,13 +34,13 @@
   position: absolute;
   top: 2px;
   right: 6px;
-  min-width: 22px;
-  height: 22px;
-  padding: 0 6px;
-  border-radius: 11px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
   background: var(--blue, #0F5499);
   color: #fff;
-  font: 750 12px/22px system-ui, sans-serif;
+  font: 700 10px/16px system-ui, sans-serif;
   text-align: center;
   box-shadow: 0 2px 6px rgba(16, 24, 39, 0.25);
   transform: scale(0.3);
@@ -56,12 +54,13 @@
 .canary-speech {
   display: flex;
   align-items: center;
-  gap: 14px;
-  max-width: min(560px, calc(100vw - 200px));
-  margin: 16px 0 0;
-  padding: 9px 12px 9px 18px;
+  gap: 10px;
+  height: 52px;
+  max-width: min(440px, calc(100vw - 200px));
+  margin: 0;
+  padding: 0 14px;
   border: 1px solid rgba(16, 24, 39, 0.1);
-  border-radius: 24px;
+  border-radius: 26px;
   background: rgba(255, 252, 248, 0.95);
   backdrop-filter: blur(16px) saturate(1.4);
   -webkit-backdrop-filter: blur(16px) saturate(1.4);
@@ -76,33 +75,34 @@
 .canary-speech[data-open="1"] { opacity: 1; transform: none; pointer-events: auto; }
 .canary-speech [hidden] { display: none !important; }
 .canary-speech .lines { min-width: 0; }
-.canary-speech .title { margin: 0; font-size: 14.5px; font-weight: 700; line-height: 1.3; letter-spacing: -0.005em; white-space: nowrap; }
-.canary-speech .line2 { display: flex; align-items: center; gap: 10px; margin-top: 2px; }
-.canary-speech .ticker { position: relative; height: 22px; overflow: hidden; }
-.canary-speech .ticker .sizer { display: block; padding-left: 24px; visibility: hidden; white-space: nowrap; font-size: 13.5px; line-height: 22px; }
+.canary-speech .title { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.3; letter-spacing: -0.005em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.canary-speech .line2 { display: flex; align-items: center; gap: 7px; margin-top: 2px; }
+.canary-speech .ticker { position: relative; min-width: 0; height: 18px; overflow: hidden; }
+.canary-speech .ticker .sizer { display: block; padding-left: 19px; visibility: hidden; white-space: nowrap; font-size: 12px; line-height: 18px; }
 .canary-speech .ticker .page {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 5px;
   margin: 0;
   color: var(--ink-soft, #4D4640);
-  font-size: 13.5px;
-  line-height: 22px;
+  font-size: 12px;
+  line-height: 18px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .canary-speech .ticker .page span { overflow: hidden; text-overflow: ellipsis; }
 .canary-speech .kind, .canary-brief .kind { flex: none; width: 17px; height: 17px; color: var(--muted, #6B635C); }
+.canary-speech .kind { width: 14px; height: 14px; }
 .canary-speech .kind[data-kind="order"], .canary-brief .kind[data-kind="order"] { color: #FF8833; }
 .canary-speech .kind[data-kind="brief"], .canary-brief .kind[data-kind="brief"] { color: var(--blue, #0F5499); }
 .canary-speech .kind[data-kind="issue"], .canary-brief .kind[data-kind="issue"] { color: #CC0000; }
 .canary-speech .kind[data-kind="question"], .canary-brief .kind[data-kind="question"] { color: #593380; }
 .canary-speech .kind svg, .canary-brief .kind svg { display: block; width: 100%; height: 100%; }
-.canary-speech .dots { display: flex; flex: none; gap: 5px; margin: 0; padding: 0; list-style: none; }
-.canary-speech .dots li { width: 5px; height: 5px; border-radius: 50%; background: rgba(16, 24, 39, 0.22); }
+.canary-speech .dots { display: flex; flex: none; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.canary-speech .dots li { width: 4px; height: 4px; border-radius: 50%; background: rgba(16, 24, 39, 0.22); }
 .canary-speech .dots li[aria-current="true"] { background: var(--ink, #33302E); }
 .canary-speech .tools { display: flex; flex: none; align-items: center; gap: 4px; }
 .canary-speech .tool {
@@ -110,8 +110,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   border: 0;
   border-radius: 50%;
   background: none;
@@ -120,7 +120,7 @@
   text-decoration: none;
   cursor: pointer;
 }
-.canary-speech .tool svg { width: 20px; height: 20px; }
+.canary-speech .tool svg { width: 16px; height: 16px; }
 .canary-speech .tool:hover { background: rgba(16, 24, 39, 0.08); color: var(--ink, #33302E); }
 .canary-speech .tool.brief { color: var(--blue, #0F5499); }
 .canary-speech .tool.brief .unread { position: absolute; top: 5px; right: 5px; width: 7px; height: 7px; border-radius: 50%; background: var(--blue, #0F5499); opacity: 0; transition: opacity 0.2s; }
@@ -129,13 +129,13 @@
   position: absolute;
   top: -2px;
   right: -4px;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 5px;
-  border-radius: 9px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
   background: var(--blue, #0F5499);
   color: #fff;
-  font: 750 11px/18px system-ui, sans-serif;
+  font: 700 10px/16px system-ui, sans-serif;
   text-align: center;
   opacity: 0;
   transform: scale(0.4);
