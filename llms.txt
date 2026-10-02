@@ -1,6 +1,6 @@
 # Oliver Sauer · osauer.dev
 
-Updated: 2026-10-01
+Updated: 2026-10-02
 
 Oliver Sauer heads country delivery at a global IT-services firm. He has worked
 in technology for more than 25 years, much of it leading IT transformation in
@@ -13,18 +13,21 @@ here is investment advice.
 
 - [Canary Desk](https://osauer.dev/desk/): A private trading workspace. It briefs
   the owner before the open, offers an AI analyst through the day, protects the
-  portfolio by rule and sweeps idle cash into short-dated government bills in the
-  same currency. Orders go out when the owner confirms them, or on their own for
+  portfolio by rule and shows completed statement-based FX contribution for Day,
+  WTD, MTD and YTD. Its policy-based cash sweep plans surplus cash into same-currency
+  government bills while reserving liquidity and commitments. Orders go out when
+  the owner confirms them, or on their own for
   rule buckets the owner has pre-authorised: reduce-only protection or bill
-  purchases, under a size cap, after a veto window. A small private preview is
-  arranged directly with Oliver on LinkedIn. It is not a commercial service.
+  purchases, under a size cap, after a veto window. Private access is arranged personally through LinkedIn. It is not a commercial service.
   Screens use synthetic simulation data; no investment performance is claimed.
 - [Canary CLI](https://osauer.dev/canary/): Canary Desk's open-source engine: the
   broker connection, the risk rules and the orders they propose. A native Go
   implementation of the Interactive Brokers TWS protocol, a command line,
   read-only MCP tools for AI assistants (none can place an order) and a paired
-  app. Every reading carries its source, age and state; missing data stays
-  missing. The broker layer is its own package.
+  app. Canary calculates the reconciled FX contribution used by Desk;
+  `canary reporting fx` and `canary_reporting_fx` expose the same read-only result.
+  It also owns sweep planning, bill resolution and execution checks. Every
+  reading carries its source, age and state; missing data stays missing. The broker layer is its own package.
 - [HyperServe](https://osauer.dev/hyperserve/): An open-source Go HTTP server
   library, built around net/http, with optional MCP.
 - [Torok](https://osauer.dev/torok/): The private Go runtime behind Desk's agent
@@ -35,8 +38,9 @@ here is investment advice.
 ## Source and documentation
 
 - [Oliver's GitHub](https://github.com/osauer)
-- [LinkedIn and private-preview enquiries](https://www.linkedin.com/in/osauer/)
+- [LinkedIn and private-access enquiries](https://www.linkedin.com/in/osauer/)
 - [Canary repository](https://github.com/osauer/canary)
+- [October 2026 product sheet](https://osauer.dev/assets/sheet/canary-desk-product-sheet-2026-10.pdf)
 - [Canary handbook](https://osauer.dev/canary/docs/)
 - [Canary installation](https://osauer.dev/canary/docs/start/install.html)
 - [MCP tools](https://osauer.dev/canary/docs/reference/mcp-tools.html)

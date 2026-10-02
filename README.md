@@ -52,7 +52,18 @@ used by `site.css`.
 ## Product sheet
 
 `assets/sheet/` holds the Canary Desk product sheet (web edition, no e-mail
-address) and its page previews, rendered in the Desk checkout's git-ignored
-`output/product-sheet/web/`. File names carry the month, so a shared link
+address) and its page previews, rendered from the editable
+`tools/product-sheet.html`. File names carry the month, so a shared link
 always means that version. To reissue, add the new dated PDF and previews,
 move the Desk page's links, and keep the old files.
+
+The October 2026 edition adds FX contribution and the policy-based cash sweep. Update the source date and copy, then render a new dated edition:
+
+```sh
+node tools/render-product-sheet.mjs 2026-10
+```
+
+Requires Node 22+, Google Chrome, Poppler (`pdfinfo`, `pdftoppm`) and `cwebp`. Check all
+three rendered pages for clipping before updating the Desk download links and
+file size. The sheet uses the site's self-hosted fonts; no private account data
+or e-mail address is included. Keep prior dated editions for existing links.

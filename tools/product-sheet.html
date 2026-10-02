@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Canary Desk product sheet, October 2026</title>
+<style>
+@font-face{font-family:"Instrument Sans";src:url(../assets/fonts/instrument-sans-latin.woff2) format("woff2");font-weight:400 700;font-style:normal}
+@font-face{font-family:"Instrument Serif";src:url(../assets/fonts/instrument-serif-latin.woff2) format("woff2");font-weight:400;font-style:normal}
+
+:root{
+  --ink:#1d2932; --muted:#55636c; --line:#d9dfdd; --faint:#f3f5f4;
+  --accent:#235cb6; --canary:#F5C518; --navy:#0e1626;
+  --rule:#b9c2c4;
+  /* one type scale, five sizes */
+  --fs-display:26pt; --fs-h2:15pt; --fs-lead:10.8pt; --fs-body:9pt; --fs-small:8pt;
+  /* three radii */
+  --r1:.3mm; --r2:1.6mm;
+  --hair:.3mm;
+  --gap:4.6mm;
+}
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#fff}
+body{color:var(--ink);font-family:"Instrument Sans",-apple-system,sans-serif;font-size:var(--fs-body);line-height:1.45;font-feature-settings:"tnum" 1,"kern" 1;-webkit-print-color-adjust:exact;print-color-adjust:exact;text-rendering:geometricPrecision}
+h1,h2,h3,p,ol,ul,figure,figcaption{margin:0;padding:0}
+ol,ul{list-style:none}
+b{font-weight:600}
+time{font-family:ui-monospace,monospace;font-weight:400}
+p,li,figcaption{text-wrap:pretty}
+h1,h2,h3{text-wrap:balance}
+
+.page{position:relative;width:210mm;height:297mm;overflow:hidden;padding:14mm;break-after:page;page-break-after:always;display:flex;flex-direction:column}
+.page:last-child{break-after:auto;page-break-after:auto}
+
+/* shared */
+.mast{display:flex;align-items:center;justify-content:space-between;flex:none}
+.brand{display:flex;align-items:center;gap:2.6mm;font-size:var(--fs-lead);font-weight:600;letter-spacing:-.01em;white-space:nowrap}
+.brand img{width:8mm;height:8mm;border-radius:var(--r2);display:block}
+.mast .kicker{font-size:var(--fs-body);color:var(--muted)}
+.label{font-size:var(--fs-small);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:1.3}
+h2{font-size:var(--fs-h2);font-weight:600;line-height:1.25;letter-spacing:-.012em}
+h3{font-size:var(--fs-lead);font-weight:600;line-height:1.3;letter-spacing:-.008em}
+.stand{font-size:var(--fs-lead);color:var(--muted);margin-top:1.4mm}
+.dash li{position:relative;padding-left:4mm}
+.dash li::before{content:"\2013";position:absolute;left:0;top:0;color:var(--ink)}
+.foot{flex:none;margin-top:auto;display:flex;justify-content:space-between;align-items:baseline;border-top:var(--hair) solid var(--line);padding-top:2.2mm;font-size:var(--fs-small);color:var(--muted)}
+
+/* ---------- front ---------- */
+h1{font-size:var(--fs-display);font-weight:600;line-height:1.1;letter-spacing:-.024em;margin-top:7.5mm}
+.lead{font-size:var(--fs-lead);line-height:1.45;margin-top:4.5mm}
+
+.rules{margin-top:var(--gap);padding-top:3.6mm;border-top:var(--hair) solid var(--ink)}
+.rulegrid{display:grid;grid-template-columns:1fr 1fr;column-gap:10mm;margin-top:1.6mm}
+.rulegrid li{padding:1.8mm 0 2mm 0;border-bottom:var(--hair) solid var(--line)}
+.rulegrid li:nth-last-child(-n+2){border-bottom:0}
+.rulehead{display:flex;justify-content:space-between;align-items:baseline;gap:6mm}
+.defaults{color:var(--muted);text-align:right}
+
+.control{margin-top:var(--gap);padding-top:3.6mm;border-top:var(--hair) solid var(--ink)}
+.ladder{margin-top:3.4mm;border-top:var(--hair) solid var(--line)}
+.lrow{display:grid;grid-template-columns:11mm 1fr 46mm 26mm;column-gap:4.5mm;padding:1.5mm 0 1.7mm 0;border-bottom:var(--hair) solid var(--line);align-items:start}
+.lrow.head{padding:1.6mm 0}
+.lrow.head span{font-size:var(--fs-small);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.stair{width:11mm;height:6.6mm;display:block;margin-top:.3mm}
+.stair rect{stroke-width:1;shape-rendering:crispEdges}
+.stair .on{fill:var(--canary);stroke:var(--ink)}
+.stair .off{fill:#fff;stroke:#a3adb1}
+.part{font-weight:500}
+.dflt{color:var(--muted)}
+.gate{margin-top:2.6mm;display:flex;gap:3mm}
+.gate::before{content:"";flex:none;width:1.1mm;background:var(--canary);border-radius:var(--r1)}
+
+/* ---------- back ---------- */
+.page.back{--gap:4mm}
+.backhead{display:flex;justify-content:space-between;align-items:center;gap:8mm}
+
+.day{margin-top:5.4mm}
+.dayhead{display:flex;justify-content:space-between;align-items:baseline}
+.legend{display:flex;gap:4mm;font-size:var(--fs-small);color:var(--muted)}
+.legend i{display:inline-block;width:2.4mm;height:2.4mm;margin-right:1.3mm;vertical-align:-.25mm;box-sizing:border-box}
+.stops{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));position:relative;margin-top:3.2mm}
+.stops::before{content:"";position:absolute;left:calc(100% / 18);right:calc(100% / 18);top:7.2mm;border-top:var(--hair) solid var(--rule)}
+.stops li{position:relative;text-align:center;padding:0 .8mm}
+.stops time{display:block;line-height:1.3;font-size:8.5pt;white-space:nowrap}
+.stops i{display:block;margin:1.6mm auto 1.8mm auto;width:2.8mm;height:2.8mm;box-sizing:border-box;position:relative}
+.stops b{display:block;line-height:1.3}
+.stops small{display:block;font-size:var(--fs-small);color:var(--muted);line-height:1.3;margin-top:.6mm}
+i.rv{background:var(--ink);border-radius:50%}
+i.br{background:var(--canary);border:var(--hair) solid var(--ink);border-radius:var(--r1)}
+i.mk{background:#fff;border:.35mm solid var(--ink);border-radius:50%}
+.day .note{margin-top:3.2mm;color:var(--muted)}
+
+.duo{display:grid;grid-template-columns:1fr 1fr;column-gap:10mm;margin-top:var(--gap);padding-top:4mm;border-top:var(--hair) solid var(--line)}
+.duo p{margin-top:1.2mm}
+
+.shot{margin-top:var(--gap);flex:none}
+.shot .frame{border:var(--hair) solid var(--line);border-radius:var(--r2);overflow:hidden;background:#fff}
+.shot img{display:block;width:100%}
+.shot figcaption{font-size:var(--fs-small);color:var(--muted);margin-top:1.8mm;line-height:1.4}
+
+.away{margin-top:var(--gap);padding-top:4mm;border-top:var(--hair) solid var(--ink)}
+.awaygrid{display:grid;grid-template-columns:1fr 1fr;column-gap:10mm;row-gap:2.6mm;margin-top:2.2mm}
+.ctxgrid{display:grid;grid-template-columns:repeat(3,1fr);column-gap:7mm;row-gap:2.6mm;margin-top:2.2mm}
+.notlist{margin-top:var(--gap);padding-top:4mm;border-top:var(--hair) solid var(--ink)}
+.notgrid{display:grid;grid-template-columns:1fr 1fr;column-gap:10mm;row-gap:1.4mm;margin-top:2mm}
+.features{margin-top:4mm;padding-top:4mm;border-top:var(--hair) solid var(--ink);display:grid;grid-template-columns:1fr 1fr;column-gap:10mm}
+.features section{margin-bottom:4mm}
+.features section:last-child{margin-bottom:0}
+.features h3{margin-bottom:1.6mm}
+.features li{font-size:8.9pt;line-height:1.4}
+.features li + li{margin-top:1.1mm}
+.foot .sep,.contact .sep{margin:0 1.4mm}
+.pair{display:grid;grid-template-columns:1fr 1fr;column-gap:10mm;margin-top:var(--gap);padding-top:4mm;border-top:var(--hair) solid var(--ink)}
+.pair h3 + *{margin-top:2mm}
+.pair li + li{margin-top:1.4mm}
+.pair section + section{margin-top:4mm}
+.pair p + p{margin-top:1.8mm}
+
+.access{margin-top:var(--gap);padding-top:4mm;border-top:var(--hair) solid var(--line)}
+.access p + p{margin-top:1.8mm}
+.contact{margin-top:2.6mm;font-size:var(--fs-small);color:var(--muted)}
+.contact .sep{margin:0 1.4mm}
+.legal{flex:none;margin-top:auto;padding-top:2mm;border-top:var(--hair) solid var(--line);font-size:var(--fs-small);color:var(--muted);line-height:1.4;display:flex;justify-content:space-between;align-items:baseline;gap:8mm}
+.legal .date{white-space:nowrap}
+h1,h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
+.sweep-path{display:flex;gap:1.4mm;align-items:center;margin:2mm 0 2.4mm;padding:2mm 0;border-block:var(--hair) solid var(--line);font-size:8pt;font-weight:500}
+.sweep-path i{font-style:normal;color:var(--accent)}
+.third .features section{margin-bottom:2.5mm}
+.third .features li{font-size:8.7pt;line-height:1.36}
+.third .features li+li{margin-top:.9mm}
+</style>
+</head>
+<body>
+
+<!-- ============================ FRONT ============================ -->
+<section class="page front">
+  <header class="mast">
+    <div class="brand"><img src="../assets/canary-icon.png" alt="">Canary Desk</div>
+    <p class="kicker">Product sheet · October 2026</p>
+  </header>
+
+  <h1>Rule-based protection for your portfolio, with an AI analyst on staff.</h1>
+  <p class="lead">Canary Desk runs your risk rules on the live book: trailing stops, loss exits and a budget for option premium. A policy-based cash sweep puts idle money to work. While your Mac stays awake, it places the orders you have pre-authorised, even when you&rsquo;re away, and drafts the rest for your approval. Before each open, its AI analyst briefs you on the markets and your book.</p>
+
+  <!-- Resolved 2026-09-30 from the Canary source: every Rulebook limit is owner-set (canary rules policy set KEY=VALUE); the levels printed are the compiled defaults. The budget governor (ranked sell plan) and the cash sweep ship disabled. -->
+  <div class="rules">
+    <div class="rulehead"><h2>What the rules watch</h2><p class="defaults">Canary&rsquo;s defaults, October 2026. You set every level.</p></div>
+    <ul class="rulegrid">
+      <li><b>Market regime.</b> Canary&rsquo;s sensors read volatility, credit, funding, currency, dealer gamma and breadth. As they signal stress, your limits tighten.</li>
+      <li><b>Stops and exits.</b> Trailing stops, loss exits and profit trails, with one order per contract however many rules ask.</li>
+      <li><b>Margin and exposure.</b> Excess liquidity is flagged below 30&nbsp;% of NLV and again below 15&nbsp;%, and new buys are warned. Net exposure bands narrow in stress.</li>
+      <li><b>Option premium budget.</b> Long premium at risk, hedges excluded, is watched at 25&nbsp;% of NLV, 15&nbsp;% in stress. Above it the book is sell-only: new buys are warned, not blocked.</li>
+      <li><b>Cash sweep.</b> Surplus cash into same-currency government bills, after commitments and liquidity reserves. Review the bill, maturity, price and fees. Off by default.</li>
+      <li><b>Ranked sell plan.</b> At 35&nbsp;% of NLV, Canary ranks what to sell by what each sale fixes and drafts the sales. Off by default.</li>
+    </ul>
+  </div>
+
+  <div class="control">
+    <h2>You set how far it goes.</h2>
+    <div class="ladder">
+      <div class="lrow head"><span></span><span>What happens</span><span>Your part</span><span>Default</span></div>
+      <div class="lrow">
+        <svg class="stair" viewBox="0 0 50 30" aria-hidden="true"><rect class="on" x="0.5" y="23.5" width="8" height="6"/><rect class="off" x="10.5" y="17.5" width="8" height="12"/><rect class="off" x="20.5" y="11.5" width="8" height="18"/><rect class="off" x="30.5" y="5.5" width="8" height="24"/></svg>
+        <p><b>Proposals.</b> Rules draft orders and the AI analyst suggests adds, holds, trims and exits. Nothing is sent.</p>
+        <p class="part">Read and decide.</p>
+        <p class="dflt">On.</p>
+      </div>
+      <div class="lrow">
+        <svg class="stair" viewBox="0 0 50 30" aria-hidden="true"><rect class="on" x="0.5" y="23.5" width="8" height="6"/><rect class="on" x="10.5" y="17.5" width="8" height="12"/><rect class="off" x="20.5" y="11.5" width="8" height="18"/><rect class="off" x="30.5" y="5.5" width="8" height="24"/></svg>
+        <p><b>Confirmed orders.</b> DAY limit orders and Canary's exact proposals go to the broker after you check its preview.</p>
+        <p class="part">Confirm each at the Mac: passkey, Touch ID or a paired Apple Watch.</p>
+        <p class="dflt">Off until you enable trading.</p>
+      </div>
+      <div class="lrow">
+        <svg class="stair" viewBox="0 0 50 30" aria-hidden="true"><rect class="on" x="0.5" y="23.5" width="8" height="6"/><rect class="on" x="10.5" y="17.5" width="8" height="12"/><rect class="on" x="20.5" y="11.5" width="8" height="18"/><rect class="off" x="30.5" y="5.5" width="8" height="24"/></svg>
+        <p><b>Queued for the open.</b> A reduction you confirm before the open goes out in a one-hour window after it, as a limit order, only while its rule applies.</p>
+        <p class="part">Confirm once, before the open.</p>
+        <p class="dflt">With trading enabled.</p>
+      </div>
+      <div class="lrow">
+        <svg class="stair" viewBox="0 0 50 30" aria-hidden="true"><rect class="on" x="0.5" y="23.5" width="8" height="6"/><rect class="on" x="10.5" y="17.5" width="8" height="12"/><rect class="on" x="20.5" y="11.5" width="8" height="18"/><rect class="on" x="30.5" y="5.5" width="8" height="24"/></svg>
+        <p><b>Pre-authorised rules.</b> Stops, exits and budget cuts go out when a veto window ends, 30 minutes by default, each capped at an order size you set. The sweep has its own opt-in authority.</p>
+        <p class="part">Pre-authorise each in your policy. Veto inside the window from Canary&rsquo;s paired app.</p>
+        <p class="dflt">Off.</p>
+      </div>
+    </div>
+    <p class="gate"><span>The AI analyst proposes but never sends. Every order passes Canary&rsquo;s checks against your limits and leaves a receipt. Protection reduces risk; the cash sweep buys same-currency bills with eligible cash.</span></p>
+  </div>
+
+  <footer class="foot"><span>Private workspace · Runs with Interactive Brokers, on one Mac</span><span>Page 2: a day with it. Page 3: full features.</span></footer>
+</section>
+
+<!-- ============================ BACK ============================ -->
+<section class="page back">
+  <header class="backhead">
+    <h2>A day with Canary Desk.</h2>
+    <div class="brand"><img src="../assets/canary-icon.png" alt="">Canary Desk</div>
+  </header>
+  <p class="stand">Market context, portfolio review and an AI analyst in one daily workspace, on a fixed clock.</p>
+
+  <div class="day">
+    <div class="dayhead">
+      <p class="label">A weekday with US holdings · Berlin time</p>
+      <p class="legend"><span><i class="br"></i>Brief</span><span><i class="rv"></i>Review</span><span><i class="mk"></i>Market</span></p>
+    </div>
+    <ol class="stops">
+      <li><time>07:00</time><i class="rv"></i><b>Morning review</b><small>book and risk</small></li>
+      <li><time>08:30</time><i class="br"></i><b>Morning brief</b></li>
+      <li><time>14:30</time><i class="rv"></i><b>US preparation</b></li>
+      <li><time>15:00</time><i class="br"></i><b>Pre-open brief</b></li>
+      <li><time>15:30</time><i class="mk"></i><b>US open</b><small>queued orders follow</small></li>
+      <li><time>15:45</time><i class="rv"></i><b>Opening check</b></li>
+      <li><time>18:00</time><i class="br"></i><b>Evening brief</b></li>
+      <li><time>21:15</time><i class="rv"></i><b>Pre-close review</b><small>until 21:30</small></li>
+      <li><time>22:15</time><i class="rv"></i><b>Wrap-up</b><small>after the close</small></li>
+    </ol>
+    <p class="note">Every figure shows its source and its age. Xetra, London, Tokyo and Hong Kong follow the same clock; a&nbsp;material change starts a review in between.</p>
+  </div>
+
+  <div class="away">
+    <h3>Context and review</h3>
+    <div class="ctxgrid">
+      <p><b>Written briefs.</b> Before each open: markets, headlines on your holdings, how the book did. One model writes, a second edits.</p>
+      <p><b>An analyst you can question.</b> It answers from a snapshot of your broker data; a second model checks each answer.</p>
+      <p><b>FX contribution.</b> Currency effects on P&amp;L in your base currency: Day, WTD, MTD and YTD, with daily statement evidence. Missing days stay visible.</p>
+      <p><b>Edge.</b> What past trades delivered, confirmed by the broker, against leaving the position unchanged. History, not a forecast.</p>
+      <p><b>Performance.</b> Time-weighted return from broker statements, net of transfers, with drawdown, against SPY.</p>
+      <p><b>Market data.</b> Streaming quotes and day charts, an index ribbon, and a calendar of releases and earnings.</p>
+    </div>
+  </div>
+
+  <div class="away">
+    <h3>Around the clock</h3>
+    <div class="awaygrid">
+      <p><b>On a Mac mini.</b> Run it day and night on a dedicated Mac mini. Your laptop connects over a private, encrypted link; the rules keep running when it sleeps.</p>
+      <p><b>Notifications.</b> Orders waiting for you, risk-policy and mode changes, and data problems reach your Mac or laptop.</p>
+      <p><b>Rules that act.</b> Pre-authorised stops, exits and budget cuts go out when their veto window ends. The sweep needs its own explicit authority; everything else waits for you.</p>
+      <p><b>Stops at the broker.</b> A placed trailing stop rests at Interactive Brokers, for the day or until cancelled.</p>
+      <p><b>On your phone.</b> Canary&rsquo;s paired app shows alerts and can veto a pending order; away from home it needs the optional remote relay.</p>
+      <p><b>When a machine stops.</b> If TWS logs out, rules stop and Desk flags it. If the Mac running Desk sleeps, nothing runs there; orders already at the broker keep working.</p>
+    </div>
+  </div>
+
+  <div class="notlist">
+    <h3>What it is not</h3>
+    <ul class="dash notgrid">
+      <li><b>No claim of edge.</b> Results are measured, not promised; a stop can fill below its trigger.</li>
+      <li><b>Not a data vendor.</b> No licensed news or consensus data.</li>
+      <li><b>One person, one account.</b> No roles, no second approver, no other brokers, no Windows or Linux.</li>
+      <li><b>Single-leg options only.</b> Multi-leg and adjusted options are shown, not traded.</li>
+      <li><b>Not a money mover.</b> It places orders; it cannot withdraw or transfer funds.</li>
+    </ul>
+  </div>
+
+  <div class="access">
+    <!-- Access is arranged personally; no public price or installer. -->
+    <p><b>Built for a working portfolio.</b> Created by a senior technology leader with decades of experience in financial services and software, and used daily on his own portfolio. Runs on your Mac with Interactive Brokers and your OpenAI API key. Private access is arranged personally.</p>
+    <p class="contact">More at osauer.dev/desk<span class="sep">·</span>linkedin.com/in/osauer</p>
+  </div>
+
+  <p class="legal"><span>A personal project, unaffiliated with any employer. Nothing in this sheet is investment advice. No affiliation with Interactive Brokers or OpenAI is implied.</span><span class="date">October 2026</span></p>
+</section>
+
+<section class="page third">
+  <header class="backhead">
+    <h2>Full features</h2>
+    <div class="brand"><img src="../assets/canary-icon.png" alt="">Canary Desk</div>
+  </header>
+  <p class="stand">Levels are Canary&rsquo;s defaults as of October&nbsp;2026, and you set every one.</p>
+
+  <div class="features">
+    <div class="fcol">
+    <section>
+      <h3>Market context</h3>
+      <ul class="dash">
+        <li>Market regime: volatility, credit, funding, currency, dealer gamma and breadth.</li>
+        <li>Stress requires agreement across groups; missing data stays visible.</li>
+        <li>Ten market leaders against SPY and QQQ on price, breadth and activity.</li>
+        <li>Official economic releases and earnings checks for your holdings.</li>
+        <li>A live index ribbon, the VIX term structure and session calendars for five exchanges.</li>
+      </ul>
+    </section>
+    <section>
+      <h3>Portfolio and performance</h3>
+      <ul class="dash">
+        <li>Net liquidation, day P&amp;L, margin headroom, cash, realised and unrealised P&amp;L at a glance.</li>
+        <li>Time-weighted return and drawdown from broker statements, against SPY.</li>
+        <li>FX contribution: Day, WTD, MTD, YTD from daily statements; incomplete periods have no total.</li>
+        <li>Holdings with streaming quotes, day charts, 52-week ranges and option legs.</li>
+        <li>Contribution breakdown; allocation by underlying, industry and asset class.</li>
+        <li>Reconciliation status from broker statements, and an evidence panel per position.</li>
+      </ul>
+    </section>
+    <section>
+      <h3>Risk and rules</h3>
+      <ul class="dash">
+        <li>Canary&rsquo;s risk assessment: exposure, margin, financing, option Greeks and stress findings.</li>
+        <li>A rulebook with limits you set, from issuer concentration to margin headroom.</li>
+        <li>Limits that tighten with the regime, and a sell-only state when premium or exposure runs over.</li>
+        <li>One risk-policy word on every view, and a drawdown brake from your own policy.</li>
+      </ul>
+    </section>
+    <section class="sweep-detail">
+      <h3>Cash sweep</h3>
+      <div class="sweep-path" aria-label="Reserve cash, buy same-currency bills, replenish cash">
+        <span>Reserve cash</span><i aria-hidden="true">→</i><span>Same-currency bills</span><i aria-hidden="true">→</i><span>Back to cash</span>
+      </div>
+      <ul class="dash">
+        <li>Commitments, liquidity needs and your buffer come first. No FX conversion.</li>
+        <li>Bills mature to cash. Liquidity shortfalls can prompt sales; an early sale can lose value.</li>
+        <li>Review price and fees; confirm or pre-authorise within caps and a veto window.</li>
+        <li>A decision history records every plan, with its reason and any checks that need attention.</li>
+      </ul>
+    </section>
+    </div>
+    <div class="fcol">
+    <section>
+      <h3>Protection and orders</h3>
+      <ul class="dash">
+        <li>Rule proposals: stops, loss exits, profit trails, expiry closes, trims and budget cuts.</li>
+        <li>A ranked sell plan at the premium cap, showing what each sale fixes.</li>
+        <li>One order per contract, queued for the open or pre-authorised under your caps and veto window.</li>
+        <li>Every other order confirmed by passkey, Touch ID or Apple Watch.</li>
+        <li>A receipt for every attempt and a reference for every refusal.</li>
+      </ul>
+    </section>
+    <section>
+      <h3>AI analyst and briefs</h3>
+      <ul class="dash">
+        <li>Morning, pre-open and evening briefs, plus a Saturday edition.</li>
+        <li>One model writes, a second edits; a factual fallback if a run fails.</li>
+        <li>Reviews on the market&rsquo;s clock, and in between when the book changes.</li>
+        <li>An analyst checked by a second model; reasons, sources and expiry.</li>
+        <li>Edge: a broker-confirmed review of what past trades delivered.</li>
+        <li>Research from official sources: Fed, BLS, BEA, ECB, SEC, Treasury and FRED.</li>
+      </ul>
+    </section>
+    <section>
+      <h3>Operations</h3>
+      <ul class="dash">
+        <li>Runs on a Mac mini; reach the console from your laptop.</li>
+        <li>Automatic or manual operation, with a recorded reason whenever the mode changes.</li>
+        <li>Menu-bar companion, status monitor, data gaps and follow-ups on a daily timeline.</li>
+        <li>Model spending with a hard ceiling; synthetic simulation mode.</li>
+      </ul>
+    </section>
+    <section>
+      <h3>Privacy and data</h3>
+      <ul class="dash">
+        <li>Runs on your Macs. No cloud service, no telemetry, nothing sent to the maker.</li>
+        <li>Orders to IBKR, public-data requests, and OpenAI calls with the book evidence each answer needs.</li>
+        <li>The broker connection stays in Canary; the AI has read-only tools.</li>
+      </ul>
+    </section>
+    <section>
+      <h3>What you need</h3>
+      <ul class="dash">
+        <li>A Mac that stays awake, with TWS or IB Gateway and Flex statements.</li>
+        <li>Your OpenAI API key.</li>
+        <li>For Touch ID approvals, macOS 26 or later with a Secure Enclave.</li>
+      </ul>
+    </section>
+    </div>
+  </div>
+
+  <footer class="foot"><span>Canary Desk · Product sheet · October 2026</span><span>More at osauer.dev/desk<span class="sep">·</span>linkedin.com/in/osauer</span></footer>
+</section>
+
+</body>
+</html>
