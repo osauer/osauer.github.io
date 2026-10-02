@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="650" viewBox="0 0 1040 650" role="img" aria-labelledby="title desc">
+  <title id="title">Lending, with the evidence attached</title>
+  <desc id="desc">A broker statement supplies dated shares-on-loan records and a net-fee ledger. Lending income is shown separately, without adding it again to broker profit and loss. This is a reporting diagram, not account data.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#333B45"/><stop offset="1" stop-color="#262A33"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#FFF1E5" stroke-opacity=".035"/></pattern>
+  </defs>
+  <rect width="1040" height="650" fill="url(#paper)"/>
+  <rect width="1040" height="650" fill="url(#grid)"/>
+  <g fill="#FFF1E5" font-family="Arial, sans-serif">
+    <text x="52" y="58" font-size="17" letter-spacing="2.1" fill="#C9BEB3">LENDING / BROKER EVIDENCE</text>
+    <text x="52" y="118" font-family="Georgia, serif" font-size="48">The record behind the income.</text>
+    <path d="M52 152H988" stroke="#FFF1E5" stroke-opacity=".22"/>
+    <g transform="translate(52 190)">
+      <path d="M0 0H31L44 13V59H0Z" stroke="#E8C66F" stroke-width="2" fill="none"/>
+      <path d="M30 1V14H43M10 26H33M10 35H33M10 44H25" stroke="#E8C66F" stroke-width="2" fill="none"/>
+      <text x="66" y="20" font-size="24">IBKR statement</text>
+      <text x="66" y="51" font-size="19" fill="#C9BEB3">Reporting date + coverage</text>
+    </g>
+    <path d="M400 220H512M512 220V301M272 301H772" fill="none" stroke="#4FC3C9" stroke-width="2"/>
+    <circle cx="512" cy="220" r="4" fill="#4FC3C9"/>
+    <path d="M272 301V326M772 301V326" stroke="#4FC3C9" stroke-width="2"/>
+    <g transform="translate(52 326)">
+      <rect width="440" height="160" fill="#FFF1E5" fill-opacity=".04" stroke="#FFF1E5" stroke-opacity=".25"/>
+      <rect width="3" height="160" fill="#E8C66F"/>
+      <text x="24" y="38" font-size="17" letter-spacing="1.7" fill="#E8C66F">SHARES ON LOAN</text>
+      <text x="24" y="83" font-family="Georgia, serif" font-size="32">The dated position</text>
+      <path d="M24 105H416" stroke="#FFF1E5" stroke-opacity=".18"/>
+      <text x="24" y="137" font-size="18" fill="#C9BEB3">Quantity · collateral · broker date</text>
+    </g>
+    <g transform="translate(552 326)">
+      <rect width="436" height="160" fill="#FFF1E5" fill-opacity=".04" stroke="#FFF1E5" stroke-opacity=".25"/>
+      <rect width="3" height="160" fill="#4FC3C9"/>
+      <text x="24" y="38" font-size="17" letter-spacing="1.7" fill="#4FC3C9">NET FEE HISTORY</text>
+      <text x="24" y="83" font-family="Georgia, serif" font-size="32">The earned-fee ledger</text>
+      <path d="M24 105H412" stroke="#FFF1E5" stroke-opacity=".18"/>
+      <text x="24" y="137" font-size="18" fill="#C9BEB3">Value date · currency · signed net fee</text>
+    </g>
+    <path d="M52 537H988" stroke="#FFF1E5" stroke-opacity=".22"/>
+    <circle cx="64" cy="577" r="12" fill="none" stroke="#4FC3C9" stroke-width="1.5"/>
+    <path d="m59 577 4 4 7-9" fill="none" stroke="#4FC3C9" stroke-width="1.5"/>
+    <text x="92" y="585" font-size="24">Visible income. No extra addition to broker P&amp;L.</text>
+    <text x="52" y="622" font-size="16" fill="#C9BEB3">REPORTING ONLY</text>
+    <text x="988" y="622" text-anchor="end" font-size="16" fill="#C9BEB3">Participation stays with IBKR</text>
+  </g>
+</svg>

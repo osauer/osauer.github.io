@@ -6,9 +6,9 @@ import os from 'node:os';
 import { spawn, execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const month = process.argv[2];
-if (!/^20\d{2}-(0[1-9]|1[0-2])$/.test(month ?? '')) throw new Error('Usage: node tools/render-product-sheet.mjs YYYY-MM');
-const name = `canary-desk-product-sheet-${month}`;
+const edition = process.argv[2];
+if (!/^20\d{2}-(0[1-9]|1[0-2])(?:-(0[1-9]|[12]\d|3[01]))?$/.test(edition ?? '')) throw new Error('Usage: node tools/render-product-sheet.mjs YYYY-MM[-DD]');
+const name = `canary-desk-product-sheet-${edition}`;
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'desk-sheet-'));
 const chrome = spawn('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', [
  '--headless=new', '--remote-debugging-port=0', `--user-data-dir=${tmp}`,

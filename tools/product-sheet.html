@@ -2,14 +2,14 @@
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
-<title>Canary Desk product sheet, October 2026</title>
+<title>Canary Desk product sheet, 2 October 2026</title>
 <style>
 @font-face{font-family:"Instrument Sans";src:url(../assets/fonts/instrument-sans-latin.woff2) format("woff2");font-weight:400 700;font-style:normal}
 @font-face{font-family:"Instrument Serif";src:url(../assets/fonts/instrument-serif-latin.woff2) format("woff2");font-weight:400;font-style:normal}
 
 :root{
-  --ink:#1d2932; --muted:#55636c; --line:#d9dfdd; --faint:#f3f5f4;
-  --accent:#235cb6; --canary:#F5C518; --navy:#0e1626;
+  --ink:#33302E; --muted:#6B635C; --line:#E4D5C6; --faint:#FFF1E5;
+  --accent:#0D7680; --canary:#F5C518; --navy:#262A33;
   --rule:#b9c2c4;
   /* one type scale, five sizes */
   --fs-display:26pt; --fs-h2:15pt; --fs-lead:10.8pt; --fs-body:9pt; --fs-small:8pt;
@@ -136,11 +136,11 @@ h1,h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
 <section class="page front">
   <header class="mast">
     <div class="brand"><img src="../assets/canary-icon.png" alt="">Canary Desk</div>
-    <p class="kicker">Product sheet · October 2026</p>
+    <p class="kicker">Product sheet · 2 October 2026</p>
   </header>
 
   <h1>Rule-based protection for your portfolio, with an AI analyst on staff.</h1>
-  <p class="lead">Canary Desk runs your risk rules on the live book: trailing stops, loss exits and a budget for option premium. A policy-based cash sweep puts idle money to work. While your Mac stays awake, it places the orders you have pre-authorised, even when you&rsquo;re away, and drafts the rest for your approval. Before each open, its AI analyst briefs you on the markets and your book.</p>
+  <p class="lead">A private workspace for your portfolio, the market and the decisions ahead. Canary runs your risk rules; Desk adds the briefs and AI analyst. Statement-backed FX contribution explains the currency effect. The cash-sweep planner reserves liquidity first. In the next Canary release, lending observations expose dated loans and earned net fees. Every order keeps its own authority checks.</p>
 
   <!-- Resolved 2026-09-30 from the Canary source: every Rulebook limit is owner-set (canary rules policy set KEY=VALUE); the levels printed are the compiled defaults. The budget governor (ranked sell plan) and the cash sweep ship disabled. -->
   <div class="rules">
@@ -150,7 +150,7 @@ h1,h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
       <li><b>Stops and exits.</b> Trailing stops, loss exits and profit trails, with one order per contract however many rules ask.</li>
       <li><b>Margin and exposure.</b> Excess liquidity is flagged below 30&nbsp;% of NLV and again below 15&nbsp;%, and new buys are warned. Net exposure bands narrow in stress.</li>
       <li><b>Option premium budget.</b> Long premium at risk, hedges excluded, is watched at 25&nbsp;% of NLV, 15&nbsp;% in stress. Above it the book is sell-only: new buys are warned, not blocked.</li>
-      <li><b>Cash sweep.</b> Surplus cash into same-currency government bills, after commitments and liquidity reserves. Review the bill, maturity, price and fees. Off by default.</li>
+      <li><b>Cash sweep.</b> Plans same-currency government bills after commitments and liquidity reserves. Off by default; commissioning needs calibrated policy and current settlement evidence.</li>
       <li><b>Ranked sell plan.</b> At 35&nbsp;% of NLV, Canary ranks what to sell by what each sale fixes and drafts the sales. Off by default.</li>
     </ul>
   </div>
@@ -220,24 +220,24 @@ h1,h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
   <div class="away">
     <h3>Context and review</h3>
     <div class="ctxgrid">
-      <p><b>Written briefs.</b> Before each open: markets, headlines on your holdings, how the book did. One model writes, a second edits.</p>
-      <p><b>An analyst you can question.</b> It answers from a snapshot of your broker data; a second model checks each answer.</p>
-      <p><b>FX contribution.</b> Currency effects on P&amp;L in your base currency: Day, WTD, MTD and YTD, with daily statement evidence. Missing days stay visible.</p>
-      <p><b>Edge.</b> What past trades delivered, confirmed by the broker, against leaving the position unchanged. History, not a forecast.</p>
+      <p><b>Written briefs.</b> Markets, your holdings and yesterday&rsquo;s results before each open. One model writes, a second edits.</p>
+      <p><b>AI analyst.</b> Answers from your broker evidence, checked by a second model.</p>
+      <p><b>FX contribution.</b> Day, WTD, MTD and YTD valuation effects. Live in private Desk; next signed Canary release. Separate from realised Forex lot P&amp;L.</p>
+      <p><b>Edge.</b> Broker-recorded outcomes compared with leaving the position unchanged. History, not a forecast.</p>
       <p><b>Performance.</b> Time-weighted return from broker statements, net of transfers, with drawdown, against SPY.</p>
-      <p><b>Market data.</b> Streaming quotes and day charts, an index ribbon, and a calendar of releases and earnings.</p>
+      <p><b>Lending · Next release.</b> Dated loans and earned net fees, readable by Desk&rsquo;s analyst. IBKR controls participation; fees stay separate from account P&amp;L.</p>
     </div>
   </div>
 
   <div class="away">
     <h3>Around the clock</h3>
     <div class="awaygrid">
-      <p><b>On a Mac mini.</b> Run it day and night on a dedicated Mac mini. Your laptop connects over a private, encrypted link; the rules keep running when it sleeps.</p>
+      <p><b>On your Mac.</b> Local on an awake Mac, or through a private, encrypted link to a dedicated host.</p>
       <p><b>Notifications.</b> Orders waiting for you, risk-policy and mode changes, and data problems reach your Mac or laptop.</p>
-      <p><b>Rules that act.</b> Pre-authorised stops, exits and budget cuts go out when their veto window ends. The sweep needs its own explicit authority; everything else waits for you.</p>
+      <p><b>Rules that act.</b> Authorised protection waits through a veto window. The sweep needs separate authority; other orders wait for you.</p>
       <p><b>Stops at the broker.</b> A placed trailing stop rests at Interactive Brokers, for the day or until cancelled.</p>
-      <p><b>On your phone.</b> Canary&rsquo;s paired app shows alerts and can veto a pending order; away from home it needs the optional remote relay.</p>
-      <p><b>When a machine stops.</b> If TWS logs out, rules stop and Desk flags it. If the Mac running Desk sleeps, nothing runs there; orders already at the broker keep working.</p>
+      <p><b>On your phone.</b> Canary&rsquo;s paired app shows alerts and vetoes pending orders. Remote access needs the optional relay.</p>
+      <p><b>When the host stops.</b> TWS logout or Mac sleep interrupts processing. Orders already at the broker keep working.</p>
     </div>
   </div>
 
@@ -254,11 +254,11 @@ h1,h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
 
   <div class="access">
     <!-- Access is arranged personally; no public price or installer. -->
-    <p><b>Built for a working portfolio.</b> Created by a senior technology leader with decades of experience in financial services and software, and used daily on his own portfolio. Runs on your Mac with Interactive Brokers and your OpenAI API key. Private access is arranged personally.</p>
+    <p><b>A personal project.</b> Built and used by Oliver Sauer. Desk is a private preview; access is arranged personally. Canary CLI is open source. Bring your Mac, Interactive Brokers account and AI provider.</p>
     <p class="contact">More at osauer.dev/desk<span class="sep">·</span>linkedin.com/in/osauer</p>
   </div>
 
-  <p class="legal"><span>A personal project, unaffiliated with any employer. Nothing in this sheet is investment advice. No affiliation with Interactive Brokers or OpenAI is implied.</span><span class="date">October 2026</span></p>
+  <p class="legal"><span>A personal project, unaffiliated with any employer. Nothing in this sheet is investment advice. No affiliation with Interactive Brokers or OpenAI is implied.</span><span class="date">2 October 2026</span></p>
 </section>
 
 <section class="page third">
@@ -283,10 +283,11 @@ h1,h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
     <section>
       <h3>Portfolio and performance</h3>
       <ul class="dash">
-        <li>Net liquidation, day P&amp;L, margin headroom, cash, realised and unrealised P&amp;L at a glance.</li>
+        <li>Net liquidation, day P&amp;L, margin headroom, cash, realised and unrealised P&amp;L.</li>
+        <li>Streaming holdings, day charts, 52-week ranges and option legs.</li>
         <li>Time-weighted return and drawdown from broker statements, against SPY.</li>
-        <li>FX contribution: Day, WTD, MTD, YTD from daily statements; incomplete periods have no total.</li>
-        <li>Holdings with streaming quotes, day charts, 52-week ranges and option legs.</li>
+        <li>FX: Day, WTD, MTD, YTD from statements; incomplete periods have no total. Private runtime today, next Canary release.</li>
+        <li>Lending in the next Canary release: dated loans and net-fee history. Payout and P&amp;L linkage remain unproved.</li>
         <li>Contribution breakdown; allocation by underlying, industry and asset class.</li>
         <li>Reconciliation status from broker statements, and an evidence panel per position.</li>
       </ul>
@@ -308,7 +309,7 @@ h1,h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
       <ul class="dash">
         <li>Commitments, liquidity needs and your buffer come first. No FX conversion.</li>
         <li>Bills mature to cash. Liquidity shortfalls can prompt sales; an early sale can lose value.</li>
-        <li>Review price and fees; confirm or pre-authorise within caps and a veto window.</li>
+        <li>Off by default. Current settlement evidence and calibrated reserves are required before commissioning.</li>
         <li>A decision history records every plan, with its reason and any checks that need attention.</li>
       </ul>
     </section>
@@ -338,7 +339,7 @@ h1,h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
     <section>
       <h3>Operations</h3>
       <ul class="dash">
-        <li>Runs on a Mac mini; reach the console from your laptop.</li>
+        <li>Runs on an awake Mac, locally or through a private encrypted link.</li>
         <li>Automatic or manual operation, with a recorded reason whenever the mode changes.</li>
         <li>Menu-bar companion, status monitor, data gaps and follow-ups on a daily timeline.</li>
         <li>Model spending with a hard ceiling; synthetic simulation mode.</li>
@@ -363,7 +364,7 @@ h1,h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
     </div>
   </div>
 
-  <footer class="foot"><span>Canary Desk · Product sheet · October 2026</span><span>More at osauer.dev/desk<span class="sep">·</span>linkedin.com/in/osauer</span></footer>
+  <footer class="foot"><span>Canary Desk · Product sheet · 2 October 2026</span><span>More at osauer.dev/desk<span class="sep">·</span>linkedin.com/in/osauer</span></footer>
 </section>
 
 </body>
