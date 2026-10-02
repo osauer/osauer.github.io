@@ -50,6 +50,7 @@
  .tour-heading span:last-child{max-width:15ch;text-align:right;font-size:10px}
  .tour-screen picture{padding:8px}
  .tour-screen img{height:640px;aspect-ratio:auto;object-fit:contain}
+ .desk-tour[data-selected=cash] .tour-screen picture{width:max-content;min-width:100%}
  .desk-tour[data-selected=cash] .tour-screen img{width:960px;max-width:none;height:640px}
  .tour-caption{grid-template-columns:1fr;margin:20px 0;gap:12px}
  .tour-caption h2{font-size:28px}
