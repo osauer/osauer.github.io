@@ -101,10 +101,12 @@ address) and its page previews, rendered from the editable
 always means that version. To reissue, add the new dated PDF and previews,
 move the Desk page's links, and keep the old files.
 
-The October 2026 edition adds FX contribution and the policy-based cash sweep. Update the source date and copy, then render a new dated edition:
+The 2 October 2026 edition adds stock-lending evidence beside FX contribution
+and the policy-based cash sweep, with source/release availability made explicit.
+Use a day suffix when revising an existing month so shared older PDFs stay intact:
 
 ```sh
-node tools/render-product-sheet.mjs 2026-10
+node tools/render-product-sheet.mjs 2026-10-02
 ```
 
 Requires Node 22+, Google Chrome, Poppler (`pdfinfo`, `pdftoppm`) and `cwebp`. Check all

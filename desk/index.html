@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Canary Desk | Your portfolio, understood and protected</title>
-  <meta name="description" content="Canary Desk briefs you before the open and protects your portfolio while you’re away. Rule-based protection, FX contribution and a policy-based cash sweep.">
+  <meta name="description" content="A private portfolio workspace by Oliver Sauer. Market briefs, risk rules and statement-backed FX contribution, with lending observations in the next Canary release.">
   <link rel="canonical" href="https://osauer.dev/desk/">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
@@ -18,7 +18,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://osauer.dev/desk/">
   <meta property="og:title" content="Canary Desk | Your portfolio, understood and protected">
-  <meta property="og:description" content="Canary Desk briefs you before the open and protects your portfolio while you’re away. Rule-based protection, FX contribution and a policy-based cash sweep.">
+  <meta property="og:description" content="A private portfolio workspace by Oliver Sauer. Market briefs, risk rules and statement-backed FX contribution, with lending observations in the next Canary release.">
   <meta property="og:image" content="https://osauer.dev/assets/desk-overview-social.jpg?v=20261002-tour">
   <meta property="og:image:alt" content="Canary Desk portfolio workspace, using synthetic demonstration data">
   <meta name="twitter:card" content="summary_large_image">
@@ -38,7 +38,7 @@
     <section class="wrap hero project-intro" aria-labelledby="desk-title">
       <div><p class="kicker">Private workspace</p><h1 id="desk-title">Canary Desk</h1></div>
       <div class="intro-copy">
-        <p class="lead">Your portfolio, understood before the day begins and protected while you’re away. It places the orders you have pre-authorised, within limits you set, and asks you about everything else.</p>
+        <p class="lead">A clear view of your portfolio, the market around it and the decisions ahead. An AI analyst reads the evidence; Canary keeps orders within the authority you grant.</p>
         <a class="text-link" href="#preview">Discuss private access<span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </section>
@@ -68,7 +68,7 @@
       <article><span class="number" aria-hidden="true">01</span><h2>Before the open</h2><p>A written brief each morning: how your book did the day before, and what needs your attention today.</p></article>
       <article><span class="number" aria-hidden="true">02</span><h2>Every minute</h2><p>Your risk rules check the book whether you’re watching or not. When one trips, it drafts the fix: a stop, an exit or a budget cut. An unhedged book gets a flag, not a hedge.</p></article>
       <article><span class="number" aria-hidden="true">03</span><h2>While you’re away</h2><p>Stops and loss exits you have pre-authorised go out on their own after a veto window, half an hour by default.</p></article>
-      <article><span class="number" aria-hidden="true">04</span><h2>Idle cash</h2><p>A policy-based sweep puts surplus cash into short-dated government bills in its own currency, with liquidity kept aside.</p></article>
+      <article><span class="number" aria-hidden="true">04</span><h2>Idle cash</h2><p>A policy-based planner evaluates same-currency government bills, after commitments and liquidity reserves. Off by default.</p></article>
     </section>
     <section class="wrap section market-pocket" aria-labelledby="market-pocket-title">
       <div class="market-pocket-head">
@@ -95,15 +95,15 @@
     <section class="wrap section split cash-feature" aria-labelledby="sweep-title">
       <div>
         <p class="kicker">Cash sweep</p>
-        <h2 id="sweep-title">Give idle cash<br>a job.</h2>
-        <p>Put surplus cash into short-dated government bills in the currency you already hold. Keep cash for commitments, liquidity needs and your policy buffer.</p>
-        <p>Review the bill, maturity, price and fees. Confirm each order, or explicitly pre-authorise the sweep within your limits and a veto window.</p>
+        <h2 id="sweep-title">Plan the surplus.<br>Keep the reserve.</h2>
+        <p>The cash-sweep planner considers short-dated government bills in the currency you hold, after commitments, liquidity needs and your policy buffer.</p>
+        <p>Review the bill, maturity, price and fees. The feature is off by default; commissioning needs your calibrated policy and current settlement evidence. Order authority is a separate owner decision.</p>
         <p class="note">Bills can lose value if sold before maturity.</p>
       </div>
       <div class="cash-story">
         <ol class="cash-flow" aria-label="How the cash sweep works">
           <li><span class="kicker">01 · Keep liquid</span><b>Cash for the book</b><p>Commitments, liquidity needs and your buffer come first.</p></li>
-          <li><span class="kicker">02 · Put the surplus to work</span><b>Same-currency bills</b><p>Eligible cash buys short-dated government bills. No currency conversion.</p></li>
+          <li><span class="kicker">02 · Put the surplus to work</span><b>Same-currency bills</b><p>The plan resolves a short-dated bill in the same currency. Evidence and authority still gate any purchase.</p></li>
           <li><span class="kicker">03 · Replenish cash</span><b>Maturity or a reviewed sale</b><p>Bills mature back to cash; a liquidity shortfall can prompt a sale. Sale proceeds must settle.</p></li>
         </ol>
         <p class="cash-story-note">Every proposal keeps its reason and decision history. Missing evidence holds the sweep.</p>
@@ -129,9 +129,20 @@
         <div class="fx-bridge" aria-label="FX contribution plus other profit and loss equals portfolio value change after external cash flows">
           <span><b>FX contribution</b>Currency effect</span><span class="operator" aria-hidden="true">+</span><span><b>Other P&amp;L</b>Prices, income and fees</span><span class="operator" aria-hidden="true">=</span><span><b>Portfolio change</b>After external cash flows</span>
         </div>
-        <p>Daily contributions reconcile to completed broker statements. The reporting cutoff and any missing days stay visible; incomplete periods have no total.</p>
+        <p>Daily contributions reconcile to completed broker statements. The reporting cutoff and missing days stay visible; incomplete periods have no total. This measures the currency effect on valuation, separately from realised Forex lot P&amp;L.</p>
         <a class="text-link" href="../canary/docs/start/reporting.html#fx-contribution">How FX is measured<span class="arrow" aria-hidden="true">→</span></a>
       </div>
+    </section>
+    <section class="wrap section split lending-feature" aria-labelledby="lending-title">
+      <div>
+        <p class="kicker">Lending observations · Next release</p>
+        <h2 id="lending-title">See the loan.<br>Read the fee.</h2>
+        <p>Canary’s new source implementation reads dated shares-on-loan records and customer net fees from IBKR statements. Desk’s analyst can read the same evidence through a dedicated, read-only tool.</p>
+        <p>The Canary app adds a dated position annotation and expandable fee history. Coverage stays visible; a missing report never becomes zero earnings.</p>
+        <p class="note">Participation stays with IBKR. Earned fees are shown separately from account P&amp;L; payout and P&amp;L linkage remain unproved. A populated account report is still needed for commissioning.</p>
+        <a class="text-link" href="../canary/docs/understand/edge.html#stock-lending-income">How lending is reported<span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <figure class="lending-ledger"><picture><source media="(max-width: 760px)" srcset="../assets/lending-evidence-mobile.svg"><img src="../assets/lending-evidence.svg" width="1040" height="650" alt="IBKR lending statements provide dated shares-on-loan records and net-fee history. Lending income stays separate from broker P&amp;L." loading="lazy"></picture><figcaption>Reporting only · Participation stays with IBKR.</figcaption></figure>
     </section>
     <section class="wrap section detail-screen" aria-labelledby="decisions-title">
       <div class="detail-copy">
@@ -149,9 +160,9 @@
       <div class="features-head"><p class="kicker">Full features</p><h2 id="features-title">What’s inside.</h2></div>
       <div class="features-grid">
       <div class="feature-group"><h3>Market context</h3><ul><li><b>Market regime</b>Eight readings in six groups, from volatility and credit to dealer gamma and breadth, read into one regime stage.</li><li><b>Breadth</b>How many S&amp;P 500 names trade above their 50- and 200-day averages, with new highs and lows.</li><li><b>Live market data</b>Indices, VIX and your holdings through the day, each quote with its age.</li><li><b>Calendar</b>Earnings and macro events ahead, flagged against what you hold.</li></ul></div>
-      <div class="feature-group"><h3>Your book</h3><ul><li><b>Performance</b>Returns from broker statements, measured against SPY, with drawdown.</li><li><b>FX contribution</b>The currency effect on P&amp;L: Day, WTD, MTD and YTD, with daily statement evidence.</li><li><b>Edge</b>What your trades delivered compared with leaving the position alone.</li><li><b>Exposure</b>Allocation by sector, stocks against options, and margin headroom.</li><li><b>Reconciliation</b>Figures checked against broker statements. Gaps stay visible.</li></ul></div>
+      <div class="feature-group"><h3>Your book</h3><ul><li><b>Performance</b>Returns from broker statements, measured against SPY, with drawdown.</li><li><b>FX contribution</b>The currency effect on P&amp;L: Day, WTD, MTD and YTD, with daily statement evidence.</li><li><b>Lending observations · Next release</b>Canary’s dated shares-on-loan evidence and earned net-fee history, readable by Desk’s analyst.</li><li><b>Edge</b>What your trades delivered compared with leaving the position alone.</li><li><b>Exposure</b>Allocation by sector, stocks against options, and margin headroom.</li><li><b>Reconciliation</b>Figures checked against broker statements. Gaps stay visible.</li></ul></div>
       <div class="feature-group"><h3>Protection</h3><ul><li><b>Risk rulebook</b>Your limits, checked every minute.</li><li><b>Stress signal</b>An early warning when the regime turns.</li><li><b>Protection proposals</b>Stops, exits, trims and budget cuts, each with its reason.</li></ul></div>
-      <div class="feature-group"><h3>Orders and cash</h3><ul><li><b>Pre-authorised rules</b>The protection you choose acts on its own, within your limits.</li><li><b>Queue for the open</b>Confirm a reduction while the market is shut; it goes out shortly after the open.</li><li><b>Cash sweep</b>Surplus cash into same-currency bills, with reserves for commitments and liquidity needs.</li></ul></div>
+      <div class="feature-group"><h3>Orders and cash</h3><ul><li><b>Pre-authorised rules</b>The protection you choose acts on its own, within your limits.</li><li><b>Queue for the open</b>Confirm a reduction while the market is shut; it goes out shortly after the open.</li><li><b>Cash sweep</b>A same-currency bill planner, off by default. Commissioning needs calibrated reserves and current settlement evidence.</li></ul></div>
       <div class="feature-group"><h3>Every day</h3><ul><li><b>Morning brief</b>How yesterday went and what’s on today, written by one model and edited by another.</li><li><b>AI analyst</b>Ask about any position or risk. Answers cite the evidence.</li><li><b>Decisions</b>Assessments and proposals in one place, ready for your call.</li></ul></div>
       <div class="feature-group"><h3>Always on</h3><ul><li><b>Around the clock</b>Runs day and night on a dedicated Mac mini, or any Mac that stays awake.</li><li><b>From your laptop</b>Reach it over a private, encrypted link.</li><li><b>Notifications</b>Alerts on your Mac and phone. Approve with Touch ID or Apple Watch.</li></ul></div>
       </div>
@@ -164,18 +175,18 @@
     <section class="wrap invitation" id="preview" aria-labelledby="preview-title">
       <div><p class="kicker">An invitation</p><h2 id="preview-title">Built for a<br>working portfolio.</h2></div>
       <div>
-        <p>Built by a senior technology leader with decades of experience in financial services and software, and used daily on his own portfolio. For traders, small desks and family offices who want disciplined oversight of their book.</p>
+        <p>A personal project by Oliver Sauer, used with his own portfolio. Desk is a private workspace preview; access is arranged personally. Canary CLI, its broker engine, is open source.</p>
         <div class="sheet">
-          <a class="sheet-thumb" href="../assets/sheet/canary-desk-product-sheet-2026-10.pdf" download tabindex="-1" aria-hidden="true">
-            <img class="p3" src="../assets/sheet/canary-desk-product-sheet-2026-10-p3-640.webp" width="640" height="906" alt="" loading="lazy">
-            <img class="p2" src="../assets/sheet/canary-desk-product-sheet-2026-10-p2-640.webp" width="640" height="906" alt="" loading="lazy">
-            <img class="p1" src="../assets/sheet/canary-desk-product-sheet-2026-10-p1-640.webp" srcset="../assets/sheet/canary-desk-product-sheet-2026-10-p1-640.webp 640w, ../assets/sheet/canary-desk-product-sheet-2026-10-p1-1240.webp 1240w" sizes="170px" width="640" height="906" alt="Page 1 of the Canary Desk product sheet: rule-based protection for your portfolio, with an AI analyst on staff" loading="lazy">
+          <a class="sheet-thumb" href="../assets/sheet/canary-desk-product-sheet-2026-10-02.pdf" download tabindex="-1" aria-hidden="true">
+            <img class="p3" src="../assets/sheet/canary-desk-product-sheet-2026-10-02-p3-640.webp" width="640" height="906" alt="" loading="lazy">
+            <img class="p2" src="../assets/sheet/canary-desk-product-sheet-2026-10-02-p2-640.webp" width="640" height="906" alt="" loading="lazy">
+            <img class="p1" src="../assets/sheet/canary-desk-product-sheet-2026-10-02-p1-640.webp" srcset="../assets/sheet/canary-desk-product-sheet-2026-10-02-p1-640.webp 640w, ../assets/sheet/canary-desk-product-sheet-2026-10-02-p1-1240.webp 1240w" sizes="170px" width="640" height="906" alt="Page 1 of the Canary Desk product sheet: rule-based protection for your portfolio, with an AI analyst on staff" loading="lazy">
           </a>
           <div class="sheet-copy">
             <p class="kicker">Product sheet</p>
-            <p>Three A4 pages: protection, the cash sweep, FX contribution and the full feature set.</p>
-            <p class="sheet-meta">PDF · 3 pages · 274 KB · October 2026</p>
-            <a class="text-link" href="../assets/sheet/canary-desk-product-sheet-2026-10.pdf" download>Download the product sheet<span class="arrow" aria-hidden="true">↓</span></a>
+            <p>Three A4 pages: the workspace, its controls, FX contribution and the next release’s lending observations.</p>
+            <p class="sheet-meta">PDF · 3 pages · 2 October 2026</p>
+            <a class="text-link" href="../assets/sheet/canary-desk-product-sheet-2026-10-02.pdf" download>Download the product sheet<span class="arrow" aria-hidden="true">↓</span></a>
           </div>
         </div>
         <a class="li-link text-link" href="https://www.linkedin.com/in/osauer/"><svg class="li" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Get in touch on LinkedIn<span class="arrow" aria-hidden="true">↗</span></a>

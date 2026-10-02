@@ -232,3 +232,28 @@ pre code{font:inherit}
 .torok-mark{flex:none;height:clamp(46px,5.76vw,83.5px);width:auto;color:var(--ink)}
 .torok-mark .eye{fill:#B45309}
 @media(prefers-color-scheme:dark){.torok-mark .eye{fill:#E8964A}}
+
+/* Broker evidence is a ledger, not a forecast. Diagram assets contain no account data. */
+.lending-feature{align-items:center}
+.lending-ledger{min-width:0}
+.lending-ledger picture{display:block;background:#262A33;border:1px solid #4D525C;box-shadow:0 16px 36px #33302E12}
+.lending-ledger img{width:100%;height:auto}
+.lending-ledger figcaption{font-size:12px;line-height:1.5;color:var(--muted);margin-top:12px}
+.lending-feature code{font:13px/1.6 var(--mono);overflow-wrap:anywhere}
+.lending-feature .text-link{max-width:100%}
+
+/* A continuous cash path and a balanced attribution equation, with no decorative cards. */
+.cash-flow{padding-left:26px;position:relative}
+.cash-flow::before{content:'';position:absolute;left:5px;top:30px;bottom:42px;border-left:1px solid var(--line)}
+.cash-flow li{position:relative}
+.cash-flow li::before{content:'';position:absolute;left:-25px;top:27px;width:9px;height:9px;background:var(--paper);border:1.5px solid var(--moss);border-radius:50%}
+.cash-flow li:last-child{border-bottom:0}
+.cash-story-note{padding-left:26px}
+.fx-bridge{padding:28px 0;gap:18px;border-top-color:var(--ink)}
+.fx-bridge>span:not(.operator){align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+.fx-bridge>span:last-child{padding-left:18px;border-left:1px solid var(--line)}
+.fx-bridge .operator{font-size:34px}
+.fx-bridge b{font:26px/1.15 var(--serif);margin-bottom:9px}
+@media(max-width:1100px) and (min-width:761px){.fx-bridge{gap:10px}.fx-bridge b{font-size:23px}.fx-bridge>span:last-child{padding-left:10px}}
+@media(max-width:760px){.lending-feature{gap:26px}.lending-ledger figcaption{font-size:11px}.fx-bridge{padding:24px 0;gap:10px}.fx-bridge b{font-size:28px;margin-bottom:5px}.fx-bridge>span:last-child{padding:15px 0 0;border-left:0;border-top:1px solid var(--line)}.cash-flow{padding-left:23px}.cash-flow li::before{left:-22px}.cash-story-note{padding-left:23px}}
+@media(forced-colors:active){.lending-ledger picture{border-color:CanvasText}.cash-flow li::before{border-color:CanvasText}}
