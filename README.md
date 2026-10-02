@@ -1,7 +1,8 @@
 # osauer.github.io
 
 The GitHub Pages publisher for Oliver Sauer’s personal site, `osauer.dev`.
-`main:/` serves the homepage, Desk and the brief Torok, HyperServe and Tower notes.
+The Pages workflow publishes selected pages and assets from `main`, serving the
+homepage, Desk and the brief Torok, HyperServe and Tower notes.
 
 `osauer.dev/canary/` is separately published by `osauer/canary`, from its Pages
 build of `main:/docs`. Its landing page uses this repository’s `/assets/site.css`;
@@ -15,6 +16,19 @@ Before public website edits, verify each publisher with
 
 ```sh
 node tools/check-site-links.mjs
+node tools/build-public-site.mjs
+node tools/check-site-links.mjs output/site
+```
+
+The build copies only tracked, explicitly allowed pages and asset types to
+`output/site`. README, tools, workflow files, local browser artefacts and runtime
+data are excluded. New pages need an entry in `tools/build-public-site.mjs`.
+Text exports are checked for credential patterns, local home paths and broker
+account identifiers. PDFs and images still require privacy review; screenshots
+must come from synthetic simulation sessions.
+
+```text
+main -> public-file selection -> link checks -> GitHub Pages -> osauer.dev
 ```
 
 Review the pages in a browser at desktop and phone widths. Browser artefacts in

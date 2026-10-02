@@ -3,3 +3,17 @@
 # Local browser review artefacts
 .playwright-cli/
 output/
+
+# Credentials and runtime data never belong in the public website repository.
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.p12
+*.pfx
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite-*
