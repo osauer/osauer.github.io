@@ -62,6 +62,9 @@ harness with synthetic sessions only.
 ported from the native app, and play a scripted day with demo messages and a
 demo brief on the Desk page. Palette follows the Financial Times visual code
 used by `site.css`.
+Its proportions follow the native companion: a 52px capsule, 13px/12px text
+and a visible bird about 52px square. Size the parts directly; scaling the
+whole widget makes the text too small.
 
 ## Product sheet
 
