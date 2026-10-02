@@ -63,7 +63,10 @@ supplies canvas-coloured padding so labels never touch the presentation frame.
 `assets/desk-showcase.js` adds tabs and keyboard controls; without it the
 thumbnail links still open the full-size captures. It has no dependencies.
 The phone beside the market studies is Desk in a browser, not the Canary PWA.
-Use the actual Canary app capture if changing that caption. The capture tool
+Use the actual Canary app capture if changing that caption.
+The lending diagram is inline SVG in `desk/index.html` and in the Canary
+landing page (two copies, wide and narrow), so it sets its type in the site's
+two families; it holds no account data. The capture tool
 also emits optional risk, operations and full market-study captures; publish
 only the views used by the page after reviewing the captures in
 `output/desk-captures/`. The Tower note shows
@@ -92,6 +95,10 @@ used by `site.css`.
 Its proportions follow the native companion: a 52px capsule, 13px/12px text
 and a visible bird about 52px square. Size the parts directly; scaling the
 whole widget makes the text too small.
+It sits just under the header rule, its capsule flush with the content column
+and the bird in the gutter; the Desk hero reserves that band in CSS, so the
+page does not shift when it mounts or is hidden. The capsule is not a live
+region: a demo should not narrate to a screen reader.
 
 ## Product sheet
 

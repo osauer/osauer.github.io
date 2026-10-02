@@ -68,7 +68,11 @@ if (tour) {
         item.tabIndex = active ? 0 : -1;
       });
     } catch {
-      if (version === request) status.textContent = "This view could not be loaded. Try its thumbnail again or open it in a new tab.";
+      if (version === request) {
+        status.textContent = link.textContent.trim() + " did not load. Choose it again, or ";
+        const direct = document.createElement("a"); direct.href = link.href; direct.target = "_blank"; direct.rel = "noopener"; direct.textContent = "open the image directly \u2197";
+        status.append(direct, ".");
+      }
     } finally {
       if (version === request) panel.removeAttribute("aria-busy");
     }

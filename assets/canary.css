@@ -1,13 +1,14 @@
 /* The Canary companion on osauer.dev: the Desk companion's bird, drawn in
    SVG and animated by assets/canary.js, with its speech capsule beside it,
    laid out like the native one. It plays a scripted day on a synthetic book;
-   nothing here is live. It sits in the page's top band and scrolls away with
-   the header: the gutter beside the content column is too narrow for a fixed
-   bird and capsule, which covered the text below. */
+   nothing here is live. It sits just under the header rule, in the band the
+   hero reserves for it, and scrolls away with the header: the gutter beside
+   the content column is too narrow for a fixed bird and capsule, which
+   covered the text below. */
 .canary-companion {
   position: absolute;
-  top: 64px;
-  right: 22px;
+  top: 116px;
+  right: max(22px, calc((100vw - 1240px) / 2 - 68px));
   z-index: 40;
   display: flex;
   align-items: flex-start;
@@ -29,7 +30,8 @@
   -webkit-tap-highlight-color: transparent;
 }
 .canary-perch svg { display: block; width: 100%; height: 100%; overflow: visible; }
-.canary-perch:focus-visible { outline: 2px solid var(--blue, #0F5499); outline-offset: 4px; border-radius: 12px; }
+.canary-perch:focus-visible { outline: 2px solid var(--moss, #0D7680); outline-offset: 4px; border-radius: 12px; }
+.canary-speech .tool:focus-visible, .canary-brief .close:focus-visible { outline: 2px solid var(--moss, #0D7680); outline-offset: 2px; }
 .canary-badge {
   position: absolute;
   top: 2px;
@@ -48,7 +50,7 @@
   transition: transform 0.25s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.2s;
 }
 .canary-badge[data-on="1"] { transform: scale(1); opacity: 1; }
-.canary-badge[data-orange="1"] { background: #FF8833; }
+.canary-badge[data-orange="1"] { background: #FF8833; color: #33302E; }
 
 /* The capsule: two lines on the left, the tools on the right. */
 .canary-speech {
@@ -67,12 +69,13 @@
   box-shadow: 0 10px 30px rgba(16, 24, 39, 0.14), inset 0 0 0 1px rgba(255, 255, 255, 0.65);
   color: var(--ink, #33302E);
   opacity: 0;
+  visibility: hidden;
   transform: translateX(8px) scale(0.98);
   transform-origin: 100% 50%;
-  transition: opacity 0.18s ease, transform 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  transition: opacity 0.18s ease, transform 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.2), visibility 0s linear 0.18s;
   pointer-events: none;
 }
-.canary-speech[data-open="1"] { opacity: 1; transform: none; pointer-events: auto; }
+.canary-speech[data-open="1"] { opacity: 1; visibility: visible; transform: none; pointer-events: auto; transition-delay: 0s; }
 .canary-speech [hidden] { display: none !important; }
 .canary-speech .lines { min-width: 0; }
 .canary-speech .title { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.3; letter-spacing: -0.005em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -147,19 +150,19 @@
   transition: transform 0.2s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.15s;
 }
 .canary-speech .tool.review .count[data-on="1"] { opacity: 1; transform: none; }
-.canary-speech .tool.review .count[data-orange="1"] { background: #FF8833; }
+.canary-speech .tool.review .count[data-orange="1"] { background: #FF8833; color: #33302E; }
 .canary-speech .tool.close { color: var(--muted, #6B635C); }
-.canary-note { margin: 5px 6px 0 0; color: var(--muted, #6B635C); font-size: 10.5px; letter-spacing: 0.02em; opacity: 0; transition: opacity 0.2s; }
+.canary-note { margin: 5px 6px 0 0; color: var(--muted, #6B635C); font-size: 12px; letter-spacing: 0.02em; opacity: 0; transition: opacity 0.2s; }
 .canary-speech[data-open="1"] + .canary-note { opacity: 1; }
 
 /* The cards: the brief, and what waits for you. */
 .canary-brief {
   position: absolute;
-  right: 26px;
-  top: 176px;
+  right: max(26px, calc((100vw - 1240px) / 2));
+  top: 228px;
   z-index: 41;
   width: min(440px, calc(100vw - 44px));
-  max-height: min(72vh, 600px);
+  max-height: min(80vh, 680px);
   overflow: auto;
   padding: 18px 20px 16px;
   border: 1px solid var(--line, #E4D5C6);
@@ -193,10 +196,10 @@
 .canary-brief h4[data-tone="slate"]::before { background: #6b7a90; }
 .canary-brief h4[data-tone="orange"]::before { background: #FF8833; }
 .canary-brief p { margin: 0; color: var(--ink-soft, #4D4640); }
-.canary-brief .pos { color: var(--green-dark, #00994D); font-weight: 650; font-variant-numeric: tabular-nums; }
+.canary-brief .pos { color: var(--green-dark, #00744A); font-weight: 650; font-variant-numeric: tabular-nums; }
 .canary-brief .neg { color: #CC0000; font-weight: 650; font-variant-numeric: tabular-nums; }
 .canary-brief .pill { display: inline-block; padding: 0 8px; border-radius: 999px; font-size: 12px; font-weight: 750; line-height: 20px; vertical-align: 1px; background: #F2DFCE; color: var(--amber-dark, #990F3D); }
-.canary-brief .pill[data-state="new"] { background: #DDEFE3; color: var(--green-dark, #00994D); }
+.canary-brief .pill[data-state="new"] { background: #DDEFE3; color: var(--green-dark, #00744A); }
 .canary-brief .items { margin: 10px 0 0; padding: 0; list-style: none; }
 .canary-brief .items li { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid var(--line, #E4D5C6); }
 .canary-brief .items li:first-child { border-top: 0; }
@@ -206,7 +209,7 @@
 
 /* Room under the capsule's demo note, so it never crowds the lead. */
 @media (min-width: 761px) {
-  body.has-companion .project-intro { padding-top: 88px; }
+  .project-intro { padding-top: 100px; }
 }
 @media (max-width: 760px) {
   .canary-companion, .canary-brief { display: none; }
@@ -222,6 +225,9 @@
   .canary-speech .tool { color: #D9CFC5; }
   .canary-speech .tool:hover { background: rgba(255, 241, 229, 0.1); color: #F2E8DF; }
   .canary-speech .tool.brief { color: #4FC3C9; }
+  .canary-speech .kind[data-kind="brief"], .canary-brief .kind[data-kind="brief"] { color: #4FC3C9; }
+  .canary-speech .kind[data-kind="issue"], .canary-brief .kind[data-kind="issue"] { color: #FF8C99; }
+  .canary-speech .kind[data-kind="question"], .canary-brief .kind[data-kind="question"] { color: #C4A9E6; }
   .canary-speech .dots li { background: rgba(255, 241, 229, 0.25); }
   .canary-speech .dots li[aria-current="true"] { background: #F2E8DF; }
   .canary-note { color: #B3A79C; }
