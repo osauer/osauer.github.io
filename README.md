@@ -44,6 +44,8 @@ node tools/capture-desk-screenshots.mjs output/desk-captures http://127.0.0.1:88
 Desktop captures are 1600×1000 at 2×; full phone captures are 390×844 at 3×.
 Detail captures retain the panel's native dimensions. The tour uses phone
 captures below 760px, with focused panels for Performance, FX and Market.
+Detail crops omit the surrounding app gutters; `assets/desk-showcase.css`
+supplies canvas-coloured padding so labels never touch the presentation frame.
 `assets/desk-showcase.js` adds tabs and keyboard controls; without it the
 thumbnail links still open the full-size captures. It has no dependencies.
 The phone beside the market studies is Desk in a browser, not the Canary PWA.
