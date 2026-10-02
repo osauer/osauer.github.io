@@ -18,27 +18,39 @@ node tools/check-site-links.mjs
 ```
 
 Review the pages in a browser at desktop and phone widths. Browser artefacts in
-`output/` and `.playwright-cli/` are local and ignored. The public pages are static
-HTML/CSS with no third-party requests; the only script is the companion bird on
-the Desk page (`assets/canary.js`, no dependencies, hidden under 761px). Instrument Sans
-and Instrument Serif are self-hosted as WOFF2 subsets from Google Fonts; their SIL OFL licences are in `assets/fonts/`.
+`output/` and `.playwright-cli/` are local and ignored. The public pages use
+static HTML/CSS with no third-party requests. Desk's
+screenshot tour (`assets/desk-showcase.js`) and companion bird
+(`assets/canary.js`, hidden under 761px) have no dependencies.
+Instrument Sans and Instrument Serif are self-hosted as WOFF2 subsets;
+their SIL OFL licences are in `assets/fonts/`.
 Two families only: Instrument Serif for names and headlines, Instrument Sans for everything else.
 Product names stay in the serif too (product faces were tried on 2026-10-01 and read as choppy).
 Code uses the system monospace, so no third family is loaded.
 
 ## Screens
 
-Only two Desk screens are used on the public marketing pages: portfolio and
-decisions. They come from Desk’s simulation mode, with a synthetic book and
-scripted replies. Never capture a live account for this site. To recapture:
+The Desk page presents a six-view screenshot tour: Portfolio, Performance, FX,
+Cash sweep, Market trends and Decisions. Focused FX, cash and market captures
+make the details readable; phone captures show the responsive browser UI.
+They come from Desk’s simulation mode, with a synthetic book and scripted
+replies. Never capture a live account for this site. To recapture:
 
 ```sh
 ./desk -simulate -state "$(mktemp -d)" -addr 127.0.0.1:8891 -health 127.0.0.1:8892
-node tools/capture-desk-screenshots.mjs assets http://127.0.0.1:8891/
+node tools/capture-desk-screenshots.mjs output/desk-captures http://127.0.0.1:8891/
 ```
 
-Desktop captures are 1600×1000 at 2×; the phone capture (390×844 at 3×) is
-served below 760px through a `<picture>` element. The Tower note shows
+Desktop captures are 1600×1000 at 2×; full phone captures are 390×844 at 3×.
+Detail captures retain the panel's native dimensions. The tour uses phone
+captures below 760px, with focused panels for Performance, FX and Market.
+`assets/desk-showcase.js` adds tabs and keyboard controls; without it the
+thumbnail links still open the full-size captures. It has no dependencies.
+The phone beside the market studies is Desk in a browser, not the Canary PWA.
+Use the actual Canary app capture if changing that caption. The capture tool
+also emits optional risk, operations and full market-study captures; publish
+only the views used by the page after reviewing the captures in
+`output/desk-captures/`. The Tower note shows
 `assets/tower-panel.webp`, rendered from the private Tower checkout's test
 harness with synthetic sessions only.
 
