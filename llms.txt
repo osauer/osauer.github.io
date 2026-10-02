@@ -34,10 +34,10 @@ investment performance. Public screenshots use synthetic simulation data.
   for commissioning. The public installer and MCPB do not yet include this work.
 - [HyperServe](https://osauer.dev/hyperserve/): An open-source Go HTTP server
   library built around net/http, with optional MCP.
-- [Torok](https://osauer.dev/torok/): The private Go runtime behind Desk's saved
-  agent workflows, schedules, budgets and recovery.
+- [Torok](https://osauer.dev/torok/): The private Go agent runtime behind Canary
+  Desk's morning briefs and AI analyst; it saves a run's progress as it goes.
 - [Tower](https://osauer.dev/tower/): A private experiment in coordinating coding
-  agents. No public download.
+  agents, switched off since 29 September 2026. No public download.
 
 ## Source and documentation
 

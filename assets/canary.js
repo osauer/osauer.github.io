@@ -138,9 +138,18 @@ class Engine {
         rec.node.style.transform = `translate(${tx}px, ${ty}px) rotate(${rot}rad) scale(${sx}, ${sy})`;
         if (op !== 1 || rec.node.style.opacity !== "") rec.node.style.opacity = op;
       }
-      if (this.tracks.length && document.visibilityState !== "hidden") this.frame = requestAnimationFrame(step);
+      if (this.tracks.length && document.visibilityState !== "hidden" && this.visible !== false) this.frame = requestAnimationFrame(step);
     };
     this.frame = requestAnimationFrame(step);
+  }
+  // Nothing animates while the bird is scrolled out of view; it picks up again when it returns.
+  watch(node) {
+    if (!("IntersectionObserver" in window)) return;
+    new IntersectionObserver(([entry]) => {
+      this.visible = entry.isIntersecting;
+      if (this.visible) this.run();
+      else if (this.frame !== null) { cancelAnimationFrame(this.frame); this.frame = null; }
+    }).observe(node);
   }
 }
 
@@ -315,6 +324,7 @@ export class Canary {
     E.clear("loop");
     if (!mood) return;
     const still = reduceMotion.matches, loop = (target, prop, keys) => E.add(target, prop, keys, { loop: true, tag: "loop" });
+    if (still) return;
     const base = mood === "alert" ? 1.03 : 1;
     const breathe = mood === "away" || mood === "resting" ? 3.4 : 2.4;
     loop(L.breath, "sy", [[0, base], [breathe, base * 1.03], [2 * breathe, base]]);
@@ -536,7 +546,7 @@ export class Canary {
   }
   // A mark pops up over the canary, wobbles, and fades.
   mark(glyph, colour, [x, y], start, end) {
-    const t = el("text", { x, y, "text-anchor": "middle", "font-family": "Inter, ui-sans-serif, system-ui, sans-serif", "font-weight": 900, "font-size": 64, fill: colour });
+    const t = el("text", { x, y, "text-anchor": "middle", "font-family": "Instrument Sans, system-ui, sans-serif", "font-weight": 700, "font-size": 64, fill: colour });
     t.textContent = glyph;
     const layer = this.engine.layer(this.prop(t, end), x, y - 22, { op: 0, sx: 0.3, sy: 0.3 });
     this.act(layer, "op", [[0, 0], [start, 0], [start + 0.1, 1], [end - 0.25, 1], [end, 0]]);
@@ -545,13 +555,13 @@ export class Canary {
   }
   // A note floats up from the beak, swaying, and fades. Beamed: two notes together.
   sing([x, y], delay, beamed = false) {
-    const t = el("text", { x, y, "text-anchor": "middle", "font-family": "Inter, ui-sans-serif, system-ui, sans-serif", "font-size": 42, fill: "#101827" });
+    const t = el("text", { x, y, "text-anchor": "middle", "font-family": "Instrument Sans, system-ui, sans-serif", "font-size": 42, fill: "#101827" });
     t.textContent = beamed ? "♫" : "♪";
     this.float(t, null, [x, y], delay, delay + 1.5, 1.2);
   }
   // A small glyph drifts up from `start`, swaying, from `delay` and fades out by `end`.
   float(glyph, colour, [x, y], delay, end, seconds = 1.6) {
-    const t = typeof glyph === "string" ? el("text", { x, y, "text-anchor": "middle", "font-family": "Inter, ui-sans-serif, system-ui, sans-serif", "font-weight": 800, "font-size": 40, fill: colour }) : glyph;
+    const t = typeof glyph === "string" ? el("text", { x, y, "text-anchor": "middle", "font-family": "Instrument Sans, system-ui, sans-serif", "font-weight": 700, "font-size": 40, fill: colour }) : glyph;
     if (typeof glyph === "string") t.textContent = glyph;
     const f = this.facingRight ? 1 : -1, d = end - delay;
     const layer = this.engine.layer(this.prop(t, end), x, y, { op: 0 });
@@ -590,7 +600,7 @@ const ICONS = {
 
 const BRIEF = {
   title: "Europe morning brief",
-  when: "Wednesday 30 September · 07:00 CEST",
+  when: "Friday 2 October · 07:00 CEST",
   sections: [
     ["Markets", "blue", "S&P 500 5,542.60, +0.42% on the session. Nasdaq 100 +0.58%, Russell 2000 −0.45%. VIX 18.42, −1.34%. Regime as recorded by Canary: {watch}, volatility easing."],
     ["Book", "ink", "Net liquidation 250,000 USD; day P&L +991 USD, +0.39% of NLV. Five stock positions, three option legs. Margin headroom 68% of NLV."],
@@ -616,7 +626,7 @@ function briefLine(text) {
 // One day on the desk, as sights the companion reacts to.
 const DAY = [
   // Seconds into the visit; a visitor sees the first reaction within ten.
-  { at: 0, mood: "calm", waiting: [["status", "Watching the book · next review 14:30 CEST"]] },
+  { at: 0, mood: "calm", waiting: [["status", "Quiet book · next review 14:30 CEST"]] },
   { at: 6, mood: "calm", brief: "europe-morning", title: "Europe morning brief is in", waiting: [["brief", "Positions, risk, calendar: what changed overnight"], ["status", "Book +0.39% since the close · risk: watch"]] },
   { at: 18, mood: "busy", step: "calendar", waiting: [["step", "Pre-open review: reading the calendar"]] },
   { at: 23, mood: "busy", step: "exposure", waiting: [["step", "Pre-open review: checking exposure and margin"]] },
@@ -637,9 +647,9 @@ class Companion {
   constructor() {
     if (sessionStorage.getItem("canary-hidden")) return;
     this.root = html("div", "canary-companion");
+    this.root.setAttribute("role", "group");
     this.root.setAttribute("aria-label", "Desk's canary companion, a demo");
     this.speech = html("div", "canary-speech");
-    this.speech.setAttribute("role", "status");
     const lines = html("div", "lines");
     this.title = html("p", "title", "");
     const line2 = html("div", "line2");
@@ -658,7 +668,7 @@ class Companion {
     this.briefButton.append(html("i", "unread"));
     this.reviewButton = tool("review", "What waits for you", () => this.openForYou());
     this.count = html("b", "count", ""); this.reviewButton.append(this.count);
-    const open = html("a", "tool open"); open.href = document.body.dataset.deskHref || "desk/"; open.setAttribute("aria-label", "Open Canary Desk"); open.title = "Open Canary Desk"; open.innerHTML = ICONS.tool_open;
+    const open = html("a", "tool open"); open.href = document.body.dataset.deskHref || "desk/"; const openLabel = open.getAttribute("href").startsWith("#") ? "Go to Decisions" : "Open Canary Desk"; open.setAttribute("aria-label", openLabel); open.title = openLabel; open.innerHTML = ICONS.tool_open;
     const close = html("button", "tool close"); close.type = "button"; close.setAttribute("aria-label", "Hide the companion"); close.title = "Hide"; close.textContent = "×";
     close.addEventListener("click", () => this.hide());
     tools.append(this.briefButton, this.reviewButton, open, close);
@@ -666,14 +676,17 @@ class Companion {
     this.demoNote = html("p", "canary-note", "A day at the desk · demo, synthetic book");
     this.perch = html("div", "canary-perch");
     this.perch.setAttribute("role", "button"); this.perch.tabIndex = 0;
-    this.perch.setAttribute("aria-label", "The canary. Click for a move.");
+    this.perch.setAttribute("aria-label", "The canary. Press for a move.");
     this.badge = html("span", "canary-badge", "");
     const column = html("div", "column"); column.append(this.speech, this.demoNote);
     this.root.append(column, this.perch);
     this.perch.append(this.badge);
-    document.body.append(this.root);
+    (document.querySelector(".site-header") || document.body).after(this.root);
     document.body.classList.add("has-companion");
+    this.root.addEventListener("focusin", () => { this.hovering = true; this.setSpeech(true); });
+    this.root.addEventListener("focusout", (e) => { if (!this.root.contains(e.relatedTarget)) { this.hovering = false; this.schedule(); } });
     this.canary = new Canary(this.perch);
+    this.canary.engine.watch(this.perch);
     this.pages = []; this.page = 0; this.speechUntil = 0; this.sight = null; this.brief = null; this.hovering = false;
     this.perch.addEventListener("click", () => this.clicked());
     this.perch.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.clicked(); } });
@@ -684,7 +697,7 @@ class Companion {
     this.pager = setInterval(() => this.turnPage(), 5000);
     this.start();
   }
-  hide() { clearInterval(this.pager); clearTimeout(this.timer); clearTimeout(this.anticTimer); this.root.remove(); this.briefCard?.remove(); this.forYouCard?.remove(); document.body.classList.remove("has-companion"); try { sessionStorage.setItem("canary-hidden", "1"); } catch {} }
+  hide() { clearInterval(this.pager); clearTimeout(this.timer); clearTimeout(this.anticTimer); this.root.remove(); this.briefCard?.remove(); this.forYouCard?.remove(); try { sessionStorage.setItem("canary-hidden", "1"); } catch {} }
 
   start() {
     this.canary.arrive();
@@ -792,10 +805,11 @@ class Companion {
     const card = html("aside", "canary-brief " + name);
     card.setAttribute("aria-label", label);
     const close = html("button", "close", "×"); close.type = "button"; close.setAttribute("aria-label", "Close");
-    close.addEventListener("click", () => { card.hidden = true; });
+    const dismiss = () => { if (card.hidden) return; card.hidden = true; card.opener?.focus(); };
+    close.addEventListener("click", dismiss);
     card.append(close);
     document.body.append(card);
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") card.hidden = true; });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") dismiss(); });
     return card;
   }
   openBrief() {
@@ -810,7 +824,9 @@ class Companion {
       this.briefCard = card;
     }
     if (this.forYouCard) this.forYouCard.hidden = true;
+    this.briefCard.opener = document.activeElement;
     this.briefCard.hidden = false;
+    this.briefCard.querySelector(".close").focus();
     this.brief = null;
     this.briefButton.dataset.unread = "0";
   }
@@ -825,7 +841,9 @@ class Companion {
     }
     card.append(list, html("p", "demo", "On the desk, an order here is confirmed on the paired companion with Touch ID, or left to expire. Nothing on this page can place one."));
     if (this.briefCard) this.briefCard.hidden = true;
+    card.opener = document.activeElement;
     card.hidden = false;
+    card.querySelector(".close").focus();
   }
 }
 
