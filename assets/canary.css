@@ -94,6 +94,11 @@
   text-overflow: ellipsis;
 }
 .canary-speech .ticker .page span { overflow: hidden; text-overflow: ellipsis; }
+.canary-speech .ticker .page[data-enter="1"] { animation: canary-ticker-enter .34s cubic-bezier(0.2, 0.9, 0.3, 1); }
+@keyframes canary-ticker-enter {
+  from { transform: translateY(110%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
 .canary-speech .kind, .canary-brief .kind { flex: none; width: 17px; height: 17px; color: var(--muted, #6B635C); }
 .canary-speech .kind { width: 14px; height: 14px; }
 .canary-speech .kind[data-kind="order"], .canary-brief .kind[data-kind="order"] { color: #FF8833; }
@@ -207,6 +212,7 @@
   .canary-companion, .canary-brief { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .canary-speech .ticker .page[data-enter="1"] { animation: none; }
   .canary-speech, .canary-badge, .canary-speech .tool.review .count { transition: none; }
 }
 

@@ -754,15 +754,10 @@ class Companion {
     const page = html("p", "page");
     const icon = html("span", "kind"); icon.dataset.kind = kind; icon.innerHTML = ICONS[kind] || ICONS.status;
     page.append(icon, html("span", "", text));
-    const old = this.ticker.querySelector(".page");
-    if (!this.sizer.isConnected) this.ticker.prepend(this.sizer);
-    this.ticker.append(page);
-    if (animated && old && !reduceMotion.matches) {
-      // The new line rises into place while the old one leaves upward.
-      const ease = "cubic-bezier(0.2, 0.9, 0.3, 1)";
-      old.animate([{ transform: "translateY(0)", opacity: 1 }, { transform: "translateY(-110%)", opacity: 0 }], { duration: 240, easing: ease, fill: "forwards" }).finished.then(() => old.remove(), () => old.remove());
-      page.animate([{ transform: "translateY(110%)", opacity: 0 }, { transform: "translateY(0)", opacity: 1 }], { duration: 340, easing: ease, fill: "both" });
-    } else if (old) old.remove();
+    if (animated && !reduceMotion.matches) page.dataset.enter = "1";
+    // A scene change can interrupt a page transition. Keep only the current
+    // line, so interrupted animations never leave overlapping messages behind.
+    this.ticker.replaceChildren(this.sizer, page);
     this.dots.replaceChildren(...this.pages.map((_, i) => { const li = html("li"); if (i === this.page) li.setAttribute("aria-current", "true"); return li; }));
     this.dots.hidden = this.pages.length < 2;
   }
