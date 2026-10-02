@@ -70,6 +70,19 @@ only the views used by the page after reviewing the captures in
 `assets/tower-panel.webp`, rendered from the private Tower checkout's test
 harness with synthetic sessions only.
 
+## Icons and marks
+
+The site icon is the initials OS in Instrument Serif, paper on slate:
+`assets/favicon.svg` holds the glyph outlines, so it needs no web font.
+`assets/favicon-32.png` (Safari and older browsers) and
+`assets/apple-touch-icon.png` (180px, full square: iOS rounds the corners) are
+rendered from it, for example with `rsvg-convert`. Every page links all three;
+the Canary CLI landing keeps the canary icon. Torok's machine head is inlined on
+`torok/index.html` from the Torok repository's `assets/torok-mark.svg` (see its
+`docs/mark.md`), with the viewBox cropped to the drawing so the plinth sits on
+the baseline and the dome reaches cap height; it takes the ink colour, so it
+follows dark mode. Keep it when tidying assets.
+
 ## The companion bird
 
 `assets/canary.js` and `assets/canary.css` draw the Desk companion's canary,
