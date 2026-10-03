@@ -16,6 +16,12 @@ if (tour) {
   panel.setAttribute("role", "tabpanel");
   panel.tabIndex = 0;
   let request = 0;
+  let selected = links[0];
+  const narrow = matchMedia("(max-width: 760px)");
+  const targetFor = link => narrow.matches && link.dataset.mobile ? link.dataset.mobile : link.href;
+  const syncFull = () => { full.href = targetFor(selected); };
+  narrow.addEventListener("change", syncFull);
+  syncFull();
 
   links.forEach((link, i) => {
     link.id = "desk-view-" + link.dataset.tourView;
@@ -48,8 +54,7 @@ if (tour) {
     status.textContent = "";
     panel.setAttribute("aria-busy", "true");
     const next = new Image();
-    const mobile = matchMedia("(max-width: 760px)").matches;
-    next.src = mobile && link.dataset.mobile ? link.dataset.mobile : link.href;
+    next.src = targetFor(link);
     try {
       await next.decode();
       if (version !== request) return;
@@ -58,7 +63,8 @@ if (tour) {
       image.alt = link.dataset.alt;
       title.textContent = link.dataset.title;
       caption.textContent = link.dataset.caption;
-      full.href = link.href;
+      selected = link;
+      syncFull();
       full.setAttribute("aria-label", "Open full-size " + link.textContent.trim() + " screenshot");
       tour.dataset.selected = link.dataset.tourView;
       panel.setAttribute("aria-labelledby", link.id);
@@ -70,11 +76,21 @@ if (tour) {
     } catch {
       if (version === request) {
         status.textContent = link.textContent.trim() + " did not load. Choose it again, or ";
-        const direct = document.createElement("a"); direct.href = link.href; direct.target = "_blank"; direct.rel = "noopener"; direct.textContent = "open the image directly \u2197";
+        const direct = document.createElement("a"); direct.href = targetFor(link); direct.target = "_blank"; direct.rel = "noopener"; direct.textContent = "open the image directly \u2197";
         status.append(direct, ".");
       }
     } finally {
       if (version === request) panel.removeAttribute("aria-busy");
     }
   }
+}
+
+// Full-size always means the same image currently shown by each picture.
+for (const link of document.querySelectorAll("a[data-responsive-image]")) {
+  const img = link.querySelector("img");
+  const sync = () => { if (img?.currentSrc) link.href = img.currentSrc; };
+  img?.addEventListener("load", sync);
+  link.addEventListener("click", sync);
+  matchMedia("(max-width: 760px)").addEventListener("change", () => requestAnimationFrame(sync));
+  sync();
 }

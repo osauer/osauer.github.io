@@ -289,7 +289,7 @@ pre code{font:inherit}
 .lending-update .text-link{margin-top:16px}
 .lending-update>div:first-child{grid-column:1/-1;max-width:820px}
 @media(max-width:760px){
- .home .feature .screen picture{display:block;max-height:340px;overflow:hidden;border:1px solid #4D525C;border-radius:3px}
+ .home .feature .screen picture{display:block;max-height:none;overflow:hidden;border:1px solid #4D525C;border-radius:3px}
  .home .feature .screen picture img{border:0}
  .deep-dive>summary{grid-template-columns:1fr;gap:6px;min-height:100px;padding-block:20px}
  .deep-dive>summary>span{font-size:27px}
