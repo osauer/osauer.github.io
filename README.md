@@ -44,38 +44,46 @@ Code uses the system monospace, so no third family is loaded.
 
 ## Screens
 
-The Desk page leads with a three-view story: FX contribution, Decisions and
-Cash sweep. Native disclosures keep reporting methods, market/phone captures and
-the full feature catalogue available without lengthening the primary journey. Focused FX, cash and market captures
-make the details readable; phone captures show the responsive browser UI.
-They come from Desk’s simulation mode, with a synthetic book and scripted
-replies. Never capture a live account for this site. To recapture:
+The three-slide tour tells a focused story: currency contribution, a decision,
+and an Opportunities observation. Opportunities is labelled **in preview**;
+a pattern match is not evidence of an edge and never grants order authority.
+Risk, cash and market detail remain in the disclosures below. Mobile images
+show native phone layouts; full-size links follow the image actually displayed.
+The cash phone image focuses on the planner's hold, while desktop shows the plan.
+
+The 3 October 2026 captures use Desk `ad12b871ba1afd84492abcab5b30b7fbf7ba19f8`,
+including the Opportunities and holdings/Today changes. The public data is a
+frozen, explicitly synthetic Friday session at 10:20 New York time. FX uses
+USD like the example account and completed statements through 1 October.
+The brief, watchlist evidence, cash priority and cash hold are synthetic fixtures;
+they are not account observations or production-readiness evidence.
+
+Reproduce from a fresh **isolated** clone of that Desk revision, never the live
+checkout. `prepare-desk-capture.py` changes only the demonstration generators:
+recognisable symbols, seeded irregular histories, a fixed reporting cutoff and
+consistent base currency. The browser adapter supplies coherent synthetic
+snapshot and stream data, a populated brief and Opportunities evidence. It
+never changes rendered text, styles or warning elements.
 
 ```sh
-./desk -simulate -state "$(mktemp -d)" -addr 127.0.0.1:8891 -health 127.0.0.1:8892
-node tools/capture-desk-screenshots.mjs output/desk-captures http://127.0.0.1:8891/
+python3 tools/prepare-desk-capture.py /path/to/isolated/desk
+# Build the isolated Desk source, then start its binary:
+/path/to/isolated/desk-binary -simulate -state /path/to/empty/synthetic-state -addr 127.0.0.1:8891 -health 127.0.0.1:8892
+PLAYWRIGHT_MODULE=/path/to/node_modules/playwright node tools/capture-desk-screenshots.mjs output/desk-captures http://127.0.0.1:8891/
 ```
 
-Desktop captures use a 1600×1000 viewport; full phone captures use 390×844.
-The 3 October refresh uses the repaired Desk panels and a seeded, varied FX
-series; the tour shows cumulative YTD FX while the detail shows daily WTD.
-The values remain explicitly synthetic and are never imported account history.
-Detail captures retain the panel's native dimensions. The tour uses phone
-captures below 760px, with focused panels for Performance, FX and Market.
-Detail crops omit the surrounding app gutters; `assets/desk-showcase.css`
-supplies canvas-coloured padding so labels never touch the presentation frame.
-`assets/desk-showcase.js` adds tabs and keyboard controls; without it the
-thumbnail links still open the full-size captures. It has no dependencies.
-The phone beside the market studies is Desk in a browser, not the Canary PWA.
-Use the actual Canary app capture if changing that caption.
-The lending diagram is inline SVG in the Canary landing page
-(two variants, wide and narrow), so it sets its type in the site's
-two families; it holds no account data. The capture tool
-also emits optional risk, operations and full market-study captures; publish
-only the views used by the page after reviewing the captures in
-`output/desk-captures/`. The Tower note shows
-`assets/tower-panel.webp`, rendered from the private Tower checkout's test
-harness with synthetic sessions only.
+Requires Python 3, Node 22+, Playwright, Chrome and `cwebp`. Captures are PNGs
+at 2× density; convert reviewed assets to WebP (`cwebp -q 88`) before publishing.
+The capture receipt records the source revision, fixture clock and browser
+errors. Desktop is 1440×1000; the phone overview is 390×1080 so its account
+summary is complete. Detail captures contain the real component bounds without
+sticky navigation overlays. Review every published image at desktop and phone
+sizes. Keep all financial qualifiers, explicit missing-data gaps and authority
+holds. Never use live account data.
+
+The Tower note retains its synthetic test-harness capture. Canary's lending
+diagram remains in its separate publisher; the phone capture here is Desk in
+a browser, not the Canary paired app.
 
 ## Icons and marks
 

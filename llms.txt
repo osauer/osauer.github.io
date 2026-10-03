@@ -53,3 +53,5 @@ investment performance. Public screenshots use synthetic simulation data.
 Use the Canary handbook for operational details and signed releases for binary
 availability. Current source, private installed runtime and public release are
 different evidence. Desk, Torok and Tower remain private.
+
+Public screenshot tour: weekly FX contribution, a current decision, and Opportunities (in preview). Opportunities shows synthetic five-minute price and volume observations; a pattern match is not a proven edge or order authority. Images were refreshed on 3 October 2026 from an isolated synthetic Desk build.

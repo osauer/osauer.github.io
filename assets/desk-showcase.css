@@ -99,3 +99,30 @@
 
 .tour-scroll-hint{display:none}
 @media(max-width:760px){.story-tour[data-selected=cash] .tour-scroll-hint{display:block;font-size:12px;color:#C9BEB3;margin-top:-10px}}
+
+/* October captures: native task views, not a scaled-down whole desktop. */
+.story-tour{grid-template-columns:1fr;gap:22px;padding:28px}
+.story-tour .tour-screen{width:100%;box-shadow:0 14px 36px #0002}
+.story-tour .tour-screen picture{padding:20px}
+.story-tour .tour-screen img{width:100%;height:auto;max-height:none;aspect-ratio:auto;object-fit:contain}
+.story-tour .tour-caption{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px 36px;align-items:end;padding:2px 0 6px}
+.story-tour .tour-caption h2{font-size:36px;margin-bottom:10px}
+.story-tour .tour-caption p{font-size:16px;max-width:70ch}
+.story-tour .tour-full{margin-bottom:4px}
+.risk-feature{align-items:start}
+.risk-feature .fx-capture{margin:0}
+@media(min-width:761px){.risk-feature{grid-template-columns:1fr}.risk-feature>div{max-width:65ch}}
+@media(max-width:760px){
+ .story-tour{padding:18px;gap:18px}
+ .story-tour .tour-screen picture{padding:10px}
+ .story-tour .tour-screen img{width:100%;height:auto;aspect-ratio:auto}
+ .story-tour .tour-caption{display:flex;align-items:flex-start;gap:14px}
+ .story-tour .tour-caption h2{font-size:31px}
+ .market-studies img,.feature-capture img{width:100%;min-width:0;max-width:100%;height:auto}
+ .market-studies a,.feature-capture a,.fx-capture a{padding:12px}
+ .pocket-shot{width:min(100%,290px)}
+}
+@media(min-width:761px){
+ .story-tour .tour-screen picture{display:flex;align-items:center;justify-content:center;min-height:610px}
+ .story-tour .tour-screen img{width:auto;max-width:100%;max-height:570px}
+}
