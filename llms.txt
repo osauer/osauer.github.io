@@ -1,6 +1,6 @@
-# Oliver Sauer · osauer.dev
+# osauer.dev · Software for a clearer portfolio
 
-Updated: 2026-10-02
+Updated: 2026-10-03
 
 Personal software by Oliver Sauer: markets, applied AI and Go systems. The site
 shows independent projects. It is not investment advice and makes no claim of
@@ -18,20 +18,18 @@ investment performance. Public screenshots use synthetic simulation data.
 - [Canary CLI](https://osauer.dev/canary/): Desk's open-source broker engine,
   written in Go. A native TWS protocol implementation, daemon, CLI, read-only MCP
   tools and paired app. Standard downloads and all MCP tools cannot place orders.
-  FX contribution is in current source and Desk's private runtime, awaiting
-  the next signed Canary release. `canary reporting fx --json` and
+  FX contribution is available in Canary v3.16.0 and Desk's private runtime. `canary reporting fx --json` and
   `canary_reporting_fx` expose statement-day
   currency valuation contribution, separately from realised Forex lot P&L.
   Incomplete periods disclose gaps and omit a total.
-- Lending observations are implemented in current Canary source for the next
-  signed release. Dated stock loans appear in position evidence;
+- Lending observations are available in Canary v3.16.0. Dated stock loans appear in position evidence;
   `canary lending fees --json` and `canary_lending_fees` expose bounded earned
   customer net-fee history. The Canary app
   adds position annotations and expandable fees, and Desk's analyst can read
   the evidence. Coverage distinguishes missing, partial and complete zero.
   Participation remains with IBKR. Fees do not get added to account P&L; payment
   and P&L linkage remain unproved. Populated account evidence is still needed
-  for commissioning. The public installer and MCPB do not yet include this work.
+  for commissioning. Use v3.16.0 or later for these reporting features.
 - [HyperServe](https://osauer.dev/hyperserve/): An open-source Go HTTP server
   library built around net/http, with optional MCP.
 - [Torok](https://osauer.dev/torok/): The private Go agent runtime behind Canary
@@ -44,7 +42,7 @@ investment performance. Public screenshots use synthetic simulation data.
 - [Oliver's GitHub](https://github.com/osauer)
 - [LinkedIn and private-access enquiries](https://www.linkedin.com/in/osauer/)
 - [Canary repository](https://github.com/osauer/canary)
-- [2 October 2026 product sheet](https://osauer.dev/assets/sheet/canary-desk-product-sheet-2026-10-02.pdf)
+- [2 October 2026 product sheet (historical release-status notes)](https://osauer.dev/assets/sheet/canary-desk-product-sheet-2026-10-02.pdf)
 - [Canary handbook](https://osauer.dev/canary/docs/)
 - [Canary installation](https://osauer.dev/canary/docs/start/install.html)
 - [MCP tools](https://osauer.dev/canary/docs/reference/mcp-tools.html)

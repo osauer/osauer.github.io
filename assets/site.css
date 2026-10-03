@@ -31,8 +31,8 @@ body.home .nav-work{display:none}
 .kicker{font-size:12px;line-height:1.4;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--muted)}
 .hero{padding-block:64px 65px}
 .home-intro,.project-intro{display:grid;grid-template-columns:1.3fr 1fr;gap:70px;align-items:end}
-.home-intro{align-items:last baseline}
-.home-intro h1{font:clamp(84px,9.7vw,140px)/.95 var(--serif);letter-spacing:-.04em;margin-top:22px;white-space:nowrap}
+.home-intro{align-items:center;grid-template-columns:1.45fr 1fr;gap:60px}
+.home-intro h1{font:clamp(64px,7vw,100px)/.98 var(--serif);letter-spacing:-.035em;margin-top:22px}
 .intro-copy{max-width:460px}
 .role{font-size:15px;font-weight:500;margin-bottom:16px}
 .lead{font-size:clamp(18px,1.65vw,21px);line-height:1.5;letter-spacing:-.01em}
@@ -78,7 +78,7 @@ body.home .nav-work{display:none}
 .project-intro h1{font:clamp(64px,8vw,116px)/.9 var(--serif);letter-spacing:-.035em;margin-top:22px}
 .mark{display:block;width:52px;height:52px;border-radius:12px;margin-top:22px}
 .feature .mark{margin-top:18px}
-.home-intro h1{white-space:normal}
+.byline{font-size:13px;color:var(--muted);margin-top:18px}
 .project-intro .text-link{margin-top:24px}
 .project-intro .intro-copy{padding-bottom:0}
 .full-screen{padding:25px 26px 20px;background:var(--wheat)}
@@ -205,14 +205,14 @@ pre code{font:inherit}
 @media(max-width:1100px){.split{gap:35px}.states{grid-template-columns:repeat(2,1fr)}.feature.alt .feature-layout{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}}
 @media(max-width:760px){.split{grid-template-columns:1fr;gap:28px}.points,.states{grid-template-columns:1fr;gap:20px}.arch-row,.arch-row.two{grid-template-columns:1fr 1fr;gap:10px}.feature.alt .feature-layout{grid-template-columns:1fr}.feature .lockup{margin:14px 0 0}.feature .lockup .mark{width:44px;height:44px}.feature-copy .lockup{order:1}.feature-copy .link-stack{order:4;flex-direction:row;gap:25px;margin-top:14px}}
 @media(min-width:1500px){.hero{padding-block:75px}}
-@media(max-width:1100px){.wrap{width:calc(100% - 64px)}.home-intro,.project-intro{gap:35px;grid-template-columns:1.2fr 1fr}.home-intro h1{font-size:10.4vw}.feature{padding:35px 32px 24px}.feature-layout,.detail-screen{gap:30px}.feature h2{font-size:65px}.foundation{gap:28px;grid-template-columns:1fr 1.5fr}.foundation .link-stack{grid-column:2;flex-direction:row;gap:25px}.rhythm{gap:25px;grid-template-columns:repeat(2,1fr)}.features-grid,.features-grid.four{grid-template-columns:repeat(2,1fr)}.canary-intro{grid-template-columns:1fr 1fr}.terminal{padding:28px}}
-@media(max-width:760px){.wrap{width:calc(100% - 40px)}.cli-screens{grid-template-columns:1fr;gap:25px}.cli-screens .detail-copy{grid-row:auto}.cli-screens .screen{grid-column:auto}.site-header{min-height:88px;gap:12px}.skip{height:88px}.brand{font-size:18px}.site-nav{gap:16px;font-size:13px}.site-nav .nav-work,.site-nav .nav-social{display:none}.hero{padding-block:43px}.home-intro,.project-intro,.canary-intro{grid-template-columns:1fr;gap:30px}.home-intro h1{font-size:clamp(85px,15.5vw,112px);margin-top:16px}.role{margin-bottom:12px}.intro-copy{max-width:46ch}.lead{font-size:18px}.feature{padding:30px 20px 20px}.feature-layout{grid-template-columns:1fr;gap:30px}.feature h2{font-size:64px;margin:14px 0}.feature-copy p:not(.kicker){max-width:42ch;font-size:17px}.feature .text-link{margin-top:14px}.screen figcaption{flex-wrap:wrap;gap:4px 15px;font-size:12px}.foundation{grid-template-columns:1fr;gap:25px}.foundation .link-stack{grid-column:auto;flex-direction:row;gap:25px}.section{padding-block:40px}.section h2{font-size:40px}.site-footer{padding-block:25px}.footer-top{align-items:flex-start;gap:14px;margin-bottom:15px}.footer-links{gap:17px}.footer-bottom{gap:12px}.project-intro h1{font-size:85px;margin-top:18px}.full-screen{padding:18px 20px}.rhythm{grid-template-columns:1fr;gap:30px}.features-grid,.features-grid.four{grid-template-columns:1fr;gap:28px}.rhythm article{display:grid;grid-template-columns:28px 1fr;gap:0 15px}.rhythm h2{font-size:23px}.rhythm .number{grid-row:span 2;margin:6px 0 0}.rhythm p{max-width:43ch}.detail-screen{grid-template-columns:1fr;gap:25px}.detail-copy h2{margin:14px 0}.detail-copy p:not(.kicker){max-width:40ch}.invitation,.install-row,.handbook{grid-template-columns:1fr;gap:28px;padding-block:40px}.invitation h2{font-size:40px}.sheet{grid-template-columns:1fr;gap:26px;padding:24px 20px}.sheet-thumb{width:150px}.note-page .hero{padding-block:43px 70px}.note-body{margin-top:28px}.note-body p{font-size:18px}.canary-intro h1{font-size:72px}.terminal{padding:25px}.guide-links{grid-template-columns:1fr;gap:0}.canary-intro .note{font-size:12px}.install-links{gap:10px 20px}}
+@media(max-width:1100px){.wrap{width:calc(100% - 64px)}.home-intro,.project-intro{gap:35px;grid-template-columns:1.2fr 1fr}.home-intro h1{font-size:7vw}.feature{padding:35px 32px 24px}.feature-layout,.detail-screen{gap:30px}.feature h2{font-size:65px}.foundation{gap:28px;grid-template-columns:1fr 1.5fr}.foundation .link-stack{grid-column:2;flex-direction:row;gap:25px}.rhythm{gap:25px;grid-template-columns:repeat(2,1fr)}.features-grid,.features-grid.four{grid-template-columns:repeat(2,1fr)}.canary-intro{grid-template-columns:1fr 1fr}.terminal{padding:28px}}
+@media(max-width:760px){.wrap{width:calc(100% - 40px)}.cli-screens{grid-template-columns:1fr;gap:25px}.cli-screens .detail-copy{grid-row:auto}.cli-screens .screen{grid-column:auto}.site-header{min-height:88px;gap:12px}.skip{height:88px}.brand{font-size:18px}.site-nav{gap:16px;font-size:13px}.site-nav .nav-work,.site-nav .nav-social{display:none}.hero{padding-block:43px}.home-intro,.project-intro,.canary-intro{grid-template-columns:1fr;gap:30px}.home-intro h1{font-size:clamp(52px,14vw,84px);margin-top:16px}.role{margin-bottom:12px}.intro-copy{max-width:46ch}.lead{font-size:18px}.feature{padding:30px 20px 20px}.feature-layout{grid-template-columns:1fr;gap:30px}.feature h2{font-size:64px;margin:14px 0}.feature-copy p:not(.kicker){max-width:42ch;font-size:17px}.feature .text-link{margin-top:14px}.screen figcaption{flex-wrap:wrap;gap:4px 15px;font-size:12px}.foundation{grid-template-columns:1fr;gap:25px}.foundation .link-stack{grid-column:auto;flex-direction:row;gap:25px}.section{padding-block:40px}.section h2{font-size:40px}.site-footer{padding-block:25px}.footer-top{align-items:flex-start;gap:14px;margin-bottom:15px}.footer-links{gap:17px}.footer-bottom{gap:12px}.project-intro h1{font-size:85px;margin-top:18px}.full-screen{padding:18px 20px}.rhythm{grid-template-columns:1fr;gap:30px}.features-grid,.features-grid.four{grid-template-columns:1fr;gap:28px}.rhythm article{display:grid;grid-template-columns:28px 1fr;gap:0 15px}.rhythm h2{font-size:23px}.rhythm .number{grid-row:span 2;margin:6px 0 0}.rhythm p{max-width:43ch}.detail-screen{grid-template-columns:1fr;gap:25px}.detail-copy h2{margin:14px 0}.detail-copy p:not(.kicker){max-width:40ch}.invitation,.install-row,.handbook{grid-template-columns:1fr;gap:28px;padding-block:40px}.invitation h2{font-size:40px}.sheet{grid-template-columns:1fr;gap:26px;padding:24px 20px}.sheet-thumb{width:150px}.note-page .hero{padding-block:43px 70px}.note-body{margin-top:28px}.note-body p{font-size:18px}.canary-intro h1{font-size:72px}.terminal{padding:25px}.guide-links{grid-template-columns:1fr;gap:0}.canary-intro .note{font-size:12px}.install-links{gap:10px 20px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.text-link .arrow,.sheet-thumb img{transition:none}}
 @media(forced-colors:active){.feature,.terminal{border:1px solid CanvasText}.screen img{border:1px solid CanvasText}}
 /* On a phone, terminal captures keep a readable size and scroll sideways. */
 @media(max-width:760px){.terminal-shot{overflow-x:auto;-webkit-overflow-scrolling:touch}.terminal-shot img{width:720px;max-width:none}.terminal-shot figcaption{position:sticky;left:0}}
 /* On a phone, put the working screen beside the title in the reading order. */
-@media(max-width:760px){.feature-layout{gap:0}.feature-copy{display:contents}.feature-copy .kicker{order:0}.feature-copy h2{order:1;margin-bottom:0}.feature-layout .screen{order:2;margin-block:24px}.feature-copy p:not(.kicker){order:3}.feature-copy .text-link{order:4;justify-self:start}}
+@media(max-width:760px){.feature-layout{gap:0}.feature-copy{display:contents}.feature-copy .kicker{order:0}.feature-copy h2{order:1;margin-bottom:0}.feature-layout .screen{order:5;margin-block:24px 0;min-width:0}.feature-copy p:not(.kicker){order:2;margin-top:18px}.feature-copy .text-link{order:4;justify-self:start}}
 /* Dark scheme: the same code inverted, warm black paper, pink type, the dark blocks a step lighter. */
 /* Two-column project rows: the title column spans both rows, so the links sit under their paragraph. */
 @media(max-width:1100px) and (min-width:761px){.foundation{grid-template-rows:auto 1fr}.foundation>div:first-child{grid-row:span 2}.foundation .link-stack{align-self:start}}
@@ -239,8 +239,8 @@ pre code{font:inherit}
 @media(prefers-color-scheme:dark){.torok-mark .eye{fill:#E8964A}}
 
 /* Broker evidence is a ledger, not a forecast. Diagram assets contain no account data. */
-.lending-ledger{min-width:0}
-.lending-ledger .ledger{display:block;background:#262A33;border:1px solid #4D525C;box-shadow:var(--shadow)}
+.lending-ledger{min-width:0;max-width:100%}
+.lending-ledger .ledger{display:block;max-width:100%;background:#262A33;border:1px solid #4D525C;box-shadow:var(--shadow)}
 .lending-ledger svg{display:block;width:100%;height:auto;font-family:var(--sans)}
 .lending-ledger .serif{font-family:var(--serif)}
 .lending-ledger .lending-narrow{display:none}
@@ -265,3 +265,37 @@ pre code{font:inherit}
 @media(max-width:1100px) and (min-width:761px){.fx-bridge{gap:10px}.fx-bridge b{font-size:23px}.fx-bridge>span:last-child{padding-left:10px}}
 @media(max-width:760px){.lending-feature{gap:26px}.lending-ledger .lending-wide{display:none}.lending-ledger .lending-narrow{display:block}.lending-ledger figcaption{font-size:11px}.fx-bridge{padding:24px 0;gap:10px}.fx-bridge b{margin-bottom:5px}.fx-bridge>span:last-child{padding:15px 0 0;border-left:0;border-top:1px solid var(--line)}.cash-flow{padding-left:23px}.cash-flow li::before{left:-22px}.cash-flow li::after{left:-16px}.cash-story-note{padding-left:23px}}
 @media(forced-colors:active){.lending-ledger .ledger{border-color:CanvasText}.cash-flow li::before{border-color:CanvasText}}
+
+/* A concise public story, with optional depth in native disclosures. */
+.home .feature-layout>*,.split>*,.install-row>*,.handbook>*{min-width:0}
+.detail-intro{padding-block:48px 28px}
+.detail-intro h2{font:48px/1.05 var(--serif);letter-spacing:-.02em;margin:14px 0}
+.detail-intro>p:last-child{color:var(--muted);max-width:60ch}
+.deep-dive{border-top:1px solid var(--line)}
+.deep-dive:last-of-type{border-bottom:1px solid var(--line)}
+.deep-dive>summary{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;min-height:94px;padding:22px 38px 22px 0;cursor:pointer;list-style:none}
+.deep-dive>summary::-webkit-details-marker{display:none}
+.deep-dive>summary>span{font:30px/1.15 var(--serif)}
+.deep-dive>summary>small{font-size:14px;line-height:1.5;color:var(--muted)}
+.deep-dive>summary::after{content:'+';position:absolute;right:4px;font:26px/1 var(--sans);color:var(--moss)}
+.deep-dive[open]>summary::after{content:'−'}
+.deep-dive>summary:hover>span{color:var(--moss)}
+.deep-dive>.section{padding-block:12px 40px;border-bottom:0}
+.deep-dive .features-head{display:none}
+.lending-update{display:grid;grid-template-columns:1.25fr 1fr;gap:50px}
+.lending-update>div:first-child h2{margin:14px 0 20px}
+.lending-update p:not(.kicker){color:var(--muted);max-width:70ch}
+.lending-update p+p{margin-top:14px}
+.lending-update .text-link{margin-top:16px}
+.lending-update>div:first-child{grid-column:1/-1;max-width:820px}
+@media(max-width:760px){
+ .home .feature .screen picture{display:block;max-height:340px;overflow:hidden;border:1px solid #4D525C;border-radius:3px}
+ .home .feature .screen picture img{border:0}
+ .deep-dive>summary{grid-template-columns:1fr;gap:6px;min-height:100px;padding-block:20px}
+ .deep-dive>summary>span{font-size:27px}
+ .deep-dive>summary>small{font-size:13px}
+ .detail-intro{padding-block:40px 24px}
+ .detail-intro h2{font-size:40px}
+ .deep-dive>.section{padding-bottom:32px}
+ .lending-update{display:block}
+}

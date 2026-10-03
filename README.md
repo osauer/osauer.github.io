@@ -44,8 +44,9 @@ Code uses the system monospace, so no third family is loaded.
 
 ## Screens
 
-The Desk page presents a six-view screenshot tour: Portfolio, Performance, FX,
-Cash sweep, Market trends and Decisions. Focused FX, cash and market captures
+The Desk page leads with a three-view story: FX contribution, Decisions and
+Cash sweep. Native disclosures keep reporting methods, market/phone captures and
+the full feature catalogue available without lengthening the primary journey. Focused FX, cash and market captures
 make the details readable; phone captures show the responsive browser UI.
 They come from Desk’s simulation mode, with a synthetic book and scripted
 replies. Never capture a live account for this site. To recapture:
@@ -55,7 +56,10 @@ replies. Never capture a live account for this site. To recapture:
 node tools/capture-desk-screenshots.mjs output/desk-captures http://127.0.0.1:8891/
 ```
 
-Desktop captures are 1600×1000 at 2×; full phone captures are 390×844 at 3×.
+Desktop captures use a 1600×1000 viewport; full phone captures use 390×844.
+The 3 October refresh uses the repaired Desk panels and a seeded, varied FX
+series; the tour shows cumulative YTD FX while the detail shows daily WTD.
+The values remain explicitly synthetic and are never imported account history.
 Detail captures retain the panel's native dimensions. The tour uses phone
 captures below 760px, with focused panels for Performance, FX and Market.
 Detail crops omit the surrounding app gutters; `assets/desk-showcase.css`
@@ -64,8 +68,8 @@ supplies canvas-coloured padding so labels never touch the presentation frame.
 thumbnail links still open the full-size captures. It has no dependencies.
 The phone beside the market studies is Desk in a browser, not the Canary PWA.
 Use the actual Canary app capture if changing that caption.
-The lending diagram is inline SVG in `desk/index.html` and in the Canary
-landing page (two copies, wide and narrow), so it sets its type in the site's
+The lending diagram is inline SVG in the Canary landing page
+(two variants, wide and narrow), so it sets its type in the site's
 two families; it holds no account data. The capture tool
 also emits optional risk, operations and full market-study captures; publish
 only the views used by the page after reviewing the captures in
@@ -108,8 +112,9 @@ address) and its page previews, rendered from the editable
 always means that version. To reissue, add the new dated PDF and previews,
 move the Desk page's links, and keep the old files.
 
-The 2 October 2026 edition adds stock-lending evidence beside FX contribution
-and the policy-based cash sweep, with source/release availability made explicit.
+The 2 October 2026 edition remains a historical snapshot. Its release-status
+notes predate v3.16.0; the website and text export identify that distinction.
+The homepage leads with the work; authorship stays in a quiet byline and About.
 Use a day suffix when revising an existing month so shared older PDFs stay intact:
 
 ```sh
