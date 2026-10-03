@@ -75,8 +75,11 @@ try {
   await capture("desk-performance.webp");
   await click('[data-state-key="performance:view:fx"]');
   await waitFor("!!document.querySelector('.fx-plot')");
-  await click('[data-state-key="fx:period:week"]');
+  await click('[data-state-key="fx:period:ytd"]');
+  await click('[data-state-key="fx:chart:cumulative"]');
   await capture("desk-fx.webp");
+  await click('[data-state-key="fx:period:week"]');
+  await click('[data-state-key="fx:chart:daily"]');
   await capture("desk-fx-detail.webp", ".fx-panel");
   await click('[data-section="risk"]');
   await capture("desk-risk.webp");
@@ -104,6 +107,8 @@ try {
   await capture("phone-performance.webp",".performance-panel");
   await click('[data-state-key="performance:view:fx"]');
   await waitFor("!!document.querySelector('.fx-plot')");
+  await click('[data-state-key="fx:period:ytd"]');
+  await click('[data-state-key="fx:chart:cumulative"]');
   await capture("phone-fx.webp",".fx-panel");
   await click('[data-section="market"]');
   await click('[data-state-key="market:view:trends"]');

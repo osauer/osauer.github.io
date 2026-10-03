@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Oliver Sauer | Personal software projects</title>
-  <meta name="description" content="Personal software by Oliver Sauer: Canary Desk, the open-source Canary CLI, and Go systems. Broker evidence, thoughtful interfaces and bounded AI.">
+  <title>osauer.dev | Software for a clearer portfolio</title>
+  <meta name="description" content="Software for a clearer portfolio: Canary Desk, the open-source Canary CLI, and the Go systems behind them. Independent projects by Oliver Sauer.">
   <link rel="canonical" href="https://osauer.dev/">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -12,12 +12,12 @@
   <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
   <meta name="color-scheme" content="light dark">
-  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/site.css?v=20261003-story">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://osauer.dev/">
-  <meta property="og:title" content="Oliver Sauer | Personal software projects">
-  <meta property="og:description" content="Personal software by Oliver Sauer: Canary Desk, the open-source Canary CLI, and Go systems. Broker evidence, thoughtful interfaces and bounded AI.">
-  <meta property="og:image" content="https://osauer.dev/assets/desk-overview-social.jpg?v=20261002-tour">
+  <meta property="og:title" content="osauer.dev | Software for a clearer portfolio">
+  <meta property="og:description" content="Software for a clearer portfolio: Canary Desk, the open-source Canary CLI, and the Go systems behind them. Independent projects by Oliver Sauer.">
+  <meta property="og:image" content="https://osauer.dev/assets/desk-overview-social.jpg?v=20261003-insets">
   <meta property="og:image:alt" content="Canary Desk portfolio view, using synthetic demonstration data">
   <meta name="twitter:card" content="summary_large_image">
 </head><body class="home">
@@ -33,10 +33,12 @@
     </nav>
   </header>
   <main id="main" tabindex="-1">
-    <section class="wrap hero home-intro" aria-labelledby="name">
-      <div><p class="kicker">Personal software · Trading · Applied AI</p><h1 id="name">Oliver Sauer</h1></div>
+    <section class="wrap hero home-intro" aria-labelledby="home-title">
+      <div><p class="kicker">Independent software · Markets · Applied AI</p><h1 id="home-title">A clearer view<br>of your portfolio.</h1></div>
       <div class="intro-copy">
-        <p class="lead">I build software for a clearer view of a working portfolio. Broker evidence, disciplined rules and AI that knows where its authority ends.</p>
+        <p class="lead">Understand what changed. See what needs attention. Keep the next decision in your hands.</p>
+        <a class="text-link" href="desk/">Explore Canary Desk<span class="arrow" aria-hidden="true">→</span></a>
+        <p class="byline">Independent projects by Oliver Sauer.</p>
       </div>
     </section>
     <section class="wrap feature" id="work" aria-labelledby="desk-title">
@@ -44,13 +46,13 @@
         <div class="feature-copy">
           <p class="kicker">Private workspace</p>
           <h2 id="desk-title">Canary Desk</h2>
-          <p>A private workspace for the portfolio, the market and the decisions ahead.</p>
+          <p>Your holdings, a morning brief and the decisions ahead. A private workspace built around a working portfolio.</p>
           <a class="text-link" href="desk/">See Canary Desk<span class="arrow" aria-hidden="true">→</span></a>
         </div>
         <figure class="screen">
         <picture>
-          <source media="(max-width: 760px)" srcset="assets/phone-overview.webp?v=20261002-tour" width="390" height="844">
-          <img src="assets/desk-overview.webp?v=20261002-tour" width="1600" height="1000" alt="Canary Desk portfolio view, market context, holdings and daily priorities using a synthetic book" fetchpriority="high">
+          <source media="(max-width: 760px)" srcset="assets/phone-overview.webp?v=20261003-insets" width="390" height="844">
+          <img src="assets/desk-overview.webp?v=20261003-insets" width="1600" height="1000" alt="Canary Desk portfolio view, market context, holdings and daily priorities using a synthetic book" fetchpriority="high">
         </picture>
         <figcaption><span>The portfolio, with market context and daily priorities.</span><span>Simulation · synthetic data</span></figcaption>
       </figure>
@@ -61,7 +63,7 @@
         <div class="feature-copy">
           <p class="kicker">Open source · Go</p>
           <div class="lockup"><img class="mark" src="assets/canary-icon.png" width="192" height="192" alt=""><h2 id="canary-title">Canary CLI</h2></div>
-          <p>Read your broker evidence from the shell, an AI assistant or your phone. Open source, with read-only MCP tools and the same figures behind every surface.</p>
+          <p>The open-source engine behind Desk. Read your Interactive Brokers account from the terminal, an AI assistant or your phone—with the same evidence in every view.</p>
           <div class="link-stack"><a class="text-link" href="canary/">See Canary CLI<span class="arrow" aria-hidden="true">→</span></a><a class="text-link gh-link" href="https://github.com/osauer/canary"><svg class="gh" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub<span class="arrow" aria-hidden="true">↗</span></a></div>
         </div>
         <figure class="screen terminal-shot">
@@ -76,10 +78,10 @@
       <div class="link-stack"><a class="text-link" href="hyperserve/">See HyperServe<span class="arrow" aria-hidden="true">→</span></a><a class="text-link gh-link" href="https://github.com/osauer/hyperserve"><svg class="gh" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub<span class="arrow" aria-hidden="true">↗</span></a></div>
     </section>
     <section class="wrap section foundation about" id="about" aria-labelledby="about-title">
-      <div><p class="kicker">About me</p><h2 id="about-title">Built to understand.<br>Built to use.</h2></div>
+      <div><p class="kicker">About me</p><h2 id="about-title">Made to be used.</h2></div>
       <div class="about-copy">
-        <p>I’m Oliver Sauer. I build personal software around markets, applied AI and Go, and use Canary Desk with my own portfolio.</p>
-        <p>I care about systems that explain their evidence and keep consequential decisions under clear authority. The interface should make that easier to see.</p>
+        <p>I’m Oliver Sauer. I build software around markets, applied AI and Go. Canary Desk is part of how I manage my own portfolio.</p>
+        <p>The work starts with a practical question: what would make the next decision clearer? That means showing where a number came from, what is missing, and which actions remain mine to take.</p>
         <p><a href="canary/">Canary CLI</a> and <a href="hyperserve/">HyperServe</a> are open source. Desk, Torok and Tower are private projects; this site is a window into the work.</p>
       </div>
       <div class="link-stack"><a class="text-link li-link" href="https://www.linkedin.com/in/osauer/"><svg class="li" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn<span class="arrow" aria-hidden="true">↗</span></a></div>
