@@ -87,8 +87,8 @@ a browser, not the Canary paired app.
 
 ## Icons and marks
 
-The site icon is the initials OS in Instrument Serif, paper on slate:
-`assets/favicon.svg` holds the glyph outlines, so it needs no web font.
+The site icon is a bold OS monogram, paper on slate. Its custom rounded
+geometry stays legible at 16px; `assets/favicon.svg` needs no web font.
 `assets/favicon-32.png` (Safari and older browsers) and
 `assets/apple-touch-icon.png` (180px, full square: iOS rounds the corners) are
 rendered from it, for example with `rsvg-convert`. Every page links all three;
