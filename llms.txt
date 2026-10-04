@@ -1,39 +1,62 @@
 # osauer.dev · Software for a clearer portfolio
 
-Updated: 2026-10-03
+Updated: 2026-10-04
 
 Personal software by Oliver Sauer: markets, applied AI and Go systems. The site
 shows independent projects. It is not investment advice and makes no claim of
 investment performance. Public screenshots use synthetic simulation data.
 
-- [Canary Desk](https://osauer.dev/desk/): A private portfolio workspace preview.
-  Market briefs, an AI analyst, risk rules and statement-backed FX contribution
-  for Day, WTD, MTD and YTD. Its cash-sweep planner considers same-currency bills
-  after commitments and liquidity reserves; it is off by default and requires
-  owner commissioning, calibrated policy and current native settlement evidence.
-  Order authority is separate from analysis: owner confirmation or explicitly
-  scoped prior authority, with Canary's execution gates. The analyst remains
-  read-only. Access is arranged personally; there is no commercial service or
-  public Desk installer.
+- [Canary Desk](https://osauer.dev/desk/): A portfolio workspace, in private
+  preview. Written briefs, an AI analyst, risk rules and
+  statement-backed FX contribution for Day, WTD, MTD and YTD. Its cash-sweep
+  planner considers same-currency bills after commitments and liquidity
+  reserves; it is off by default and requires owner commissioning, calibrated
+  policy and current native settlement evidence.
+  Opportunities, new with Canary v3.17, watches up to 20 owner-chosen stocks for unusual
+  volume followed by a price that holds or rises. It shows a dated quote for an
+  exact listed call before the owner sets a limit and records Worth a look /
+  Skip marks, including quiet days. After eligible Canary-placed fills it
+  reviews entry timing (price diagnostics before fees, not realised profit).
+  Research, also new, compares dated borrowing costs and
+  FINRA-reported short interest; borrowing fees are a borrower cost, not
+  lending income.
+  Order authority is separate from analysis. Orders need owner confirmation or
+  explicitly scoped prior authority, and Canary's execution gates apply. The AI
+  analyst remains read-only. Access is arranged personally; there is no
+  commercial service or public Desk installer.
 - [Canary CLI](https://osauer.dev/canary/): Desk's open-source broker engine,
-  written in Go. A native TWS protocol implementation, daemon, CLI, read-only MCP
-  tools and paired app. Standard downloads and all MCP tools cannot place orders.
-  FX contribution is available in Canary v3.16.0 and Desk's private runtime. `canary reporting fx --json` and
-  `canary_reporting_fx` expose statement-day
+  written in Go. It includes a native TWS protocol implementation, a daemon, the
+  CLI, read-only MCP tools and a paired app. Standard downloads and all MCP
+  tools cannot place orders.
+  Latest release: v3.17.0 (4 October 2026). It adds a durable watchlist of up
+  to 20 US stocks, read-only volume-turn setup observations, a dated quote for
+  an exact selected call, setup coverage and entry markouts through the CLI
+  (no MCP setup tools), plus borrowing-rate, lending-screen and FINRA
+  short-interest research through the CLI and read-only MCP. Setup parameters
+  are observations, not validated signals; markouts exclude commissions and
+  never replace account P&L. Borrowing fees are a borrower cost, not lender
+  yield. v3.16.1 keeps status and MCP requests responsive while the broker is
+  slow, and an explicit `canary stop` stays in force until `canary restart`.
+  Since v3.16.0, cash-sweep plans show bill order
+  minimums, fee bounds and advisory net gain after spread, fees and forgone
+  cash interest, with an audited currency-priority preference.
+  FX contribution is available in Canary v3.16.0 and in Desk's private runtime.
+  `canary reporting fx --json` and `canary_reporting_fx` expose statement-day
   currency valuation contribution, separately from realised Forex lot P&L.
   Incomplete periods disclose gaps and omit a total.
-- Lending observations are available in Canary v3.16.0. Dated stock loans appear in position evidence;
-  `canary lending fees --json` and `canary_lending_fees` expose bounded earned
-  customer net-fee history. The Canary app
-  adds position annotations and expandable fees, and Desk's analyst can read
-  the evidence. Coverage distinguishes missing, partial and complete zero.
-  Participation remains with IBKR. Fees do not get added to account P&L; payment
-  and P&L linkage remain unproved. Populated account evidence is still needed
-  for commissioning. Use v3.16.0 or later for these reporting features.
+- Lending observations are available in Canary v3.16.0. Dated stock loans
+  appear in position evidence; `canary lending fees --json` and
+  `canary_lending_fees` expose bounded earned customer net-fee history. The
+  Canary app adds position annotations and expandable fees, and Desk's AI
+  analyst can read the evidence. Coverage distinguishes missing history,
+  partial history and a complete zero. Participation remains with Interactive
+  Brokers (IBKR). Fees are kept separate from account P&L; payment and P&L
+  linkage remain unproved. Populated account evidence is still needed for
+  commissioning. Use v3.16.0 or later for these reporting features.
 - [HyperServe](https://osauer.dev/hyperserve/): An open-source Go HTTP server
-  library built around net/http, with optional MCP.
+  library built on net/http, with optional MCP.
 - [Torok](https://osauer.dev/torok/): The private Go agent runtime behind Canary
-  Desk's morning briefs and AI analyst; it saves a run's progress as it goes.
+  Desk's morning briefs and AI analyst. It saves a run's progress as it goes.
 - [Tower](https://osauer.dev/tower/): A private experiment in coordinating coding
   agents, switched off since 29 September 2026. No public download.
 
@@ -42,7 +65,7 @@ investment performance. Public screenshots use synthetic simulation data.
 - [Oliver's GitHub](https://github.com/osauer)
 - [LinkedIn and private-access enquiries](https://www.linkedin.com/in/osauer/)
 - [Canary repository](https://github.com/osauer/canary)
-- [2 October 2026 product sheet (historical release-status notes)](https://osauer.dev/assets/sheet/canary-desk-product-sheet-2026-10-02.pdf)
+- [4 October 2026 product sheet](https://osauer.dev/assets/sheet/canary-desk-product-sheet-2026-10-04.pdf)
 - [Canary handbook](https://osauer.dev/canary/docs/)
 - [Canary installation](https://osauer.dev/canary/docs/start/install.html)
 - [MCP tools](https://osauer.dev/canary/docs/reference/mcp-tools.html)
@@ -51,7 +74,10 @@ investment performance. Public screenshots use synthetic simulation data.
 - [HyperServe repository](https://github.com/osauer/hyperserve)
 
 Use the Canary handbook for operational details and signed releases for binary
-availability. Current source, private installed runtime and public release are
-different evidence. Desk, Torok and Tower remain private.
+availability. Current source, the private installed runtime and the public
+release are separate kinds of evidence. Desk, Torok and Tower remain private.
 
-Public screenshot tour: weekly FX contribution, a current decision, and Opportunities (in preview). Opportunities shows synthetic five-minute price and volume observations; a pattern match is not a proven edge or order authority. Images were refreshed on 3 October 2026 from an isolated synthetic Desk build.
+Public screenshot tour: weekly FX contribution, a current decision and
+Opportunities. Opportunities shows synthetic five-minute price and
+volume observations; a pattern match is not a proven edge or order authority.
+Images were refreshed on 4 October 2026 from an isolated synthetic Desk build.
