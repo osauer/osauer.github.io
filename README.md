@@ -51,19 +51,32 @@ Risk, cash and market detail remain in the disclosures below. Mobile images
 show native phone layouts; full-size links follow the image actually displayed.
 The cash phone image focuses on the planner's hold, while desktop shows the plan.
 
-The 3 October 2026 captures use Desk `ad12b871ba1afd84492abcab5b30b7fbf7ba19f8`,
-including the Opportunities and holdings/Today changes. The public data is a
-frozen, explicitly synthetic Friday session at 10:20 New York time. FX uses
-USD like the example account and completed statements through 1 October.
-The brief, watchlist evidence, cash priority and cash hold are synthetic fixtures;
-they are not account observations or production-readiness evidence.
+The 4 October 2026 captures (2026-10-04 13:23 CEST) use Desk
+`d199701a88123d86d613a96b4b029a97db2d15dd`, including stable Opportunities
+episodes, Worth a look / Skip marks, the exact call's dated quote in the trade
+ticket, the Lending and Short interest research screens, and FX under
+Performance. The public data is a frozen, explicitly synthetic Friday session
+at 10:20 New York time. FX uses USD like the example account and completed
+statements through 1 October. The brief, volume-turn evidence and mark, cash
+priority and hold, My stocks borrowing fees, short-interest rows (invented
+counts for recognisable large caps, 15 September settlement) and the ticket's
+option chain and delayed quote are synthetic fixtures; they are not account
+observations, market data or production-readiness evidence.
+
+The script also captures the Short interest screen and Account value. Neither
+is published: the short-interest rows pair invented figures with real company
+names, and the Account value header still reads "net of transfers" with
+transfers included. Publish them only after an owner decision and a Desk fix.
 
 Reproduce from a fresh **isolated** clone of that Desk revision, never the live
 checkout. `prepare-desk-capture.py` changes only the demonstration generators:
 recognisable symbols, seeded irregular histories, a fixed reporting cutoff and
 consistent base currency. The browser adapter supplies coherent synthetic
-snapshot and stream data, a populated brief and Opportunities evidence. It
-never changes rendered text, styles or warning elements.
+snapshot and stream data, a populated brief, Opportunities evidence, research
+screens and option discovery. Only the trade-ticket capture enables Desk's
+trading capability; the adapter answers option discovery and refuses every
+preview, authorisation and submission route, so no order is previewed or sent.
+It never changes rendered text, styles or warning elements.
 
 ```sh
 python3 tools/prepare-desk-capture.py /path/to/isolated/desk
@@ -76,10 +89,12 @@ Requires Python 3, Node 22+, Playwright, Chrome and `cwebp`. Captures are PNGs
 at 2× density; convert reviewed assets to WebP (`cwebp -q 88`) before publishing.
 The capture receipt records the source revision, fixture clock and browser
 errors. Desktop is 1440×1000; the phone overview is 390×1080 so its account
-summary is complete. Detail captures contain the real component bounds without
-sticky navigation overlays. Review every published image at desktop and phone
-sizes. Keep all financial qualifiers, explicit missing-data gaps and authority
-holds. Never use live account data.
+summary is complete, and the phone ticket is 390×1200 so the dialog is not
+clipped. My stocks borrowing is desktop only: on a phone its table scrolls
+sideways past the borrow column. Detail captures contain the real component
+bounds without sticky navigation overlays. Review every published image at
+desktop and phone sizes. Keep all financial qualifiers, explicit missing-data
+gaps and authority holds. Never use live account data.
 
 The Tower note retains its synthetic test-harness capture. Canary's lending
 diagram remains in its separate publisher; the phone capture here is Desk in
@@ -120,13 +135,14 @@ address) and its page previews, rendered from the editable
 always means that version. To reissue, add the new dated PDF and previews,
 move the Desk page's links, and keep the old files.
 
+The 4 October 2026 edition (`2026-10-04`) is current and reflects Canary v3.17.0.
 The 2 October 2026 edition remains a historical snapshot. Its release-status
 notes predate v3.16.0; the website and text export identify that distinction.
 The homepage leads with the work; authorship stays in a quiet byline and About.
 Use a day suffix when revising an existing month so shared older PDFs stay intact:
 
 ```sh
-node tools/render-product-sheet.mjs 2026-10-02
+node tools/render-product-sheet.mjs 2026-10-04
 ```
 
 Requires Node 22+, Google Chrome, Poppler (`pdfinfo`, `pdftoppm`) and `cwebp`. Check all
