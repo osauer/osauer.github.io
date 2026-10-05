@@ -225,12 +225,13 @@ await page.route('**/api/**',async route=>{
 const settle=async()=>{await page.evaluate(()=>document.fonts.ready);await page.waitForTimeout(700);};
 const click=async selector=>{await page.locator(selector).click();await settle();};
 const captured=[];
-const capture=async(name,selector)=>{
+// `until` ends the clip at a child's top edge, keeping its 1px rule as the bottom border.
+const capture=async(name,selector,until)=>{
  await settle();
 
  await page.evaluate(()=>scrollTo(0,0));
  let clip;
- if(selector)clip=await page.locator(selector).first().evaluate(e=>{const r=e.getBoundingClientRect();return {x:r.x+scrollX,y:r.y+scrollY,width:r.width,height:r.height}});
+ if(selector)clip=await page.locator(selector).first().evaluate((e,until)=>{const r=e.getBoundingClientRect(),stop=until&&e.querySelector(until);return {x:r.x+scrollX,y:r.y+scrollY,width:r.width,height:stop?stop.getBoundingClientRect().top-r.top+1:r.height}},until);
  await page.screenshot({path:path.join(out,name.replace(/\.(webp|jpg)$/,'.png')),...(clip?{clip,fullPage:true}:{}),animations:'disabled'});
  captured.push(name);console.log(name,selector||'viewport');
 };
@@ -278,7 +279,8 @@ async function pass(device){
  await click('[data-state-key="performance:overlay:fx"]');
  await click('[data-state-key="performance:basis:account"]');await click('[data-state-key="performance:period:ytd"]');
  await page.locator('.performance-flow').first().focus();
- await capture(name('account-value'),'.portfolio-performance-panel');
+ // Securities lending sits under the chart in the same panel and is not part of this story.
+ await capture(name('account-value'),'.portfolio-performance-panel','.lending-panel');
  await click('[data-section="decisions"]');
  if(!phone)fs.writeFileSync(path.join(out,'decisions-dom.txt'),await page.locator('body').innerText());
  await capture(name('decisions'),'.advice-card');

@@ -63,10 +63,16 @@ counts for recognisable large caps, 15 September settlement) and the ticket's
 option chain and delayed quote are synthetic fixtures; they are not account
 observations, market data or production-readiness evidence.
 
-The script also captures the Short interest screen and Account value. Neither
-is published: the short-interest rows pair invented figures with real company
-names, and the Account value header still reads "net of transfers" with
-transfers included. Publish them only after an owner decision and a Desk fix.
+Account value (2026-10-05 06:41 CEST) uses Desk
+`b5bc3eb9a8fa27b97e80560ba0a14374f2602aca`, whose header names the selected
+line's transfer basis ("includes transfers") and whose chart labels stay
+readable where the line crosses them. It shows the synthetic year to date with
+the 18 May withdrawal's tooltip open and stops above Securities lending. It sits
+under "Understand currency effects" beside the sentence it illustrates.
+
+The script also captures the Short interest screen. It is not published: the
+rows pair invented figures with real company names. Publish it only after an
+owner decision.
 
 Reproduce from a fresh **isolated** clone of that Desk revision, never the live
 checkout. `prepare-desk-capture.py` changes only the demonstration generators:
