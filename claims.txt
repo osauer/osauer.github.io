@@ -1,0 +1,8 @@
+# Figures the public site may state, one per line: the phrase as it appears
+# (a lower-case substring is enough), then " — source: " and where it is
+# checked. tools/copy-lint.mjs fails any sentence with an unvouched number,
+# amount, "free" or superlative. Keep it short: a claim nobody can check is
+# cut, not listed. Added 2026-10-05 20:45 CEST.
+
+up to 20 stocks — source: canary internal/rpc/watchlist.go WatchlistLimit = 20
+50- and 200-day averages — source: canary internal/breadth/spx/types.go WindowSize, WindowSize200

@@ -36,6 +36,9 @@ jobs:
       - name: Check exported site links
         run: node tools/check-site-links.mjs output/site
 
+      - name: Check public copy (unvouched figures, status phrases)
+        run: node tools/copy-lint.mjs --skip /ibkr/docs output/site
+
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
 
