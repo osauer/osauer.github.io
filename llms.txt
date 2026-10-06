@@ -28,20 +28,22 @@ investment performance. Public screenshots use synthetic simulation data.
   written in Go. It includes a native TWS protocol implementation, a daemon, the
   CLI, read-only MCP tools and a paired app. Standard downloads and all MCP
   tools cannot place orders.
-  Latest release: v3.18.0 (6 October 2026). `canary policy show --explain`
-  prints every limit, policy and runtime setting in force with its source and
-  meaning, and `canary policy check` reads the config and the policy files
-  against each other and, through the daemon, against the live account
-  (`--offline` checks the files alone), naming each implausible value with a
-  reason and, where one applies, a suggested fix. MCP clients get the same
-  read-only report from `canary_policy_check`, which never changes a limit.
-  The per-order value cap now scales with net liquidation value between an
-  owner-set floor and ceiling. The cash sweep's reserve follows net liquidation
-  value and planned needs, bill purchases keep to a minimum and a maximum size
-  and bill buys wait while any currency is borrowed. In trading builds a
-  protective stop guard writes to the broker on its own, but only to shrink or
-  cancel stop orders Canary itself placed; stops placed by hand are never
-  changed.
+  Latest release: v3.18.1 (6 October 2026). Upgrades need no policy step: when
+  it starts, the daemon backs up each policy file it changes and writes the keys
+  a release adds. It also fixes protection proposals that stopped refreshing in
+  v3.18.0. v3.18.0 (6 October 2026) added: `canary policy show --explain` prints
+  every limit, policy and runtime setting in force with its source and meaning,
+  and `canary policy check` reads the config and the policy files against each
+  other and, through the daemon, against the live account (`--offline` checks
+  the files alone), naming each implausible value with a reason and, where one
+  applies, a suggested fix. MCP clients get the same read-only report from
+  `canary_policy_check`, which never changes a limit. The per-order value cap
+  now scales with net liquidation value between a floor and ceiling in the
+  policy file. The cash sweep's reserve follows net liquidation value and
+  planned needs, bill purchases keep to a minimum and a maximum size and bill
+  buys wait while any currency is borrowed. In trading builds a protective stop
+  guard writes to the broker on its own, but only to shrink or cancel stop
+  orders Canary itself placed; stops placed by hand are never changed.
   v3.17.0 (4 October 2026) added a durable watchlist of up
   to 20 US stocks, read-only volume-turn setup observations, a dated quote for
   an exact selected call, setup coverage and entry markouts through the CLI
