@@ -74,8 +74,6 @@ investment performance. Public screenshots use synthetic simulation data.
   library built on net/http, with optional MCP.
 - [Torok](https://osauer.dev/torok/): The private Go agent runtime behind Canary
   Desk's morning briefs and AI analyst. It saves a run's progress as it goes.
-- [Tower](https://osauer.dev/tower/): A private experiment in coordinating coding
-  agents, switched off since 29 September 2026. No public download.
 
 ## Source and documentation
 
@@ -92,7 +90,7 @@ investment performance. Public screenshots use synthetic simulation data.
 
 Use the Canary handbook for operational details and signed releases for binary
 availability. Current source, the private installed runtime and the public
-release are separate kinds of evidence. Desk, Torok and Tower remain private.
+release are separate kinds of evidence. Desk and Torok remain private.
 
 Public screenshot tour: Performance, Decisions, Opportunities and Cash.
 Performance opens with an explicitly synthetic positive return chart; it is not

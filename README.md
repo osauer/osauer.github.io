@@ -2,7 +2,7 @@
 
 The GitHub Pages publisher for Oliver Sauer’s personal site, `osauer.dev`.
 The Pages workflow publishes selected pages and assets from `main`, serving the
-homepage, Desk and the brief Torok, HyperServe and Tower notes.
+homepage, Desk and the brief Torok and HyperServe notes.
 
 `osauer.dev/canary/` is separately published by `osauer/canary`, from its Pages
 build of `main:/docs`. Its landing page uses this repository’s `/assets/site.css`;
@@ -113,8 +113,7 @@ bounds without sticky navigation overlays. Review every published image at
 desktop and phone sizes. Keep all financial qualifiers, explicit missing-data
 gaps and authority holds. Never use live account data.
 
-The Tower note retains its synthetic test-harness capture. Canary's lending
-diagram remains in its separate publisher; the phone capture here is Desk in
+Canary's lending diagram remains in its separate publisher; the phone capture here is Desk in
 a browser, not the Canary paired app.
 
 ## Website theme
