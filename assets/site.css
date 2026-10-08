@@ -5,7 +5,7 @@
 @font-face{font-family:Instrument Serif;src:url(fonts/instrument-serif-latin-ext.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
 @font-face{font-family:Instrument Serif;src:url(fonts/instrument-serif-latin.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 /* Palette after the Financial Times visual code: pink paper, warm black, teal for links, claret for marks, slate for the dark blocks, wheat for tinted panels. */
-:root{--paper:#FFF1E5;--ink:#33302E;--muted:#6B635C;--line:#E4D5C6;--moss:#0D7680;--claret:#990F3D;--forest:#262A33;--light:#F2DFCE;--wheat:#F2DFCE;--shadow:0 12px 28px #33302E12;--moss-deep:#0B5F67;--subhead:28px;--serif:'Instrument Serif',Georgia,serif;--sans:'Instrument Sans',Arial,sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+:root{color-scheme:light;--paper:#FFF1E5;--ink:#33302E;--muted:#6B635C;--line:#E4D5C6;--moss:#0D7680;--claret:#990F3D;--forest:#262A33;--light:#F2DFCE;--wheat:#F2DFCE;--shadow:0 12px 28px #33302E12;--moss-deep:#0B5F67;--subhead:28px;--serif:'Instrument Serif',Georgia,serif;--sans:'Instrument Sans',Arial,sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:24px}
 body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
@@ -75,6 +75,18 @@ body.home .nav-work{display:none}
 .footer-links a{min-height:32px;display:inline-flex;align-items:center;text-decoration:none}
 .footer-links a:hover{text-decoration:underline}
 .footer-bottom p{max-width:75ch}
+/* Native radios keep the theme control usable with arrows and screen readers. */
+.theme-control{display:flex;gap:0;width:max-content;min-width:0;padding:0;margin:0;border:1px solid var(--line);border-radius:3px;font:13px/1.4 var(--sans);color:var(--ink)}
+.theme-control[hidden]{display:none}
+.site-footer>.theme-control:not(:last-child){margin-bottom:18px}
+.theme-control legend,.theme-control input{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.theme-control label{position:relative;cursor:pointer}
+.theme-control label+label{border-left:1px solid var(--line)}
+.theme-control span{display:flex;align-items:center;justify-content:center;min-height:44px;min-width:64px;padding:9px 13px 7px;border-bottom:2px solid transparent}
+.theme-control input:checked+span{color:var(--moss-deep);background:var(--wheat);border-bottom-color:currentColor;font-weight:600}
+.theme-control label:hover span{color:var(--moss)}
+.theme-control input:focus-visible+span{outline:2px solid var(--moss);outline-offset:3px;position:relative;z-index:1}
+@media(forced-colors:active){.theme-control input:checked+span{outline:2px solid Highlight;outline-offset:-3px}}
 .project-intro h1{font:clamp(64px,8vw,116px)/.9 var(--serif);letter-spacing:-.035em;margin-top:22px}
 .mark{display:block;width:52px;height:52px;border-radius:12px;margin-top:22px}
 .feature .mark{margin-top:18px}
@@ -216,7 +228,8 @@ pre code{font:inherit}
 /* Dark scheme: the same code inverted, warm black paper, pink type, the dark blocks a step lighter. */
 /* Two-column project rows: the title column spans both rows, so the links sit under their paragraph. */
 @media(max-width:1100px) and (min-width:761px){.foundation{grid-template-rows:auto 1fr}.foundation>div:first-child{grid-row:span 2}.foundation .link-stack{align-self:start}}
-@media(prefers-color-scheme:dark){:root{--paper:#1F1D1B;--ink:#F2E8DF;--muted:#B3A79C;--line:#3B3632;--moss:#4FC3C9;--claret:#F27C9B;--forest:#2E333B;--light:#E4D5C6;--wheat:#2A2724;--wheat-line:#7A7068;--moss-deep:#4FC3C9}.feature .kicker,.feature .screen figcaption,.terminal-label{color:#B3A79C}.screen img,.full-screen .screen img,.note-page .screen img,.feature .screen img{border-color:var(--wheat-line,#7A7068)}.feature,.terminal{color:var(--ink)}.feature a:hover{color:var(--moss)}.feature a:focus-visible{outline-color:var(--ink)}.sheet-thumb img{border-color:var(--wheat-line,#7A7068)}.feature.alt .screen img{border-color:var(--wheat-line,#7A7068)}.arch-core b{color:var(--ink)}.arch-core span{color:#B3A79C}}
+:root[data-theme=dark]{color-scheme:dark;--paper:#1F1D1B;--ink:#F2E8DF;--muted:#B3A79C;--line:#3B3632;--moss:#4FC3C9;--claret:#F27C9B;--forest:#2E333B;--light:#E4D5C6;--wheat:#2A2724;--wheat-line:#7A7068;--moss-deep:#4FC3C9}:root[data-theme=dark] .feature .kicker,:root[data-theme=dark] .feature .screen figcaption,:root[data-theme=dark] .terminal-label{color:#B3A79C}:root[data-theme=dark] .screen img,:root[data-theme=dark] .full-screen .screen img,:root[data-theme=dark] .note-page .screen img,:root[data-theme=dark] .feature .screen img{border-color:var(--wheat-line,#7A7068)}:root[data-theme=dark] .feature,:root[data-theme=dark] .terminal{color:var(--ink)}:root[data-theme=dark] .feature a:hover{color:var(--moss)}:root[data-theme=dark] .feature a:focus-visible{outline-color:var(--ink)}:root[data-theme=dark] .sheet-thumb img{border-color:var(--wheat-line,#7A7068)}:root[data-theme=dark] .feature.alt .screen img{border-color:var(--wheat-line,#7A7068)}:root[data-theme=dark] .arch-core b{color:var(--ink)}:root[data-theme=dark] .arch-core span{color:#B3A79C}
+@media(prefers-color-scheme:dark){:root:not([data-theme]){color-scheme:dark;--paper:#1F1D1B;--ink:#F2E8DF;--muted:#B3A79C;--line:#3B3632;--moss:#4FC3C9;--claret:#F27C9B;--forest:#2E333B;--light:#E4D5C6;--wheat:#2A2724;--wheat-line:#7A7068;--moss-deep:#4FC3C9}:root:not([data-theme]) .feature .kicker,:root:not([data-theme]) .feature .screen figcaption,:root:not([data-theme]) .terminal-label{color:#B3A79C}:root:not([data-theme]) .screen img,:root:not([data-theme]) .full-screen .screen img,:root:not([data-theme]) .note-page .screen img,:root:not([data-theme]) .feature .screen img{border-color:var(--wheat-line,#7A7068)}:root:not([data-theme]) .feature,:root:not([data-theme]) .terminal{color:var(--ink)}:root:not([data-theme]) .feature a:hover{color:var(--moss)}:root:not([data-theme]) .feature a:focus-visible{outline-color:var(--ink)}:root:not([data-theme]) .sheet-thumb img{border-color:var(--wheat-line,#7A7068)}:root:not([data-theme]) .feature.alt .screen img{border-color:var(--wheat-line,#7A7068)}:root:not([data-theme]) .arch-core b{color:var(--ink)}:root:not([data-theme]) .arch-core span{color:#B3A79C}}
 
 /* Cash planning and FX attribution on the product pages. */
 .cash-story{border-top:1px solid var(--ink)}
@@ -236,7 +249,8 @@ pre code{font:inherit}
 .note-page .lockup h1{margin-top:0}
 .torok-mark{flex:none;height:clamp(46px,5.76vw,83.5px);width:auto;color:var(--ink)}
 .torok-mark .eye{fill:#B45309}
-@media(prefers-color-scheme:dark){.torok-mark .eye{fill:#E8964A}}
+:root[data-theme=dark] .torok-mark .eye{fill:#E8964A}
+@media(prefers-color-scheme:dark){:root:not([data-theme]) .torok-mark .eye{fill:#E8964A}}
 
 /* Broker evidence is a ledger, not a forecast. Diagram assets contain no account data. */
 .lending-ledger{min-width:0;max-width:100%}

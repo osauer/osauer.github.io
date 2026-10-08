@@ -12,12 +12,13 @@
   <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
   <meta name="color-scheme" content="light dark">
-  <link rel="stylesheet" href="assets/site.css?v=20261003-refresh">
+  <script src="/assets/theme.js?v=20261008"></script>
+  <link rel="stylesheet" href="assets/site.css?v=20261008">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://osauer.dev/">
   <meta property="og:title" content="osauer.dev | Software for a clearer portfolio">
   <meta property="og:description" content="Canary Desk, the open-source Canary CLI and the Go systems behind them. Independent software for a clearer portfolio, by Oliver Sauer.">
-  <meta property="og:image" content="https://osauer.dev/assets/desk-overview-social.jpg?v=20261003-refresh">
+  <meta property="og:image" content="https://osauer.dev/assets/desk-overview-social.jpg?v=20261008">
   <meta property="og:image:alt" content="Canary Desk portfolio view, using synthetic demonstration data">
   <meta name="twitter:card" content="summary_large_image">
 </head><body class="home">
@@ -36,7 +37,7 @@
     <section class="wrap hero home-intro" aria-labelledby="home-title">
       <div><p class="kicker">Independent software · Markets · Applied AI</p><h1 id="home-title">A clearer view<br>of your portfolio.</h1></div>
       <div class="intro-copy">
-        <p class="lead">See what changed and what needs your attention. The next decision stays in your hands.</p>
+        <p class="lead">Canary Desk brings your Interactive Brokers holdings, daily brief and risk reviews into one workspace on your Mac.</p>
         <a class="text-link" href="desk/">Explore Canary Desk<span class="arrow" aria-hidden="true">→</span></a>
         <p class="byline">Independent projects by Oliver Sauer.</p>
       </div>
@@ -46,14 +47,11 @@
         <div class="feature-copy">
           <p class="kicker">Private workspace</p>
           <h2 id="desk-title">Canary Desk</h2>
-          <p>A private workspace built around a working portfolio, with your holdings, a morning brief and the decisions ahead.</p>
+          <p>Review your holdings, read the morning brief and examine proposed decisions. A private project with access arranged personally.</p>
           <a class="text-link" href="desk/">See Canary Desk<span class="arrow" aria-hidden="true">→</span></a>
         </div>
         <figure class="screen">
-        <picture>
-          <source media="(max-width: 760px)" srcset="assets/phone-overview.webp?v=20261004" width="390" height="1080">
-          <img src="assets/desk-overview.webp?v=20261004" width="1440" height="1000" alt="Canary Desk portfolio view with market context, holdings and daily priorities, using a synthetic book" fetchpriority="high">
-        </picture>
+        <picture><source data-theme-source data-media="(max-width: 760px)" media="(max-width: 760px) and (prefers-color-scheme: dark)" srcset="assets/phone-overview-dark.webp?v=20261008" width="390" height="1080"><source media="(max-width: 760px)" srcset="assets/phone-overview.webp?v=20261008" width="390" height="1080"><source data-theme-source data-media="all" media="(prefers-color-scheme: dark)" srcset="assets/desk-overview-dark.webp?v=20261008" width="1440" height="1000"><img src="assets/desk-overview.webp?v=20261008" alt="Canary Desk portfolio view with market context, holdings and daily priorities, using a synthetic book" fetchpriority="high" width="1440" height="1000"></picture>
         <figcaption><span>The portfolio, with market context and daily priorities.</span><span>Simulation · synthetic data</span></figcaption>
       </figure>
       </div>
@@ -98,6 +96,7 @@
         <a class="li-link external" href="https://www.linkedin.com/in/osauer/"><svg class="li" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
       </nav>
     </div>
+    <fieldset class="theme-control" data-theme-control hidden><legend>Colour theme</legend><label><input type="radio" name="theme" value="system" checked><span>System</span></label><label><input type="radio" name="theme" value="dark"><span>Dark</span></label><label><input type="radio" name="theme" value="light"><span>Light</span></label></fieldset>
     <div class="footer-bottom"><p>Personal projects, unaffiliated with any employer. No investment advice.</p><span>osauer.dev</span></div>
   </footer>
 </body>

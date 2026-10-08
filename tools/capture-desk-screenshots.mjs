@@ -49,7 +49,7 @@ function seedBrief(snapshot){
  if(proposals){
   delete proposals.budget_reduction;
   proposals.proposals=proposals.proposals.filter(p=>p.bucket!=='budget_reduction');
-  for(const p of proposals.proposals){if(p.option_exit)p.option_exit.dte=14;for(const b of p.blockers||[])if(b.code==='option_rth_closed'){b.code='live_option_quote_required';b.message='option exit requires live option market data';}}
+  for(const p of proposals.proposals){if(p.option_exit)p.option_exit.dte=14;if(p.bucket==='theta_hygiene'){p.order_type='LMT';p.limit_price=4.70;p.tif='DAY';p.position_quantity=2;p.reason='Synthetic rule: review the put with 14 days to expiry. The 4.70 USD limit would return 940 USD before fees.';}for(const b of p.blockers||[])if(b.code==='option_rth_closed'){b.code='live_option_quote_required';b.message='option exit requires live option market data';}}
  }
  if(proposals?.cash_sweep){
   const sweep=proposals.cash_sweep;
@@ -59,14 +59,25 @@ function seedBrief(snapshot){
   if(usd){usd.settled_cash=null;usd.settled_cash_source='unavailable';usd.trade_date_cash=96475;usd.free=0;if(usd.bill)usd.bill.days_to_maturity=33;usd.cash=96475;usd.cash_equivalents=9900;usd.cash_like=106375;usd.state='settlement_unknown';usd.reason='96,475 USD cash and 9,900 USD in bills. Complete settled-cash coverage and a calibrated funding reserve are required before another purchase.';}
  }
 
- snapshot.operations.reviews=[{id:'desk:requested:2026-10-02',run_id:'synthetic-public-brief',state:'completed',at:'2026-10-02T14:15:00Z',briefing_ready:true,text:'## Your book today\n\nThe synthetic portfolio is up **991 USD** since the prior close. Cash is **96,475 USD** and margin headroom is **170,000 USD**.\n\n**Review concentration.** MSFT represents 27.1% of net liquidation, above the configured 25% limit. Review the proposed reduction before adding exposure.\n\n**Keep the reserve.** The cash plan is held pending complete settlement evidence. A quote alone does not authorise a purchase.',briefing:{quiet:false,headlines:[]}}];
+ snapshot.operations.reviews=[{id:'desk:requested:2026-10-02',run_id:'synthetic-public-brief',state:'completed',title:'Requested portfolio brief',mode:'mixed',at:'2026-10-02T14:15:00Z',briefing_ready:true,text:'## Your book today\n\nThe synthetic portfolio is up **991 USD** since the prior close. Cash is **96,475 USD** and margin headroom is **170,000 USD**.\n\n**Review concentration.** MSFT represents 27.1% of net liquidation, above the configured 25% limit. Review the position before adding exposure.\n\n**Keep the reserve.** The cash plan is held pending complete settlement evidence. A quote alone does not authorise a purchase.',briefing:{quiet:false,headlines:[]}}];
+ // Keep scheduled obligations on their stated session clocks. Observations
+ // use the frozen receipt; a pre-close review cannot inherit that receipt time.
+ const scheduleClock=value=>{
+  if(Array.isArray(value)){value.forEach(scheduleClock);return;}
+  if(!value||typeof value!=='object')return;
+  const id=value.id||'';
+  const due=id==='desk:preclose:2026-10-02'?'19:15':id==='desk:close:2026-10-02'?'20:15':id==='desk:europe:2026-10-02'?'05:00':id==='desk:briefing:europe:2026-10-02'?'05:00':id==='desk:opening:us_equity:2026-10-02'?'13:35':null;
+  if(due){value.due_at='2026-10-02T'+due+':00Z';value.start_at=value.due_at;value.cutoff_at=value.expires_at='2026-10-02T'+(due==='20:15'?'21:00':due==='05:00'?'11:00':'20:00')+':00Z';}
+  Object.values(value).forEach(scheduleClock);
+ };
+ scheduleClock(snapshot.operations);
  return snapshot;
 }
 const at=m=>new Date(Date.parse('2026-10-02T13:30:00Z')+m*60000).toISOString();
 // Contract ids and quotes come from the synthetic book, so every view agrees.
 let quotes={};
 const stock=symbol=>({symbol,con_id:quotes[symbol]?.con_id||0,sec_type:'STK',currency:'USD',exchange:'SMART'});
-// The current /api/opportunities shape (Desk d199701): spike-keyed candidate ids
+// The current /api/opportunities shape: spike-keyed candidate ids
 // inside a stable episode, the owner's research mark, and My stocks lending rows.
 // One watched name matched (volume spike, then a rising bar); one spiked and is
 // waiting for price; one has no spike. Canary's evaluator states and reason codes.
@@ -164,6 +175,39 @@ function marketFixture(data){
  return data;
 }
 
+function dailyHoldingHistory(quote,contract){
+ const points=[];let day=new Date('2026-10-01T20:00:00Z');
+ while(points.length<126){
+  if(![0,6].includes(day.getUTCDay())){const i=points.length;points.unshift({at:day.toISOString(),value:+(quote.regular_close*(1-.0005*i+.003*Math.sin(i/3))).toFixed(2)});}
+  day.setUTCDate(day.getUTCDate()-1);
+ }
+ return holdingHistory({range:'6M',source:'Synthetic Canary fixture',points},new URLSearchParams({contract:JSON.stringify(contract),range:'6M'}));
+}
+
+// Supply complete synthetic OHLC and volume evidence for the current Holdings
+// cues. The source is the seeded simulation walk; identity comes from the exact
+// browser request, so the same validation applies as to a Canary history read.
+function holdingHistory(data, params){
+ const contract=JSON.parse(params.get('contract')), range=params.get('range');
+ data.contract={...contract,con_id:contract.con_id||quotes[contract.symbol]?.con_id||901001};
+ data.coverage_status='available';data.cache={coverage:'complete'};data.price_basis='TRADES';data.regular_hours_only=true;data.as_of=frozen;
+ data.interval=range==='1D'?'5 mins':'1 day';data.timestamp_kind=range==='1D'?'instant':'session_date';
+ if(range==='1D'){
+  const old=data.points;data.points=Array.from({length:10},(_,i)=>({...old[Math.round(i*(old.length-1)/9)],at:at(i*5)}));
+  data.requested_start=at(0);
+ }else{
+  data.points=data.points.filter(p=>p.at.slice(0,10)<'2026-10-02');
+  data.requested_start=data.points[0]?.at;
+ }
+ const average=quotes[contract.symbol]?.avg_volume||18000000;
+ for(const [i,p] of data.points.entries()){
+  p.low=+(p.value*.999).toFixed(2);p.high=+(p.value*1.001).toFixed(2);
+  p.volume=Math.round(average*(range==='1D'?(.85+(i%4)*.12)/78:(.85+(i%7)*.05)));
+ }
+ data.start=data.points[0]?.at;data.end=data.points.at(-1)?.at;
+ return data;
+}
+
 const browser=await chromium.launch({headless:true,channel:'chrome'});
 const page=await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:2,reducedMotion:'reduce',colorScheme:'light'});
 const errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -214,12 +258,14 @@ await page.route('**/api/**',async route=>{
  }
  data=normalize(data);
  if(url.pathname==='/api/snapshot'){
-  snapshot=data=seedBrief(data);
+  snapshot=data=seedBrief(data);fs.writeFileSync(path.join(out,'synthetic-snapshot.json'),JSON.stringify(data,null,2));
   const positions=data.view.components.find(c=>c.id==='observer:positions')?.observation?.data;
   for(const row of positions?.by_underlying||[])if(row.underlying_quote?.symbol)quotes[row.underlying_quote.symbol]=row.underlying_quote;
+  for(const row of positions?.by_underlying||[]){const q=row.underlying_quote||row.stock;if(q&&row.history?.points){const contract={con_id:q.con_id,symbol:q.symbol,sec_type:'STK',currency:q.currency,exchange:q.exchange};row.history=holdingHistory(row.history,new URLSearchParams({contract:JSON.stringify(contract),range:'1D'}));row.history.ranges={'6M':dailyHoldingHistory(q,contract)};}}
   if(tradingFixture)data.meta.trading=trading(new URL(base).origin);
  }
  if(url.pathname==='/api/market/tape')data=marketFixture(data);
+ if(url.pathname==='/api/market/history')data=holdingHistory(data,url.searchParams);
  await route.fulfill({response,json:data});
 });
 const settle=async()=>{await page.evaluate(()=>document.fonts.ready);await page.waitForTimeout(700);};
@@ -259,13 +305,19 @@ const chooseCall=async(name,phone)=>{
  await capture(name,'dialog.trading-dialog');
  tradingFixture=false;
 };
-async function pass(device){
- const phone=device==='phone', name=n=>(phone?'phone-':'desk-')+n+'.webp';
+async function pass(device,theme){
+ await page.emulateMedia({colorScheme:theme});
+ const phone=device==='phone', name=n=>(phone?'phone-':'desk-')+n+(theme==='dark'?'-dark':'')+'.webp';
  await page.setViewportSize(phone?{width:390,height:1080}:{width:1440,height:1000});
+ if(process.argv[4]==='social'){if(!phone&&theme==='light'){await page.setViewportSize({width:1200,height:630});await open();await page.waitForTimeout(2500);await page.screenshot({path:path.join(out,'desk-overview-social.jpg'),type:'jpeg',quality:90,scale:'css',animations:'disabled'});captured.push('desk-overview-social.jpg');}return;}
+ if(process.argv[4]==='operations'){await open('?view=operations');await page.locator('.operations-workspace').waitFor();if(phone){for(let i=0;i<5;i++){await page.getByRole('button',{name:'Later hours',exact:true}).click();await settle();}}await capture(name('operations'),'.operations-workspace');return;}
  await open();await page.locator('.underlying-row').first().waitFor();
  // Opening the actual brief disclosure displays the seeded synthetic narrative.
  // Keep the populated brief folded so holdings remain visible.
+ await page.waitForTimeout(2500);
  await capture(name('overview'));
+ await click('.daily-brief > summary');await capture(name('brief'),'.daily-brief');
+ await click('.daily-brief > summary');
  if(phone)await page.setViewportSize({width:390,height:844});
  // FX contribution now opens from Portfolio → Performance: FX overlay → FX details.
  await click('#page-subnav a:text-is("Performance")');
@@ -289,6 +341,8 @@ async function pass(device){
  await capture(name('risk'),'.risk-lead');
  if(phone){await page.getByText('Current sweep details',{exact:true}).click();await capture(name('cash'),'details.source-details:has(> summary:text-is("Current sweep details"))');}
  else await capture(name('cash'),'.cash-sweep');
+ await open('?view=operations');await page.locator('.operations-workspace').waitFor();if(phone){for(let i=0;i<5;i++){await page.getByRole('button',{name:'Later hours',exact:true}).click();await settle();}}
+ await capture(name('operations'),'.operations-workspace');
  await open('?view=market&tab=trends');await page.locator('.insight-chart svg').first().waitFor();
  await capture(name('market-price'),'.insight-chart');await capture(name('market-breadth'),'.insight-chart + .insight-chart');
  await open('?view=market&tab=opportunities');await page.locator('.opportunity-chart').waitFor();
@@ -304,9 +358,8 @@ async function pass(device){
  await chooseCall(name('opportunity-call'),phone);
 }
 try{
- await pass('desk');
- await pass('phone');
- fs.writeFileSync(path.join(out,'capture-receipt.json'),JSON.stringify({sourceRevision,frozen,synthetic:true,captured,
+ for(const theme of ['light','dark']){await pass('desk',theme);await pass('phone',theme);}
+ fs.writeFileSync(path.join(out,'capture-receipt.json'),JSON.stringify({sourceRevision,frozen,synthetic:true,themes:['light','dark'],captured,
   fixtures:['snapshot: -simulate book, brief and market tape (normalized)','opportunities: synthetic volume-turn rows, NVDA marked worth a look','lending My stocks: invented ordinary borrow fees','short interest: invented FINRA-style rows, settlement 2026-09-15','trade ticket: option discovery and one delayed quote only; preview and submission refused'],errors},null,2));
  if(errors.length)throw Error(errors.join('\n'));
 }finally{await browser.close();}
