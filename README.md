@@ -45,12 +45,16 @@ Code uses the system monospace, so no third family is loaded.
 
 ## Screens
 
-The three-slide tour tells a focused story: currency contribution, a decision,
-and an Opportunities observation. A pattern match is not evidence of an edge
+The four-view tour opens with Performance, then offers Decisions, Opportunities
+and Cash. The separate, unnumbered daily-routine section describes when Desk
+works. A pattern match is not evidence of an edge
 and never grants order authority. The daily-use disclosure adds the morning
 brief and Operations.
 Risk, cash and market detail remain in the disclosures below. Mobile images
-show native phone layouts; full-size links follow the image actually displayed.
+show native phone layouts. Screenshot clicks open an in-page dialog with Close,
+Escape and zoom; closing restores focus and retains the page position. Modified
+clicks and JavaScript-free links still open the underlying image. The viewer
+always uses the image actually displayed.
 The cash phone image focuses on the planner's hold, while desktop shows the plan.
 
 The 8 October 2026 refresh uses Desk local main
@@ -65,6 +69,11 @@ The Decisions fixture includes complete order terms; real simulation controls
 and authority holds stay visible. The capture receipt records the exact source
 revision and errors, and `tools/desk-capture-receipt.json` preserves the accepted
 refresh metadata.
+
+The Performance lead has a separate four-image refresh receipt in
+`tools/desk-performance-capture-receipt.json`, from the same renderer and existing
+positive synthetic fixture. It includes the Portfolio and chart controls in both
+themes and at desktop and phone widths.
 
 A visible product redesign or feature addition requires fresh paired captures,
 updated captions, social image and a new dated sheet before the public page is
@@ -128,8 +137,11 @@ SITE_URL=http://127.0.0.1:8913 PLAYWRIGHT_MODULE=/path/to/node_modules/playwrigh
 ```
 
 This checks desktop, laptop and phone widths, both explicit themes against the
-opposite OS setting, full-size targets, native keyboard controls, image failure
-and retry, System updates and saved choices across pages and tabs. Inspect the
+opposite OS setting, all screenshot openers, native keyboard controls, image
+failure and retry, System updates and saved choices across pages and tabs. The
+viewer checks cover Close, Escape, backdrop clicks, focus and scroll restoration,
+zoom with the toolbar in view, and keeping the page URL and browser tab intact.
+Inspect the
 screenshots in `output/review`; assertions alone are not visual review.
 
 ## Icons and marks

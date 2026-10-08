@@ -1,0 +1,53 @@
+{
+  "sourceRevision": "ac450e75f154ebcd4facea5a518c869e7a709d66",
+  "frozen": "2026-10-02T14:20:00.000Z",
+  "synthetic": true,
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "captured": [
+    "desk-performance.webp",
+    "phone-performance.webp",
+    "desk-performance-dark.webp",
+    "phone-performance-dark.webp"
+  ],
+  "fixtures": [
+    "Existing synthetic Performance series: +18,206 USD and +7.9% time-weighted YTD through2026-10-01; provisional2026-10-02 separate",
+    "Existing synthetic SPY comparison; benchmark explanation and fees/basis details retained in real UI disclosures",
+    "No changes to data, app text, styles, controls or screenshot pixels; native workspace capture ends before Securities lending"
+  ],
+  "errors": [],
+  "captureDate": "2026-10-08",
+  "purpose": "Full Performance view with Portfolio navigation and chart controls. Existing positive synthetic fixture; no live performance claim.",
+  "assets": [
+    {
+      "path": "assets/desk-performance-dark.webp",
+      "width": 2400,
+      "height": 1384,
+      "bytes": 141390,
+      "sha256": "5f47cdbefb0c8860cd8ee01d586a691e2e419b5321423778a3ee0d83c7edba09"
+    },
+    {
+      "path": "assets/phone-performance.webp",
+      "width": 780,
+      "height": 1664,
+      "bytes": 102902,
+      "sha256": "5012b12d01d8f6f10d48b1ae232ffc8aa60f4eeec066375c962641a00b991c08"
+    },
+    {
+      "path": "assets/desk-performance.webp",
+      "width": 2400,
+      "height": 1384,
+      "bytes": 146504,
+      "sha256": "65a7adca3d845055a87399bfac446fbb2de9a7f05e4f16f0e0b557e47cf39f90"
+    },
+    {
+      "path": "assets/phone-performance-dark.webp",
+      "width": 780,
+      "height": 1664,
+      "bytes": 98320,
+      "sha256": "f8219e06bad12f906c97c3bf185431be2f3d495dc5f56d756da8a08a0f41842c"
+    }
+  ]
+}

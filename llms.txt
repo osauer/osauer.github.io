@@ -94,8 +94,9 @@ Use the Canary handbook for operational details and signed releases for binary
 availability. Current source, the private installed runtime and the public
 release are separate kinds of evidence. Desk, Torok and Tower remain private.
 
-Public screenshot tour: weekly FX contribution, a current decision and
-Opportunities. Opportunities shows synthetic five-minute price and
+Public screenshot tour: Performance, Decisions, Opportunities and Cash.
+Performance opens with an explicitly synthetic positive return chart; it is not
+a record or promise of investment results. Opportunities shows synthetic five-minute price and
 volume observations; a pattern match is not a proven edge or order authority.
 The detail sections also show the morning brief and Operations.
 Images were refreshed on 8 October 2026 from an isolated synthetic Desk build, in light and dark themes.

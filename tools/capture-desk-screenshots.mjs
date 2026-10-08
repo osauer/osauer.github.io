@@ -309,6 +309,14 @@ async function pass(device,theme){
  await page.emulateMedia({colorScheme:theme});
  const phone=device==='phone', name=n=>(phone?'phone-':'desk-')+n+(theme==='dark'?'-dark':'')+'.webp';
  await page.setViewportSize(phone?{width:390,height:1080}:{width:1440,height:1000});
+ if(process.argv[4]==='performance'){
+  await open('?view=overview&tab=performance');
+  await page.locator('.portfolio-performance-panel').waitFor();
+  await click('[data-state-key="performance:period:ytd"]');
+  await capture(name('performance'),'#workspace','.lending-panel');
+  fs.writeFileSync(path.join(out,name('performance').replace('.webp','.txt')),await page.locator('#workspace').innerText());
+  return;
+ }
  if(process.argv[4]==='social'){if(!phone&&theme==='light'){await page.setViewportSize({width:1200,height:630});await open();await page.waitForTimeout(2500);await page.screenshot({path:path.join(out,'desk-overview-social.jpg'),type:'jpeg',quality:90,scale:'css',animations:'disabled'});captured.push('desk-overview-social.jpg');}return;}
  if(process.argv[4]==='operations'){await open('?view=operations');await page.locator('.operations-workspace').waitFor();if(phone){for(let i=0;i<5;i++){await page.getByRole('button',{name:'Later hours',exact:true}).click();await settle();}}await capture(name('operations'),'.operations-workspace');return;}
  await open();await page.locator('.underlying-row').first().waitFor();

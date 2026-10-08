@@ -72,8 +72,9 @@ if (tour) {
       title.textContent = link.dataset.title;
       caption.textContent = link.dataset.caption;
       selected = link;
+      tour.querySelector("[data-tour-open]").setAttribute("aria-label", "Enlarge " + link.textContent.trim() + " screenshot");
       syncFull();
-      full.setAttribute("aria-label", "Open full-size " + link.textContent.trim() + " screenshot");
+      full.setAttribute("aria-label", "Enlarge " + link.textContent.trim() + " screenshot");
       tour.dataset.selected = link.dataset.tourView;
       panel.setAttribute("aria-labelledby", link.id);
       links.forEach(item => {
@@ -102,3 +103,87 @@ for (const link of document.querySelectorAll("a[data-responsive-image]")) {
   matchMedia("(max-width: 760px)").addEventListener("change", () => requestAnimationFrame(sync));
   sync();
 }
+
+// Plain activation keeps screenshots inside the page. Native dialog provides
+// modal focus containment and Escape; modified clicks retain the image URL.
+const viewer = document.createElement("dialog");
+viewer.className = "image-viewer";
+viewer.setAttribute("aria-labelledby", "viewer-title");
+viewer.setAttribute("aria-describedby", "viewer-caption");
+viewer.innerHTML = `<header class="viewer-toolbar"><h2 id="viewer-title">Canary Desk screenshot</h2><div class="viewer-actions"><button type="button" data-viewer-zoom disabled>Zoom in</button><button type="button" data-viewer-close autofocus>Close <span aria-hidden="true">×</span></button></div></header><div class="viewer-canvas"><img hidden alt=""><div class="viewer-message"><p role="status"></p><button type="button" data-viewer-retry hidden>Try again</button></div></div><p class="viewer-caption" id="viewer-caption"></p>`;
+document.body.append(viewer);
+const viewerImage = viewer.querySelector("img");
+const viewerCaption = viewer.querySelector(".viewer-caption");
+const viewerStatus = viewer.querySelector("[role=status]");
+const viewerMessage = viewer.querySelector(".viewer-message");
+const viewerZoom = viewer.querySelector("[data-viewer-zoom]");
+const viewerRetry = viewer.querySelector("[data-viewer-retry]");
+let imageURL, loadVersion = 0, previousOverflow;
+
+async function loadScreenshot() {
+  const version = ++loadVersion;
+  viewer.classList.remove("is-zoomed");
+  viewerZoom.textContent = "Zoom in";
+  viewerZoom.setAttribute("aria-pressed", "false");
+  viewerZoom.disabled = true;
+  viewerImage.hidden = true;
+  viewerMessage.hidden = false;
+  viewerRetry.hidden = true;
+  viewerStatus.textContent = "Loading screenshot…";
+  const next = new Image();
+  next.src = imageURL;
+  try {
+    await next.decode();
+    if (version !== loadVersion || !viewer.open) return;
+    viewerImage.src = imageURL;
+    viewerImage.style.setProperty("--viewer-width", `${next.naturalWidth / 2}px`);
+    viewerImage.style.setProperty("--viewer-pixels", `${next.naturalWidth}px`);
+    viewerImage.hidden = false;
+    viewerMessage.hidden = true;
+    viewerStatus.textContent = "";
+    viewerZoom.disabled = false;
+  } catch {
+    if (version !== loadVersion || !viewer.open) return;
+    viewerStatus.textContent = "This screenshot didn’t load. Try again, or close this view to return to the page.";
+    viewerRetry.hidden = false;
+  }
+}
+
+function closeScreenshot() {
+  ++loadVersion;
+  document.documentElement.style.overflow = previousOverflow;
+  viewer.close();
+}
+viewer.querySelector("[data-viewer-close]").addEventListener("click", closeScreenshot);
+viewer.addEventListener("cancel", event => {
+  event.preventDefault();
+  closeScreenshot();
+});
+viewerRetry.addEventListener("click", loadScreenshot);
+viewerZoom.addEventListener("click", () => {
+  const zoomed = viewer.classList.toggle("is-zoomed");
+  viewerZoom.textContent = zoomed ? "Fit image" : "Zoom in";
+  viewerZoom.setAttribute("aria-pressed", String(zoomed));
+  viewer.querySelector(".viewer-canvas").scrollTo(0, 0);
+});
+viewer.addEventListener("click", event => {
+  if (event.target !== viewer) return;
+  const bounds = viewer.getBoundingClientRect();
+  if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) closeScreenshot();
+});
+
+document.addEventListener("click", event => {
+  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  const link = event.target.closest("a[data-responsive-image], a[data-tour-full]");
+  if (!link || typeof viewer.showModal !== "function") return;
+  event.preventDefault();
+  const image = link.querySelector("img") || tour?.querySelector("[data-tour-image]");
+  imageURL = image?.currentSrc || link.href;
+  viewerImage.alt = image?.alt || "Canary Desk screenshot";
+  viewerCaption.textContent = viewerImage.alt;
+  previousOverflow = document.documentElement.style.overflow;
+  document.documentElement.style.overflow = "hidden";
+  viewer.showModal();
+  viewer.querySelector("[data-viewer-close]").focus({preventScroll: true});
+  loadScreenshot();
+});
