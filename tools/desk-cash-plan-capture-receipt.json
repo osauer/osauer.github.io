@@ -1,0 +1,56 @@
+{
+  "sourceRevision": "f57ac507f8df14e67bf96c4419324319a628aa7f",
+  "frozen": "2026-10-02T14:20:00.000Z",
+  "synthetic": true,
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "captured": [
+    "desk-cash-plan.webp",
+    "phone-cash-plan.webp",
+    "desk-cash-plan-dark.webp",
+    "phone-cash-plan-dark.webp"
+  ],
+  "fixtures": [
+    "Isolated -simulate source, with intercepted synthetic read responses only",
+    "USD settled cash 96475, equivalents 9900, sum 106375, committed 0, retained reserve 5000, free 91475",
+    "Existing simulation policy: reserve 5000 and maximum order 25000 asserted before fixture changes",
+    "Shadow planning mode, complete funding evidence and tax-reviewed synthetic case; no live settings, policy, limits or commissioning changes",
+    "Plan and decision trace agree on 25000 USD face value in Treasury bills; no order sent",
+    "Native layout, text and warnings untouched by capture; light and dark captured separately"
+  ],
+  "errors": [],
+  "captureDate": "2026-10-08",
+  "purpose": "Complete synthetic Cash plan rendered from the corrected native Desk UI; no order is previewed or sent.",
+  "assets": [
+    {
+      "path": "assets/desk-cash-plan.webp",
+      "width": 2272,
+      "height": 1064,
+      "bytes": 67648,
+      "sha256": "d3383c6bf75d6a9b70e02c8e49f815e23669be6246bc73fc3f4fb4e6531e6576"
+    },
+    {
+      "path": "assets/phone-cash-plan.webp",
+      "width": 716,
+      "height": 1594,
+      "bytes": 64280,
+      "sha256": "bb53a2706500d4f2c23eb43b68cada7e362c9f63fe53d6e3aaa209e8d89237c3"
+    },
+    {
+      "path": "assets/desk-cash-plan-dark.webp",
+      "width": 2272,
+      "height": 1064,
+      "bytes": 60078,
+      "sha256": "f9c8e807604e1d70dfe0bfd8edb4cac8cb2589d979e3c5735b2edc324884b2ed"
+    },
+    {
+      "path": "assets/phone-cash-plan-dark.webp",
+      "width": 716,
+      "height": 1594,
+      "bytes": 56512,
+      "sha256": "d6176dc4931bd6529b7baece7f957dd5a7385b3f81d103209a6e4b6d9da9f8fe"
+    }
+  ]
+}

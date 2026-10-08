@@ -1,0 +1,129 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:02.500
+Which parts of an AI workflow should be
+
+2
+00:00:02.500 --> 00:00:05.260
+fixed in code, and which should the model decide?
+
+3
+00:00:06.400 --> 00:00:09.680
+Torok is the agent harness in the Canary Desk suite.
+
+4
+00:00:10.120 --> 00:00:12.160
+Built as a Go library, it supplies the
+
+5
+00:00:12.160 --> 00:00:16.820
+software around a model: tools, workflow execution, and saved progress.
+
+6
+00:00:17.933 --> 00:00:21.153
+Imagine asking it to summarize two project updates.
+
+7
+00:00:21.813 --> 00:00:24.233
+Code sets the required steps: load the reports,
+
+8
+00:00:24.453 --> 00:00:27.293
+produce a brief, check it, and ask for review.
+
+9
+00:00:28.300 --> 00:00:31.360
+Inside the drafting step, the work is agentic:
+
+10
+00:00:31.460 --> 00:00:33.300
+the model chooses what to investigate.
+
+11
+00:00:33.660 --> 00:00:37.080
+It can read a report, compare the findings, or call an allowed tool.
+
+12
+00:00:38.033 --> 00:00:39.993
+Look inside a single tool call.
+
+13
+00:00:40.533 --> 00:00:42.973
+The model decides to calculate five minus two.
+
+14
+00:00:43.673 --> 00:00:45.053
+Ordinary code returns three.
+
+15
+00:00:45.413 --> 00:00:47.873
+The model explains what those three mean.
+
+16
+00:00:48.967 --> 00:00:51.287
+Code checks required fields and counts.
+
+17
+00:00:51.767 --> 00:00:55.507
+A brief reporting zero failures conflicts with the two in the evidence.
+
+18
+00:00:56.047 --> 00:00:58.187
+The check rejects it; the model revises.
+
+19
+00:00:59.007 --> 00:00:59.927
+Retries have limits.
+
+20
+00:01:01.000 --> 00:01:05.260
+Inside Desk, Torok’s resident receives messages and scheduled work.
+
+21
+00:01:05.840 --> 00:01:07.200
+Workflows define the steps.
+
+22
+00:01:07.800 --> 00:01:09.640
+Agents run the model and tool loop.
+
+23
+00:01:10.100 --> 00:01:13.700
+A shared runtime coordinates execution, limits, and recovery.
+
+24
+00:01:14.800 --> 00:01:17.700
+State lives in two local SQLite databases.
+
+25
+00:01:18.180 --> 00:01:21.300
+The service database stores the inbox, schedules, and memory.
+
+26
+00:01:21.720 --> 00:01:25.240
+The episodes database stores runs, checkpoints, events, and
+
+27
+00:01:25.240 --> 00:01:28.000
+conversations, so work can resume from saved results.
+
+28
+00:01:29.067 --> 00:01:35.727
+So codify obligations: data access, calculations, checks, permissions, and stopping.
+
+29
+00:01:36.207 --> 00:01:41.107
+Use agents for interpretation, investigation, and drafting within that structure.
+
+30
+00:01:42.200 --> 00:01:44.720
+The workflow defines what must happen.
+
+31
+00:01:45.120 --> 00:01:47.780
+The agent decides how to reason within it.
+
+32
+00:01:48.360 --> 00:01:50.480
+Torok carries the work between the two.

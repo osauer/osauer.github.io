@@ -110,7 +110,7 @@ async function checkTextURLs(file) {
 
 async function checkHTML(file) {
   const data = await readFile(file, "utf8");
-  for (const match of data.matchAll(/\b(?:href|src)=["']([^"']+)["']/gi)) {
+  for (const match of data.matchAll(/\b(?:href|src|poster)=["']([^"']+)["']/gi)) {
     await checkPath(file, match[1]);
   }
 }

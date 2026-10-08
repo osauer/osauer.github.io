@@ -315,3 +315,13 @@ pre code{font:inherit}
  .deep-dive>.section{padding-bottom:32px}
  .lending-update{display:block}
 }
+
+/* The explainer is hosted here, without a third-party player or autoplay. */
+.explainer{margin-top:48px;padding-block:32px;border-block:1px solid var(--line);scroll-margin-top:24px}
+.explainer h2{font:clamp(34px,4vw,48px)/1.1 var(--serif);margin:12px 0}
+.explainer>p:not(.kicker){max-width:64ch;color:var(--muted);margin-bottom:24px}
+.explainer figure{margin:0}
+.explainer video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#0c131c;border:1px solid var(--line);border-radius:4px}
+.explainer figcaption{margin-top:10px;font-size:13px;color:var(--muted)}
+.explainer-links{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:14px;font-size:14px}
+.explainer-links a{display:inline-flex;align-items:center;min-height:44px}

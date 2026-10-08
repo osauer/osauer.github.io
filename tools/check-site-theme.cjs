@@ -9,8 +9,8 @@ if(!['127.0.0.1','localhost'].includes(new URL(base).hostname))throw Error('Use 
 async function loaded(p){await p.locator('body').evaluate(async()=>{await document.fonts.ready;for(const img of document.images)if(img.getBoundingClientRect().top<innerHeight)await img.decode().catch(()=>{});});}
 async function checkImages(p){
  await p.locator('details').evaluateAll(nodes=>nodes.forEach(n=>n.open=true));
- for(const image of await p.locator('picture img').all()){await image.scrollIntoViewIfNeeded();await image.evaluate(async img=>{await img.decode().catch(()=>{throw Error(`Image failed: ${img.currentSrc}`)})});}
- const records=await p.locator('picture img').evaluateAll(images=>images.map(img=>({src:img.currentSrc,ok:img.complete&&img.naturalWidth>0,link:img.closest('a[data-responsive-image]')?.href})));
+ for(const image of await p.locator('img:not(.image-viewer img)').all()){await image.scrollIntoViewIfNeeded();await image.evaluate(async img=>{await img.decode().catch(()=>{throw Error(`Image failed: ${img.currentSrc}`)})});}
+ const records=await p.locator('img:not(.image-viewer img)').evaluateAll(images=>images.map(img=>({themed:!!img.closest('picture')?.querySelector('[data-theme-source]'),src:img.currentSrc,ok:img.complete&&img.naturalWidth>0,link:img.closest('a[data-responsive-image]')?.href})));
  for(const r of records){assert(r.ok,r.src);if(r.link)assert.equal(r.src,r.link);}
  return records;
 }
@@ -71,14 +71,14 @@ async function inspectViewer(p,opener,file,method){
     assert.equal(await p.locator('html').getAttribute('data-theme'),theme);assert.equal(await p.locator('html').evaluate(e=>getComputedStyle(e).colorScheme),theme);
     await p.screenshot({animations:'disabled',path:`${out}/${name}-${label}-${theme}-hero.png`});
     const records=await checkImages(p);
-    for(const r of records){assert.equal(r.src.includes('-dark.webp'),theme==='dark',r.src);}
+    for(const r of records){if(r.themed)assert.equal(r.src.includes('-dark.webp'),theme==='dark',r.src);}
     if(route==='/desk/'){
      for(const opener of await p.locator('a[data-responsive-image]').all()){const before=await openViewer(p,opener);await closeViewer(p,opener,before);}
      await p.locator('[aria-labelledby=daily-proof-title]').screenshot({animations:'disabled',path:`${out}/daily-use-${label}-${theme}.png`});
      for(const view of ['performance','decisions','opportunities','cash']){
       await p.locator(`[data-tour-view="${view}"]`).click();await p.waitForFunction(v=>document.querySelector('[data-desk-tour]').dataset.selected===v,view);
       await p.waitForFunction(()=>{const i=document.querySelector('[data-tour-image]');return i.complete&&i.naturalWidth>0&&i.currentSrc===document.querySelector('[data-tour-full]').href});
-      const current=await p.locator('[data-tour-image]').evaluate(i=>i.currentSrc);assert(current.includes((width<=760?'phone-':'desk-')+view+(theme==='dark'?'-dark':'')+'.webp'),current);
+      const current=await p.locator('[data-tour-image]').evaluate(i=>i.currentSrc);assert(current.includes((width<=760?'phone-':'desk-')+(view==='cash'?'cash-plan':view)+(theme==='dark'?'-dark':'')+'.webp'),current);
      const ratio=await p.locator('[data-tour-image]').evaluate(i=>({natural:i.naturalWidth/i.naturalHeight,rendered:i.clientWidth/i.clientHeight}));
      assert(Math.abs(ratio.natural-ratio.rendered)<0.02,'Tour retains screenshot aspect ratio');
       await p.locator('[data-desk-tour]').scrollIntoViewIfNeeded();await p.screenshot({animations:'disabled',path:`${out}/tour-${view}-${label}-${theme}.png`});

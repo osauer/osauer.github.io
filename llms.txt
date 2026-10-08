@@ -74,6 +74,7 @@ investment performance. Public screenshots use synthetic simulation data.
   library built on net/http, with optional MCP.
 - [Torok](https://osauer.dev/torok/): The private Go agent runtime behind Canary
   Desk's morning briefs and AI analyst. It saves a run's progress as it goes.
+  [Torok explainer film](https://osauer.dev/torok/#explainer): Where Code Meets Judgment.
 
 ## Source and documentation
 
