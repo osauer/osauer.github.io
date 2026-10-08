@@ -53,13 +53,28 @@ function seedBrief(snapshot){
  }
  if(proposals?.cash_sweep){
   const sweep=proposals.cash_sweep;
-  sweep.reserve_state='hold';sweep.reserve_reason='reserve_calibration_required: Funding reserve needs owner calibration.';
+  // A complete planning-only example. Every currency figure and audit row
+  // belongs to this one synthetic book; no live policy or account is changed.
+  sweep.mode='shadow';sweep.shadow=true;sweep.tax_reviewed=true;
+  sweep.reserve_state='ready';sweep.reserve_reason='';
+  sweep.currency_priority='usd_first';sweep.currency_priority_source='';
+  sweep.account_receipt_at=recent;sweep.positions_receipt_at=recent;
+  sweep.funding_as_of=recent;sweep.funding_valid_until=new Date(now+300000).toISOString();
+  sweep.operational_funding={state:'complete',source:'frozen_synthetic',as_of:recent,policy_fingerprint:'synthetic-policy-v1',currencies:[{currency:'USD',required:5000,available:96475}],obligations:[],gaps:[]};
+  sweep.calibration_studies=[];
   sweep.currencies=sweep.currencies.filter(c=>c.currency==='USD');
   const usd=sweep.currencies[0];
-  if(usd){usd.settled_cash=null;usd.settled_cash_source='unavailable';usd.trade_date_cash=96475;usd.free=0;if(usd.bill)usd.bill.days_to_maturity=33;usd.cash=96475;usd.cash_equivalents=9900;usd.cash_like=106375;usd.state='settlement_unknown';usd.reason='96,475 USD cash and 9,900 USD in bills. Complete settled-cash coverage and a calibrated funding reserve are required before another purchase.';}
+  if(sweep.max_order_notional_base!==25000||usd?.keep_cash!==5000)throw Error('Synthetic cash policy changed; review the example');
+  if(usd){
+   Object.assign(usd,{cash:96475,settled_cash:96475,settled_cash_source:'broker',trade_date_cash:96475,cash_equivalents:9900,cash_like:106375,committed:0,keep_cash:5000,free:91475,state:'invest',reason:'Keep 5,000 USD in cash. Plan 25,000 USD face value in Treasury bills.'});
+   if(usd.bill)usd.bill.days_to_maturity=33;
+  }
+  for(const proposal of proposals.proposals)if(proposal.cash_sweep)Object.assign(proposal.cash_sweep,{cash:96475,committed:0,free:91475,keep_cash:5000,mode:'shadow'});
+  sweep.decision_trace=[{at:recent,mode:'shadow',currency_priority:'usd_first',reserve_state:'ready',policy_id:'synthetic-sweep',policy_version:1,policy_fingerprint:'synthetic-policy-v1',account_receipt_at:recent,positions_receipt_at:recent,operational_funding:sweep.operational_funding,currencies:[{currency:'USD',cash:96475,committed:0,action:'invest',reason:'Plan 25,000 USD face value in Treasury bills; keep the 5,000 USD cash reserve. Planning only; no order sent.',settled_source_kind:'web_account',web_cash_original_as_of:recent}]}];
+
  }
 
- snapshot.operations.reviews=[{id:'desk:requested:2026-10-02',run_id:'synthetic-public-brief',state:'completed',title:'Requested portfolio brief',mode:'mixed',at:'2026-10-02T14:15:00Z',briefing_ready:true,text:'## Your book today\n\nThe synthetic portfolio is up **991 USD** since the prior close. Cash is **96,475 USD** and margin headroom is **170,000 USD**.\n\n**Review concentration.** MSFT represents 27.1% of net liquidation, above the configured 25% limit. Review the position before adding exposure.\n\n**Keep the reserve.** The cash plan is held pending complete settlement evidence. A quote alone does not authorise a purchase.',briefing:{quiet:false,headlines:[]}}];
+ snapshot.operations.reviews=[{id:'desk:requested:2026-10-02',run_id:'synthetic-public-brief',state:'completed',title:'Requested portfolio brief',mode:'mixed',at:'2026-10-02T14:15:00Z',briefing_ready:true,text:'## Your book today\n\nThe synthetic portfolio is up **991 USD** since the prior close. Cash is **96,475 USD** and margin headroom is **170,000 USD**.\n\n**Review concentration.** MSFT represents 27.1% of net liquidation, above the configured 25% limit. Review the position before adding exposure.\n\n**Keep the reserve.** The cash plan keeps a 5,000 USD reserve and proposes 25,000 USD face value in Treasury bills. This is planning only; no order is sent.',briefing:{quiet:false,headlines:[]}}];
  // Keep scheduled obligations on their stated session clocks. Observations
  // use the frozen receipt; a pre-close review cannot inherit that receipt time.
  const scheduleClock=value=>{
@@ -309,6 +324,12 @@ async function pass(device,theme){
  await page.emulateMedia({colorScheme:theme});
  const phone=device==='phone', name=n=>(phone?'phone-':'desk-')+n+(theme==='dark'?'-dark':'')+'.webp';
  await page.setViewportSize(phone?{width:390,height:1080}:{width:1440,height:1000});
+ if(process.argv[4]==='cash'){
+  await open('?view=risk');await page.locator('.cash-sweep').waitFor();
+  await capture(name('cash-plan'),'.cash-sweep');
+  fs.writeFileSync(path.join(out,name('cash-plan').replace('.webp','.txt')),await page.locator('.cash-sweep').innerText());
+  return;
+ }
  if(process.argv[4]==='performance'){
   await open('?view=overview&tab=performance');
   await page.locator('.portfolio-performance-panel').waitFor();

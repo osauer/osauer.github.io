@@ -55,7 +55,7 @@ show native phone layouts. Screenshot clicks open an in-page dialog with Close,
 Escape and zoom; closing restores focus and retains the page position. Modified
 clicks and JavaScript-free links still open the underlying image. The viewer
 always uses the image actually displayed.
-The cash phone image focuses on the planner's hold, while desktop shows the plan.
+Cash uses a complete synthetic planning example with a retained reserve; no order is sent. Both device captures show the cash figures and proposed bill purchase.
 
 The 8 October 2026 refresh uses Desk local main
 `ac450e75f154ebcd4facea5a518c869e7a709d66`, including the revised Holdings,
@@ -74,6 +74,13 @@ The Performance lead has a separate four-image refresh receipt in
 `tools/desk-performance-capture-receipt.json`, from the same renderer and existing
 positive synthetic fixture. It includes the Portfolio and chart controls in both
 themes and at desktop and phone widths.
+
+The later Cash correction uses Desk local main
+`f57ac507f8df14e67bf96c4419324319a628aa7f`. Its four new `cash-plan` assets
+and coherent planning-only fixture are recorded in
+`tools/desk-cash-plan-capture-receipt.json`; earlier captures and the dated product
+sheet remain unchanged. Reproduce just these images by appending `cash` to the
+capture command below.
 
 A visible product redesign or feature addition requires fresh paired captures,
 updated captions, social image and a new dated sheet before the public page is
@@ -132,9 +139,16 @@ The printable sheet and social preview deliberately use light captures.
 With the local preview running, verify the real page and capture combinations:
 
 ```sh
-SITE_URL=http://127.0.0.1:8913 PLAYWRIGHT_MODULE=/path/to/node_modules/playwright node tools/check-site-theme.cjs
+python3 tools/preview-site.py /path/to/canary/dist/pages
+# In another terminal:
+SITE_URL=http://127.0.0.1:8914 PLAYWRIGHT_MODULE=/path/to/node_modules/playwright node tools/check-site-theme.cjs
 ```
 
+Serve the exported root site with the Canary Pages export mounted at `/canary/`
+for this witness; it also decodes the standalone logo and delegated CLI image.
+The preview accepts concurrent browser asset requests and supports MP4 byte
+ranges for seeking. A five-connection listen backlog caused intermittent logo
+request resets during the October review; the preview uses 128.
 This checks desktop, laptop and phone widths, both explicit themes against the
 opposite OS setting, all screenshot openers, native keyboard controls, image
 failure and retry, System updates and saved choices across pages and tabs. The
@@ -194,3 +208,11 @@ Requires Node 22+, Google Chrome, Poppler (`pdfinfo`, `pdftoppm`) and `cwebp`. C
 four rendered pages for clipping before updating the Desk download links and
 file size. The sheet uses the site's self-hosted fonts; no private account data
 or e-mail address is included. Keep prior dated editions for existing links.
+
+## Torok explainer
+
+The owner-supplied explainer is hosted as an unchanged H.264/AAC MP4 under
+`assets/video/`, with English WebVTT captions and a poster taken from the film.
+The public anchor `/torok/#explainer` is shareable without signing in; the page
+also links directly to the MP4. The native player has controls, no autoplay and
+metadata-only preload. MP4 and VTT are allowed public export types for this film.

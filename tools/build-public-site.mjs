@@ -14,9 +14,9 @@ const fontLicences = new Set([
   "assets/fonts/instrument-sans-OFL.txt", "assets/fonts/instrument-serif-OFL.txt",
 ]);
 const assetExtensions = new Set([
-  ".css", ".js", ".svg", ".png", ".jpg", ".jpeg", ".webp", ".woff2", ".pdf",
+  ".css", ".js", ".svg", ".png", ".jpg", ".jpeg", ".webp", ".woff2", ".pdf", ".mp4", ".vtt",
 ]);
-const textExtensions = new Set([".html", ".txt", ".xml", ".css", ".js", ".svg"]);
+const textExtensions = new Set([".html", ".txt", ".xml", ".css", ".js", ".svg", ".vtt"]);
 const privateContent = [
   /-----BEGIN (?:[A-Z]+ )*PRIVATE KEY-----/,
   /\b(?:ghp_[A-Za-z0-9]{25,}|github_pat_[A-Za-z0-9_]{30,}|AKIA[0-9A-Z]{16})\b/,
