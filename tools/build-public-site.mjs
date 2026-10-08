@@ -7,7 +7,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const output = path.join(root, "output", "site");
 const pages = new Set([
   ".nojekyll", "CNAME", "404.html", "index.html", "llms.txt", "robots.txt", "sitemap.xml",
-  "desk/index.html", "hyperserve/index.html", "torok/index.html", "tower/index.html",
+  "desk/index.html", "hyperserve/index.html", "torok/index.html",
   "ibkr/index.html", "ibkr/docs/index.html",
 ]);
 const fontLicences = new Set([
