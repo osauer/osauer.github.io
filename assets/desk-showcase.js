@@ -6,6 +6,8 @@ if (tour) {
   const list = tour.querySelector(".tour-choices");
   const image = tour.querySelector("[data-tour-image]");
   const phone = tour.querySelector("[data-tour-mobile]");
+  const darkPhone = tour.querySelector("[data-tour-mobile-dark]");
+  const darkImage = tour.querySelector("[data-tour-dark]");
   const title = tour.querySelector("[data-tour-title]");
   const caption = tour.querySelector("[data-tour-caption]");
   const full = tour.querySelector("[data-tour-full]");
@@ -18,9 +20,13 @@ if (tour) {
   let request = 0;
   let selected = links[0];
   const narrow = matchMedia("(max-width: 760px)");
-  const targetFor = link => narrow.matches && link.dataset.mobile ? link.dataset.mobile : link.href;
+  const dark = () => document.documentElement.dataset.theme === "dark" || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+  const targetFor = link => narrow.matches && link.dataset.mobile
+    ? (dark() ? link.dataset.mobileDark : link.dataset.mobile)
+    : (dark() ? link.dataset.dark : link.href);
   const syncFull = () => { full.href = targetFor(selected); };
   narrow.addEventListener("change", syncFull);
+  window.addEventListener("site-theme-change", () => choose(selected));
   syncFull();
 
   links.forEach((link, i) => {
@@ -59,6 +65,8 @@ if (tour) {
       await next.decode();
       if (version !== request) return;
       phone.srcset = link.dataset.mobile || link.href;
+      darkPhone.srcset = link.dataset.mobileDark || link.dataset.dark;
+      darkImage.srcset = link.dataset.dark;
       image.src = link.href;
       image.alt = link.dataset.alt;
       title.textContent = link.dataset.title;

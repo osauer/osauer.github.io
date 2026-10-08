@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Canary Desk | Your portfolio, understood and protected</title>
+  <title>Canary Desk | Portfolio analysis and risk review</title>
   <meta name="description" content="A private portfolio workspace. Understand your returns, review risk, plan cash and watch the stocks you follow, with an AI analyst that reads your broker data.">
   <link rel="canonical" href="https://osauer.dev/desk/">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png?v=20261003-bold">
@@ -12,14 +12,15 @@
   <link rel="preload" href="../assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
   <meta name="color-scheme" content="light dark">
-  <link rel="stylesheet" href="../assets/site.css?v=20261003-refresh">
-  <link rel="stylesheet" href="../assets/canary.css?v=20261002-ticker">
-  <link rel="stylesheet" href="../assets/desk-showcase.css?v=20261005">
+  <script src="/assets/theme.js?v=20261008"></script>
+  <link rel="stylesheet" href="../assets/site.css?v=20261008">
+  <link rel="stylesheet" href="../assets/canary.css?v=20261008">
+  <link rel="stylesheet" href="../assets/desk-showcase.css?v=20261008">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://osauer.dev/desk/">
-  <meta property="og:title" content="Canary Desk | Your portfolio, understood and protected">
+  <meta property="og:title" content="Canary Desk | Portfolio analysis and risk review">
   <meta property="og:description" content="A private portfolio workspace. Understand your returns, review risk, plan cash and watch the stocks you follow, with an AI analyst that reads your broker data.">
-  <meta property="og:image" content="https://osauer.dev/assets/desk-overview-social.jpg?v=20261003-refresh">
+  <meta property="og:image" content="https://osauer.dev/assets/desk-overview-social.jpg?v=20261008">
   <meta property="og:image:alt" content="Canary Desk portfolio workspace, using synthetic demonstration data">
   <meta name="twitter:card" content="summary_large_image">
 </head><body data-desk-href="#decisions-title">
@@ -38,36 +39,42 @@
     <section class="wrap hero project-intro" aria-labelledby="desk-title">
       <div><p class="kicker">Private workspace</p><h1 id="desk-title">Canary Desk</h1></div>
       <div class="intro-copy">
-        <p class="lead">Know what moved your portfolio, what needs attention and what you can do next. An AI analyst explains the numbers. You set the limits.</p>
-        <a class="text-link" href="#preview">Discuss private access<span class="arrow" aria-hidden="true">↓</span></a>
+        <p class="lead">See what changed in your portfolio and review the risks before deciding what comes next.</p>
+        <p class="note">For investors managing their own Interactive Brokers portfolio. Runs on your Mac, using your broker account and OpenAI.</p>
+        <a class="text-link" href="#preview">Discuss Canary Desk<span class="arrow" aria-hidden="true">↓</span></a>
+        <p class="note">A private project by Oliver Sauer. Access is arranged personally.</p>
       </div>
     </section>
     <section class="wrap desk-tour story-tour" data-desk-tour data-selected="fx" id="decisions-title" aria-label="Canary Desk screenshot tour">
       <div class="tour-heading"><span>Three questions before you decide.</span><span>Real interface · synthetic data</span></div>
       <nav class="tour-choices" aria-label="Screenshot views">
-        <a data-tour-view="fx" href="../assets/desk-fx.webp?v=20261004" data-mobile="../assets/phone-fx.webp?v=20261004" data-title="What moved my return?" data-caption="See the week’s currency contribution, day by day. Reporting dates and missing days stay in view." data-alt="Canary Desk weekly FX contribution with daily bars, using synthetic data">01 · Understand returns</a>
-        <a data-tour-view="decisions" href="../assets/desk-decisions.webp?v=20261003-refresh" data-mobile="../assets/phone-decisions.webp?v=20261003-refresh" data-title="What needs my attention?" data-caption="Read each proposal with its reason. The analyst proposes; Canary checks the authority behind every order." data-alt="Canary Desk rule advice and protection proposals, using synthetic data">02 · Review a decision</a>
-        <a data-tour-view="opportunities" href="../assets/desk-opportunities.webp?v=20261004" data-mobile="../assets/phone-opportunities.webp?v=20261004" data-title="What deserves a closer look?" data-caption="New · Unusual volume, then a price that holds or rises, on one timeline. An observation to review, not a forecast. Any trade still needs your confirmation." data-alt="Synthetic NVDA chart in Opportunities, with a volume spike at 10:15 and a rising price at 10:20">03 · Observe a turn</a>
+        <a data-tour-view="fx" href="../assets/desk-fx.webp?v=20261008" data-dark="../assets/desk-fx-dark.webp?v=20261008" data-mobile="../assets/phone-fx.webp?v=20261008" data-mobile-dark="../assets/phone-fx-dark.webp?v=20261008" data-title="What moved my return?" data-caption="See the week’s currency contribution, day by day. Reporting dates and missing days stay in view." data-alt="Canary Desk weekly FX contribution with daily bars, using synthetic data">01 · Understand returns</a>
+        <a data-tour-view="decisions" href="../assets/desk-decisions.webp?v=20261008" data-dark="../assets/desk-decisions-dark.webp?v=20261008" data-mobile="../assets/phone-decisions.webp?v=20261008" data-mobile-dark="../assets/phone-decisions-dark.webp?v=20261008" data-title="What needs my attention?" data-caption="Read each proposal with its reason. The analyst proposes; Canary checks the authority behind every order." data-alt="Canary Desk rule advice and protection proposals, using synthetic data">02 · Review a decision</a>
+        <a data-tour-view="opportunities" href="../assets/desk-opportunities.webp?v=20261008" data-dark="../assets/desk-opportunities-dark.webp?v=20261008" data-mobile="../assets/phone-opportunities.webp?v=20261008" data-mobile-dark="../assets/phone-opportunities-dark.webp?v=20261008" data-title="What deserves a closer look?" data-caption="New · Unusual volume, then a price that holds or rises, on one timeline. An observation to review, not a forecast. Any trade still needs your confirmation." data-alt="Synthetic NVDA chart in Opportunities, with a volume spike at 10:15 and a rising price at 10:20">03 · Observe a turn</a>
       </nav>
       <div class="tour-screen" id="desk-tour-screen">
-        <picture>
-          <source data-tour-mobile media="(max-width: 760px)" srcset="../assets/phone-fx.webp?v=20261004">
-          <img data-tour-image src="../assets/desk-fx.webp?v=20261004" width="918" height="542" alt="Canary Desk weekly FX contribution with daily bars, using synthetic data" fetchpriority="high">
-        </picture>
+        <picture><source data-theme-source data-media="(max-width: 760px)" media="(max-width: 760px) and (prefers-color-scheme: dark)" data-tour-mobile-dark srcset="../assets/phone-fx-dark.webp?v=20261008" width="316" height="573"><source data-tour-mobile media="(max-width: 760px)" srcset="../assets/phone-fx.webp?v=20261008" width="316" height="573"><source data-theme-source data-media="all" media="(prefers-color-scheme: dark)" srcset="../assets/desk-fx-dark.webp?v=20261008" data-tour-dark width="918" height="542"><img data-tour-image src="../assets/desk-fx.webp?v=20261008" alt="Canary Desk weekly FX contribution with daily bars, using synthetic data" fetchpriority="high" width="918" height="542"></picture>
       </div>
 
       <div class="tour-caption">
         <div><h2 data-tour-title>What moved my return?</h2><p data-tour-caption>See the week’s currency contribution, day by day. Reporting dates and missing days stay in view.</p></div>
-        <a data-tour-full class="tour-full" href="../assets/desk-fx.webp?v=20261004" target="_blank" rel="noopener" aria-label="Open full-size FX contribution screenshot">Open full-size <span aria-hidden="true">↗</span></a>
+        <a data-tour-full class="tour-full" href="../assets/desk-fx.webp?v=20261008" target="_blank" rel="noopener" aria-label="Open full-size FX contribution screenshot">Open full-size <span aria-hidden="true">↗</span></a>
       </div>
       <p class="tour-status" data-tour-status role="status"></p>
     </section>
     <section class="wrap section rhythm" aria-label="A day with Canary Desk">
       <article><span class="number" aria-hidden="true">01</span><h2>Before the open</h2><p>A written brief each morning covers how your book did yesterday and what needs your attention today. When an official economic release comes out, you get a prompt review of what it means for your portfolio.</p></article>
       <article><span class="number" aria-hidden="true">02</span><h2>Every minute</h2><p>Your risk rules check the book even when you are not watching. A rule that trips drafts the fix, such as a stop, an exit or a budget cut. An unhedged book gets a flag, not a hedge.</p></article>
-      <article><span class="number" aria-hidden="true">03</span><h2>While you’re away</h2><p>Stops and loss exits you have pre-authorised go out on their own after a veto window, half an hour by default.</p></article>
+      <article><span class="number" aria-hidden="true">03</span><h2>While you’re away</h2><p>Automatic protection is off until you explicitly authorise selected rules in Canary. Those rules can submit orders to reduce positions within your limits, after a notice period in which you can veto the order. That period is half an hour by default. The AI analyst cannot send orders.</p></article>
       <article><span class="number" aria-hidden="true">04</span><h2>Idle cash</h2><p>A policy-based planner weighs same-currency government bills once commitments and liquidity reserves are covered. Off by default.</p></article>
     </section>
+    <details class="wrap deep-dive">
+      <summary><span>Read the brief and check daily activity</span><small>The written daily brief and the Operations view</small></summary>
+      <section class="section split" aria-labelledby="daily-proof-title">
+        <div><p class="kicker">Daily use</p><h2 id="daily-proof-title">Read the brief.<br>Check what ran.</h2><p>The daily brief puts market context beside the portfolio. Operations shows completed work, upcoming reviews and items needing attention.</p></div>
+        <div><figure class="fx-capture"><a href="../assets/desk-brief.webp?v=20261008" data-responsive-image target="_blank" rel="noopener" aria-label="Open full-size daily brief screenshot"><picture><source data-theme-source data-media="(max-width: 760px)" media="(max-width: 760px) and (prefers-color-scheme: dark)" srcset="../assets/phone-brief-dark.webp?v=20261008" width="326" height="361"><source media="(max-width: 760px)" srcset="../assets/phone-brief.webp?v=20261008" width="326" height="361"><source data-theme-source data-media="all" media="(prefers-color-scheme: dark)" srcset="../assets/desk-brief-dark.webp?v=20261008" width="445" height="315"><img src="../assets/desk-brief.webp?v=20261008" alt="Daily brief in the current Desk interface, using synthetic demonstration data" loading="lazy" width="445" height="315"></picture></a><figcaption>The written brief, with its date and portfolio context. Synthetic data · open to enlarge ↗</figcaption></figure><figure class="fx-capture"><a href="../assets/desk-operations.webp?v=20261008" data-responsive-image target="_blank" rel="noopener" aria-label="Open full-size operations screenshot"><picture><source data-theme-source data-media="(max-width: 760px)" media="(max-width: 760px) and (prefers-color-scheme: dark)" srcset="../assets/phone-operations-dark.webp?v=20261008" width="358" height="1303"><source media="(max-width: 760px)" srcset="../assets/phone-operations.webp?v=20261008" width="358" height="1303"><source data-theme-source data-media="all" media="(prefers-color-scheme: dark)" srcset="../assets/desk-operations-dark.webp?v=20261008" width="1136" height="1113"><img src="../assets/desk-operations.webp?v=20261008" alt="Operations in the current Desk interface, using synthetic demonstration data" loading="lazy" width="1136" height="1113"></picture></a><figcaption>Daily activity and upcoming reviews. Synthetic data · open to enlarge ↗</figcaption></figure></div>
+      </section>
+    </details>
     <section class="wrap section split opportunity-spotlight" id="opportunities" aria-labelledby="opportunities-title">
       <div>
         <p class="kicker">Opportunities · New with Canary v3.17</p>
@@ -85,7 +92,7 @@
         </div>
       </div>
       <figure class="fx-capture">
-        <a href="../assets/desk-opportunity-call.webp?v=20261004" data-responsive-image target="_blank" rel="noopener" aria-label="Open full-size trade ticket for a chosen call"><picture><source media="(max-width: 760px)" srcset="../assets/phone-opportunity-call.webp?v=20261004"><img src="../assets/desk-opportunity-call.webp?v=20261004" width="570" height="807" alt="Desk trade ticket for a synthetic NVDA call, showing a dated, delayed bid and ask, two contracts at a 3.50 limit and the premium at risk before Canary’s preview" loading="lazy"></picture></a>
+        <a href="../assets/desk-opportunity-call.webp?v=20261008" data-responsive-image target="_blank" rel="noopener" aria-label="Open full-size trade ticket for a chosen call"><picture><source data-theme-source data-media="(max-width: 760px)" media="(max-width: 760px) and (prefers-color-scheme: dark)" srcset="../assets/phone-opportunity-call-dark.webp?v=20261008" width="358" height="880"><source media="(max-width: 760px)" srcset="../assets/phone-opportunity-call.webp?v=20261008" width="358" height="880"><source data-theme-source data-media="all" media="(prefers-color-scheme: dark)" srcset="../assets/desk-opportunity-call-dark.webp?v=20261008" width="570" height="819"><img src="../assets/desk-opportunity-call.webp?v=20261008" alt="Desk trade ticket for a synthetic NVDA call, showing a dated, delayed bid and ask, two contracts at a 3.50 limit and the premium at risk before Canary’s preview" loading="lazy" width="570" height="819"></picture></a>
         <figcaption>The trade ticket after you choose a call. Canary’s preview comes next. Synthetic data · open to enlarge ↗</figcaption>
       </figure>
     </section>
@@ -100,8 +107,8 @@
       </div>
       <div class="fx-explanation">
         <figure class="fx-capture">
-          <a href="../assets/desk-fx-detail.webp?v=20261004" data-responsive-image target="_blank" rel="noopener" aria-label="Open full-size FX contribution detail">
-            <picture><source media="(max-width: 760px)" srcset="../assets/phone-fx-detail.webp?v=20261004"><img src="../assets/desk-fx-detail.webp?v=20261004" width="918" height="542" alt="Desk FX contribution detail with the weekly currency effect and daily bars, using synthetic data" loading="lazy"></picture>
+          <a href="../assets/desk-fx-detail.webp?v=20261008" data-responsive-image target="_blank" rel="noopener" aria-label="Open full-size FX contribution detail">
+            <picture><source data-theme-source data-media="(max-width: 760px)" media="(max-width: 760px) and (prefers-color-scheme: dark)" srcset="../assets/phone-fx-detail-dark.webp?v=20261008" width="316" height="573"><source media="(max-width: 760px)" srcset="../assets/phone-fx-detail.webp?v=20261008" width="316" height="573"><source data-theme-source data-media="all" media="(prefers-color-scheme: dark)" srcset="../assets/desk-fx-detail-dark.webp?v=20261008" width="918" height="542"><img src="../assets/desk-fx-detail.webp?v=20261008" alt="Desk FX contribution detail with the weekly currency effect and daily bars, using synthetic data" loading="lazy" width="918" height="542"></picture>
           </a>
           <figcaption>The period total and its daily contributions. Synthetic data · open to enlarge ↗</figcaption>
         </figure>
@@ -112,8 +119,8 @@
         <a class="text-link" href="../canary/docs/start/reporting.html#fx-contribution">How FX is measured<span class="arrow" aria-hidden="true">→</span></a>
         <p class="account-value-note">Account value marks deposits and withdrawals on the balance, so moving money never reads as making money.</p>
         <figure class="fx-capture">
-          <a href="../assets/desk-account-value.webp?v=20261005" data-responsive-image target="_blank" rel="noopener" aria-label="Open full-size Account value screenshot">
-            <picture><source media="(max-width: 760px)" srcset="../assets/phone-account-value.webp?v=20261005"><img src="../assets/desk-account-value.webp?v=20261005" width="960" height="471" alt="Desk Account value for the year to date, including transfers, with a withdrawal marked on the line, using synthetic data" loading="lazy"></picture>
+          <a href="../assets/desk-account-value.webp?v=20261008" data-responsive-image target="_blank" rel="noopener" aria-label="Open full-size Account value screenshot">
+            <picture><source data-theme-source data-media="(max-width: 760px)" media="(max-width: 760px) and (prefers-color-scheme: dark)" srcset="../assets/phone-account-value-dark.webp?v=20261008" width="358" height="543"><source media="(max-width: 760px)" srcset="../assets/phone-account-value.webp?v=20261008" width="358" height="543"><source data-theme-source data-media="all" media="(prefers-color-scheme: dark)" srcset="../assets/desk-account-value-dark.webp?v=20261008" width="960" height="471"><img src="../assets/desk-account-value.webp?v=20261008" alt="Desk Account value for the year to date, including transfers, with a withdrawal marked on the line, using synthetic data" loading="lazy" width="960" height="471"></picture>
           </a>
           <figcaption>The balance year to date, with a withdrawal marked. Synthetic data · open to enlarge ↗</figcaption>
         </figure>
@@ -139,7 +146,7 @@
           <a class="text-link" href="../canary/docs/understand/edge.html#stock-lending-income">How lending is reported<span class="arrow" aria-hidden="true">→</span></a>
         </div>
         <figure class="feature-capture">
-          <a href="../assets/desk-research-borrow.webp?v=20261004" target="_blank" rel="noopener" aria-label="Open full-size borrowing-cost comparison"><img src="../assets/desk-research-borrow.webp?v=20261004" width="1134" height="625" alt="Desk borrowing-cost comparison for synthetic holdings and watchlist names, each rate dated and none persistently high" loading="lazy"></a>
+          <a href="../assets/desk-research-borrow.webp?v=20261008" target="_blank" rel="noopener" aria-label="Open full-size borrowing-cost comparison" data-responsive-image><picture><source data-theme-source data-media="all" media="(prefers-color-scheme: dark)" srcset="../assets/desk-research-borrow-dark.webp?v=20261008" width="1134" height="590"><img src="../assets/desk-research-borrow.webp?v=20261008" alt="Desk borrowing-cost comparison for synthetic holdings and watchlist names, each rate dated and none persistently high" loading="lazy" width="1134" height="590"></picture></a>
           <figcaption><span>Dated borrowing costs for your holdings and watchlist. Here, none is persistently high.</span><span>Synthetic data · open to enlarge ↗</span></figcaption>
         </figure>
       </section>
@@ -150,7 +157,7 @@
         <div><p class="kicker">Risk evidence</p><h2 id="risk-proof-title">The limit behind<br>the warning.</h2>
           <p>See the exposure beside the rule it trips. The source and any missing data stay visible, so you can check what a warning rests on.</p>
           <p class="note">Your own limits govern the checks. The screenshot is a synthetic example, not a recommendation.</p></div>
-        <figure class="fx-capture"><a href="../assets/desk-risk.webp?v=20261003-refresh" data-responsive-image target="_blank" rel="noopener" aria-label="Open full-size risk assessment"><picture><source media="(max-width: 760px)" srcset="../assets/phone-risk.webp?v=20261003-refresh"><img src="../assets/desk-risk.webp?v=20261003-refresh" width="1136" height="543" alt="Synthetic risk assessment showing breached concentration and expiry limits, each with its evidence" loading="lazy"></picture></a><figcaption>Exposure, its cause and the applicable limits. Synthetic data · open to enlarge ↗</figcaption></figure>
+        <figure class="fx-capture"><a href="../assets/desk-risk.webp?v=20261008" data-responsive-image target="_blank" rel="noopener" aria-label="Open full-size risk assessment"><picture><source data-theme-source data-media="(max-width: 760px)" media="(max-width: 760px) and (prefers-color-scheme: dark)" srcset="../assets/phone-risk-dark.webp?v=20261008" width="358" height="1170"><source media="(max-width: 760px)" srcset="../assets/phone-risk.webp?v=20261008" width="358" height="1170"><source data-theme-source data-media="all" media="(prefers-color-scheme: dark)" srcset="../assets/desk-risk-dark.webp?v=20261008" width="1136" height="547"><img src="../assets/desk-risk.webp?v=20261008" alt="Synthetic risk assessment showing breached concentration and expiry limits, each with its evidence" loading="lazy" width="1136" height="547"></picture></a><figcaption>Exposure, its cause and the applicable limits. Synthetic data · open to enlarge ↗</figcaption></figure>
       </section>
     </details>
     <details class="wrap deep-dive ">
@@ -173,7 +180,7 @@
         <p class="cash-story-note">Each proposal keeps its reason and decision history, and missing evidence holds the sweep.</p>
       </div>
       <figure class="feature-capture">
-        <a href="../assets/desk-cash.webp?v=20261003-refresh" target="_blank" rel="noopener" aria-label="Open full-size cash sweep plan" data-responsive-image><picture><source media="(max-width: 760px)" srcset="../assets/phone-cash.webp?v=20261003-refresh"><img src="../assets/desk-cash.webp?v=20261003-refresh" width="1136" height="598" alt="Synthetic cash-sweep plan with its reserve and settlement holds visible" loading="lazy"></picture></a>
+        <a href="../assets/desk-cash.webp?v=20261008" target="_blank" rel="noopener" aria-label="Open full-size cash sweep plan" data-responsive-image><picture><source data-theme-source data-media="(max-width: 760px)" media="(max-width: 760px) and (prefers-color-scheme: dark)" srcset="../assets/phone-cash-dark.webp?v=20261008" width="324" height="173"><source media="(max-width: 760px)" srcset="../assets/phone-cash.webp?v=20261008" width="324" height="173"><source data-theme-source data-media="all" media="(prefers-color-scheme: dark)" srcset="../assets/desk-cash-dark.webp?v=20261008" width="1136" height="598"><img src="../assets/desk-cash.webp?v=20261008" alt="Synthetic cash-sweep plan with its reserve and settlement holds visible" loading="lazy" width="1136" height="598"></picture></a>
         <figcaption><span>The cash plan with its holds in view. On a phone, the reason it is held.</span><span>Simulation · synthetic data · open to enlarge ↗</span></figcaption>
       </figure>
     </section>
@@ -188,16 +195,16 @@
       <div class="market-pocket-stage">
         <div class="market-studies">
           <figure>
-            <a href="../assets/desk-market-price.webp?v=20261003-refresh" data-responsive-image target="_blank" rel="noopener" aria-label="Open full-size market price chart"><picture><source media="(max-width: 760px)" srcset="../assets/phone-market-price.webp?v=20261003-refresh"><img src="../assets/desk-market-price.webp?v=20261003-refresh" width="1136" height="319" alt="Market leaders compared with SPY and QQQ in Desk, using synthetic data" loading="lazy"></picture></a>
+            <a href="../assets/desk-market-price.webp?v=20261008" data-responsive-image target="_blank" rel="noopener" aria-label="Open full-size market price chart"><picture><source data-theme-source data-media="(max-width: 760px)" media="(max-width: 760px) and (prefers-color-scheme: dark)" srcset="../assets/phone-market-price-dark.webp?v=20261008" width="358" height="417"><source media="(max-width: 760px)" srcset="../assets/phone-market-price.webp?v=20261008" width="358" height="417"><source data-theme-source data-media="all" media="(prefers-color-scheme: dark)" srcset="../assets/desk-market-price-dark.webp?v=20261008" width="1136" height="319"><img src="../assets/desk-market-price.webp?v=20261008" alt="Market leaders compared with SPY and QQQ in Desk, using synthetic data" loading="lazy" width="1136" height="319"></picture></a>
             <figcaption><span>Who is carrying the market?</span><span>Synthetic data · open to enlarge ↗</span></figcaption>
           </figure>
           <figure>
-            <a href="../assets/desk-market-breadth.webp?v=20261003-refresh" data-responsive-image target="_blank" rel="noopener" aria-label="Open full-size market participation chart"><picture><source media="(max-width: 760px)" srcset="../assets/phone-market-breadth.webp?v=20261003-refresh"><img src="../assets/desk-market-breadth.webp?v=20261003-refresh" width="1136" height="376" alt="Market participation chart comparing leaders and the S&amp;P 500, with a marked history gap, using synthetic data" loading="lazy"></picture></a>
+            <a href="../assets/desk-market-breadth.webp?v=20261008" data-responsive-image target="_blank" rel="noopener" aria-label="Open full-size market participation chart"><picture><source data-theme-source data-media="(max-width: 760px)" media="(max-width: 760px) and (prefers-color-scheme: dark)" srcset="../assets/phone-market-breadth-dark.webp?v=20261008" width="358" height="491"><source media="(max-width: 760px)" srcset="../assets/phone-market-breadth.webp?v=20261008" width="358" height="491"><source data-theme-source data-media="all" media="(prefers-color-scheme: dark)" srcset="../assets/desk-market-breadth-dark.webp?v=20261008" width="1136" height="376"><img src="../assets/desk-market-breadth.webp?v=20261008" alt="Market participation chart comparing leaders and the S&amp;P 500, with a marked history gap, using synthetic data" loading="lazy" width="1136" height="376"></picture></a>
             <figcaption><span>How widely is strength shared?</span><span>Synthetic data · open to enlarge ↗</span></figcaption>
           </figure>
         </div>
         <figure class="pocket-shot">
-          <a href="../assets/phone-overview.webp?v=20261004" target="_blank" rel="noopener" aria-label="Open full-size Desk phone view"><img src="../assets/phone-overview.webp?v=20261004" width="390" height="1080" alt="Canary Desk in a phone browser, using synthetic data" loading="lazy"></a>
+          <a href="../assets/phone-overview.webp?v=20261008" target="_blank" rel="noopener" aria-label="Open full-size Desk phone view" data-responsive-image><picture><source data-theme-source data-media="all" media="(prefers-color-scheme: dark)" srcset="../assets/phone-overview-dark.webp?v=20261008" width="390" height="1080"><img src="../assets/phone-overview.webp?v=20261008" alt="Canary Desk in a phone browser, using synthetic data" loading="lazy" width="390" height="1080"></picture></a>
           <figcaption>Desk in your phone browser.<br>Synthetic data · open to enlarge ↗</figcaption>
         </figure>
       </div>
@@ -211,12 +218,21 @@
       <div class="feature-group"><h3>Market context</h3><ul><li><b>Market regime</b>Eight readings in six groups, from volatility and credit to dealer gamma and breadth, feed one regime stage.</li><li><b>Breadth</b>How many S&amp;P 500 names trade above their 50- and 200-day averages, with new highs and lows.</li><li><b>Live market data</b>Indices, VIX and your holdings through the day, each quote with its age.</li><li><b>Calendar</b>Earnings and macro events ahead, flagged against what you hold. Official releases get a prompt impact review.</li><li><b>Borrowing costs · new</b>Dated borrow rates for the stocks you follow, and a wider US screen by fee, price and liquidity.</li><li><b>Short interest · new</b>FINRA’s reported short positions and days to cover, with the report date always shown.</li></ul></div>
       <div class="feature-group"><h3>Your book</h3><ul><li><b>Performance</b>Returns from broker statements, measured against SPY, with drawdown.</li><li><b>FX contribution</b>The currency effect on P&amp;L for Day, WTD, MTD and YTD, backed by daily statements.</li><li><b>Lending income</b>Dated shares on loan and earned net fees, linked from each holding and readable by Desk’s analyst.</li><li><b>Account value</b>Deposits and withdrawals marked on the balance, kept apart from investment returns.</li><li><b>Edge</b>What your trades delivered compared with leaving the position alone, one step from Portfolio.</li><li><b>Exposure</b>Allocation by sector, stocks against options, and margin headroom.</li><li><b>Reconciliation</b>Figures checked against broker statements. Gaps stay visible.</li></ul></div>
       <div class="feature-group"><h3>Protection</h3><ul><li><b>Risk rulebook</b>Your limits, checked every minute.</li><li><b>Stress signal</b>An early warning when the regime turns.</li><li><b>Protection proposals</b>Stops, exits, trims and budget cuts, each with its reason.</li></ul></div>
-      <div class="feature-group"><h3>Orders and cash</h3><ul><li><b>Pre-authorised rules</b>The protection you choose acts on its own, within your limits.</li><li><b>Queue for the open</b>Confirm a reduction while the market is shut; it goes out shortly after the open.</li><li><b>Cash sweep</b>A same-currency bill planner with your currency order and the estimated gain after costs. Off by default; commissioning needs calibrated reserves and current settlement evidence.</li></ul></div>
+      <div class="feature-group"><h3>Orders and cash</h3><ul><li><b>Pre-authorised rules</b>Off until you explicitly authorise selected protection rules in Canary. Each reduction waits through its veto window and must stay within your limits.</li><li><b>Queue for the open</b>Confirm a reduction while the market is shut; it goes out shortly after the open.</li><li><b>Cash sweep</b>A same-currency bill planner with your currency order and the estimated gain after costs. Off by default; commissioning needs calibrated reserves and current settlement evidence.</li></ul></div>
       <div class="feature-group"><h3>Every day</h3><ul><li><b>Morning brief</b>How yesterday went and what’s on today, written by one model and edited by another.</li><li><b>AI analyst</b>Ask about any position or risk. Answers cite their sources.</li><li><b>Decisions</b>Assessments and proposals in one place, ready for your call.</li><li><b>Opportunities · new</b>Up to 20 stocks you choose, watched for unusual volume and a price that holds or rises. You see a dated quote before setting a limit, and eligible entries get a timing review. A setup is a hypothesis, and every order needs your confirmation.</li></ul></div>
-      <div class="feature-group"><h3>Always on</h3><ul><li><b>Around the clock</b>Runs day and night on a dedicated Mac mini, or any Mac that stays awake.</li><li><b>From your laptop</b>Reach it over a private, encrypted link.</li><li><b>Notifications</b>Alerts on every Apple device signed in to your Apple ID. Approve with Touch ID or Apple Watch.</li></ul></div>
+      <div class="feature-group"><h3>Always on</h3><ul><li><b>Around the clock</b>Runs day and night on a dedicated Mac mini, or any Mac that stays awake.</li><li><b>From your laptop</b>Reach it over a private, encrypted link.</li><li><b>Notifications</b>Local macOS alerts report changes that need your attention. Canary’s paired app carries order alerts and vetoes. Confirm orders at the Mac with Touch ID or Apple Watch.</li></ul></div>
       </div>
     </section>
     </details>
+    <section class="wrap section split" aria-labelledby="control-title">
+      <div><p class="kicker">Your data and decisions</p><h2 id="control-title">Analysis on your terms.</h2></div>
+      <div>
+        <p>Desk runs on your Mac. OpenAI receives the portfolio evidence needed for analysis through your API or Codex connection. Broker requests go to Interactive Brokers, and market research uses external data sources. Desk sends no telemetry or portfolio data to its maker.</p>
+        <p>The AI analyst can read, explain and propose. An order reviewed in Desk needs your confirmation on a registered device. Separately, you can explicitly authorise selected protection rules in Canary to act within limits after a veto window. The cash sweep requires separate authorisation. Every order must pass Canary’s checks.</p>
+        <p class="note">These controls do not guarantee an investment result. Prices can move before an order fills.</p>
+        <a class="text-link" href="../canary/docs/understand/policy.html">Read the order controls<span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </section>
     <section class="wrap section foundation" aria-labelledby="engine-title">
       <div><p class="kicker">Under the hood</p><img class="mark" src="../assets/canary-icon.png" width="192" height="192" alt=""><h2 id="engine-title">Canary CLI</h2></div>
       <p>Canary CLI does the broker work. It holds the connection, the records, the rules and the proposals, and runs the checks every order must pass. It is open source. Canary Desk adds the schedule, the AI analyst and the console on top.</p>
@@ -225,10 +241,10 @@
     <section class="wrap invitation" id="preview" aria-labelledby="preview-title">
       <div><p class="kicker">An invitation</p><h2 id="preview-title">Built for a<br>working portfolio.</h2></div>
       <div>
-        <p>I use Canary Desk with my own portfolio. It is a private preview, and I arrange access personally.</p>
-        <p class="note">For a detailed snapshot, read the <a href="../assets/sheet/canary-desk-product-sheet-2026-10-04.pdf">4 October product sheet</a> (PDF, three pages).</p>
-        <a class="li-link text-link" href="https://www.linkedin.com/in/osauer/"><svg class="li" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Get in touch on LinkedIn<span class="arrow" aria-hidden="true">↗</span></a>
-        <p class="note">Runs on your Mac, with your Interactive Brokers account and your AI provider.</p>
+        <p>Canary Desk is a private project. I use it with my own portfolio and arrange access personally. Message me to discuss whether it fits the way you manage yours.</p>
+        <p class="note">For a detailed snapshot, read the <a href="../assets/sheet/canary-desk-product-sheet-2026-10-08.pdf">8 October product sheet</a> (PDF, four pages).</p>
+        <a class="li-link text-link" href="https://www.linkedin.com/in/osauer/"><svg class="li" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Discuss Canary Desk on LinkedIn<span class="arrow" aria-hidden="true">↗</span></a>
+        <p class="note">You provide a Mac that stays awake, an Interactive Brokers account with TWS or IB Gateway, and access to OpenAI through the API or Codex.</p>
       </div>
     </section>
   </main>
@@ -243,9 +259,10 @@
         <a class="li-link external" href="https://www.linkedin.com/in/osauer/"><svg class="li" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
       </nav>
     </div>
+    <fieldset class="theme-control" data-theme-control hidden><legend>Colour theme</legend><label><input type="radio" name="theme" value="system" checked><span>System</span></label><label><input type="radio" name="theme" value="dark"><span>Dark</span></label><label><input type="radio" name="theme" value="light"><span>Light</span></label></fieldset>
     <div class="footer-bottom"><p>Personal projects, unaffiliated with any employer. No investment advice.</p><span>osauer.dev</span></div>
   </footer>
   <script type="module" src="../assets/canary.js?v=20261002-ticker"></script>
-  <script type="module" src="../assets/desk-showcase.js?v=20261003-refresh"></script>
+  <script type="module" src="../assets/desk-showcase.js?v=20261008"></script>
 </body>
 </html>

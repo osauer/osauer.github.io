@@ -18,6 +18,7 @@ Before public website edits, verify each publisher with
 node tools/check-site-links.mjs
 node tools/build-public-site.mjs
 node tools/check-site-links.mjs output/site
+node tools/copy-lint.mjs --skip /ibkr/docs output/site
 ```
 
 The build copies only tracked, explicitly allowed pages and asset types to
@@ -45,30 +46,31 @@ Code uses the system monospace, so no third family is loaded.
 ## Screens
 
 The three-slide tour tells a focused story: currency contribution, a decision,
-and an Opportunities observation. Opportunities is labelled **in preview**;
-a pattern match is not evidence of an edge and never grants order authority.
+and an Opportunities observation. A pattern match is not evidence of an edge
+and never grants order authority. The daily-use disclosure adds the morning
+brief and Operations.
 Risk, cash and market detail remain in the disclosures below. Mobile images
 show native phone layouts; full-size links follow the image actually displayed.
 The cash phone image focuses on the planner's hold, while desktop shows the plan.
 
-The 4 October 2026 captures (2026-10-04 13:23 CEST) use Desk
-`d199701a88123d86d613a96b4b029a97db2d15dd`, including stable Opportunities
-episodes, Worth a look / Skip marks, the exact call's dated quote in the trade
-ticket, the Lending and Short interest research screens, and FX under
-Performance. The public data is a frozen, explicitly synthetic Friday session
-at 10:20 New York time. FX uses USD like the example account and completed
-statements through 1 October. The brief, volume-turn evidence and mark, cash
-priority and hold, My stocks borrowing fees, short-interest rows (invented
-counts for recognisable large caps, 15 September settlement) and the ticket's
-option chain and delayed quote are synthetic fixtures; they are not account
-observations, market data or production-readiness evidence.
+The 8 October 2026 refresh uses Desk local main
+`ac450e75f154ebcd4facea5a518c869e7a709d66`, including the revised Holdings,
+Decisions and Operations views. Every public Desk image has a light and a dark
+capture of the same fixture. The public data is a frozen, explicitly synthetic
+Friday session at 10:20 New York time on 2 October. FX uses USD like the example
+account and completed statements through 1 October. The brief, chart histories,
+Opportunities evidence, cash plan, borrowing costs and option quotes are
+synthetic fixtures, not observations of an account or evidence of performance.
+The Decisions fixture includes complete order terms; real simulation controls
+and authority holds stay visible. The capture receipt records the exact source
+revision and errors, and `tools/desk-capture-receipt.json` preserves the accepted
+refresh metadata.
 
-Account value (2026-10-05 06:41 CEST) uses Desk
-`b5bc3eb9a8fa27b97e80560ba0a14374f2602aca`, whose header names the selected
-line's transfer basis ("includes transfers") and whose chart labels stay
-readable where the line crosses them. It shows the synthetic year to date with
-the 18 May withdrawal's tooltip open and stops above Securities lending. It sits
-under "Understand currency effects" beside the sentence it illustrates.
+A visible product redesign or feature addition requires fresh paired captures,
+updated captions, social image and a new dated sheet before the public page is
+called current. Regenerate from local main in an isolated clone, review the
+actual pixels and keep the receipt. A build passing does not prove visual
+freshness. Never recolour a capture to fabricate its other theme.
 
 The script also captures the Short interest screen. It is not published: the
 rows pair invented figures with real company names. Publish it only after an
@@ -106,6 +108,30 @@ The Tower note retains its synthetic test-harness capture. Canary's lending
 diagram remains in its separate publisher; the phone capture here is Desk in
 a browser, not the Canary paired app.
 
+## Website theme
+
+The small, dependency-free `assets/theme.js` exists so visitors can override
+the OS scheme and product screenshots can follow that choice. Load it before
+stylesheets to apply a saved preference before paint. System is the default;
+Dark and Light persist on this origin. System reacts to OS changes and an
+explicit choice syncs across tabs. Native radio controls support the keyboard.
+Without JavaScript, CSS and picture media queries still follow the OS.
+Each theme-aware picture provides dark sources marked `data-theme-source`, with
+its width condition in `data-media`. The tour changes both device and theme
+sources; every full-size link must match the image actually displayed.
+The printable sheet and social preview deliberately use light captures.
+
+With the local preview running, verify the real page and capture combinations:
+
+```sh
+SITE_URL=http://127.0.0.1:8913 PLAYWRIGHT_MODULE=/path/to/node_modules/playwright node tools/check-site-theme.cjs
+```
+
+This checks desktop, laptop and phone widths, both explicit themes against the
+opposite OS setting, full-size targets, native keyboard controls, image failure
+and retry, System updates and saved choices across pages and tabs. Inspect the
+screenshots in `output/review`; assertions alone are not visual review.
+
 ## Icons and marks
 
 The site icon is a bold OS monogram, paper on slate. Its custom rounded
@@ -141,17 +167,19 @@ address) and its page previews, rendered from the editable
 always means that version. To reissue, add the new dated PDF and previews,
 move the Desk page's links, and keep the old files.
 
-The 4 October 2026 edition (`2026-10-04`) is current and reflects Canary v3.17.0.
+The 8 October 2026 edition (`2026-10-08`) is current. It clarifies data flow and
+order authority and adds a fourth page with current synthetic interface captures.
+The 4 October edition remains a historical snapshot.
 The 2 October 2026 edition remains a historical snapshot. Its release-status
 notes predate v3.16.0; the website and text export identify that distinction.
 The homepage leads with the work; authorship stays in a quiet byline and About.
 Use a day suffix when revising an existing month so shared older PDFs stay intact:
 
 ```sh
-node tools/render-product-sheet.mjs 2026-10-04
+node tools/render-product-sheet.mjs 2026-10-08
 ```
 
 Requires Node 22+, Google Chrome, Poppler (`pdfinfo`, `pdftoppm`) and `cwebp`. Check all
-three rendered pages for clipping before updating the Desk download links and
+four rendered pages for clipping before updating the Desk download links and
 file size. The sheet uses the site's self-hosted fonts; no private account data
 or e-mail address is included. Keep prior dated editions for existing links.

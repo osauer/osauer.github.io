@@ -1,0 +1,467 @@
+{
+  "sourceRevision": "ac450e75f154ebcd4facea5a518c869e7a709d66",
+  "frozen": "2026-10-02T14:20:00.000Z",
+  "synthetic": true,
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "captured": [
+    "desk-overview.webp",
+    "desk-brief.webp",
+    "desk-fx.webp",
+    "desk-fx-detail.webp",
+    "desk-account-value.webp",
+    "desk-decisions.webp",
+    "desk-risk.webp",
+    "desk-cash.webp",
+    "desk-operations.webp",
+    "desk-market-price.webp",
+    "desk-market-breadth.webp",
+    "desk-opportunities.webp",
+    "desk-research-borrow.webp",
+    "desk-opportunity-call.webp",
+    "phone-overview.webp",
+    "phone-brief.webp",
+    "phone-fx.webp",
+    "phone-fx-detail.webp",
+    "phone-account-value.webp",
+    "phone-decisions.webp",
+    "phone-risk.webp",
+    "phone-cash.webp",
+    "phone-operations.webp",
+    "phone-market-price.webp",
+    "phone-market-breadth.webp",
+    "phone-opportunities.webp",
+    "phone-opportunity-call.webp",
+    "desk-overview-dark.webp",
+    "desk-brief-dark.webp",
+    "desk-fx-dark.webp",
+    "desk-fx-detail-dark.webp",
+    "desk-account-value-dark.webp",
+    "desk-decisions-dark.webp",
+    "desk-risk-dark.webp",
+    "desk-cash-dark.webp",
+    "desk-operations-dark.webp",
+    "desk-market-price-dark.webp",
+    "desk-market-breadth-dark.webp",
+    "desk-opportunities-dark.webp",
+    "desk-research-borrow-dark.webp",
+    "desk-opportunity-call-dark.webp",
+    "phone-overview-dark.webp",
+    "phone-brief-dark.webp",
+    "phone-fx-dark.webp",
+    "phone-fx-detail-dark.webp",
+    "phone-account-value-dark.webp",
+    "phone-decisions-dark.webp",
+    "phone-risk-dark.webp",
+    "phone-cash-dark.webp",
+    "phone-operations-dark.webp",
+    "phone-market-price-dark.webp",
+    "phone-market-breadth-dark.webp",
+    "phone-opportunities-dark.webp",
+    "phone-opportunity-call-dark.webp",
+    "desk-overview-social.jpg"
+  ],
+  "fixtures": [
+    "snapshot: -simulate book, brief and market tape (normalized)",
+    "opportunities: synthetic volume-turn rows, NVDA marked worth a look",
+    "lending My stocks: invented ordinary borrow fees",
+    "short interest: invented FINRA-style rows, settlement 2026-09-15",
+    "trade ticket: option discovery and one delayed quote only; preview and submission refused",
+    "holdings: exact synthetic contract identity, OHLC spans and six-month daily volume baseline",
+    "brief: synthetic book narrative, no model call",
+    "operations: frozen session schedule and retained gaps"
+  ],
+  "errors": [],
+  "captureDate": "2026-10-08",
+  "sourceChanges": "Only isolated synthetic generators prepared; application views and styles unchanged.",
+  "operations": "Synthetic requested review recorded at16:15 CEST; pre-close21:15 and close22:15 scheduled; coverage warnings retained. Phone uses Later hours to show16:00-24:00.",
+  "assets": [
+    {
+      "path": "assets/desk-overview.webp",
+      "width": 2880,
+      "height": 2000,
+      "bytes": 333120,
+      "sha256": "4ec3210d8bdde266a905a4417919890b7c553cc0a5f0537606e122fb44daf45b"
+    },
+    {
+      "path": "assets/desk-brief.webp",
+      "width": 890,
+      "height": 630,
+      "bytes": 51320,
+      "sha256": "53cb931ea7b2507be4505db59a8000223c4b6011d036050405118ac9551e9f9c"
+    },
+    {
+      "path": "assets/desk-fx.webp",
+      "width": 1836,
+      "height": 1084,
+      "bytes": 32534,
+      "sha256": "ac013d6e8abbc79f0e9f6e9f17255b16fb808e190ff577b34f0f5ca5145a189a"
+    },
+    {
+      "path": "assets/desk-fx-detail.webp",
+      "width": 1836,
+      "height": 1084,
+      "bytes": 32534,
+      "sha256": "ac013d6e8abbc79f0e9f6e9f17255b16fb808e190ff577b34f0f5ca5145a189a"
+    },
+    {
+      "path": "assets/desk-account-value.webp",
+      "width": 1920,
+      "height": 942,
+      "bytes": 73752,
+      "sha256": "0c215280aa07578e76b2fcca21c2f81a1c04b2fed427be24ff4664d59a7689af"
+    },
+    {
+      "path": "assets/desk-decisions.webp",
+      "width": 2272,
+      "height": 690,
+      "bytes": 47754,
+      "sha256": "6577422c422c5dbb241dbbeeb1e858975ab01d5a9ee8b643948214c7abb7545f"
+    },
+    {
+      "path": "assets/desk-risk.webp",
+      "width": 2272,
+      "height": 1094,
+      "bytes": 113514,
+      "sha256": "10d12cbd82bca6ff52d7a06de29f8899571e130ec8bc291f35b5aa932b3000eb"
+    },
+    {
+      "path": "assets/desk-cash.webp",
+      "width": 2272,
+      "height": 1196,
+      "bytes": 64102,
+      "sha256": "cd125b0d9f6d66e822e55365a37ac33f5b9b720678582b9298f05f197cd813c3"
+    },
+    {
+      "path": "assets/desk-operations.webp",
+      "width": 2272,
+      "height": 2226,
+      "bytes": 237550,
+      "sha256": "e10a4cabbcde17fab772674dfa5ff338b587baa512c1c3cd0c4f4b519ffb8145"
+    },
+    {
+      "path": "assets/desk-market-price.webp",
+      "width": 2272,
+      "height": 638,
+      "bytes": 97358,
+      "sha256": "09c9c274f93bbaef0cf37926b7d196dcc6a68b7629339a92ad0f4af787614c61"
+    },
+    {
+      "path": "assets/desk-market-breadth.webp",
+      "width": 2272,
+      "height": 752,
+      "bytes": 79998,
+      "sha256": "c1884a1427cfe862288a44b3b949e88e8522644d9b03d4619d996d15d2cd4bcd"
+    },
+    {
+      "path": "assets/desk-opportunities.webp",
+      "width": 1356,
+      "height": 1338,
+      "bytes": 58558,
+      "sha256": "26415c8fad4a5ca2da086a95d1f862141fe8fe8d52cd3208cbb5d9ec3dd8688c"
+    },
+    {
+      "path": "assets/desk-research-borrow.webp",
+      "width": 2268,
+      "height": 1180,
+      "bytes": 97264,
+      "sha256": "942afe81baf16d93ab3ec790aeea8f297143f735840b838f59e27c8d672708aa"
+    },
+    {
+      "path": "assets/desk-opportunity-call.webp",
+      "width": 1140,
+      "height": 1638,
+      "bytes": 74118,
+      "sha256": "0a0959bdcbbc095dea977a92accc4f645e49e67f1e025d46f779a27498e7d9a2"
+    },
+    {
+      "path": "assets/phone-overview.webp",
+      "width": 780,
+      "height": 2160,
+      "bytes": 113370,
+      "sha256": "e93f7e24b9dd74e0a3b46eb603ca0e4b5001414cd945227d3c691082f628d531"
+    },
+    {
+      "path": "assets/phone-brief.webp",
+      "width": 652,
+      "height": 722,
+      "bytes": 50976,
+      "sha256": "ec6d722bee27e6fe904bc275b4331ce540998a575b9ae7fb1932e977216342d5"
+    },
+    {
+      "path": "assets/phone-fx.webp",
+      "width": 632,
+      "height": 1146,
+      "bytes": 26880,
+      "sha256": "693d974d5c2a4a64ec39033fb85b41bb6ac6bc64d7d9a32ce9391d1fa70dabd9"
+    },
+    {
+      "path": "assets/phone-fx-detail.webp",
+      "width": 632,
+      "height": 1146,
+      "bytes": 26880,
+      "sha256": "693d974d5c2a4a64ec39033fb85b41bb6ac6bc64d7d9a32ce9391d1fa70dabd9"
+    },
+    {
+      "path": "assets/phone-account-value.webp",
+      "width": 716,
+      "height": 1086,
+      "bytes": 56924,
+      "sha256": "2f6f5751992c09dd413a8f86ccfaf340743d1b5a61d8549fba46d3c7e00001d4"
+    },
+    {
+      "path": "assets/phone-decisions.webp",
+      "width": 716,
+      "height": 802,
+      "bytes": 44776,
+      "sha256": "1afe9d5a4671ff84508804a5388034ae2e0c71efadf4ff66c0dcd7fc29d1abdf"
+    },
+    {
+      "path": "assets/phone-risk.webp",
+      "width": 716,
+      "height": 2340,
+      "bytes": 101286,
+      "sha256": "45c0461acb5c747bde93084c07a4b5fb98f85c17de5b8f1f4cb111de52e973fa"
+    },
+    {
+      "path": "assets/phone-cash.webp",
+      "width": 648,
+      "height": 346,
+      "bytes": 26752,
+      "sha256": "6c5aeceec90d702ef327652b3d54fcdd601c60b06dc618a18cc736f8f2e6b03c"
+    },
+    {
+      "path": "assets/phone-operations.webp",
+      "width": 716,
+      "height": 2606,
+      "bytes": 148604,
+      "sha256": "991255b4fbe16d90ea8122867c9390f5fe766a69c4db3fa962996c2935f17f16"
+    },
+    {
+      "path": "assets/phone-market-price.webp",
+      "width": 716,
+      "height": 834,
+      "bytes": 37790,
+      "sha256": "bc07630afa79d71233347efcfe01c253b2ea79fa5386a847bb64d80a840acc4c"
+    },
+    {
+      "path": "assets/phone-market-breadth.webp",
+      "width": 716,
+      "height": 982,
+      "bytes": 44296,
+      "sha256": "0973c5782ba4c3709bb4ddda735ead2affb2e544218877af7ea4051c927371eb"
+    },
+    {
+      "path": "assets/phone-opportunities.webp",
+      "width": 712,
+      "height": 1136,
+      "bytes": 48314,
+      "sha256": "1bb2559d4c0d320b71c45411c679b2e7c9c8d275ea91f08b034a8e59d6f54b40"
+    },
+    {
+      "path": "assets/phone-opportunity-call.webp",
+      "width": 716,
+      "height": 1760,
+      "bytes": 71578,
+      "sha256": "8b63b1b3b402d6169a37489609d6f4b4d7b4e4568c92a7710733a19a24c61aee"
+    },
+    {
+      "path": "assets/desk-overview-dark.webp",
+      "width": 2880,
+      "height": 2000,
+      "bytes": 319860,
+      "sha256": "30a7103cf40f89f98c6a6dbc2773d4164b61c7f3401d0673780653a6f0557593"
+    },
+    {
+      "path": "assets/desk-brief-dark.webp",
+      "width": 890,
+      "height": 630,
+      "bytes": 49046,
+      "sha256": "2822338155a8d0ab820780c3b03a28b1c00b7bb799fd06d81ba6f4f9800383fa"
+    },
+    {
+      "path": "assets/desk-fx-dark.webp",
+      "width": 1836,
+      "height": 1084,
+      "bytes": 30484,
+      "sha256": "60824a7c2d52b06622fd998f816e15337aead3ee2b19796e5ca3cb4d687277e1"
+    },
+    {
+      "path": "assets/desk-fx-detail-dark.webp",
+      "width": 1836,
+      "height": 1084,
+      "bytes": 30484,
+      "sha256": "60824a7c2d52b06622fd998f816e15337aead3ee2b19796e5ca3cb4d687277e1"
+    },
+    {
+      "path": "assets/desk-account-value-dark.webp",
+      "width": 1920,
+      "height": 942,
+      "bytes": 69262,
+      "sha256": "0bc28ca03bc2b29cf8616a31cbace273639f9c94771eb48900e63ea722805611"
+    },
+    {
+      "path": "assets/desk-decisions-dark.webp",
+      "width": 2272,
+      "height": 690,
+      "bytes": 44506,
+      "sha256": "724e38eaba8f33c527ea0c80a97dd332c8a946e0f0bf3664f9569bef042c16d2"
+    },
+    {
+      "path": "assets/desk-risk-dark.webp",
+      "width": 2272,
+      "height": 1094,
+      "bytes": 104114,
+      "sha256": "26e67f9cc8b7b4c8c45a67a6e200854ffa5ca5df7620df0f238bd3830b72ffa5"
+    },
+    {
+      "path": "assets/desk-cash-dark.webp",
+      "width": 2272,
+      "height": 1196,
+      "bytes": 58386,
+      "sha256": "1354300630db60b2aa17cb9e2d3a303e40d078f8f274eb3eaaa44ddf7aae79fd"
+    },
+    {
+      "path": "assets/desk-operations-dark.webp",
+      "width": 2272,
+      "height": 2226,
+      "bytes": 231120,
+      "sha256": "bf908960572b176d51bb72a1d1c02657267ccb36a60b1a322e3b644a69f0595d"
+    },
+    {
+      "path": "assets/desk-market-price-dark.webp",
+      "width": 2272,
+      "height": 638,
+      "bytes": 94006,
+      "sha256": "2273a81a60f48e26887b96ad977bae21e74525a3c73953286ff82eac4e3dcac2"
+    },
+    {
+      "path": "assets/desk-market-breadth-dark.webp",
+      "width": 2272,
+      "height": 752,
+      "bytes": 75484,
+      "sha256": "9396807808698e51b3564e51a96200f72767d6f79aced720abce0c031f6aa88a"
+    },
+    {
+      "path": "assets/desk-opportunities-dark.webp",
+      "width": 1356,
+      "height": 1338,
+      "bytes": 53070,
+      "sha256": "cc7caf1b9413f124d0f55aa938e5a5d234ad12c46fa9377dffedfda5db7e40b2"
+    },
+    {
+      "path": "assets/desk-research-borrow-dark.webp",
+      "width": 2268,
+      "height": 1180,
+      "bytes": 89080,
+      "sha256": "e7513c2e09e9a8dff8d6fa8b551dfb2cfcaf292e624c5cc428ea8bee969821c7"
+    },
+    {
+      "path": "assets/desk-opportunity-call-dark.webp",
+      "width": 1140,
+      "height": 1638,
+      "bytes": 70336,
+      "sha256": "0df7185d6ac48d54c31392e1cb9765835e21a9a893fb3db680976ef776cd767c"
+    },
+    {
+      "path": "assets/phone-overview-dark.webp",
+      "width": 780,
+      "height": 2160,
+      "bytes": 109116,
+      "sha256": "ff4bfb9adf329fc2fc028ef71038d05db2a2993c6b70f6be0d6731e91e044eb5"
+    },
+    {
+      "path": "assets/phone-brief-dark.webp",
+      "width": 652,
+      "height": 722,
+      "bytes": 48678,
+      "sha256": "d84e9cf73b6fed9f2678485302c15da6f1ec757a370b06b8083d46cd015a85bf"
+    },
+    {
+      "path": "assets/phone-fx-dark.webp",
+      "width": 632,
+      "height": 1146,
+      "bytes": 25134,
+      "sha256": "4d6a2d37c11cab2c9ee71db3236c7030eca7dd3661371d1c39f88832f4929c90"
+    },
+    {
+      "path": "assets/phone-fx-detail-dark.webp",
+      "width": 632,
+      "height": 1146,
+      "bytes": 25134,
+      "sha256": "4d6a2d37c11cab2c9ee71db3236c7030eca7dd3661371d1c39f88832f4929c90"
+    },
+    {
+      "path": "assets/phone-account-value-dark.webp",
+      "width": 716,
+      "height": 1086,
+      "bytes": 53734,
+      "sha256": "e7d5ed91e5d17ac8476bae0f66706ca13148e20cd5e9de9acfa3fac0874da186"
+    },
+    {
+      "path": "assets/phone-decisions-dark.webp",
+      "width": 716,
+      "height": 802,
+      "bytes": 42636,
+      "sha256": "9620095f2257aff6fff02fd1faad4cddd0306479e58b46539502ff3288068ed8"
+    },
+    {
+      "path": "assets/phone-risk-dark.webp",
+      "width": 716,
+      "height": 2340,
+      "bytes": 92896,
+      "sha256": "0fc6faee676b36ac24b5e4403b9e682c86d2951b523baa33d3fc0c2665073e64"
+    },
+    {
+      "path": "assets/phone-cash-dark.webp",
+      "width": 648,
+      "height": 346,
+      "bytes": 23952,
+      "sha256": "7c4a4733490386af184c1e421fa124f93999c13fbd09fc69b58a0d23b3c6e8ea"
+    },
+    {
+      "path": "assets/phone-operations-dark.webp",
+      "width": 716,
+      "height": 2606,
+      "bytes": 142924,
+      "sha256": "c9ed82ce9f364cb7981658b9ddbd68f5af8d00160d092ec77e261b0a5fb20565"
+    },
+    {
+      "path": "assets/phone-market-price-dark.webp",
+      "width": 716,
+      "height": 834,
+      "bytes": 35260,
+      "sha256": "b622fa7f64d32e414676bd6115ab4f528f805828735ac06ec010f8a4ac22e589"
+    },
+    {
+      "path": "assets/phone-market-breadth-dark.webp",
+      "width": 716,
+      "height": 982,
+      "bytes": 41570,
+      "sha256": "870d53faeda38b278ffbcbdb47f8e69f8b53dcbed55478ae0183664f6ab82890"
+    },
+    {
+      "path": "assets/phone-opportunities-dark.webp",
+      "width": 712,
+      "height": 1136,
+      "bytes": 43104,
+      "sha256": "9c5ef11d30baafd60e936e19bb4399409639b80428daef02da53bb45c6d8cf7f"
+    },
+    {
+      "path": "assets/phone-opportunity-call-dark.webp",
+      "width": 716,
+      "height": 1760,
+      "bytes": 68256,
+      "sha256": "35720d818f7a1f101f71c2fce76fe36df075f09c8753a36570e72cb210e9563b"
+    },
+    {
+      "path": "assets/desk-overview-social.jpg",
+      "width": 1200,
+      "height": 630,
+      "bytes": 117884,
+      "sha256": "d1e801890d6843d3ed6fb0fff2ded27f7607078baae39e27f9975f3160cc4d7e"
+    }
+  ]
+}

@@ -10,7 +10,9 @@ for p in [root/'testdata/simulation-book.json',*root.glob('simulation*.go')]:
     if p.name.endswith('_test.go'): continue
     s=p.read_text()
     for a,b in [('CCC','AMD'),('DDD','MSFT'),('SYNX','SPY')]: s=re.sub(r'\b'+a+r'\b',b,s)
-    if p.name=='simulation_history.go': s=s.replace('"SPY": 558.23, "SPY": 558.23,','"SPY": 558.23,')
+    if p.name=='simulation_history.go':
+        s=s.replace('"SPY": 558.23, "SPY": 558.23,','"SPY": 558.23,')
+        s=s.replace('now := time.Now().UTC()', 'now := time.Date(2026, 10, 2, 14, 20, 0, 0, time.UTC)')
     if p.name=='simulation_fx.go': s=s.replace('BaseCurrency: "EUR"','BaseCurrency: "USD"')
     if p.name=='simulation_observe.go':
         for name in ('simulationFX','simulationPerformance'):

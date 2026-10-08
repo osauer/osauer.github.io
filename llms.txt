@@ -1,13 +1,12 @@
 # osauer.dev · Software for a clearer portfolio
 
-Updated: 2026-10-06
+Updated: 2026-10-08 13:20 CEST
 
 Personal software by Oliver Sauer: markets, applied AI and Go systems. The site
 shows independent projects. It is not investment advice and makes no claim of
 investment performance. Public screenshots use synthetic simulation data.
 
-- [Canary Desk](https://osauer.dev/desk/): A portfolio workspace, in private
-  preview. Written briefs, an AI analyst, risk rules and
+- [Canary Desk](https://osauer.dev/desk/): A private portfolio workspace with access arranged personally. Written briefs, an AI analyst, risk rules and
   statement-backed FX contribution for Day, WTD, MTD and YTD. Its cash-sweep
   planner considers same-currency bills after commitments and liquidity
   reserves; it is off by default and requires owner commissioning, calibrated
@@ -22,13 +21,15 @@ investment performance. Public screenshots use synthetic simulation data.
   lending income.
   Order authority is separate from analysis. Orders need owner confirmation or
   explicitly scoped prior authority, and Canary's execution gates apply. The AI
-  analyst remains read-only. Access is arranged personally; there is no
+  analyst remains read-only. Desk runs on a Mac; OpenAI receives
+  portfolio evidence for analysis through the API or Codex connection. Desk sends no telemetry or portfolio data to
+  its maker. Access is arranged personally; there is no
   commercial service or public Desk installer.
 - [Canary CLI](https://osauer.dev/canary/): Desk's open-source broker engine,
   written in Go. It includes a native TWS protocol implementation, a daemon, the
   CLI, read-only MCP tools and a paired app. Standard downloads and all MCP
   tools cannot place orders.
-  Latest release: v3.18.1 (6 October 2026). Upgrades need no policy step: when
+  Release notes for v3.18.1 (6 October 2026): Upgrades need no policy step: when
   it starts, the daemon backs up each policy file it changes and writes the keys
   a release adds. It also fixes protection proposals that stopped refreshing in
   v3.18.0. v3.18.0 (6 October 2026) added: `canary policy show --explain` prints
@@ -81,7 +82,7 @@ investment performance. Public screenshots use synthetic simulation data.
 - [Oliver's GitHub](https://github.com/osauer)
 - [LinkedIn and private-access enquiries](https://www.linkedin.com/in/osauer/)
 - [Canary repository](https://github.com/osauer/canary)
-- [4 October 2026 product sheet](https://osauer.dev/assets/sheet/canary-desk-product-sheet-2026-10-04.pdf)
+- [8 October 2026 product sheet](https://osauer.dev/assets/sheet/canary-desk-product-sheet-2026-10-08.pdf)
 - [Canary handbook](https://osauer.dev/canary/docs/)
 - [Canary installation](https://osauer.dev/canary/docs/start/install.html)
 - [MCP tools](https://osauer.dev/canary/docs/reference/mcp-tools.html)
@@ -96,4 +97,5 @@ release are separate kinds of evidence. Desk, Torok and Tower remain private.
 Public screenshot tour: weekly FX contribution, a current decision and
 Opportunities. Opportunities shows synthetic five-minute price and
 volume observations; a pattern match is not a proven edge or order authority.
-Images were refreshed on 4 October 2026 from an isolated synthetic Desk build.
+The detail sections also show the morning brief and Operations.
+Images were refreshed on 8 October 2026 from an isolated synthetic Desk build, in light and dark themes.

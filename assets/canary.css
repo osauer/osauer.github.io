@@ -219,23 +219,41 @@
   .canary-speech, .canary-badge, .canary-speech .tool.review .count { transition: none; }
 }
 
-@media (prefers-color-scheme: dark) {
-  .canary-speech { background: rgba(46, 51, 59, 0.9); border-color: rgba(255, 241, 229, 0.12); color: #F2E8DF; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.06); }
-  .canary-speech .ticker .page { color: #D9CFC5; }
-  .canary-speech .tool { color: #D9CFC5; }
-  .canary-speech .tool:hover { background: rgba(255, 241, 229, 0.1); color: #F2E8DF; }
-  .canary-speech .tool.brief { color: #4FC3C9; }
-  .canary-speech .kind[data-kind="brief"], .canary-brief .kind[data-kind="brief"] { color: #4FC3C9; }
-  .canary-speech .kind[data-kind="issue"], .canary-brief .kind[data-kind="issue"] { color: #FF8C99; }
-  .canary-speech .kind[data-kind="question"], .canary-brief .kind[data-kind="question"] { color: #C4A9E6; }
-  .canary-speech .dots li { background: rgba(255, 241, 229, 0.25); }
-  .canary-speech .dots li[aria-current="true"] { background: #F2E8DF; }
-  .canary-note { color: #B3A79C; }
-  .canary-brief { background: #2E333B; border-color: #3B3632; color: #F2E8DF; }
-  .canary-brief p, .canary-brief h4 { color: #D9CFC5; }
-  .canary-brief .items li, .canary-brief .demo { border-color: #3B3632; }
-  .canary-brief .pill { background: #3B3632; color: #F2C4A0; }
-  .canary-brief .pill[data-state="new"] { background: #1F3A2C; color: #8FE0B0; }
-  .canary-brief .pos { color: #8FE0B0; }
-  .canary-brief .neg { color: #FF8C99; }
+:root[data-theme=dark] .canary-speech{ background: rgba(46, 51, 59, 0.9); border-color: rgba(255, 241, 229, 0.12); color: #F2E8DF; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.06); }
+:root[data-theme=dark] .canary-speech .ticker .page{ color: #D9CFC5; }
+:root[data-theme=dark] .canary-speech .tool{ color: #D9CFC5; }
+:root[data-theme=dark] .canary-speech .tool:hover{ background: rgba(255, 241, 229, 0.1); color: #F2E8DF; }
+:root[data-theme=dark] .canary-speech .tool.brief{ color: #4FC3C9; }
+:root[data-theme=dark] .canary-speech .kind[data-kind="brief"],:root[data-theme=dark] .canary-brief .kind[data-kind="brief"]{ color: #4FC3C9; }
+:root[data-theme=dark] .canary-speech .kind[data-kind="issue"],:root[data-theme=dark] .canary-brief .kind[data-kind="issue"]{ color: #FF8C99; }
+:root[data-theme=dark] .canary-speech .kind[data-kind="question"],:root[data-theme=dark] .canary-brief .kind[data-kind="question"]{ color: #C4A9E6; }
+:root[data-theme=dark] .canary-speech .dots li{ background: rgba(255, 241, 229, 0.25); }
+:root[data-theme=dark] .canary-speech .dots li[aria-current="true"]{ background: #F2E8DF; }
+:root[data-theme=dark] .canary-note{ color: #B3A79C; }
+:root[data-theme=dark] .canary-brief{ background: #2E333B; border-color: #3B3632; color: #F2E8DF; }
+:root[data-theme=dark] .canary-brief p,:root[data-theme=dark] .canary-brief h4{ color: #D9CFC5; }
+:root[data-theme=dark] .canary-brief .items li,:root[data-theme=dark] .canary-brief .demo{ border-color: #3B3632; }
+:root[data-theme=dark] .canary-brief .pill{ background: #3B3632; color: #F2C4A0; }
+:root[data-theme=dark] .canary-brief .pill[data-state="new"]{ background: #1F3A2C; color: #8FE0B0; }
+:root[data-theme=dark] .canary-brief .pos{ color: #8FE0B0; }
+:root[data-theme=dark] .canary-brief .neg{ color: #FF8C99; }
+
+@media(prefers-color-scheme:dark){:root:not([data-theme]) .canary-speech{ background: rgba(46, 51, 59, 0.9); border-color: rgba(255, 241, 229, 0.12); color: #F2E8DF; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.06); }
+:root:not([data-theme]) .canary-speech .ticker .page{ color: #D9CFC5; }
+:root:not([data-theme]) .canary-speech .tool{ color: #D9CFC5; }
+:root:not([data-theme]) .canary-speech .tool:hover{ background: rgba(255, 241, 229, 0.1); color: #F2E8DF; }
+:root:not([data-theme]) .canary-speech .tool.brief{ color: #4FC3C9; }
+:root:not([data-theme]) .canary-speech .kind[data-kind="brief"],:root:not([data-theme]) .canary-brief .kind[data-kind="brief"]{ color: #4FC3C9; }
+:root:not([data-theme]) .canary-speech .kind[data-kind="issue"],:root:not([data-theme]) .canary-brief .kind[data-kind="issue"]{ color: #FF8C99; }
+:root:not([data-theme]) .canary-speech .kind[data-kind="question"],:root:not([data-theme]) .canary-brief .kind[data-kind="question"]{ color: #C4A9E6; }
+:root:not([data-theme]) .canary-speech .dots li{ background: rgba(255, 241, 229, 0.25); }
+:root:not([data-theme]) .canary-speech .dots li[aria-current="true"]{ background: #F2E8DF; }
+:root:not([data-theme]) .canary-note{ color: #B3A79C; }
+:root:not([data-theme]) .canary-brief{ background: #2E333B; border-color: #3B3632; color: #F2E8DF; }
+:root:not([data-theme]) .canary-brief p,:root:not([data-theme]) .canary-brief h4{ color: #D9CFC5; }
+:root:not([data-theme]) .canary-brief .items li,:root:not([data-theme]) .canary-brief .demo{ border-color: #3B3632; }
+:root:not([data-theme]) .canary-brief .pill{ background: #3B3632; color: #F2C4A0; }
+:root:not([data-theme]) .canary-brief .pill[data-state="new"]{ background: #1F3A2C; color: #8FE0B0; }
+:root:not([data-theme]) .canary-brief .pos{ color: #8FE0B0; }
+:root:not([data-theme]) .canary-brief .neg{ color: #FF8C99; }
 }
