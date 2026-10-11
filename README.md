@@ -15,22 +15,75 @@ Before public website edits, verify each publisher with
 ## Checks
 
 ```sh
+python3 -m unittest discover -s tools -p "test_site_seo.py"
+node --test tools/test-public-artifact.mjs
 node tools/check-site-links.mjs
 node tools/build-public-site.mjs
 node tools/check-site-links.mjs output/site
+python3 tools/site-seo.py check output/site --live
 node tools/copy-lint.mjs --skip /ibkr/docs output/site
 ```
 
-The build copies only tracked, explicitly allowed pages and asset types to
-`output/site`. README, tools, workflow files, local browser artefacts and runtime
-data are excluded. New pages need an entry in `tools/build-public-site.mjs`.
-Text exports are checked for credential patterns, local home paths and broker
-account identifiers. PDFs and images still require privacy review; screenshots
+The build requires Node 22+ and Python 3. It copies only tracked, explicitly
+allowed pages and asset types to `output/site`, then generates the reviewed
+legacy HTML redirects from `tools/legacy-redirects.json`. README, tools,
+workflow files, local browser artefacts and runtime data are excluded. New pages need an entry in `tools/build-public-site.mjs`.
+The entire final artifact, including generated text, is checked for credential
+patterns, local home paths and broker account identifiers. Non-regular files
+are rejected. PDFs and images still require privacy review; screenshots
 must come from synthetic simulation sessions.
 
 ```text
-main -> public-file selection -> link checks -> GitHub Pages -> osauer.dev
+main -> public-file selection + redirects -> link/SEO checks -> GitHub Pages -> osauer.dev
 ```
+
+### Legacy links and search discovery
+
+The root publisher owns the old `/ibkr/` routes. `tools/legacy-redirects.json`
+maps each supported historical page directly to its current canonical Canary
+page. GitHub Pages is static, so these are immediate HTML refresh redirects
+with matching canonical and fallback links, not HTTP 301 responses. No
+JavaScript or hosting change is required. The two former handwritten redirect
+pages are generated from this same manifest.
+
+The independent `tools/fixtures/legacy-sitemap-urls.json` inventory records 70
+URLs from Canary's historical sitemaps, including archived refs. Do not shrink
+it to make a check pass. Every historical URL needs either a redirect or a
+specific retirement reason. Retired designs and runbooks, obsolete features and
+old machine-readable discovery documents remain absent. HTML in a TXT/JSON
+file is not a working redirect; copying those documents would create stale
+metadata under a second publisher. Their current owner is `/canary/`.
+
+The publishing gate checks the built artifact: missing or incorrect redirects,
+canonical URLs, root sitemap coverage, XML validity, duplicate URLs, future
+lastmod dates, and the site's simple allow-all robots contract. It fetches the
+live Canary sitemap and its URLs, checking that delegated HTML destinations
+are available, indexable, canonical and do not add another redirect hop.
+Root-owned pages and robots are checked in the new artifact before deployment,
+so a new page or a repair can ship. Failed delegated live checks stop
+publication; they are not silently skipped. These HTTP checks do not
+claim that Google's own crawler or Search Console has succeeded.
+
+Keep `lastmod` tied to a significant change to the corresponding page; never
+refresh all dates merely because a deployment ran. Retired routes and redirect
+pages do not belong in the current sitemap. Root-owned indexable pages must
+appear in the root sitemap; Canary maintains its own separately.
+
+Submit the complete XML URLs in Search Console's `osauer.dev` domain property:
+[root sitemap](https://osauer.dev/sitemap.xml) and
+[Canary sitemap](https://osauer.dev/canary/sitemap.xml).
+The homepage is not a sitemap. Once the current entries succeed, remove the
+obsolete sitemap submission. The old sitemap file remains retired.
+
+After Pages reports a successful deployment, verify the published artifact:
+
+```sh
+python3 tools/site-seo.py verify output/site
+```
+
+This compares every live redirect with the built file and checks the current
+sitemaps, robots rules and canonical destinations again. Keep deployment
+success separate from Google's later crawl and indexing status.
 
 Review the pages in a browser at desktop and phone widths. Browser artefacts in
 `output/` and `.playwright-cli/` are local and ignored. The public pages use

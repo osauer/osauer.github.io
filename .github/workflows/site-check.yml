@@ -27,6 +27,11 @@ jobs:
         with:
           node-version: "24"
 
+      - name: Test publishing regression checks
+        run: |
+          python3 -m unittest discover -s tools -p "test_site_seo.py"
+          node --test tools/test-public-artifact.mjs
+
       - name: Check local osauer.dev links
         run: node tools/check-site-links.mjs
 
@@ -35,6 +40,9 @@ jobs:
 
       - name: Check exported site links
         run: node tools/check-site-links.mjs output/site
+
+      - name: Check redirects, sitemap coverage and live destinations
+        run: python3 tools/site-seo.py check output/site --live
 
       - name: Check public copy (unvouched figures, status phrases)
         run: node tools/copy-lint.mjs --skip /ibkr/docs output/site

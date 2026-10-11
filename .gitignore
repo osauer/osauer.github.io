@@ -17,3 +17,6 @@ output/
 *.sqlite
 *.sqlite3
 *.sqlite-*
+
+# Python validation bytecode
+__pycache__/
