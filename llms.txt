@@ -14,7 +14,7 @@ investment performance. Public screenshots use synthetic simulation data.
   analyst remains read-only. Desk runs on a Mac; OpenAI receives portfolio
   evidence for analysis through the API or Codex connection. Desk sends no
   telemetry or portfolio data to its maker. There is no public Desk installer.
-- [Canary CLI](https://osauer.dev/canary/): Desk's open-source broker engine for
+- [Canary](https://osauer.dev/canary/): Desk's open-source broker engine for
   Interactive Brokers, written in Go. It includes a native TWS protocol
   implementation, a daemon, the CLI, read-only MCP tools and a paired app.
   Claude Desktop users install one bundle (`canary.mcpb`); engineers use the
