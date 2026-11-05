@@ -188,6 +188,7 @@ pre code{font:inherit}
 .feature .lockup h2{margin:0}
 .feature .lockup .mark{width:52px;height:52px;margin:0}
 .feature .link-stack{margin-top:25px;gap:6px}
+.home .feature .link-stack{flex-wrap:wrap}
 .feature .link-stack .text-link{font-size:15px}
 .feature .link-stack .text-link{margin-top:0}
 /* Text beside a list: AI boundary, evidence states, Go library. */
